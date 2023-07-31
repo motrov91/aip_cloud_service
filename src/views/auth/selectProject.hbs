@@ -1,0 +1,41 @@
+<div class="container-fluid pt-3 container-style">
+    <div class="row row-style">
+        <div class="col-md-4 mx-auto align-self-center">
+            <div class="card">
+                <div class="card-header text-center bg-warning text-white">
+                    <h5>Elije el proyecto con el que deseas ingresar</h5>
+                </div>
+                <div class="card-body">
+                    <form action="/selectProject" method="POST">
+
+                        <div class="form-group">
+                            <div class="text-center">
+                                <label for="exampleFormControlSelect1">Selecciona un proyecto</label>
+                            </div>                  
+                            <select class="form-control" name='project'>
+                                <option value="">Selecciona un proyecto</option>
+                                {{#each proj}}
+                                    <option value="{{project_id}}">{{project_nom}}</option>
+                                    {{else}}
+                                        {{#each projAdmin}}
+                                            <option value="{{id_project}}">{{nom_proyecto}}</option>
+                                        {{/each}}
+                                {{/each}}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-success w-100">Ingresar</button>
+                        </div>
+                        <div class="text-center mt-4">
+                            <a href="/logout" class="text-decoration-none text-success">
+                                Cerrar Sesión
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+        
+    </div>
+</div>

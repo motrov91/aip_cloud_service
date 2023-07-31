@@ -1,0 +1,37 @@
+{{> navigation }}
+
+<div class="bg-prueba pt-3">
+    <div class="row ml-4 mr-2">
+        <div class="col-md-12">
+            <table id="tabla" class="table table-striped">
+                <thead>
+                    <tr class="text-center">
+                        <th scope="col">Código</th>
+                        <th scope="col">Finca</th>
+                        <th scope="col">Formato</th>
+                        <th scope="col">Municipio</th>
+                        <th scope="col">Beneficiario</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Encuestador</th>
+                        <th scope="col">Ficha tecnica</th>
+                    </tr>
+                </thead>
+                {{#each surveyByProject}}
+                <tbody>
+                    <tr class="text-center">
+                        <th scope="row"><small>{{id_survey}}</small></th>
+                        <td><small>{{nom_finca}}</small></td>
+                        <td><small>{{nom_format}}</small></td>
+                        <td><small>{{municipio}}</small></td>
+                        <td><small>{{nom_beneficiario}}</small></td>
+                        <td><small>{{formatDate fecha_creacion 'll'}}</small></td>
+                        <td><small>{{nom_user}}</small></td>
+                        <td><small><a href="/fullDetailSurvey/{{id_survey}}"
+                                    class="text-success text-decoration-none">Ver encuesta</a></small></td>
+                    </tr>
+                </tbody>
+                {{/each}}
+            </table>
+        </div>
+    </div>
+</div>

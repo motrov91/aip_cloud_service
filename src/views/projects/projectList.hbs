@@ -1,0 +1,31 @@
+{{> navigation}}
+<div class="bg-prueba p-4">
+    <div>
+        <header class="text-center">Lista de proyectos</header>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-striped mt-4">
+                <thead>
+                    <tr class="mx-auto">
+                    <th scope="col">Proyecto</th>
+                    <th scope="col">Descripción</th>
+                    <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each proj}}
+                    <tr>
+                    <th scope="row ">{{nom_proyecto}}</th>
+                    <td>{{descripcion}}</td>
+                    <td class="d-flex"> <a href="/addLogo/{{id_project}}" class="ml-auto my-auto text-decoration-none text-success">Agregar Logos</a></td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+            <div class="text-center">
+                <a href="/addProject" class="btn btn-success"> Agregar un proyecto</a>
+            </div>
+        </div>
+    </div>
+</div>

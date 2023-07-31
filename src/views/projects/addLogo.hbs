@@ -1,0 +1,27 @@
+{{> navigation}}
+<div class="singup-style pt-3">
+    <div class="row">
+        <div class="col-md-5 mx-auto">
+            <div class="card">   
+                {{#each projectSelected}}
+                <div class="card-header text-center bg-success">
+                    <label class="text-center text-white">Agregar Logo al proyecto</label>
+                    <br>
+                    <label class="text-center text-white">{{nom_proyecto}}</label>
+                </div>
+                <div class="card-body">
+                    <form action="/addLogo/{{id_project}}" method="POST" enctype="multipart/form-data">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="customFile" name="img">
+                            <label class="custom-file-label" for="customFile">Selecciona una imagen</label>
+                        </div>
+                        <div class="text-center">
+                            <button class="btn btn-success mt-2">Enviar Logo</button>
+                        </div>
+                    </form>
+                </div> 
+                {{/each}}  
+            </div>    
+        </div>
+    </div>
+</div>

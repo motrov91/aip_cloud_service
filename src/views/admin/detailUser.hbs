@@ -1,0 +1,73 @@
+{{> navigation}}
+<div class="bg-prueba pt-3">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="card ">
+                <div class="card-header bg-success text-white">
+                    <p class="text-center">Información general</p>
+                    {{#each usr}}
+                        <form action="/detailUser/{{id}}" method="POST">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="">Cedula:</label>
+                                    <input type="text" class="form-control" value="{{cedula}}">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="">Nombre:</label>
+                                    <input type="text" class="form-control" value="{{nom_user}}">
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md-6">
+                                    <label for="">Telefono:</label>
+                                    <input type="text" class="form-control" value="{{telefono_user}}">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="">Usuario:</label>
+                                    <input type="text" class="form-control" value="{{username}}">
+                                </div>
+                            </div>
+                    {{/each}}
+
+                    <div class="text-center mt-3">
+                        <a href="/reset" class="btn btn-warning">Recuperar contraseña</a>
+                    </div>
+                </div>  
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p>Proyectos en los que aparece:</p>
+                            <ol>
+                                {{#each projxuser}}
+                                    <li class="style-li">
+                                        {{project_nom}}
+                                        <a href="#"><img src="/img/cancelar.svg" class="style-button"></a>
+                                    </li>
+                                    {{else}}
+                                    <p class="text-danger">Aún no tiene proyectos asignados</p>
+                                {{/each}}
+                            </ol>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">Selecciona un proyecto para este usuario</label>
+                                <select class="form-control" name='project'>
+                                    <option value="">Selecciona un proyecto</option>
+                                    {{#each proj}}
+                                        <option value="{{id_project}}">{{nom_proyecto}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group text-center">
+                    <button class="btn btn-success">Agregar proyecto</button>
+                </div>
+                </form>
+                    
+            </div>
+        </div>
+    </div>
+</div>
+

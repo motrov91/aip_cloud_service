@@ -1,0 +1,42 @@
+{{> navigation }} 
+<div class="singup-style">
+    <div class="row">
+        <div class="col-md-3 pt-4 mx-auto">
+            <div class="card shadow-lg  mb-5 bg-white rounded">
+                <div class="card-header text-center bg-success header-signup-style">
+                    <h5>Registro de usuarios</h5> 
+                </div>
+                <div class="card-body">
+                    <form action="/signup" method="POST">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="cedula" placeholder="Cedula de ciudadania" autofocus required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="nom_user" placeholder="Ingrese su nombre completo" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="telefono_user" placeholder="Teléfono">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" name="username" placeholder="Correo electronico" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" name="password" placeholder="Contraseña" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Cargo</label>
+                            <select class="form-control" id="exampleFormControlSelect1" name="rol_id">
+                                <option value="5">Extensionista</option>
+                                <option value="6">Coordinador</option>
+                                <option value="7">Director</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-success btn-block">Crear usuario</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

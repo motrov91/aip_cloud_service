@@ -1,0 +1,84 @@
+{{> navigation  }}
+<div class="bg-prueba mt-2">
+    <div class="row">
+        <div class="col-md-7 mx-auto">
+
+            <div class="text-center bg-success text-white pt-2 pb-2"> 
+                <h5>Seguimiento a la finca {{newSurv.nom_finca}}</h5>
+            </div>
+
+            <form action="/selectFormat" class="mt-4" method="post">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for=""><small>Identificador del proyecto:</small></label>
+                            <input type="text" class="form-control" name="id_project_has_farm" value="{{newSurv.id_project_has_farm}}" readonly>
+                        </div>
+                        <div class="col-md-4">
+                            <label for=""><small>Nombre del Proyecto:</small></label>
+                            <input type="text" class="form-control" name="proyecto_nom" value="{{newSurv.proyecto_nom}}" readonly>
+                        </div>
+                        <div class="col-md-4">
+                            <label for=""><small>Linea Productiva:</small></label>
+                            <input type="text" class="form-control" name="linea_productiva" value="{{newNom.nom_sector}}" readonly>
+                        </div>
+                    </div>
+                    <div class="row mt-1">
+                        <div class="col-md-4">
+                            <label for=""><small>Tematica</small></label>
+                            <input type="text" class="form-control" name="tematica" value="" readonly>
+                        </div>
+                        <div class="col-md-4">
+                            <label for=""><small>Formato diligenciado</small></label>
+                            <input type="text" class="form-control" name="formato" value="" readonly>
+                        </div>
+                        <div class="col-md-4">
+                            <label for=""><small>Nombre beneficiario:</small></label>
+                            <input type="text" class="form-control" name="nom_beneficiario" value="{{newSurv.nom_beneficiario}}" readonly>
+                        </div>
+                    </div>
+                    <div class="row mt-1">
+                        <div class="col-md-4">
+                            <label for=""><small>Cedula:</small></label>
+                            <input type="text" class="form-control" name="cedula" value="{{newSurv.cedula}}" readonly>
+                        </div>
+                        <div class="col-md-4">
+                            <label for=""><small>Nombre finca:</small></label>
+                            <input type="text" class="form-control" name="nom_finca" value="{{newSurv.nom_finca}}" readonly>
+                        </div>
+                        <div class="col-md-4">
+                            <label for=""><small>Municipio:</small></label>
+                            <input type="text" class="form-control" name="municipio" value="{{newSurv.municipio}}" readonly>
+                        </div> 
+                    </div>
+                     <div class="row mt-1">
+                         <div class="col-md-4">
+                            <label for=""><small>Vereda:</small></label>
+                            <input type="text" class="form-control" name="vereda" value="{{newSurv.vereda}}" readonly>
+                        </div>
+                        <div class="col-md-4">
+                            <label for=""><small>Teléfono:</small></label>
+                            <input type="text" class="form-control" name="telefono" value="{{newSurv.telefono}}" readonly>
+                        </div>
+                    </div>
+   
+                    <hr>
+
+                    <div class="row mt-1">
+                        <div class="col-md-5 mx-auto">
+                            <div>
+                                <select class="form-control" name='topic'>
+                                    <option value="">Seleccione una temática</option>
+                                    {{#each dataTopic}}
+                                        <option value="{{id_formatType}}">{{nom_formatType}}</option>
+                                    {{/each}}
+                                </select>
+                            </div> 
+                        </div>
+                        <div class="col-md-4">
+                            <button class="btn btn-warning">Siguiente</button>
+                        </div> 
+                    </div>
+            </form>
+        </div>
+    </div>
+</div>

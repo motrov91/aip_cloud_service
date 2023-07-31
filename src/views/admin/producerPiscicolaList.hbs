@@ -1,0 +1,52 @@
+{{> navigation }}
+<div class="bg-prueba pt-3">
+    <div class="row ml-4 mr-2">
+        <header class="mx-auto">
+            <h4 class="mx-auto align-items-center">Información de registros de productor piscícola</h4>
+            <div class="text-center mt-4">
+                <a href="/downloadExcelRegisterPiscicola" class="btn btn-success mx-auto mb-2">Exportar</a>
+            </div>
+        </header>
+
+        <div class="col-md-12 mb-2 bg-red">
+
+        </div>
+        <div class="col-md-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr class="text-center">
+                        <th scope="col">Cedula</th>
+                        <th scope="col">Primer Nombre</th>
+                        <th scope="col">Primer Apellido</th>
+                        <th scope="col">Finca</th>
+                        <th scope="col">Municipio</th>
+                        <th scope="col">Vereda</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                {{#each querySurvey}}
+                <tbody>
+                    <tr class="text-center">
+                        <td><small>{{nitProducer}}</small></td>
+                        <td><small>{{firstName}}</small></td>
+                        <td><small>{{firstSurname}}</small></td>
+                        <td><small>{{nameFarm}}</small></td>
+                        <td><small>{{municipality}}</small></td>
+                        <td><small>{{vereda}}</small></td>
+                        <td>
+                            <small>
+                                <a href="/downloadProducerRegisterPiscicola/{{id_farm}}"
+                                    class="text-decoration-none btn btn-success">Pdf</a>
+                            </small>
+                            <small>
+                                <a href="/editProducerRegisterPiscicola/{{id_farm}}"
+                                    class="text-decoration-none btn btn-success">Editar</a>
+                            </small>
+                        </td>
+                    </tr>
+                </tbody>
+                {{/each}}
+            </table>
+        </div>
+    </div>
+</div>

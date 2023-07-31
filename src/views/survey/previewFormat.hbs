@@ -1,0 +1,60 @@
+<div class="bg-prueba pt-3">
+    <div class="row">
+        <div class="col-md-7 mx-auto">
+            <div class="div card">
+                <div class="card-header header-style-format bg-success">
+                    <div class="row">
+                        <div class="col-md-3 text-center">
+                        <img src="/img/logo.png" class="w-50" alt="">
+                    </div>
+                    <div class="col-md-7 text-center my-auto"> 
+                        <h4 class="header-style">Fundación Asesorías e Investigaciones Profesionales</h4>
+                        {{#each nameFormat}}
+                        <p class="format-title-style">{{nom_format}}</p>
+                        {{/each}}
+                    </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                     
+                            <div class="col-md-12">   
+                                {{#each result}}
+                                <div>
+                                    {{title}}
+                                </div> 
+                                <ul>           
+                                    <div class="row">  
+                                        {{#if ans0}}
+                                        <div class="col-md-6"><li>{{ans0}}</li></div>
+                                        {{/if}}
+                                        {{#if ans1}}
+                                        <div class="col-md-6"><li>{{ans1}}</li></div>
+                                        {{/if}}
+                                        {{#if ans2}}
+                                        <div class="col-md-6"><li>{{ans2}}</li></div>
+                                        {{/if}}
+                                        {{#if ans3}}
+                                        <div class="col-md-6"><li>{{ans3}}</li></div>
+                                        {{/if}}
+                                        {{#if ans4}}
+                                        <div class="col-md-6"><li>{{ans4}}</li></div>
+                                        {{/if}}
+                                        {{#if ans5}}
+                                        <div class="col-md-6"><li>{{ans5}}</li></div>
+                                        {{/if}}
+                                        {{#if ans6}}
+                                        <div class="col-md-6"><li>{{ans6}}</li></div>
+                                        {{/if}}
+                                    </div>           
+                                </ul>
+                                {{/each}}
+                            </div>
+                        </div>         
+                    </div>
+                </div>
+            </div>
+        </div>         
+    </div>
+</div>

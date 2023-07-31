@@ -1,0 +1,34 @@
+{{> navigation }} 
+<div class="bg-prueba p-3">
+    <div class="row">
+        <header class="mx-auto">
+            <h4>Lista de usuarios</h4>
+        </header>
+    </div>
+    <div class="row">
+            <table class="table">
+                <thead class="thead head-style">
+                    <tr class="mx-auto">
+                    <th scope="col" class="title-style-tab">Identificador</th>
+                    <th scope="col" class="title-style-tab">Nombre</th>
+                    <th scope="col" class="title-style-tab">Usuario</th>
+                    <th scope="col" class="title-style-tab">Tipo de usuario</th>
+                    <th scope="col" class="title-style-tab"></th>
+
+                    <th scope="col" class="title-style-tab"></th>
+                    </tr>
+                </thead>
+                {{#each listUsers}}
+                    <tbody>
+                        <tr>
+                        <th scope="row" class="title-style-tab">{{id}}</th>
+                        <td class="title-style-tab">{{nom_user}}</td>
+                        <td class="title-style-tab">{{username}}</td>
+                        <td class="title-style-tab">{{nom_rol}}</td>
+                        <td class="title-style-tab"><a href="/detailUser/{{id}}" class="text-decoration-none text-success"><small>Ficha</small></a></td>
+                        </tr>
+                    </tbody>
+                {{/each}}
+            </table>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+{{> navigation }} 
+<div class="singup-style mt-3">
+    <div class="row">
+        <div class="col-md-4 mx-auto mt-3">
+            <div class="card">
+                <div class="card-header text-center bg-success color-red text-white">
+                    <p class="title-productiveSector">Agrega una linea productiva</p>
+                </div>
+                <div class="card-body">
+                    <form action="/addProductiveSector" method="POST">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="nom_sector" placeholder="Nombre del sector productivo" autofocus>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="description" rows="4" class="form-control"></textarea>
+                        </div>
+                        <div class="form-group text-center footer">
+                            <button class="btn btn-success">Agregar</button>
+                        </div>
+                    </form>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>

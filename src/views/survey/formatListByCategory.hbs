@@ -1,0 +1,47 @@
+{{> navigation }}
+<div class="bg-prueba p-4">
+    <div class="row">
+        <header class="mx-auto">
+            {{#each category}}
+            <p>Secciones de la categoria {{nom_formatType}}</p>
+            {{/each}}
+        </header>
+    </div>
+    <div class="row">
+        <table class="table mt-4">
+            <thead class="thead head-style">
+                <tr class="mx-auto">
+                <th scope="col" class="title-style-tab">Temática</th>
+                <th scope="col" class="title-style-tab">Nombre del formato</th>
+                <th scope="col" class="title-style-tab"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="">           
+                {{#each formatByCategory}}
+                <td class="title-style-tab">{{nom_format}}</td>
+                
+                <td class="title-style-tab d-flex">
+                    <a href="/previewFormat/{{id_format}}" class="btn btn-info ml-auto btn-sm mx-2">Vista previa</a>
+                    {{!-- <a href="#" class="btn btn-danger mx-2 btn-sm">Eliminar</a> --}}
+                    <a href="/addQuestionsToFormat/{{id_format}}" class="btn btn-primary btn-sm">Agregar preguntas</a>           
+                </td>
+                    {{#each category}}
+                    <td class="title-style-tab">{{nom_formatType}}</td>
+                    {{/each}}
+                </tr>
+                    {{else}}
+                        <td colspan="3" class="col-md-4 text-center mt-4">
+                            <p class="text-danger">Aún no has creado una sección para esta temática </p>                    
+                        </td>
+                {{/each}}  
+            </tbody>
+                  
+        </table>
+        <div class="form-group mx-auto">
+            {{#each category}}
+            <a href="/addFormat/{{id_formatType}}" class="btn btn-warning">Crear sección</a>
+            {{/each}}
+        </div>
+    </div>
+</div>

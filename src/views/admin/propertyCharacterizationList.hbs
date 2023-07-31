@@ -1,0 +1,61 @@
+{{> navigation }}
+<div class="bg-prueba pt-3">
+    <div class="row ml-4 mr-2">
+        <header class="mx-auto">
+            <h4 class="text-center">Listado de predios caracterizados</h4>
+            <div class="text-center">
+                <a href="/downloadExcelByCharacterization" class="btn btn-success">Exportar</a>
+            </div>
+        </header>
+
+        <div class="col-md-12 mt-3">
+            <table class="table table-striped">
+                <thead>
+                    <tr class="text-center">
+                        <th scope="col">Cedula</th>
+                        <th scope="col">Primer Nombre</th>
+                        <th scope="col">Primer Apellido</th>
+                        <th scope="col">Finca</th>
+                        <th scope="col">Municipio</th>
+                        <th scope="col">Vereda</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                {{#each producerSurveyCharacterization}}
+                <tbody>
+                    <tr class="text-center">
+                        <td><small>{{nitProducer}}</small></td>
+                        <td><small>{{firstName}}</small></td>
+                        <td><small>{{firstsurname}}</small></td>
+                        <td><small>{{nameFarm}}</small></td>
+                        <td><small>{{municipality}}</small></td>
+                        <td><small>{{vereda}}</small></td>
+                        <td><small>{{time_creation}}</small></td>
+                        <td>
+                            <small>
+                                <a href="/detailCharacterizationFarm/{{id_farm}}"
+                                    class="text-decoration-none btn btn-success">Ver</a>
+                                <a href="/downloadPdfCharacterizatioFarm/{{id_farm}}"
+                                    class="text-decoration-none btn btn-success">Pdf</a>
+                            </small>
+                        </td>
+
+                        {{else}}
+                        <div class="row">
+                            <td></td>
+                            <td></td>
+                            <td class="text-center text-danger">No se han podido encontrar registros en la base de datos
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </div>
+                    </tr>
+                </tbody>
+
+                {{/each}}
+            </table>
+        </div>
+    </div>
+</div>

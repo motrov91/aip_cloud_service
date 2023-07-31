@@ -1,0 +1,753 @@
+{{> navigation}}
+<div class="singup-style mt-3">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="card">
+                <div class="card-header text-center bg-success text-white">
+                    <h3>Sistema de caracterización de predios</h3>
+                </div>
+                <div class="card-body">
+                    <div>
+                        <h6 class="text-center">Datos del contacto del titular</h6>
+                    </div>
+                    <form action="/addFarm" method="POST" enctype="multipart/form-data">
+                        <label for=""><small>imagen</small></label>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" name="img" required>
+                            <label class="custom-file-label" for="customFile">Selecciona una imagen</label>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group mt-2">
+                                    <input type="text" class="form-control form-control-sm" name="firstName" placeholder="Primer nombre">
+                                </div>
+                                <div class="form-group mt-2">
+                                    <input type="text" class="form-control form-control-sm" name="secondName" placeholder="Segundo nombre">
+                                </div>
+                                <div class="form-group mt-2">
+                                    <input type="text" class="form-control form-control-sm" name="firstSurname" placeholder="Primer apellido">
+                                </div>
+                                <div class="form-group mt-2">
+                                    <input type="text" class="form-control form-control-sm" name="secondSurname" placeholder="Segundo apellido">
+                                </div>
+                                <div class="form-group mt-2">
+                                    <input type="text" class="form-control form-control-sm" name="nitProducer" placeholder="Cedula">
+                                </div>
+                                <div class="form-group mt-2">
+                                    <input type="text" class="form-control form-control-sm" name="expedition" placeholder="Lugar de expedición">
+                                </div>
+                                <div class="form-group mt-2">
+                                    <input type="text" class="form-control form-control-sm" name="birthdate" placeholder="Fecha de nacimiento (Dia/Mes/Año)">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mt-2">
+                                    <select class="form-control form-control-sm" name="ethnicity">
+                                        <option value="" >Seleccione una Etnia</option>
+                                        <option value="Indigena">Indigena</option>
+                                        <option value="Afrocolombiano">Afrocolombiano</option>
+                                        <option value="Campesino">Campesino</option>
+                                        <option value="Raizal">Raizal</option>
+                                    </select>
+                                </div>
+                                <div class="form-group mt-2">
+                                    <input type="text" class="form-control form-control-sm" name="celphone1" placeholder="Celular 1">
+                                </div>
+                                <div class="form-group mt-2">
+                                    <input type="text" class="form-control form-control-sm" name="celphone2" placeholder="Celular 2">
+                                </div>
+                                <div class="form-group mt-2">
+                                    <input type="text" class="form-control form-control-sm" name="email" placeholder="Correo Electronico">
+                                </div>
+                                <div class="form-group mt-2">
+                                    <select class="form-control form-control-sm" name="gender">
+                                        <option value="" >Genero</option>
+                                        <option value="Masculino">Masculino</option>
+                                        <option value="Femenino">Femenino</option>
+                                    </select>
+                                </div>
+                                <div class="form-group mt-2">
+                                    <select class="form-control form-control-sm" name="scholarLevel">
+                                        <option value="" >Nivel de escolaridad</option>
+                                        <option value="Ninguno">Ninguno</option>
+                                        <option value="Primaria">Primaria</option>
+                                        <option value="Secundaria">Secundaria</option>
+                                        <option value="Tecnico">Tecnico</option>
+                                        <option value="Tecnólogo">Tecnólogo</option>
+                                        <option value="Universitario">Universitario</option>
+                                    </select>
+                                </div>
+                                <div class="form-group mt-2">
+                                    <select class="form-control form-control-sm" name="organization">
+                                        <option value="" >Pertenece a alguna organización base</option>
+                                        <option value="No">No</option>
+                                        <option value="ASOTRABAJADORES">ASOTRABAJADORES</option>
+                                        <option value="FEDECAFE">FEDECAFE</option>
+                                        <option value="ASCOPROFITAM">ASCOPROFITAM</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mt-2">
+                                    <select class="form-control form-control-sm" name="maritalStatus">
+                                        <option value="" >Estado Civil</option>
+                                        <option value="Soltero">Soltero</option>
+                                        <option value="Casado">Casado</option>
+                                    </select>
+                                </div>
+                                <div class="form-group mt-2">
+                                    <input type="text" class="form-control form-control-sm" name="fullnameSpouse" placeholder="Nombres y apellidos de la conyuge">
+                                </div>
+                                <div class="form-group mt-2">
+                                    <input type="text" class="form-control form-control-sm" name="nitSpouse" placeholder="Cedula conyuge">
+                                </div>
+                                <div class="form-group mt-2">
+                                    <input type="text" class="form-control form-control-sm" name="expeditionSpouse" placeholder="Lugar de expedición">
+                                </div>
+                                <div class="form-group mt-2">
+                                    <input type="text" class="form-control form-control-sm" name="dateSpouse" placeholder="Fecha de nacimiento conyuge">
+                                </div>
+                                <div class="form-group mt-2">
+                                    <input type="text" class="form-control form-control-sm" name="celphoneSpouse" placeholder="Celular conyuge">
+                                </div>
+                                <div class="form-group mt-2">
+                                    <input type="text" class="form-control form-control-sm" name="emailSpouse" placeholder="Correo electrónico conyuge">
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h6 class="text-center">Datos del predio a registrar</h6>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">  
+                                <div class="form-group mt-2">
+                                    <input type="text" class="form-control form-control-sm" name="nameFarm" placeholder="Nombre de la finca">
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control form-control-sm" name="municipality">
+                                        <option value="">Municipio</option>
+                                        <option value="Almaguer">Almaguer</option>
+                                        <option value="Argelia">Argelia</option>
+                                        <option value="Balboa">Balboa</option>
+                                        <option value="Bolivar">Bolivar</option>
+                                        <option value="Buenos Aires">Buenos Aires</option>
+                                        <option value="Cajibio">Cajibio</option>
+                                        <option value="Caldono">Caldono</option>
+                                        <option value="Caloto">Caloto</option>
+                                        <option value="Corinto">Corinto</option>
+                                        <option value="El Tambo">El Tambo</option>
+                                        <option value="Florencia">Florencia</option>
+                                        <option value="Guachené">Guachené</option>
+                                        <option value="Guapi">Guapi</option>
+                                        <option value="Inzá">Inzá</option>
+                                        <option value="Jambalo">Jambalo</option>
+                                        <option value="La Sierra">La Sierra</option>
+                                        <option value="La Vega">La Vega</option>
+                                        <option value="López de Micay">López de Micay</option>
+                                        <option value="Mercaderes">Mercaderes</option>
+                                        <option value="Miranda">Miranda</option>
+                                        <option value="Morales">Morales</option>
+                                        <option value="Padilla">Padilla</option>
+                                        <option value="Patia">Patia</option>
+                                        <option value="Piamonte">Piamonte</option>
+                                        <option value="Piendamó">Piendamó</option>
+                                        <option value="Popayán">Popayán</option>
+                                        <option value="Puerto Tejada">Puerto Tejada</option>
+                                        <option value="Puracé">Puracé</option>
+                                        <option value="Rosas">Rosas</option>
+                                        <option value="San sebastián">San sebastián</option>
+                                        <option value="Santa Rosa">Santa Rosa</option>
+                                        <option value="Santander de Quilichao">Santander de Quilichao</option>
+                                        <option value="Silvia">Silvia</option>
+                                        <option value="Sotará">Sotará</option>
+                                        <option value="Suáres">Suáres</option>
+                                        <option value="Sucre">Sucre</option>
+                                        <option value="Timbio">Timbio</option>
+                                        <option value="Timbiqui">Timbiqui</option>
+                                        <option value="Toribio">Toribio</option>
+                                        <option value="Totoró">Totoró</option>
+                                        <option value="Villa Rica">Villa Rica</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="corregimiento" placeholder="Corregimiento">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="vereda" placeholder="Vereda">
+                                </div>
+                                <div class="form-group mt-2">
+                                    <select class="form-control form-control-sm" name="possession">
+                                        <option value="" >Titulo de posesión</option>
+                                        <option value="Escrituras">Escrituras</option>
+                                        <option value="Sana posesión">Sana posesión</option>
+                                        <option value="Arrendamiento">Arrendamiento</option>
+                                        <option value="Comodato">Comodato</option>
+                                        <option value="Usufructo">Usufructo</option>
+                                        <option value="Colectiva">Colectiva</option>
+                                        <option value="Otro">Otro</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="totalExtension" placeholder="Extension total (m2)">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="cropsArea" placeholder="Area en cultivos actualmente (m2)">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="freeArea" placeholder="Area libre destinación (m2)">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="conservationArea" placeholder="Area de conservación (m2)">
+                                </div>
+                                <div class="form-group mt-2">
+                                    <select class="form-control form-control-sm" name="currentProjects">
+                                        <option value="" >Presencia de proyectos actuales</option>
+                                        <option value="No">No</option>
+                                        <option value="ADR asistencia técnica">ADR asistencia técnica</option>
+                                        <option value="Regalías Café">Regalías Café </option>
+                                        <option value="Neespreso">Neespreso</option>
+                                        <option value="Otro">Otro</option>
+                                    </select>
+                                </div>
+                               
+                            </div>
+                            <div class="col-md-4">                                
+                                <div class="form-group mt-2">
+                                    <select class="form-control form-control-sm" name="agrochemical">
+                                        <option value="" >Manejo de agroquimicos</option>
+                                        <option value="Si">Si</option>
+                                        <option value="No">No</option>
+                                    </select>
+                                </div>
+                                <div class="form-group mt-2">
+                                    <select class="form-control form-control-sm" name="bestPractices">
+                                        <option value="" >Implementación de buenas prácticas</option>
+                                        <option value="Alto">Alto</option>
+                                        <option value="Medio">Medio</option>
+                                        <option value="Bajo">Bajo</option>
+                                    </select>
+                                </div>
+                                 <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="otherAreas" placeholder="Area de otros usos (m2)">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="afluentes" placeholder="Metros lineales de afluentes">
+                                </div>
+                                <div class="form-group mt-2">
+                                    <select class="form-control form-control-sm" name="vocationAndLandUse">
+                                        <option value="" >Uso de suelo y su vocación</option>
+                                        <option value="Agricola">Agricola</option>
+                                        <option value="Pecuario">Pecuario</option>
+                                        <option value="Forestal">Forestal </option>
+                                        <option value="Otros">Otros</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="productiveLine" placeholder="Linea productiva mas implementada">
+                                </div>
+                                <div class="form-group mt-2">
+                                    <select class="form-control form-control-sm" name="certificationType">
+                                        <option value="" >Tipo de certificación </option>
+                                        <option value="Predio exportador">Predio exportador</option>
+                                        <option value="Global">Global</option>
+                                        <option value="HTZ">HTZ </option>
+                                        <option value="Neespreso">Neespreso</option>
+                                        <option value="Otro">Otro</option>
+                                    </select>
+                                </div> 
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="purlieuNorth" placeholder="Lindero al norte">
+                                </div>  
+                                <div class="form-group mt-2">
+                                    <input type="text" class="form-control form-control-sm" name="purlieuSouth" placeholder="Lindero al sur">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="purlieuEast" placeholder="Lindero al oriente">
+                                </div>     
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="purlieuWest" placeholder="Lindero al occidente">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="altura" placeholder="ALTURA MSNM">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="latitudeLongitude" placeholder="Latitud - Longitud (Geograficas)">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="anosPropiedad" placeholder="Años de propiedad">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="productiveLine1" placeholder="Linea productiva 1">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="productiveLine2" placeholder="Linea productiva 2">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="productiveLine3" placeholder="Linea productiva 3">
+                                </div> 
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="productiveLine4" placeholder="Linea productiva 4 (Pecuario)">
+                                </div> 
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="productiveLine5" placeholder="Linea productiva 5 (Pecuario)">
+                                </div> 
+                            </div>
+                        </div>
+                        <div>
+                            <h6 class="text-center">Datos de aprendizaje</h6>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group mt-2">
+                                    <select class="form-control form-control-sm" name="knowProductiveLine1">
+                                        <option value="" >Conocimiento de la linea productiva 1</option>
+                                        <option value="Alto">Alto</option>
+                                        <option value="Medio">Medio</option>
+                                        <option value="Bajo">Bajo</option>
+                                    </select>
+                                </div>
+                                <div class="form-group mt-2">
+                                    <select class="form-control form-control-sm" name="knowProductiveLine2">
+                                        <option value="" >Conocimiento de la linea productiva 2</option>
+                                        <option value="Alto">Alto</option>
+                                        <option value="Medio">Medio</option>
+                                        <option value="Bajo">Bajo</option>
+                                    </select>
+                                </div>
+                                <div class="form-group mt-2">
+                                    <select class="form-control form-control-sm" name="knowPeoductiveLine3">
+                                        <option value="" >Conocimiento de la linea productiva 3</option>
+                                        <option value="Alto">Alto</option>
+                                        <option value="Medio">Medio</option>
+                                        <option value="Bajo">Bajo</option>
+                                    </select>
+                                </div>
+                                <div class="form-group mt-2">
+                                    <select class="form-control form-control-sm" name="comercializationType">
+                                        <option value="" >Tipo de comercialización</option>
+                                        <option value="Al consumidor final">Al consumidor final</option>
+                                        <option value="En la plaza">En la plaza</option>
+                                        <option value="En finca">En finca</option>
+                                        <option value="A intermediario">A intermediario</option>
+                                    </select>
+                                </div>
+                                <div class="form-group mt-2">
+                                    <select class="form-control form-control-sm" name="biopreparadosProduction">
+                                        <option value="" >Producción de biopreparados</option>
+                                        <option value="Si">Si</option>
+                                        <option value="No">No</option>
+                                    </select>
+                                </div>
+                                <div class="form-group mt-2">
+                                    <select class="form-control form-control-sm" name="waterAvailable">
+                                        <option value="" >Disponibilidad de agua</option>
+                                        <option value="Si">Si</option>
+                                        <option value="No">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mt-2">
+                                    <select class="form-control form-control-sm" name="accessRoads">
+                                        <option value="" >Disponibilidad de vías de acceso</option>
+                                        <option value="Via primaria">Via primaria</option>
+                                        <option value="Via secundaria">Via secundaria</option>
+                                        <option value="Vía terciaria">Vía terciaria</option>
+                                        <option value="Camino de herradura">Camino de herradura</option>
+                                    </select>
+                                </div>
+                                <div class="form-group mt-2">
+                                    <select class="form-control form-control-sm" name="electricityAvailability">
+                                        <option value="" >Disponibilidad de electricidad</option>
+                                        <option value="Si">Si</option>
+                                        <option value="No">No</option>
+                                    </select>
+                                </div>
+                                <div class="form-group mt-2">
+                                    <select class="form-control form-control-sm" name="ComunicationAvailable">
+                                        <option value="" >Disponibilidad de redes de comunicación</option>
+                                        <option value="Si">Si</option>
+                                        <option value="No">No</option>
+                                    </select>
+                                </div>
+                                <div class="form-group mt-2">
+                                    <select class="form-control form-control-sm" name="projectParticipation">
+                                        <option value="" >Disponibilidad para participar en proyectos de asistencia técnica</option>
+                                        <option value="Si">Si</option>
+                                        <option value="No">No</option>
+                                    </select>
+                                </div>
+                                <div class="form-group mt-2">
+                                    <select class="form-control form-control-sm" name="cropTools">
+                                        <option value="" >Variedad de herramientas básicas de uso en el cultivo</option>
+                                        <option value="Alto">Alto</option>
+                                        <option value="Medio">Medio</option>
+                                        <option value="Bajo">Bajo</option>
+                                    </select>
+                                </div>
+                                <div class="form-group mt-2">
+                                    <select class="form-control form-control-sm" name="firstAidKit">
+                                        <option value="" >Tenencia de botiquin de primeros auxilios</option>
+                                        <option value="Si">Si</option>
+                                        <option value="No">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mt-2">
+                                    <select class="form-control form-control-sm" name="fumigateKit">
+                                        <option value="" >Tenencia de equipo de fumigación</option>
+                                        <option value="Si">Si</option>
+                                        <option value="No">No</option>
+                                        <option value="Si - mal estado">Si - mal estado</option>
+                                    </select>
+                                </div>
+                                <div class="form-group mt-2">
+                                    <select class="form-control form-control-sm" name="irrigationSystem">
+                                        <option value="" >Tenencia de sistemas de riego</option>
+                                        <option value="Si">Si</option>
+                                        <option value="No">No</option>
+                                    </select>
+                                </div>
+                                <div class="form-group mt-2">
+                                    <select class="form-control form-control-sm" name="machines">
+                                        <option value="" >Tenencia de maquinaria libiana</option>
+                                        <option value="Si">Si</option>
+                                        <option value="No">No</option>
+                                        <option value="Si - mal estado">SI - mal estado</option>
+                                    </select>
+                                </div>
+                                <div class="form-group mt-2">
+                                    <select class="form-control form-control-sm" name="ParticipateInProyects">
+                                        <option value="" >Interes en participar en proyectos de asistencia técnica</option>
+                                        <option value="Si">Si</option>
+                                        <option value="No">No</option>
+                                    </select>
+                                </div>
+                                <div class="form-group mt-2">
+                                    <select class="form-control form-control-sm" name="workingCapital">
+                                        <option value="">Origen del capital de trabajo</option>
+                                        <option value="Entidades estatales">Entidades estatales</option>
+                                        <option value="Bancos">Bancos</option>
+                                        <option value="Agremiaciones">Agremiaciones</option>
+                                        <option value="Prestamistas">Prestamistas</option>
+                                        <option value="Familiares">Familiares</option>
+                                        <option value="Reinversion de cultivos">Reinversion de cultivos</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control form-control-sm" name="implementationTecnologyLevel">
+                                        <option value="">Grado de implementación de tecnologías de producción</option>
+                                        <option value="Alto">Alto</option>
+                                        <option value="Medio">Medio</option>
+                                        <option value="Bajo">Bajo</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h6 class="text-center">Datos lote 1</h6>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="productLine1" placeholder="Linea productiva">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="variety1" placeholder="Variedad">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="cantPlants1" placeholder="Cantidad de plantulas">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="sowingDistance1" placeholder="Distancia de siembra">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="ageCrop1" placeholder="Edad de cultivo (Años)">
+                                </div>
+                                <div class="form-group mt-2">
+                                    <select class="form-control form-control-sm" name="stageCrop1">
+                                        <option value="" >Etapa del cultivo</option>
+                                        <option value="Siembra">Siembra</option>
+                                        <option value="Cultivo">Cultivo</option>
+                                        <option value="Producción">Producción</option>
+                                        <option value="Proximo a renovación">Proximo a renovación</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="cantKgProducedByYear1" placeholder="Cantidad de Kilogramos producidos por año">
+                                </div>
+                                <div class="form-group mt-2">
+                                    <select class="form-control form-control-sm" name="cropStatus1">
+                                        <option value="" >Estado general del cultivo</option>
+                                        <option value="Excelente">Excelente</option>
+                                        <option value="Optimo">Optimo</option>
+                                        <option value="Regular">Regular</option>
+                                        <option value="Malo">Malo</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="aproxArea1" placeholder="Área aproximada (m2)">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="coordenates1" placeholder="Latitud - Longitud">
+                                </div>
+                                <div class="form-group mt-2">
+                                    <select class="form-control form-control-sm" name="useType">
+                                        <option value="" >Tipo de manejo</option>
+                                        <option value="Químico">Químico</option>
+                                        <option value="Organico">Organico</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="promKgComercializateValue" placeholder="Valor promedio de KG comercializado  en pesos en el año">
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h6 class="text-center">Datos lote 2</h6>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="productLine2" placeholder="Linea productiva">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="variety2" placeholder="Variedad">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="cantPlants2" placeholder="Cantidad de plantulas">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="sowingDistance2" placeholder="Distancia de siembra">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="ageCrop2" placeholder="Edad de cultivo (Años)">
+                                </div>
+                                <div class="form-group mt-2">
+                                    <select class="form-control form-control-sm" name="stageCrop2">
+                                        <option value="" >Etapa del cultivo</option>
+                                        <option value="Siembra">Siembra</option>
+                                        <option value="Cultivo">Cultivo</option>
+                                        <option value="Producción">Producción</option>
+                                        <option value="Proximo a renovación">Proximo a renovación</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="cantKgProducedByYear2" placeholder="Cantidad de Kilogramos producidos por año">
+                                </div>
+                                <div class="form-group mt-2">
+                                    <select class="form-control form-control-sm" name="cropStatus2">
+                                        <option value="" >Estado general del cultivo</option>
+                                        <option value="Excelente">Excelente</option>
+                                        <option value="Optimo">Optimo</option>
+                                        <option value="Regular">Regular</option>
+                                        <option value="Malo">Malo</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="aproxArea2" placeholder="Área aproximada (m2)">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="coordenates2" placeholder="Latitud - Longitud">
+                                </div>
+                                <div class="form-group mt-2">
+                                    <select class="form-control form-control-sm" name="useType2">
+                                        <option value="" >Tipo de manejo</option>
+                                        <option value="Químico">Químico</option>
+                                        <option value="Organico">Organico</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="promKgComercializateValu2" placeholder="Valor promedio de KG comercializado  en pesos en el año">
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h6 class="text-center">Datos lote 3</h6>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="productLine3" placeholder="Linea productiva">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="variety3" placeholder="Variedad">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="cantPlants3" placeholder="Cantidad de plantulas">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="sowingDistance3" placeholder="Distancia de siembra">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="ageCrop3" placeholder="Edad de cultivo (Años)">
+                                </div>
+                                <div class="form-group mt-2">
+                                    <select class="form-control form-control-sm" name="stageCrop3">
+                                        <option value="" >Etapa del cultivo</option>
+                                        <option value="Siembra">Siembra</option>
+                                        <option value="Cultivo">Cultivo</option>
+                                        <option value="Producción">Producción</option>
+                                        <option value="Proximo a renovación">Proximo a renovación</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="cantKgProducedByYear3" placeholder="Cantidad de Kilogramos producidos por año">
+                                </div>
+                                <div class="form-group mt-2">
+                                    <select class="form-control form-control-sm" name="cropStatus3">
+                                        <option value="" >Estado general del cultivo</option>
+                                        <option value="Excelente">Excelente</option>
+                                        <option value="Optimo">Optimo</option>
+                                        <option value="Regular">Regular</option>
+                                        <option value="Malo">Malo</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="aproxArea3" placeholder="Área aproximada (m2)">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="coordenates3" placeholder="Latitud - Longitud">
+                                </div>
+                                <div class="form-group mt-2">
+                                    <select class="form-control form-control-sm" name="useType3">
+                                        <option value="" >Tipo de manejo</option>
+                                        <option value="Químico">Químico</option>
+                                        <option value="Organico">Organico</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="promKgComercializateValu3" placeholder="Valor promedio de KG comercializado  en pesos en el año">
+                                </div>
+                            </div>
+                        </div>     
+                        <div>
+                            <h6 class="text-center">Datos lote 4 Información pecuaria</h6>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="productLine4Pecuaria" placeholder="Linea pecuaria">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="breed" placeholder="Raza o tipo">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="cantAnimals" placeholder="Cantidad de animales">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="numberPlaces" placeholder="Numero lotes o espacios usados para la actividad">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="ageAverageAnimals" placeholder="Edad promedio de los animales">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="ageCrop4" placeholder="Etapa productiva">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="cantKgProducedByYear4" placeholder="Cantidad de litros producidos por año">
+                                </div>
+                                <div class="form-group mt-2">
+                                    <select class="form-control form-control-sm" name="cropStatus4">
+                                        <option value="" >Estado general de los animales</option>
+                                        <option value="Excelente">Excelente</option>
+                                        <option value="Optimo">Optimo</option>
+                                        <option value="Regular">Regular</option>
+                                        <option value="Malo">Malo</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="aproxArea4" placeholder="Área aproximada usada por los animales(m2)">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="coordenates4" placeholder="Latitud - Longitud">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="nutritionType" placeholder="Tipo de alimentación">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="promKgComercializateValu4" placeholder="Valor promedio de KG comercializado  en pesos en el año">
+                                </div>
+                            </div>
+                        </div> 
+                        <div>
+                            <h6 class="text-center">Datos lote 5 Información pecuaria</h6>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="productLine5Pecuaria" placeholder="Linea pecuaria">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="breed5" placeholder="Raza o tipo">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="cantAnimals5" placeholder="Cantidad de animales">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="numberPlaces5" placeholder="Numero lotes o espacios usados para la actividad">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="ageAverageAnimals5" placeholder="Edad promedio de los animales">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="ageCrop5" placeholder="Etapa productiva">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="cantKgProducedByYear5" placeholder="Cantidad de litros producidos por año">
+                                </div>
+                                <div class="form-group mt-2">
+                                    <select class="form-control form-control-sm" name="cropStatus5">
+                                        <option value="" >Estado general de los animales</option>
+                                        <option value="Excelente">Excelente</option>
+                                        <option value="Optimo">Optimo</option>
+                                        <option value="Regular">Regular</option>
+                                        <option value="Malo">Malo</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="aproxArea5" placeholder="Área aproximada usada por los animales(m2)">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="coordenates5" placeholder="Latitud - Longitud">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="nutritionType5" placeholder="Tipo de alimentación">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="promKgComercializateValu5" placeholder="Valor promedio de KG comercializado  en pesos en el año">
+                                </div>
+                            </div>
+                        </div> 
+                        <div class="form-group text-center">
+                            <button class="btn btn-success">Enviar datos</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

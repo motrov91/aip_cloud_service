@@ -1,0 +1,50 @@
+{{> navigation}}
+<div class="bg-prueba p-4">
+    <div class="row">
+        <header class="mx-auto">
+            <h4 class="text-center">Fincas</h4>
+                <div>
+                    <a href="/addFarm" class="btn btn-warning"> Caracterizar predio</a>
+                </div>
+        </header>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="text-center">     
+                <div class="mt-3"> 
+                    <div class="panel panel-default table table-striped">
+                        <div class="panel-body">
+                            <table id="tabla" class="table">
+                            <thead class="bg-success text-white">
+                                <tr>
+                                <th scope="col">Cédula</th>
+                                <th scope="col">Propietario</th>
+                                <th scope="col">Nombre del predio</th>
+                                <th scope="col">Municipio</th>
+                                <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each farmList}}
+                                    <tr>
+                                        <td>{{nitProducer}}</td>
+                                        <td>{{firstName}}</td>
+                                        <td>{{nameFarm}}</td>
+                                        <td>{{municipality}}</td>
+                                        <td><a href="/detailFarm/{{id_farm}}" class="text-decoration-none"><small>Ver ficha</small></a></td>
+                                        {{/each}}
+                                        {{#else}}
+                                        <td>No se han podido encontrar registros en la base de datos</td>
+                                        {{/else}}
+                                    </tr>
+                                
+                                
+                            </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

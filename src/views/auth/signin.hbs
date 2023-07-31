@@ -1,0 +1,38 @@
+<div class="bg-Login p-4 container-style">
+    <div class="row row-style">
+        <div class="col-md-4 mx-auto align-self-center">
+            <div class="card shadow-lg  mb-6 rounded">
+                <div class="card-body">
+                    <form action="/signin" method="POST">
+                        <div class="text-center">
+                            <img src="img/logo.png" class="w-50">
+                            <h6 class="text-success mt-3 mb-3 style-words">Iniciar Sesión</h6>
+                        </div>
+                        <div class="input-group flex-nowrap">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text text-success"><i class="fa fa-user bigicon"></i></span>
+                            </div>
+                            <input type="text" class="form-control pr" name="username" placeholder="Correo Electronico"
+                                aria-label="Username" aria-describedby="addon-wrapping">
+                        </div>
+                        <div class="input-group flex-nowrap mt-2">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text text-success"><i class="fas fa-lock"></i></span>
+                            </div>
+                            <input type="password" class="form-control" name="password" placeholder="Contraseña"
+                                aria-label="Username" aria-describedby="addon-wrapping">
+                        </div>
+                        <div class="form-group shadow mt-3">
+                            <button class="btn btn-warning btn-block">Ingresar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            {{!-- <div class="row">
+                <div class="col-md-12">
+                    <a href="/mapBoyaca" class="btn btn-success">Mapa Boyaca</a>
+                </div>
+            </div> --}}
+        </div>
+    </div>
+</div>

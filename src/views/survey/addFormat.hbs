@@ -1,0 +1,36 @@
+{{> navigation}}
+<div class="bg-prueba">
+    <div class="row">
+        <div class="col-md-6 mx-auto mt-3 mb-3">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    <p class="text-center my-auto">Información del formato</p>
+                </div>
+                <div class="card-body">
+                    <form action="" method="POST">
+                        {{#each sector}}
+                        <div class="form-group">
+                            <label for=""><small>Nombre de la linea productiva</small></label>
+                            <input class="form-control" name="nom_sector" type="text" placeholder="Ingrese el nombre del formato" value="{{nom_sector}}" readonly>
+                        </div>
+                        {{/each}} 
+                        {{#each category}}
+                        <div class="form-group">
+                            <label for=""><small>Nombre de la temática</small></label>
+                            <input class="form-control" name="nom_formatType" type="text" placeholder="Ingrese el nombre del formato" value="{{nom_formatType}}" readonly>
+                        </div
+                        {{/each}} 
+                        <div class="form-group">
+                            <label for=""><small>Nombre del formato:</small></label>
+                            <input class="form-control" name="nom_format" type="text" placeholder="Ingrese el nombre del formato" required>
+                        </div>
+                        <div class="form-group text-center">
+                            <button class="btn btn-warning">Agregar</button>
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

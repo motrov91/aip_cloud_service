@@ -1,0 +1,86 @@
+{{> navigation}}
+<div class="bg-prueba pt-3">
+    <div class="row">
+        <div class="col-md-7 mx-auto">
+            <div class="card ">
+                <div class="card-header bg-success text-white">
+                    <p class="text-center">Información general del predio</p>
+                    {{#each farm}}
+                        <form action="/projXfarm/{{id_farm}}" method="POST">
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <img src="{{img_beneficiario}}" alt="" width="30%" height="auto">
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-md-6">
+                                    <label for="">Cedula:</label>
+                                    <input type="text" class="form-control" value="{{nitProducer}}" readonly>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="">Nombre:</label>
+                                    <input type="text" class="form-control" value="{{firstName}}" readonly>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md-6">
+                                    <label for="">Municipio:</label>
+                                    <input type="text" class="form-control" value="{{municipality}}" readonly>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="">Vereda:</label>
+                                    <input type="text" class="form-control" value="{{vereda}}" readonly>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md-6">
+                                    <label for="">Nombre del predio:</label>
+                                    <input type="text" class="form-control" value="{{nameFarm}}" readonly>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="">Teléfono:</label>
+                                    <input type="text" class="form-control" value="{{celphone1}}" readonly>
+                                </div>
+                            </div>
+                            <div class="text-center mt-3">
+                                <a href="/editFarm/{{id_farm}}" class="btn btn-warning">Modificar</a>
+                            </div>
+                    {{/each}}
+                </div>  
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p>Proyectos en los que aparece este predio:</p>
+                            <ol>
+                                {{#each projXfarm}}
+                                    <li>{{proyecto_nom}}</li>
+                                    {{else}}
+                                    <p class="text-danger">Aún no tiene proyectos asignados</p>
+                                {{/each}}
+                            </ol> 
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">Selecciona un proyecto para este predio</label>
+                                <select class="form-control" name='project'>
+                                    <option value="">Selecciona un proyecto</option>
+                                    {{#each proj}}
+                                        <option value="{{id_project}}">{{nom_proyecto}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group text-center">
+                    <a href="/questionsProducer/{{dataId}}" class="btn btn-warning">Registro del productor</a>
+                </div>
+                <div class="form-group text-center">
+                    <button class="btn btn-success">Agregar proyecto al predio</button>
+                </div>
+                </form>
+                    
+            </div>
+        </div>
+    </div>
+</div>

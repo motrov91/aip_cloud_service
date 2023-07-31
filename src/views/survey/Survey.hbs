@@ -1,0 +1,213 @@
+<div class="bg-prueba pt-3 mb-4">
+    <div class="row">
+        <div class="col-md-7 mx-auto">
+            <div class="card">
+                <div class="card-header bg-success">
+                        <p class="text-white bg-success text-center">Formato de acompañamiento técnico</p>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="text-center">
+                                <div class="text-center">
+                                    <label>convenio nº 0000000</label>
+                                    <hr>
+                                </div>
+                            </div>
+                        </div>   
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form action="/formatConclusion" method="POST">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label for="staticEmail" class="col-sm-3 col-form-label"><strong>Identificador:</strong></label>
+                                            <div class="col-sm-9">
+                                            <input type="text" readonly class="form-control-plaintext" name="id_project_has_farm" value="{{newData.id_project_has_farm}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label for="staticEmail" class="col-sm-3 col-form-label"><strong>Proyecto:</strong></label>
+                                            <div class="col-sm-9">
+                                            <input type="text" readonly class="form-control-plaintext" name="proyecto_nom" value="{{newData.proyecto_nom}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label for="staticEmail" class="col-sm-3 col-form-label"><strong>Linea productiva:</strong></label>
+                                            <div class="col-sm-9">
+                                            <input type="text" readonly class="form-control-plaintext" name="linea_productiva" value="{{newData.linea_productiva}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label for="staticEmail" class="col-sm-3 col-form-label"><strong>Formato:</strong></label>
+                                            <div class="col-sm-9">
+                                            <input type="text" readonly class="form-control-plaintext" name="nom_format" value="{{nomFormat.nom_format}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label for="staticEmail" class="col-sm-3 col-form-label"><strong>Beneficiario:</strong></label>
+                                            <div class="col-sm-9">
+                                            <input type="text" readonly class="form-control-plaintext" name="nom_beneficiario" value="{{newData.nom_beneficiario}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label for="staticEmail" class="col-sm-3 col-form-label"><strong>Cedula:</strong></label>
+                                            <div class="col-sm-9">
+                                            <input type="text" readonly class="form-control-plaintext" name="cedula" value="{{newData.cedula}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label for="staticEmail" class="col-sm-3 col-form-label"><strong>Municipio:</strong></label>
+                                            <div class="col-sm-9">
+                                            <input type="text" readonly class="form-control-plaintext" name="municipio" value="{{newData.municipio}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label for="staticEmail" class="col-sm-3 col-form-label"><strong>Vereda:</strong></label>
+                                            <div class="col-sm-9">
+                                            <input type="text" readonly class="form-control-plaintext" name="vereda" value="{{newData.vereda}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label for="staticEmail" class="col-sm-3 col-form-label"><strong>Teléfono:</strong></label>
+                                            <div class="col-sm-9">
+                                            <input type="text" readonly class="form-control-plaintext" name="telefono" value="{{newData.telefono}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label for="staticEmail" class="col-sm-3 col-form-label"><strong>Nombre Finca:</strong></label>
+                                            <div class="col-sm-9">
+                                            <input type="text" readonly class="form-control-plaintext" name="nom_finca" value="{{newData.nom_finca}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                           
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 text-center bg-success text-white">
+                            <label for="">Formato</label>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+
+                        {{#each result}}    
+                        <div class="col-md-12 prueba">
+                            <fieldset class="form-group">                        
+                                <div class="row">
+                                    <legend class="col-form-label col-sm-12 pt-0">{{title}}</legend>
+                                    <div class="col-sm-6">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="res{{id}}" value="{{ans0}}">
+                                            <label class="form-check-label" for="gridRadios1">
+                                                {{ans0}}
+                                            </label>
+
+                                        </div>
+                                    </div>
+                                    {{#if ans1}}
+                                    <div class="col-sm-6">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="res{{id}}" value="{{ans1}}">
+                                            <label class="form-check-label" for="gridRadios1">
+                                                {{ans1}}
+                                            </label>
+                                        </div>
+                                    </div>
+                                    {{/if}}
+                                </div>
+                                <div class="row">
+                                    {{#if ans2}}
+                                    <div class="col-sm-6">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="res{{id}}" value="{{ans2}}">
+                                            <label class="form-check-label" for="gridRadios1">
+                                                {{ans2}}
+                                            </label>
+                                        </div>
+                                    </div>
+                                    {{/if}}
+                                    {{#if ans3}}
+                                    <div class="col-sm-6">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="res{{id}}" value="{{ans3}}">
+                                            <label class="form-check-label" for="gridRadios1">
+                                                {{ans3}}
+                                            </label>
+                                        </div>
+                                    </div>
+                                    {{/if}}
+                                    {{#if ans4}}
+                                    <div class="col-sm-6">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="res{{id}}" value="{{ans4}}">
+                                            <label class="form-check-label" for="gridRadios1">
+                                                {{ans4}}
+                                            </label>
+                                        </div>
+                                    </div>
+                                    {{/if}}
+                                    {{#if ans5}}
+                                    <div class="col-sm-6">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="res{{id}}" value="{{ans5}}">
+                                            <label class="form-check-label" for="gridRadios1">
+                                                {{ans5}}
+                                            </label>
+                                        </div>
+                                    </div>
+                                    {{/if}}
+                                    {{#if ans6}}
+                                    <div class="col-sm-6">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="res{{id}}" value="{{ans6}}">
+                                            <label class="form-check-label" for="gridRadios1">
+                                                {{ans6}}
+                                            </label>
+                                        </div>
+                                    </div>
+                                    {{/if}}
+                                </div>
+                                
+                            </fieldset>
+                        </div>
+                        {{/each}}
+                        <div class="col-md-12 text-center mt-3">
+                            <button class="btn btn-warning">Enviar formulario</button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>         
+    </div>
+</div>

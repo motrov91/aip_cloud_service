@@ -1,0 +1,44 @@
+{{> navigation }}
+<div class="bg-prueba p-4">
+    <div class="row">
+        <header class="mx-auto">
+            {{#each sector}}
+            <p>Temáticas del sector {{nom_sector}}</p>
+            {{/each}}
+        </header>
+    </div>
+    <div class="row">
+        <table class="table mt-4">
+            <thead class="thead head-style">
+                <tr class="mx-auto">
+                <th scope="col" class="title-style-tab">Temática</th>
+                <th scope="col" class="title-style-tab">Descripción</th>
+                <th scope="col" class="title-style-tab"></th>
+                </tr>
+            </thead>
+                {{#each format}}
+                    <tbody>
+                        <tr class="">
+                        <td class="title-style-tab">{{nom_formatType}}</td>
+                        <td class="title-style-tab">{{description}}</td>
+                        <td class="title-style-tab d-flex">
+                            {{!-- <a href="#" class="btn btn-info ml-auto">Modificar</a>
+                            <a href="#" class="btn btn-danger mx-2">Eliminar</a> --}}
+                            <a href="/formatListByCategory/{{id_formatType}}" class="btn btn-primary">Agregar Sección</a>
+                        </td>
+                        </tr>
+                    {{else}}
+                        <td colspan="3" class="col-md-4 text-center mt-4">
+                            <p class="text-danger">Aún no has creado ninguna temática para </p>
+                        </td>
+                    </tbody>
+                {{/each}}    
+        </table>
+        <div class="form-group mx-auto">
+            {{#each sector}}
+                <a href="/addFormatType/{{id_sector}}" class="btn btn-warning">Crear temática</a>
+            {{/each}}
+            
+        </div>
+    </div>
+</div>

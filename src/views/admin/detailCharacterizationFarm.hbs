@@ -1,0 +1,622 @@
+{{> navigation}}
+<div class="singup-style mt-3">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="card">
+                <div class="card-header text-center bg-success text-white">
+                    <h3>Sistema de caracterización de predios</h3>
+                </div>
+                <div class="card-body">
+                    <div>
+                        <h6 class="text-center">Datos de contacto del titular</h6>
+                    </div>
+                    <form action="/addFarm" method="POST" enctype="multipart/form-data">
+                        {{#each dataCharacterization}}
+                        {{!-- <label for=""><small>imagen</small></label>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" name="img" required>
+                            <label class="custom-file-label" for="customFile">Selecciona una imagen</label>
+                        </div> --}}
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group mt-2">
+                                    <label class="small">Primer nombre</label>
+                                    <input type="text" class="form-control form-control-sm" name="firstName" placeholder="{{firstName}}">
+                                </div>
+                                <div class="form-group mt-2">
+                                    <label class="small">Segundo nombre</label>
+                                    <input type="text" class="form-control form-control-sm" name="secondName" placeholder="{{secondName}}">
+                                </div>
+                                <div class="form-group mt-2">
+                                    <label class="small">Primer apellido</label>
+                                    <input type="text" class="form-control form-control-sm" name="firstSurname" placeholder="{{firstSurname}}">
+                                </div>
+                                <div class="form-group mt-2">
+                                    <label class="small">Segundo apellido</label>
+                                    <input type="text" class="form-control form-control-sm" name="secondSurname" placeholder="{{secondSurname}}">
+                                </div>
+                                <div class="form-group mt-2">
+                                    <label class="small">Cedula</label>
+                                    <input type="text" class="form-control form-control-sm" name="nitProducer" placeholder="{{nitProducer}}">
+                                </div>
+                                <div class="form-group mt-2">
+                                    <label class="small">Lugar de expedición</label>
+                                    <input type="text" class="form-control form-control-sm" name="expedition" placeholder="{{expedition}}">
+                                </div>
+                                <div class="form-group mt-2">
+                                    <label class="small">Fecha de nacimiento</label>
+                                    <input type="text" class="form-control form-control-sm" name="birthdate" placeholder="{{birthdate}}">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mt-2">
+                                    <label class="small">Etnia</label>
+                                    <input type="text" class="form-control form-control-sm" name="ethnicity" placeholder="{{ethnicity}}">
+                                </div>
+                                <div class="form-group mt-2">
+                                    <label class="small">Celular 1</label>
+                                    <input type="text" class="form-control form-control-sm" name="celphone1" placeholder="{{celphone1}}">
+                                </div>
+                                <div class="form-group mt-2">
+                                    <label class="small">Celular 2</label>
+                                    <input type="text" class="form-control form-control-sm" name="celphone2" placeholder="{{celphone2}}">
+                                </div>
+                                <div class="form-group mt-2">
+                                    <label class="small">Email</label>
+                                    <input type="text" class="form-control form-control-sm" name="email" placeholder="{{email}}">
+                                </div>
+                                <div class="form-group mt-2">
+                                    <label class="small">Genero</label>
+                                    <input type="text" class="form-control form-control-sm" name="gender" placeholder="{{gender}}">
+                                </div>
+                                <div class="form-group mt-2">
+                                    <label class="small">Nivel de escolaridad</label>
+                                    <input type="text" class="form-control form-control-sm" name="scholarLevel" placeholder="{{scholarLevel}}">
+                                </div>
+                                <div class="form-group mt-2">
+                                    <label class="small">Organizaciones</label>
+                                    <input type="text" class="form-control form-control-sm" name="organization" placeholder="{{organization}}">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mt-2">
+                                    <div class="form-group mt-2">
+                                    <label class="small">Estado civil</label>
+                                    <input type="text" class="form-control form-control-sm" name="fullnameSpouse" placeholder="{{maritalStatus}}">
+                                </div>
+                                    <label class="small">Nombre completo conyuge</label>
+                                    <input type="text" class="form-control form-control-sm" name="fullnameSpouse" placeholder="{{fullnameSpouse}}">
+                                </div>
+                                <div class="form-group mt-2">
+                                    <label class="small">Cedula conyuge</label>
+                                    <input type="text" class="form-control form-control-sm" name="nitSpouse" placeholder="{{nitSpouse}}">
+                                </div>
+                                <div class="form-group mt-2">
+                                    <label class="small">Expedición de la cedula</label>
+                                    <input type="text" class="form-control form-control-sm" name="expeditionSpouse" placeholder="{{expeditionSpouse}}">
+                                </div>
+                                <div class="form-group mt-2">
+                                    <label class="small">Fecha de nacimiento conyuge</label>
+                                    <input type="text" class="form-control form-control-sm" name="dateSpouse" placeholder="{{dateSpouse}}">
+                                </div>
+                                <div class="form-group mt-2">
+                                    <label class="small">Celular conyuge</label>
+                                    <input type="text" class="form-control form-control-sm" name="celphoneSpouse" placeholder="{{celphoneSpouse}}">
+                                </div>
+                                <div class="form-group mt-2">
+                                    <label class="small">Correo electronico conyuge</label>
+                                    <input type="text" class="form-control form-control-sm" name="emailSpouse" placeholder="{{emailSpouse}}">
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h6 class="text-center">Datos del predio a registrar</h6>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">  
+                                <div class="form-group mt-2">
+                                    <label class="small">Nombre de la finca</label>
+                                    <input type="text" class="form-control form-control-sm" name="nameFarm" placeholder="{{nameFarm}}">
+                                </div>
+                                <div class="form-group mt-2">
+                                    <label class="small">Municipio</label>
+                                    <input type="text" class="form-control form-control-sm" name="municipality" placeholder="{{municipality}}">
+                                </div>
+                                <div class="form-group">
+                                    <label class="small">Corregimiento</label>
+                                    <input type="text" class="form-control form-control-sm" name="corregimiento" placeholder="{{corregimiento}}">
+                                </div>
+                                <div class="form-group">
+                                    <label class="small">Vereda</label>
+                                    <input type="text" class="form-control form-control-sm" name="vereda" placeholder="{{vereda}}">
+                                </div>
+                                 <div class="form-group">
+                                     <label class="small">Tipo de posesión del terreno</label>
+                                    <input type="text" class="form-control form-control-sm" name="possession" placeholder="{{possession}}">
+                                </div>
+                                <div class="form-group">
+                                    <label class="small">Total extensión del terreno (m2)</label>
+                                    <input type="text" class="form-control form-control-sm" name="totalExtension" placeholder="{{totalExtension}}">
+                                </div>
+                                <div class="form-group">
+                                    <label class="small">Areas Cultivadas (m2)</label>
+                                    <input type="text" class="form-control form-control-sm" name="cropsArea" placeholder="{{cropsArea}}">
+                                </div>
+                                <div class="form-group">
+                                    <label class="small">Areas Libres (m2)</label>
+                                    <input type="text" class="form-control form-control-sm" name="freeArea" placeholder="{{freeArea}}">
+                                </div>
+                                <div class="form-group">
+                                    <label class="small">Areas de conservación (m2)</label>
+                                    <input type="text" class="form-control form-control-sm" name="conservationArea" placeholder="{{conservationArea}}">
+                                </div>  
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="small">Proyectos actuales</label>
+                                    <input type="text" class="form-control form-control-sm" name="currentProjects" placeholder="{{currentProjects}}">
+                                </div>
+                                <div class="form-group">
+                                    <label class="small">Manejo de agroquimicos</label>
+                                    <input type="text" class="form-control form-control-sm" name="agrochemical" placeholder="{{agrochemical}}">
+                                </div>
+                                <div class="form-group">
+                                    <label class="small">Implementación de buenas practicas</label>
+                                    <input type="text" class="form-control form-control-sm" name="bestPractices" placeholder="{{bestPractices}}">
+                                </div>
+                                <div class="form-group">
+                                    <label class="small">Otras áreas</label>
+                                    <input type="text" class="form-control form-control-sm" name="otherAreas" placeholder="{{otherAreas}}">
+                                </div>
+                                <div class="form-group">
+                                    <label class="small">Afluentes</label>
+                                    <input type="text" class="form-control form-control-sm" name="afluentes" placeholder="{{afluentes}}">
+                                </div>
+                                <div class="form-group">
+                                    <label class="small">Vocación y uso de la tierra</label>
+                                    <input type="text" class="form-control form-control-sm" name="vocationAndLandUse" placeholder="{{vocationAndLandUse}}">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="small">Linea productiva</label>
+                                    <input type="text" class="form-control form-control-sm" name="productiveLine" placeholder="{{productiveLine}}">
+                                </div>
+                                <div class="form-group">
+                                    <label class="small">Tipo de certificación</label>
+                                    <input type="text" class="form-control form-control-sm" name="certificationType" placeholder="{{certificationType}}">
+                                </div>                        
+                                <div class="form-group">
+                                    <label class="small">Lindero al norte</label>
+                                    <input type="text" class="form-control form-control-sm" name="purlieuNorth" placeholder="{{purlieuNorth}}">
+                                </div>       
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mt-2">
+                                    <label class="small">Lindero al sur</label>
+                                    <input type="text" class="form-control form-control-sm" name="purlieuSouth" placeholder="{{purlieuSouth}}">
+                                </div>
+                                <div class="form-group">
+                                    <label class="small">Lindero al este</label>
+                                    <input type="text" class="form-control form-control-sm" name="purlieuEast" placeholder="{{purlieuEast}}">
+                                </div>
+                                <div class="form-group">
+                                    <label class="small">Lindero al oeste</label>
+                                    <input type="text" class="form-control form-control-sm" name="purlieuWest" placeholder="{{purlieuWest}}">
+                                </div>
+                                <div class="form-group">
+                                    <label class="small">Altura</label>
+                                    <input type="text" class="form-control form-control-sm" name="altura" placeholder="{{altura}}">
+                                </div>
+                                <div class="form-group">
+                                    <label class="small">Coordenadas del predio</label>
+                                    <input type="text" class="form-control form-control-sm" name="latitudeLongitude" placeholder="{{latitudeLongitude}}">
+                                </div>
+                                <div class="form-group">
+                                    <label class="small">Años en la propiedad</label>
+                                    <input type="text" class="form-control form-control-sm" name="anosPropiedad" placeholder="{{anosPropiedad}}">
+                                </div>
+                                <div class="form-group">
+                                    <label class="small">Linea productiva 1</label>
+                                    <input type="text" class="form-control form-control-sm" name="productiveLine1" placeholder="{{productiveLine1}}">
+                                </div>
+                                <div class="form-group">
+                                    <label class="small">Linea productiva 2</label>
+                                    <input type="text" class="form-control form-control-sm" name="productiveLine2" placeholder="{{productiveLine2}}">
+                                </div>
+                                <div class="form-group">
+                                    <label class="small">Linea productiva 3</label>
+                                    <input type="text" class="form-control form-control-sm" name="productiveLine3" placeholder="{{productiveLine3}}">
+                                </div> 
+                            </div>
+                        </div>
+                        <div>
+                            <h6 class="text-center">Datos de aprendizaje</h6>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="small">Conocimiento de la linea productiva 1</label>
+                                    <input type="text" class="form-control form-control-sm" name="knowProductiveLine1" placeholder="{{knowProductiveLine1}}">
+                                </div>  
+                                <div class="form-group">
+                                    <label class="small">Conocimiento de la linea productiva 2</label>
+                                    <input type="text" class="form-control form-control-sm" name="knowProductiveLine2" placeholder="{{knowProductiveLine2}}">
+                                </div>  
+                                <div class="form-group">
+                                    <label class="small">Conocimiento de la linea productiva 3</label>
+                                    <input type="text" class="form-control form-control-sm" name="knowProductiveLine3" placeholder="{{knowProductiveLine2}}">
+                                </div>  
+                                <div class="form-group">
+                                    <label class="small">Tipo de comercialización</label>
+                                    <input type="text" class="form-control form-control-sm" name="comercializationType" placeholder="{{comercializationType}}">
+                                </div>  
+                                <div class="form-group">
+                                    <label class="small">Producción de Biopreparados</label>
+                                    <input type="text" class="form-control form-control-sm" name="biopreparadosProduction" placeholder="{{biopreparadosProduction}}">
+                                </div>  
+                                <div class="form-group">
+                                    <label class="small">Disponibilidad de agua</label>
+                                    <input type="text" class="form-control form-control-sm" name="waterAvailable" placeholder="{{waterAvailable}}">
+                                </div>  
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="small">Vías de acceso</label>
+                                    <input type="text" class="form-control form-control-sm" name="accessRoads" placeholder="{{accessRoads}}">
+                                </div>  
+                                <div class="form-group">
+                                    <label class="small">Disponibilidad de electricidad</label>
+                                    <input type="text" class="form-control form-control-sm" name="electricityAvailability" placeholder="{{electricityAvailability}}">
+                                </div>  
+                                <div class="form-group">
+                                    <label class="small">Comunicaciones</label>
+                                    <input type="text" class="form-control form-control-sm" name="ComunicationAvailable" placeholder="{{ComunicationAvailable}}">
+                                </div>  
+                                <div class="form-group">
+                                    <label class="small">Participación en proyectos</label>
+                                    <input type="text" class="form-control form-control-sm" name="projectParticipation" placeholder="{{projectParticipation}}">
+                                </div>  
+                                <div class="form-group">
+                                    <label class="small">Herramientas para la siembra</label>
+                                    <input type="text" class="form-control form-control-sm" name="cropTools" placeholder="{{projectParticipation}}">
+                                </div> 
+                                <div class="form-group">
+                                    <label class="small">Herramientas para primeros auxilios</label>
+                                    <input type="text" class="form-control form-control-sm" name="firstAidKit" placeholder="{{projectParticipation}}">
+                                </div> 
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="small">Kit de fumigación</label>
+                                    <input type="text" class="form-control form-control-sm" name="fumigateKit" placeholder="{{fumigateKit}}">
+                                </div> 
+                                <div class="form-group">
+                                    <label class="small">Sistemas de riego</label>
+                                    <input type="text" class="form-control form-control-sm" name="irrigationSystem" placeholder="{{irrigationSystem}}">
+                                </div> 
+                                <div class="form-group">
+                                    <label class="small">Maquinaria</label>
+                                    <input type="text" class="form-control form-control-sm" name="machines" placeholder="{{machines}}">
+                                </div> 
+                                <div class="form-group">
+                                    <label class="small">Participacion en proyectos</label>
+                                    <input type="text" class="form-control form-control-sm" name="ParticipateInProyects" placeholder="{{ParticipateInProyects}}">
+                                </div> 
+                                <div class="form-group">
+                                    <label class="small">Capital de trabajo</label>
+                                    <input type="text" class="form-control form-control-sm" name="workingCapital" placeholder="{{workingCapital}}">
+                                </div> 
+                                 <div class="form-group">
+                                     <label class="small">Nivel de implemantación de tecnologías</label>
+                                    <input type="text" class="form-control form-control-sm" name="implementationTecnologyLevel" placeholder="{{implementationTecnologyLevel}}">
+                                </div> 
+                            </div>
+                        </div>
+                        <div>
+                            <h6 class="text-center">Datos lote 1</h6>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="small">Linea productiva 1</label>
+                                    <input type="text" class="form-control form-control-sm" name="productLine1" placeholder="{{productLine1}}">
+                                </div>
+                                <div class="form-group">
+                                    <label class="small">Variedad de cultivo</label>
+                                    <input type="text" class="form-control form-control-sm" name="variety1" placeholder="{{variety1}}">
+                                </div>
+                                <div class="form-group">
+                                    <label class="small">Cantidad de plantulas</label>
+                                    <input type="text" class="form-control form-control-sm" name="cantPlants1" placeholder="{{cantPlants1}}">
+                                </div>
+                                <div class="form-group">
+                                    <label class="small">Distancia de siembra</label>
+                                    <input type="text" class="form-control form-control-sm" name="sowingDistance1" placeholder="{{sowingDistance1}}">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="small">Edad del cultivo</label>
+                                    <input type="text" class="form-control form-control-sm" name="ageCrop1" placeholder="{{ageCrop1}}">
+                                </div>
+                                <div class="form-group">
+                                    <label class="small">Etapa del cultivo</label>
+                                    <input type="text" class="form-control form-control-sm" name="stageCrop1" placeholder="{{stageCrop1}}">
+                                </div>
+                                <div class="form-group">
+                                    <label class="small">Cantidad producida por años</label>
+                                    <input type="text" class="form-control form-control-sm" name="cantKgProducedByYear1" placeholder="{{cantKgProducedByYear1}}">
+                                </div>
+                                <div class="form-group">
+                                    <label class="small">Estado del cultivo</label>
+                                    <input type="text" class="form-control form-control-sm" name="cropStatus1" placeholder="{{cropStatus1}}">
+                                </div>      
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="small">Area aproximada</label>
+                                    <input type="text" class="form-control form-control-sm" name="aproxArea1" placeholder="{{aproxArea1}}">
+                                </div>
+                                <div class="form-group">
+                                    <label class="small">Coordenadas</label>
+                                    <input type="text" class="form-control form-control-sm" name="coordenates1" placeholder="{{coordenates1}}">
+                                </div>
+                                <div class="form-group">
+                                    <label class="small">Tipo de uso</label>
+                                    <input type="text" class="form-control form-control-sm" name="useType" placeholder="{{useType}}">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="small">Valor promedio del kilogramo</label>
+                                    <input type="text" class="form-control form-control-sm" name="promKgComercializateValue" placeholder="{{promKgComercializateValue}}">
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h6 class="text-center">Datos lote 2</h6>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="" class="small">Linea productiva 2</label>
+                                    <input type="text" class="form-control form-control-sm" name="productLine2" placeholder="{{productLine2}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="small">Variedad del cultivo</label>
+                                    <input type="text" class="form-control form-control-sm" name="variety2" placeholder="{{variety2}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="small">Cantidad de plantulas</label>
+                                    <input type="text" class="form-control form-control-sm" name="cantPlants2" placeholder="{{cantPlants2}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="small">Distancia de siembra</label>
+                                    <input type="text" class="form-control form-control-sm" name="sowingDistance2" placeholder="{{sowingDistance2}}">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="" class="small">Edad del cultivo</label>
+                                    <input type="text" class="form-control form-control-sm" name="ageCrop2" placeholder="{{ageCrop2}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="small">Estado del cultivo</label>
+                                    <input type="text" class="form-control form-control-sm" name="stageCrop2" placeholder="{{stageCrop2}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="small">Cantidad de kilogramos producidos por año</label>
+                                    <input type="text" class="form-control form-control-sm" name="cantKgProducedByYear2" placeholder="{{cantKgProducedByYear2}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="small">Estado del cultivo</label>
+                                    <input type="text" class="form-control form-control-sm" name="cropStatus2" placeholder="{{cropStatus2}}">
+                                </div>      
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="" class="small">Area Aproximada</label>
+                                    <input type="text" class="form-control form-control-sm" name="aproxArea2" placeholder="{{aproxArea2}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="small">Coordenadas</label>
+                                    <input type="text" class="form-control form-control-sm" name="coordenates2" placeholder="{{coordenates2}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="small">Tipo de uso</label>
+                                    <input type="text" class="form-control form-control-sm" name="useType2" placeholder="{{useType2}}">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="" class="small">Valor promedio del kilogramo</label>
+                                    <input type="text" class="form-control form-control-sm" name="promKgComercializateValu2" placeholder="{{promKgComercializateValu2}}">
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h6 class="text-center">Datos lote 3</h6>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="" class="small">Linea productiva 3</label>
+                                    <input type="text" class="form-control form-control-sm" name="productLine3" placeholder="{{productLine3}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="small">Variedad</label>
+                                    <input type="text" class="form-control form-control-sm" name="variety3" placeholder="{{variety3}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="small">Cantidad de plantulas</label>
+                                    <input type="text" class="form-control form-control-sm" name="cantPlants3" placeholder="{{cantPlants3}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="small">Distancia de siembra</label>
+                                    <input type="text" class="form-control form-control-sm" name="sowingDistance3" placeholder="{{sowingDistance3}}">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="" class="small">Edad del cultivo</label>
+                                    <input type="text" class="form-control form-control-sm" name="ageCrop3" placeholder="{{ageCrop3}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="small">Etapa del cultivo</label>
+                                    <input type="text" class="form-control form-control-sm" name="stageCrop3" placeholder="{{stageCrop3}}">
+                                </div>                      
+                                <div class="form-group">
+                                    <label for="" class="small">Cantidad de kilogramos producidos por año</label>
+                                    <input type="text" class="form-control form-control-sm" name="cantKgProducedByYear3" placeholder="{{cantKgProducedByYear3}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="small">Estado del cultivo</label>
+                                    <input type="text" class="form-control form-control-sm" name="cropStatus3" placeholder="{{cropStatus3}}">
+                                </div>   
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="" class="small"></label>Area aproximada
+                                    <input type="text" class="form-control form-control-sm" name="aproxArea3" placeholder="{{aproxArea3}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="small">Coordenadas</label>
+                                    <input type="text" class="form-control form-control-sm" name="coordenates3" placeholder="{{coordenates3}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="small">Tipo de uso</label>
+                                    <input type="text" class="form-control form-control-sm" name="useType3" placeholder="{{useType3}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="small">Valor promedio del kilogramo</label>
+                                    <input type="text" class="form-control form-control-sm" name="promKgComercializateValu3" placeholder="{{promKgComercializateValu3}}">
+                                </div>
+                            </div>
+                        </div>     
+                        <div>
+                            <h6 class="text-center">Datos lote 4 Produccion pecuaria</h6>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="" class="small">Linea productiva 4 (pecuaria)</label>
+                                    <input type="text" class="form-control form-control-sm" name="productLine3" placeholder="{{productLine4Pecuaria}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="small">Raza o tipo</label>
+                                    <input type="text" class="form-control form-control-sm" name="variety3" placeholder="{{breed}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="small">Cantidad de animales</label>
+                                    <input type="text" class="form-control form-control-sm" name="cantPlants3" placeholder="{{cantAnimals}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="small">Numero lotes o espacios usados para la actividad</label>
+                                    <input type="text" class="form-control form-control-sm" name="sowingDistance3" placeholder="{{numberPlaces}}">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="" class="small">Edad promedio de los animales</label>
+                                    <input type="text" class="form-control form-control-sm" name="ageCrop3" placeholder="{{ageAverageAnimals}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="small">Etapa productiva</label>
+                                    <input type="text" class="form-control form-control-sm" name="stageCrop3" placeholder="{{ageCrop4}}">
+                                </div>                      
+                                <div class="form-group">
+                                    <label for="" class="small">CCantidad de litros producidos por año</label>
+                                    <input type="text" class="form-control form-control-sm" name="cantKgProducedByYear3" placeholder="{{cantKgProducedByYear4}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="small">Estado general de los animales</label>
+                                    <input type="text" class="form-control form-control-sm" name="cropStatus3" placeholder="{{cropStatus4}}">
+                                </div>   
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="" class="small">Área aproximada usada por los animales(m2)</label>
+                                    <input type="text" class="form-control form-control-sm" name="aproxArea3" placeholder="{{aproxArea4}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="small">Coordenadas</label>
+                                    <input type="text" class="form-control form-control-sm" name="coordenates3" placeholder="{{coordenates4}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="small">Tipo de alimentación</label>
+                                    <input type="text" class="form-control form-control-sm" name="useType3" placeholder="{{nutritionType}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="small">Valor promedio de KG comercializado  en pesos en el año</label>
+                                    <input type="text" class="form-control form-control-sm" name="promKgComercializateValu3" placeholder="{{promKgComercializateValu4}}">
+                                </div>
+                            </div>
+                        </div> 
+                        <div>
+                            <h6 class="text-center">Datos lote 5 Produccion pecuaria</h6>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="" class="small">Linea productiva 5 (pecuaria)</label>
+                                    <input type="text" class="form-control form-control-sm" name="productLine3" placeholder="{{productLine5Pecuaria}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="small">Raza o tipo</label>
+                                    <input type="text" class="form-control form-control-sm" name="variety3" placeholder="{{breed5}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="small">Cantidad de animales</label>
+                                    <input type="text" class="form-control form-control-sm" name="cantPlants3" placeholder="{{cantAnimals5}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="small">Numero lotes o espacios usados para la actividad</label>
+                                    <input type="text" class="form-control form-control-sm" name="sowingDistance3" placeholder="{{numberPlaces5}}">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="" class="small">Edad promedio de los animales</label>
+                                    <input type="text" class="form-control form-control-sm" name="ageCrop3" placeholder="{{ageAverageAnimals5}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="small">Etapa productiva</label>
+                                    <input type="text" class="form-control form-control-sm" name="stageCrop3" placeholder="{{ageCrop5}}">
+                                </div>                      
+                                <div class="form-group">
+                                    <label for="" class="small">CCantidad de litros producidos por año</label>
+                                    <input type="text" class="form-control form-control-sm" name="cantKgProducedByYear3" placeholder="{{cantKgProducedByYear5}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="small">Estado general de los animales</label>
+                                    <input type="text" class="form-control form-control-sm" name="cropStatus3" placeholder="{{cropStatus5}}">
+                                </div>   
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="" class="small">Área aproximada usada por los animales(m2)</label>
+                                    <input type="text" class="form-control form-control-sm" name="aproxArea3" placeholder="{{aproxArea5}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="small">Coordenadas</label>
+                                    <input type="text" class="form-control form-control-sm" name="coordenates3" placeholder="{{coordenates5}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="small">Tipo de alimentación</label>
+                                    <input type="text" class="form-control form-control-sm" name="useType3" placeholder="{{nutritionType5}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="small">Valor promedio de KG comercializado  en pesos en el año</label>
+                                    <input type="text" class="form-control form-control-sm" name="promKgComercializateValu3" placeholder="{{promKgComercializateValu5}}">
+                                </div>
+                            </div>
+                        </div> 
+                        <div class="form-group text-center">
+                            <a href="/propertyCharacterizationList" class="btn btn-success">Cerrar</a>
+                        </div>
+
+                        {{/each}}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

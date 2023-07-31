@@ -1,0 +1,111 @@
+{{> navigation}}
+<div class=" pt-3 bg-prueba">
+    <div class="row">
+        <header class="header mx-auto">
+            <p>Agregar preguntas al formulario</p>
+        </header>
+    </div>
+    <div>
+        <div class="row">
+            <div class="col-md-9 mx-auto">
+                <div class="card">
+                    <div class="card-header bg-success">
+                        {{#each format}}
+                    <form action="/addQuestionsToFormat/{{id_format}}" method="POST">
+                        {{/each}}
+                            <div class="form-group d-none">
+                                {{#each sector}}
+                                <label for=""><small>Nombre de la linea productiva:</small></label>
+                                <input class="form-control" type="text" name="nom_sector" value="{{nom_sector}}" readonly>
+                                {{/each}}
+                            </div>
+                            <div class="form-group d-none">
+                                {{#each cat}}
+                                <label for=""><small>Nombre de la temática:</small></label>
+                                <input class="form-control" type="text" name="nom_formatType" value="{{nom_formatType}}" readonly>
+                                {{/each}}
+                            </div>
+                            <div class="form-group">
+                                {{#each format}}
+                                <label for=""><small>Nombre del formato:</small></label>
+                                <input class="form-control" type="text" name="format" value="{{nom_format}}" readonly>
+                                {{/each}}
+                            </div>
+                    </div>
+                    <div class="card-body">
+                        <h6 class="text-center text-success">Creador de preguntas</h6>         
+                        <div class="form-group">
+                            <label for=""><small>Titulo de la pregunta</small></label>
+                            <input type="text" class="form-control" name="title" placeholder="Ingrese el titulo de su pregunta" required>
+                        </div>             
+                    </div>
+                    <div class="form-group text-center">
+                        <button class="btn btn-success">Cargar pregunta</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mt-3">
+        <div class="row">
+            <div class="col-md-9 mx-auto">
+                <div class="card">
+                    <div class="card-header bg-success">
+                        <h6 class="text-center text-white">Creador de preguntas</h6>
+                    </div>
+                    <div class="card-body">
+                        <form action="/addAnswer" method="POST">
+                            {{#each sector}}
+                            <div class="form-group d-none">
+                                <label for=""><small>Nombre de la linea productiva:</small></label>
+                                <input class="form-control" type="text" name="nom_sector" value="{{nom_sector}}" readonly>
+                            </div>
+                            {{/each}}
+                            {{#each cat}}
+                            <div class="form-group d-none">
+                                <label for=""><small>Nombre de la temática:</small></label>
+                                <input class="form-control" type="text" name="nom_formatType" value="{{nom_formatType}}" readonly>
+                            </div>
+                            {{/each}}
+                            {{#each format}}
+                            <div class="form-group d-none">
+                                <label for=""><small>Nombre del formato:</small></label>
+                                <input class="form-control" type="text" name="format" value="{{nom_format}}" readonly>
+                            </div>
+                            {{/each}}
+                            <div class="form-group">
+                                <label for=""><small>Seleccione la pregunta a la que desea agregar una respuesta</small></label>
+                                    <select class="form-control" name='question_id'>
+                                        <option value="" disabled="disabled">Seleccione una pregunta</option>
+                                        {{#each questionList}}
+                                            <option value="{{id_question}}">{{title}}</option>
+                                        {{/each}}
+                                    </select>
+                            </div>
+                            <h6 class="text-center text-success">Cargar respuestas</h6>
+                            <div class="form-group">
+                                <label for=""><small>Respuesta:</small></label>
+                                <input class="form-control" type="text" name="answer" required>
+                            </div> 
+                            <div class="form-group">
+                                <label for="exampleFormControlTextarea1"><small>Conclusion</small></label>
+                                <textarea class="form-control" name="conclusion" rows="3" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlTextarea1"><small>Recomendation</small></label>
+                                <textarea class="form-control" name="recomendation" rows="3" required></textarea>
+                            </div>
+                    </div>
+                        {{#each format}}
+                            <div class="form-group text-center">
+                                <a href="/previewFormat/{{id_format}}" class="btn btn-warning">Ver Formulario</a>
+                                <button class="btn btn-success">Cargar respuesta</button>
+                            </div>
+                        {{/each}}
+                        </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,2229 @@
+{{> navigation }}
+<div class="bg-prueba pt-3">
+    <div class="row ml-4 mr-2">
+        <header class="mx-auto">
+            <h4 class="mx-auto align-items-center">Edición del registro de productor.</h4>
+        </header>
+
+        <div class="col-md-12 mb-2 bg-red">
+
+        </div>
+        <div class="col-md-12">
+            <div>
+                <div class="row">
+                    <div class="col-md-9 mx-auto">
+                        <div class="card">
+                            <div class="card-header">
+
+                                <form action="/modifyCommentsFormat/{{newRegistro.id_answerFormatProducer}}"
+                                    method="POST">
+                                    <div class="card-body">
+                                        <h6 class="text-center text-success">Editor de comentarios</h6>
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.1</small></label>
+                                                    <label for="" class="col-md-11"><small>DESARROLLO DE CAPACIDADES
+                                                            HUMANAS Y TÉCNICAS</small></label>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.1.1</small></label>
+                                                    <label for="" class="col-md-11"><small>Identificación de la
+                                                            actividad principal</small></label>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.1.1.1</small></label>
+                                                    <label for="" class="col-md-11"><small>¿Según su sistema productivo,
+                                                            con cuál de las siguientes opciones se
+                                                            identifica?</small></label>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta1}}</strong></small>
+                                                        </strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" maxlength="225" name="comment1"
+                                                required>{{newRegistro.comment1}}
+                                            </textarea>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta1'>
+                                                            <option value="{{newData.respuesta1}}">
+                                                                {{newRegistro.respuesta1}}</option>
+                                                            <option value="A">Agronegocio</option>
+                                                            <option value="B">Predio productivo no tradicional
+                                                                especializado</option>
+                                                            <option value="C">Productor tradicional</option>
+                                                            <option value="D">Productor de subsistencia</option>
+
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.1.2</small></label>
+                                                    <label for="" class="col-md-11"><small>Identificación de actividades
+                                                            productivas secundarias
+                                                        </small></label>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.1.2.1</small></label>
+                                                    <label for="" class="col-md-11"><small>¿El productor presenta
+                                                            actividades productivas secundarias con qué enfoque o
+                                                            proyección?
+                                                        </small></label>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta2}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment2" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment2}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta2'>
+                                                            <option value="{{newData.respuesta2}}">
+                                                                {{newRegistro.respuesta2}}</option>
+                                                            <option value="A">Con enfoque de agronegocio.</option>
+                                                            <option value="B">Como complemento a la actividad productiva
+                                                                principal.</option>
+                                                            <option value="C">De forma temporal o no especializada.
+                                                            </option>
+                                                            <option value="D">No tiene identificada una línea productiva
+                                                                secundaria.</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.1.3</small></label>
+                                                    <label for="" class="col-md-11"><small>Tipo de herramientas y
+                                                            equipos empleados en el proceso productivo</small></label>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.1.3.1</small></label>
+                                                    <label for="" class="col-md-11"><small>¿Cómo es su acceso a tipo de
+                                                            herramientas y equipos para ser empleados en su proceso
+                                                            productivo?</small></label>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta3}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment3" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment3}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta3'>
+                                                            <option value="{{newData.respuesta3}}">
+                                                                {{newRegistro.respuesta3}}</option>
+                                                            <option value="A">Acceso ilimitado- especializado, según la
+                                                                actividad productiva y con componente tecnológico.
+                                                            </option>
+                                                            <option value="B">Acceso ilimitado a elementos comunes del
+                                                                mercado</option>
+                                                            <option value="C">Acceso limitado</option>
+                                                            <option value="D">Acceso restringido</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.1.3.2</small></label>
+                                                    <label for="" class="col-md-11"><small>¿Cómo es su acceso a fuentes
+                                                            de energía?
+                                                        </small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta4}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment4" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment4}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta4'>
+                                                            <option value="{{newData.respuesta4}}">
+                                                                {{newRegistro.respuesta4}}</option>
+                                                            <option value="A">Acceso ilimitado a fuentes propias,
+                                                                tradicionales y alternativas.</option>
+                                                            <option value="B">Acceso ilimitado a fuentes tradicionales.
+                                                            </option>
+                                                            <option value="C">Acceso limitado.
+                                                            </option>
+                                                            <option value="D">Acceso restringido</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.1.4</small></label>
+                                                    <label for="" class="col-md-11"><small>Uso de Buenas Prácticas
+                                                            Agrícolas
+                                                        </small></label>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.1.4.1</small></label>
+                                                    <label for="" class="col-md-11"><small>¿Cuál es su estado actual con
+                                                            respecto a las BPA?
+                                                        </small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta5}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment5" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment5}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta5'>
+                                                            <option value="{{newData.respuesta5}}">
+                                                                {{newRegistro.respuesta5}}</option>
+                                                            <option value="A">Está certificado en BPA con el ICA y/o con
+                                                                otras certificaciones de inocuidad</option>
+                                                            <option value="B">Conoce y aplica las BPA, y está en proceso
+                                                                de certificación con el ICA</option>
+                                                            <option value="C">Conoce parcialmente las BPA, pero no las
+                                                                aplica.</option>
+                                                            <option value="D">No conoce las BPA</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.1.4.2</small></label>
+                                                    <label for="" class="col-md-11"><small>¿Cómo realiza el manejo de
+                                                            plagas y enfermedades (MIPE)?
+                                                        </small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta6}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment6" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment6}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta6'>
+                                                            <option value="{{newData.respuesta6}}">
+                                                                {{newRegistro.respuesta6}}</option>
+                                                            <option value="A">Planificado</option>
+                                                            <option value="B">No planificado</option>
+                                                            <option value="C">Conoce, pero no implementa.</option>
+                                                            <option value="D">No conoce ni implementa</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.1.4</small></label>
+                                                    <label for="" class="col-md-11"><small>Uso de Buenas Prácticas
+                                                            Ganaderas
+                                                        </small></label>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.1.4.1</small></label>
+                                                    <label for="" class="col-md-11"><small>¿Cuál es su estado actual con
+                                                            respecto a las BPG?
+                                                        </small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta7}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment7" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment7}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta7'>
+                                                            <option value="{{newData.respuesta7}}">
+                                                                {{newRegistro.respuesta7}}</option>
+                                                            <option value="A">No conoce las BPG.</option>
+                                                            <option value="B">Conoce parcialmente las BPG, pero no las
+                                                                aplica.</option>
+                                                            <option value="C">Conoce y aplica las BPG, y está en proceso
+                                                                de certificación con el ICA.</option>
+                                                            <option value="D">Está certificado en BPG con el ICA y/o con
+                                                                otras certificaciones de inocuidad.</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.1.4.2</small></label>
+                                                    <label for="" class="col-md-11"><small>¿Con relación al manejo
+                                                            sanitario?:
+                                                        </small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta8}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment8" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment8}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta8'>
+                                                            <option value="{{newData.respuesta8}}">
+                                                                {{newRegistro.respuesta8}}</option>
+                                                            <option value="A">No conoce ni implementa.</option>
+                                                            <option value="B">Conoce, pero no implementa.</option>
+                                                            <option value="C">No planificado.</option>
+                                                            <option value="D">Planificado.</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.1.4.3</small></label>
+                                                    <label for="" class="col-md-11"><small>¿Cómo maneja el sistema de
+                                                            nutrición de su producción?
+                                                        </small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta9}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment9" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment9}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta9'>
+                                                            <option value="{{newData.respuesta9}}">
+                                                                {{newRegistro.respuesta9}}</option>
+                                                            <option value="A">No conoce ningún plan nutricional animal.
+                                                            </option>
+                                                            <option value="B">Conoce el plan nutricional animal pero no
+                                                                aplica.</option>
+                                                            <option value="C">Conoce el plan nutricional animal pero no
+                                                                siempre las aplica.</option>
+                                                            <option value="D">Implementa el plan en nutrición animal.
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.1.4.4</small></label>
+                                                    <label for="" class="col-md-11"><small>¿Implementa manejo genético y
+                                                            reproductivo en su predio?
+                                                        </small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta10}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment10" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment10}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta10'>
+                                                            <option value="{{newData.respuesta10}}">
+                                                                {{newRegistro.respuesta10}}</option>
+                                                            <option value="A">No conoce la selección y clasificación
+                                                                genética ni los métodos de biotecnología reproductiva.
+                                                            </option>
+                                                            <option value="B">Conoce pero no selecciona ni clasifica el
+                                                                material genético, ni implementa métodos de
+                                                                biotecnología.</option>
+                                                            <option value="C">Conoce pero no siempre aplica la selección
+                                                                y clasificación del material genético, para la
+                                                                implementación de biotecnologías reproductivas.</option>
+                                                            <option value="D">Selecciona y clasifica el material
+                                                                genético a utilizar en biotecnologías reproductivas.
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.1.5</small></label>
+                                                    <label for="" class="col-md-11"><small>Esquemas de comercialización
+                                                            de los productos
+                                                        </small></label>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.1.5.1</small></label>
+                                                    <label for="" class="col-md-11"><small>¿Cómo es la forma de
+                                                            comercialización del productor?
+                                                        </small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta11}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment11" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment11}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta11'>
+                                                            <option value="{{newData.respuesta11}}">
+                                                                {{newRegistro.respuesta11}}</option>
+                                                            <option value="A">Planificada especializada y/o
+                                                                bidireccional.</option>
+                                                            <option value="B">Planificado tradicional.</option>
+                                                            <option value="C">Tradicional</option>
+                                                            <option value="D">Autoconsumo</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.1.5.2</small></label>
+                                                    <label for="" class="col-md-11"><small>¿Cómo es su esquema de
+                                                            comercialización?
+                                                        </small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta12}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment12" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment12}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta12'>
+                                                            <option value="{{newData.respuesta12}}">
+                                                                {{newRegistro.respuesta12}}</option>
+                                                            <option value="A">Especializado</option>
+                                                            <option value="B">Tradicional</option>
+                                                            <option value="C">Básico</option>
+                                                            <option value="D">No cuenta con esquema de comercialización.
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.1.6</small></label>
+                                                    <label for="" class="col-md-11"><small>Mercados
+                                                        </small></label>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.1.6.1</small></label>
+                                                    <label for="" class="col-md-11"><small>¿A qué tipo de mercado lleva
+                                                            su producto?
+                                                        </small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta13}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment13" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment13}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta13'>
+                                                            <option value="{{newData.respuesta13}}">
+                                                                {{newRegistro.respuesta13}}</option>
+                                                            <option value="A">Especializado</option>
+                                                            <option value="B">Tradicional</option>
+                                                            <option value="C">Básico</option>
+                                                            <option value="D">Local</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.1.7</small></label>
+                                                    <label for="" class="col-md-11"><small>Valor agregado en los
+                                                            procesos de producción
+                                                        </small></label>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.1.7.1</small></label>
+                                                    <label for="" class="col-md-11"><small>¿A qué nivel de valor
+                                                            agregado lleva su producto?
+                                                        </small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta14}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment14" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment14}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta14'>
+                                                            <option value="{{newData.respuesta14}}">
+                                                                {{newRegistro.respuesta14}}</option>
+                                                            <option value="A">Especializado, hasta producto
+                                                                transformado.</option>
+                                                            <option value="B">Especializado, sin producto transformado.
+                                                            </option>
+                                                            <option value="C">Básico por demanda</option>
+                                                            <option value="D">Ninguno</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.1.8</small></label>
+                                                    <label for="" class="col-md-11"><small>Registros
+                                                        </small></label>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.1.8.1</small></label>
+                                                    <label for="" class="col-md-11"><small>¿Gestiona registros de su
+                                                            sistema productivo?
+                                                        </small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta15}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment15" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment15}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta15'>
+                                                            <option value="{{newData.respuesta15}}">
+                                                                {{newRegistro.respuesta15}}</option>
+                                                            <option value="A">Sistematizado</option>
+                                                            <option value="B">Manual</option>
+                                                            <option value="C">Básico</option>
+                                                            <option value="D">No lleva registros</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.1.8.2</small></label>
+                                                    <label for="" class="col-md-11"><small>¿Qué nivel de conocimientos
+                                                            administrativos posee sobre su sistema de producción?
+                                                        </small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta16}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment16" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment16}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta16'>
+                                                            <option value="{{newData.respuesta16}}">
+                                                                {{newRegistro.respuesta16}}</option>
+                                                            <option value="A">Alto</option>
+                                                            <option value="B">Intermedio</option>
+                                                            <option value="C">Básico</option>
+                                                            <option value="D">Ninguno</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.1.9</small></label>
+                                                    <label for="" class="col-md-11"><small>Tipo de mano de obra empleada
+                                                        </small></label>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.1.9.1</small></label>
+                                                    <label for="" class="col-md-11"><small>¿Cómo es la vinculación de
+                                                            mano de obra?
+                                                        </small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta17}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment17" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment17}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta17'>
+                                                            <option value="{{newData.respuesta17}}">
+                                                                {{newRegistro.respuesta17}}</option>
+                                                            <option value="A">Formal, con estructura administrativa
+                                                            </option>
+                                                            <option value="B">Formal, sin estructura administrativa
+                                                            </option>
+                                                            <option value="C">Informal</option>
+                                                            <option value="D">Informal sin contrato</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.1.9.2</small></label>
+                                                    <label for="" class="col-md-11"><small>¿Hace capacitación, formación
+                                                            a la mano de obra?
+                                                        </small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta18}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment18" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment18}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta18'>
+                                                            <option value="{{newData.respuesta18}}">
+                                                                {{newRegistro.respuesta18}}</option>
+                                                            <option value="A">Permanentemente</option>
+                                                            <option value="B">Ocasionalmente</option>
+                                                            <option value="C">Según oferta - necesidades</option>
+                                                            <option value="D">No capacita</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.1.10</small></label>
+                                                    <label for="" class="col-md-11"><small>Acceso a crédito y
+                                                            bancarización
+                                                        </small></label>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.1.10.1</small></label>
+                                                    <label for="" class="col-md-11"><small>¿Tiene acceso a créditos?
+                                                        </small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta19}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment19" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment19}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta19'>
+                                                            <option value="{{newData.respuesta19}}">
+                                                                {{newRegistro.respuesta19}}</option>
+                                                            <option value="A">Formal, enfocado al crecimiento del
+                                                                negocio</option>
+                                                            <option value="B">Formal bancarizado</option>
+                                                            <option value="C">Formal, no bancarizado</option>
+                                                            <option value="D">Informal</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.1.10.2</small></label>
+                                                    <label for="" class="col-md-11"><small>¿Tiene acceso al sistema
+                                                            financiero formal, está bancarizado?
+                                                        </small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta20}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment20" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment20}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta20'>
+                                                            <option value="{{newData.respuesta20}}">
+                                                                {{newRegistro.respuesta20}}</option>
+                                                            <option value="A">Con Acceso vinculado al agronegocio
+                                                            </option>
+                                                            <option value="B">Con acceso no vinculado al agronegocio
+                                                            </option>
+                                                            <option value="C">Con acceso, pero no muestra interés
+                                                            </option>
+                                                            <option value="D">Sin acceso</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.2</small></label>
+                                                    <label for="" class="col-md-11"><small>DESARROLLO DE CAPACIDADES
+                                                            SOCIALES INTEGRALES Y EL FORTALECIMIENTO DE LA ASOCIATIVIDAD
+                                                        </small></label>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.2.1</small></label>
+                                                    <label for="" class="col-md-11"><small>Vinculación a algún tipo de
+                                                            organización
+                                                        </small></label>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.2.1.1</small></label>
+                                                    <label for="" class="col-md-11"><small>¿Está vinculado a algún tipo
+                                                            de organización?
+                                                        </small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta21}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment21" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment21}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta21'>
+                                                            <option value="{{newData.respuesta21}}">
+                                                                {{newRegistro.respuesta21}}</option>
+                                                            <option value="A">Si
+                                                            </option>
+                                                            <option value="B">No
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.2.1.2</small></label>
+                                                    <label for="" class="col-md-11"><small>En caso de estar vinculado,
+                                                            ¿Cómo es la participación en la organización?
+                                                        </small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta22}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment22" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment22}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta22'>
+                                                            <option value="{{newData.respuesta22}}">
+                                                                {{newRegistro.respuesta22}}</option>
+                                                            <option value="A">Activo</option>
+                                                            <option value="B">Sin participación</option>
+                                                            <option value="C">No formalizado</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.2.2</small></label>
+                                                    <label for="" class="col-md-11"><small>Realización de actividades
+                                                            productivas de manera colectiva
+                                                        </small></label>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.2.2.1</small></label>
+                                                    <label for="" class="col-md-11"><small>¿Participa en actividades
+                                                            productivas de manera colectiva?
+                                                        </small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta23}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment23" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment23}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta23'>
+                                                            <option value="{{newData.respuesta23}}">
+                                                                {{newRegistro.respuesta23}}</option>
+                                                            <option value="A">Activo</option>
+                                                            <option value="B">Frecuente</option>
+                                                            <option value="C">Eventual</option>
+                                                            <option value="D">Sin participación</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.2.3</small></label>
+                                                    <label for="" class="col-md-11"><small>Procesos de emprendimiento y
+                                                            asociatividad
+                                                        </small></label>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.2.3.1</small></label>
+                                                    <label for="" class="col-md-11"><small>¿Participa el productor en
+                                                            procesos de emprendimiento y asociatividad?
+                                                        </small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta24}}</strong></small>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment24" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment24}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta24'>
+                                                            <option value="{{newData.respuesta24}}">
+                                                                {{newRegistro.respuesta24}}</option>
+                                                            <option value="A">Asociativa / organizado</option>
+                                                            <option value="B">Asociativa sin organización</option>
+                                                            <option value="C">Individual</option>
+                                                            <option value="D">Sin participación</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.2.4</small></label>
+                                                    <label for="" class="col-md-11"><small>Participación en alianzas
+                                                            comerciales
+                                                        </small></label>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.2.4.1</small></label>
+                                                    <label for="" class="col-md-11"><small>¿Participa en alianzas
+                                                            comerciales?
+                                                        </small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta25}}</strong></small>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment25" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment25}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta25'>
+                                                            <option value="{{newData.respuesta25}}">
+                                                                {{newRegistro.respuesta25}}</option>
+                                                            <option value="A">Formal y continua</option>
+                                                            <option value="B">Parcialmente</option>
+                                                            <option value="C">No participa</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.2.5</small></label>
+                                                    <label for="" class="col-md-11"><small>Acceso a apoyo técnico para
+                                                            el manejo de su sistema productivo
+                                                        </small></label>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.2.5.1</small></label>
+                                                    <label for="" class="col-md-11"><small>¿Accede a apoyo técnico para
+                                                            el manejo de su sistema productivo?
+                                                        </small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta26}}</strong></small>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment26" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment26}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta26'>
+                                                            <option value="{{newData.respuesta26}}">
+                                                                {{newRegistro.respuesta26}}</option>
+                                                            <option value="A">Permanente y especializada</option>
+                                                            <option value="B">Colectiva según necesidades comunes
+                                                            </option>
+                                                            <option value="C">Acceso sin cobertura adecuada a la
+                                                                necesidad</option>
+                                                            <option value="D">Sin acceso</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.2.6</small></label>
+                                                    <label for="" class="col-md-11"><small>Uso de sellos de calidad y
+                                                            certificaciones</small></label>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.2.6.1</small></label>
+                                                    <label for="" class="col-md-11"><small>¿Cuenta con sellos de calidad
+                                                            y certificaciones?</small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta27}}</strong></small>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment27" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment27}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta27'>
+                                                            <option value="{{newData.respuesta27}}">
+                                                                {{newRegistro.respuesta27}}</option>
+                                                            <option value="A">Cuenta con certificación</option>
+                                                            <option value="B">Está en proceso</option>
+                                                            <option value="C">No le interesa</option>
+                                                            <option value="D">No conoce</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.2.7</small></label>
+                                                    <label for="" class="col-md-11"><small>DConocimientos sobre
+                                                            propiedad intelectual
+                                                        </small></label>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.2.7.1</small></label>
+                                                    <label for="" class="col-md-11"><small>¿Qué conocimientos sobre
+                                                            propiedad intelectual posee?</small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta28}}</strong></small>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment28" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment28}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta28'>
+                                                            <option value="{{newData.respuesta28}}">
+                                                                {{newRegistro.respuesta28}}</option>
+                                                            <option value="A">Los tiene en cuenta</option>
+                                                            <option value="B">Los conoce</option>
+                                                            <option value="C">Conocimiento básico</option>
+                                                            <option value="D">Ningún conocimiento</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.3</small></label>
+                                                    <label for="" class="col-md-11"><small>ACCESO A LA INFORMACIÓN Y USO
+                                                            DE LAS TIC</small></label>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.3.1</small></label>
+                                                    <label for="" class="col-md-11"><small>Acceso a fuentes de
+                                                            información</small></label>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.3.1.1</small></label>
+                                                    <label for="" class="col-md-11"><small>¿Qué acceso tiene a fuentes
+                                                            de información relacionadas con su sistema
+                                                            productivo?</small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta29}}</strong></small>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment29" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment29}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta29'>
+                                                            <option value="{{newData.respuesta29}}">
+                                                                {{newRegistro.respuesta29}}</option>
+                                                            <option value="A">Todas las fuentes</option>
+                                                            <option value="B">Mayoría de fuentes</option>
+                                                            <option value="C">Algunas</option>
+                                                            <option value="D">Pocas</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.3.2</small></label>
+                                                    <label for="" class="col-md-11"><small>Acceso a las
+                                                            TIC</small></label>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.3.2.1</small></label>
+                                                    <label for="" class="col-md-11"><small>¿Qué acceso tiene a las
+                                                            TIC?</small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta30}}</strong></small>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment30" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment30}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta30'>
+                                                            <option value="{{newData.respuesta30}}">
+                                                                {{newRegistro.respuesta30}}</option>
+                                                            <option value="A">Permanente</option>
+                                                            <option value="B">Frecuente</option>
+                                                            <option value="C">Regular</option>
+                                                            <option value="D">Ninguno</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.3.3</small></label>
+                                                    <label for="" class="col-md-11"><small>Uso de las TIC como
+                                                            herramientas de toma de decisiones</small></label>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.3.3.1</small></label>
+                                                    <label for="" class="col-md-11"><small>¿Qué tanto utiliza las TIC
+                                                            para toma de decisiones?</small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta31}}</strong></small>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment31" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment31}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta31'>
+                                                            <option value="{{newData.respuesta31}}">
+                                                                {{newRegistro.respuesta31}}</option>
+                                                            <option value="A">Todas</option>
+                                                            <option value="B">Algunas</option>
+                                                            <option value="C">Ninguna</option>
+                                                            <option value="D">Sin acceso</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.3.4</small></label>
+                                                    <label for="" class="col-md-11"><small>Habilidades y competencias en
+                                                            el uso de TIC</small></label>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.3.4.1</small></label>
+                                                    <label for="" class="col-md-11"><small>Para el manejo del
+                                                            agronegocio, ¿qué habilidades y competencias tiene en el uso
+                                                            de las TIC?</small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta32}}</strong></small>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment32" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment32}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta32'>
+                                                            <option value="{{newData.respuesta32}}">
+                                                                {{newRegistro.respuesta32}}</option>
+                                                            <option value="A">Alta</option>
+                                                            <option value="B">Media</option>
+                                                            <option value="C">Básica</option>
+                                                            <option value="D">Ninguna</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.3.5</small></label>
+                                                    <label for="" class="col-md-11"><small>Apropiación social del
+                                                            conocimiento tradicional y científico</small></label>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.3.5.1</small></label>
+                                                    <label for="" class="col-md-11"><small>¿Cómo es el nivel de
+                                                            apropiación social del conocimiento tradicional y
+                                                            científico?</small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label
+                                                        for=""><small><strong>Respuesta:{{newRegistro.respuesta33}}</strong></small>
+                                                        </strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment33" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment33}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta33'>
+                                                            <option value="{{newData.respuesta33}}">
+                                                                {{newRegistro.respuesta33}}</option>
+                                                            <option value="A">Superior</option>
+                                                            <option value="B">Alto</option>
+                                                            <option value="C">Intermedio</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.4</small></label>
+                                                    <label for="" class="col-md-11"><small>GESTIÓN SOSTENIBLE DE
+                                                            RECURSOS NATURALES</small></label>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.4.1</small></label>
+                                                    <label for="" class="col-md-11"><small>Prácticas de manejo y
+                                                            conservación del medio ambiente y de la
+                                                            biodiversidad</small></label>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.4.1.1</small></label>
+                                                    <label for="" class="col-md-11"><small>¿Conoce y planifica en su
+                                                            sistema productivo, actividades de conservación de la
+                                                            biodiversidad y el medio ambiente?</small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta34}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment34" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment34}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta34'>
+                                                            <option value="{{newData.respuesta34}}">
+                                                                {{newRegistro.respuesta34}}</option>
+                                                            <option value="A">Cuenta e implementa un plan de
+                                                                conservación</option>
+                                                            <option value="B">Implementa sin planificación</option>
+                                                            <option value="C">Conoce, pero no implementa prácticas
+                                                            </option>
+                                                            <option value="D">No conoce ni implementa</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.4.2</small></label>
+                                                    <label for="" class="col-md-11"><small>Prácticas ambientales
+                                                            sostenibles y/o sustentables</small></label>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.4.2.1</small></label>
+                                                    <label for="" class="col-md-11"><small>¿Conoce y planifica
+                                                            actividades de conservación del recurso hídrico en su
+                                                            sistema productivo?</small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta35}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment35" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment35}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta35'>
+                                                            <option value="{{newData.respuesta35}}">
+                                                                {{newRegistro.respuesta35}}</option>
+                                                            <option value="A">Dispone de un plan de conservación y lo
+                                                                implementa</option>
+                                                            <option value="B">Implementa sin planificación</option>
+                                                            <option value="C">Conoce, pero no implementa prácticas
+                                                            </option>
+                                                            <option value="D">No conoce ni implementa</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.4.2.2</small></label>
+                                                    <label for="" class="col-md-11"><small>¿Cómo realiza el manejo de
+                                                            suelos y nutrición para fines productivos?</small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta36}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment36" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment36}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta36'>
+                                                            <option value="{{newData.respuesta36}}">
+                                                                {{newRegistro.respuesta36}}</option>
+                                                            <option value="A">Manejo planificado del suelo</option>
+                                                            <option value="B">Manejo intermedio no planificado</option>
+                                                            <option value="C">Manejo básico no planificado</option>
+                                                            <option value="D">Sin Manejo</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.4.3</small></label>
+                                                    <label for="" class="col-md-11"><small>Actividades de mitigación y
+                                                            adaptación al cambio climático</small></label>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.4.3.1</small></label>
+                                                    <label for="" class="col-md-11"><small>¿Tiene conocimiento e
+                                                            implementa acciones de prevención y/o recuperación del medio
+                                                            ambiente enfocado en la mitigación y adaptación al cambio
+                                                            climático?</small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta37}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment37" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment37}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta37'>
+                                                            <option value="{{newData.respuesta37}}">
+                                                                {{newRegistro.respuesta37}}</option>
+                                                            <option value="A">Conoce y cuenta con un plan de mitigación
+                                                                y adaptación</option>
+                                                            <option value="B">Conoce e implementa</option>
+                                                            <option value="C">Conoce medidas, pero no las implementa
+                                                            </option>
+                                                            <option value="D">No conoce</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.4.3.2</small></label>
+                                                    <label for="" class="col-md-11"><small>¿Conoce y planifica la
+                                                            producción agropecuaria en su predio teniendo en cuenta la
+                                                            información climática histórica y de pronósticos
+                                                            climáticos?</small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta38}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment38" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment38}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta38'>
+                                                            <option value="{{newData.respuesta38}}">
+                                                                {{newRegistro.respuesta38}}</option>
+                                                            <option value="A">Planificación avanzada</option>
+                                                            <option value="B">Conoce y planifica</option>
+                                                            <option value="C">Conoce, pero no planifica</option>
+                                                            <option value="D">No conoce</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.4.3.3</small></label>
+                                                    <label for="" class="col-md-11"><small>¿El productor conoce
+                                                            e
+                                                            implementa acciones que contribuyan a disminuir el
+                                                            calentamiento global? </small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta39}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment39" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment39}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta39'>
+                                                            <option value="{{newData.respuesta39}}">
+                                                                {{newRegistro.respuesta39}}</option>
+                                                            <option value="A">Conoce e implementa acciones</option>
+                                                            <option value="B">Conoce, pero no implementa acciones
+                                                            </option>
+                                                            <option value="C">No conoce, pero sus acciones no afectan
+                                                            </option>
+                                                            <option value="D">No conoce, pero sus acciones si afectan
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.4.4</small></label>
+                                                    <label for="" class="col-md-11"><small>Cumplimiento de la
+                                                            Normatividad ambiental</small></label>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.4.4.1</small></label>
+                                                    <label for="" class="col-md-11"><small>¿Conoce la
+                                                            normatividad
+                                                            ambiental?</small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta40}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment40" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment40}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta40'>
+                                                            <option value="{{newData.respuesta40}}">
+                                                                {{newRegistro.respuesta40}}</option>
+                                                            <option value="A">Si</option>
+                                                            <option value="B">No</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.4.4.2</small></label>
+                                                    <label for="" class="col-md-11"><small>¿Cumple la
+                                                            normatividad
+                                                            ambiental?</small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta41}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment41" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment41}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta41'>
+                                                            <option value="{{newData.respuesta41}}">
+                                                                {{newRegistro.respuesta41}}</option>
+                                                            <option value="A">Certificado</option>
+                                                            <option value="B">En proceso de certificación</option>
+                                                            <option value="C">Conoce y aplica normatividad nacional.
+                                                            </option>
+                                                            <option value="D">No cumple</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.5</small></label>
+                                                    <label for="" class="col-md-11"><small>DESARROLLO DE
+                                                            HABILIDADES
+                                                            PARA LA PARTICIPACIÓN</small></label>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.5.1</small></label>
+                                                    <label for="" class="col-md-11"><small>Conocimiento sobre
+                                                            instancias
+                                                            y mecanismos de participación</small></label>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.5.1.1</small></label>
+                                                    <label for="" class="col-md-11"><small>¿Tiene Conocimiento
+                                                            sobre
+                                                            instancias y mecanismos de
+                                                            participación?</small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta42}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment42" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment42}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta42'>
+                                                            <option value="{{newData.respuesta42}}">
+                                                                {{newRegistro.respuesta42}}</option>
+                                                            <option value="A">Conoce y participa activamente</option>
+                                                            <option value="B">Conoce al menos cinco (5) mecanismos de
+                                                                participación</option>
+                                                            <option value="C">Conoce al menos tres (3) mecanismos de
+                                                                participación</option>
+                                                            <option value="D">No tiene conocimientos</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.5.2</small></label>
+                                                    <label for="" class="col-md-11"><small>Conocimiento sobre
+                                                            herramientas para la participación</small></label>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.5.2.1</small></label>
+                                                    <label for="" class="col-md-11"><small>¿Tiene Conocimiento
+                                                            sobre
+                                                            herramientas para la participación?</small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta43}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment43" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment43}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta43'>
+                                                            <option value="{{newData.respuesta43}}">
+                                                                {{newRegistro.respuesta43}}</option>
+                                                            <option value="A">Conoce todas las herramientas</option>
+                                                            <option value="B">Al menos tres (3) herramientas</option>
+                                                            <option value="C">Al menos una (1) herramienta</option>
+                                                            <option value="D">No tiene conocimientos</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.5.3</small></label>
+                                                    <label for="" class="col-md-11"><small>Ejercicio de control
+                                                            político
+                                                            y social</small></label>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.5.3.1</small></label>
+                                                    <label for="" class="col-md-11"><small>¿Conoce los
+                                                            mecanismos de
+                                                            control político y social? Y ¿ha participado en los
+                                                            mismos?</small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta44}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment44" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment44}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta44'>
+                                                            <option value="{{newData.respuesta44}}">
+                                                                {{newRegistro.respuesta44}}</option>
+                                                            <option value="A">Todos los mecanismos</option>
+                                                            <option value="B">Al menos un (1) mecanismo y sí ha
+                                                                participado</option>
+                                                            <option value="C">Al menos un (1) mecanismo y no ha
+                                                                participado</option>
+                                                            <option value="D">No tiene conocimientos</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.5.4</small></label>
+                                                    <label for="" class="col-md-11"><small>Fomento de la
+                                                            autogestión de
+                                                            las comunidades</small></label>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.5.4.1</small></label>
+                                                    <label for="" class="col-md-11"><small>¿Cuál ha sido el rol
+                                                            del
+                                                            productor en la autogestión de las
+                                                            comunidades?</small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta45}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment45" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment45}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta45'>
+                                                            <option value="{{newData.respuesta45}}">
+                                                                {{newRegistro.respuesta45}}</option>
+                                                            <option value="A">Líder comunitario</option>
+                                                            <option value="B">Gestión Colectiva</option>
+                                                            <option value="C">Gestión Individual</option>
+                                                            <option value="D">No ha gestionado</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                    </div>
+                                    <div class="form-group text-center">
+                                        <button class="btn btn-success">Modificar encuesta</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

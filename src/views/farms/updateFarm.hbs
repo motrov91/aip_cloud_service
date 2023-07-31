@@ -1,0 +1,52 @@
+{{> navigation}}
+<div class="bg-prueba pt-3">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="card ">
+                <div class="card-header bg-success text-white">
+                    <p class="text-center">Modificar datos del predio</p>
+                </div>  
+                <div class="card-body">
+                    {{#each updFarm}}
+                        <form action="/editFarm/{{id_farm}}" method="POST">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="">Cedula:</label>
+                                    <input type="text" name="nitProducer" class="form-control" value="{{nitProducer}}">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="">Nombre:</label>
+                                    <input type="text" name="firstName" class="form-control" value="{{firstName}}">
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md-6">
+                                    <label for="">Municipio:</label>
+                                    <input type="text" name="municipality" class="form-control" value="{{municipality}}">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="">Vereda:</label>
+                                    <input type="text" name="vereda" class="form-control" value="{{vereda}}">
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md-6">
+                                    <label for="">Nombre del predio:</label>
+                                    <input type="text" name="nameFarm" class="form-control" value="{{nameFarm}}">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="">Teléfono:</label>
+                                    <input type="text" name="celphone1" class="form-control" value="{{celphone1}}">
+                                </div>
+                            </div>
+                    {{/each}}
+                </div>
+                    <div class="form-group text-center">
+                        <button class="btn btn-success">Modificar información del predio</button>
+                    </div>
+                </form>
+                    
+            </div>
+        </div>
+    </div>
+</div>

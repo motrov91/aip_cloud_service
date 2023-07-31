@@ -1,0 +1,2292 @@
+{{> navigation }}
+<div class="bg-prueba pt-3">
+    <div class="row ml-4 mr-2">
+        <header class="mx-auto">
+            <h4 class="mx-auto align-items-center">Edición del registro de productor.</h4>
+        </header>
+
+        <div class="col-md-12 mb-2 bg-red">
+
+        </div>
+        <div class="col-md-12">
+            <div>
+                <div class="row">
+                    <div class="col-md-9 mx-auto">
+                        <div class="card">
+                            <div class="card-header">
+
+                                <form action="/modifyCommentsFormatPiscicola/{{newRegistro.id_answerProducerPiscicola}}"
+                                    method="POST">
+                                    <div class="card-body">
+                                        <h6 class="text-center text-success">Editor de comentarios</h6>
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.1</small></label>
+                                                    <label for="" class="col-md-11"><small>DESARROLLO DE CAPACIDADES HUMANAS Y TÉCNICAS.</small></label>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.1.1</small></label>
+                                                    <label for="" class="col-md-11"><small>Identificación de la actividad productiva principal.</small></label>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.1.1.1</small></label>
+                                                    <label for="" class="col-md-11"><small>De acuerdo a su actividad pesquera que realiza, se encontraría en cual línea según la finalidad:</small></label>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta1}}</strong></small>
+                                                        </strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" maxlength="225" name="comment1"
+                                                required>{{newRegistro.comment1}}
+                                            </textarea>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta1'>
+                                                            <option value="{{info.respuesta1}}">
+                                                                {{newRegistro.respuesta1}}</option>
+                                                            <option value="A">De subsistencia</option>
+                                                            <option value="B">De investigación</option>
+                                                            <option value="C">Deportiva</option>
+                                                            <option value="D">Comercial</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.1.2</small></label>
+                                                    <label for="" class="col-md-11"><small>Por el lugar donde realiza las faenas es:
+                                                        </small></label>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta2}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment2" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment2}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta2'>
+                                                            <option value="{{info.respuesta2}}">
+                                                                {{newRegistro.respuesta2}}</option>
+                                                            <option value="A">Pesca continental, que podrá ser fluvial o lacustre</option>
+                                                            <option value="B">Pesca marina, que podrá ser costera, de bajura o de altura.</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.1.3</small></label>
+                                                    <label for="" class="col-md-11"><small>Si es pesca Marina defina si es</small></label>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta3}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment3" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment3}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta3'>
+                                                            <option value="{{info.respuesta3}}">
+                                                                {{newRegistro.respuesta3}}</option>
+                                                            <option value="A">Pesca de Altura
+                                                            </option>
+                                                            <option value="B">Pesca de bajura.</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.1.3.2</small></label>
+                                                    <label for="" class="col-md-11"><small>Actividad Anual
+                                                        </small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta4}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment4" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment4}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta4'>
+                                                            <option value="{{info.respuesta4}}">
+                                                                {{newRegistro.respuesta4}}</option>
+                                                            <option value="A">Subsistencia</option>
+                                                            <option value="B">Ocasional
+                                                            </option>
+                                                            <option value="C">Estacional
+                                                            </option>
+                                                            <option value="D">Permanente</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.1.4</small></label>
+                                                    <label for="" class="col-md-11"><small>CARACTERISTICA DE LA UNIDAD ECONOMICA DE PESCA (UEP)
+                                                        </small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta5}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment5" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment5}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta5'>
+                                                            <option value="{{info.respuesta5}}">
+                                                                {{newRegistro.respuesta5}}</option>
+                                                            <option value="A">mbarcación de casco de madera o fibra con canalete de menos de 25 pies de eslora</option>
+                                                            <option value="B">Embarcación de casco de madera o fibra con motor fuera de borda hasta 27 pies de eslora</option>
+                                                            <option value="C">Embarcación de casco de madera o fibra con motor interno /o fuera de borda de 38 pies o más de eslora</option>
+                                                            <option value="D">Embarcación de casco de hierro con motor interno de más de 40 pies de eslora</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.1.4.2</small></label>
+                                                    <label for="" class="col-md-11"><small>IDENTIFICACIÓN DE ACTIVIDADES PRODUCTIVAS SECUNDARIAS
+                                                        </small></label>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.1.4.2</small></label>
+                                                    <label for="" class="col-md-11"><small>El pescador presenta actividades secundarias con que enfoque o proyección
+                                                        </small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta6}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment6" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment6}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta6'>
+                                                            <option value="{{info.respuesta6}}">
+                                                                {{newRegistro.respuesta6}}</option>
+                                                            <option value="A">No tiene línea segundaria definida</option>
+                                                            <option value="B">Temporal o no especializada</option>
+                                                            <option value="C">Como complemento de la actividad principal.</option>
+                                                            <option value="D">Con enfoque de agronegocio</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.1.4</small></label>
+                                                    <label for="" class="col-md-11"><small>TIPO DE HERRAMIENTAS Y EQUIPOS EMPLEADOS EN LA FAENAS DE PESCA
+                                                        </small></label>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.1.4.1</small></label>
+                                                    <label for="" class="col-md-11"><small>Artes y a aparejos utilizados en sus faenas.
+                                                        </small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta7}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment7" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment7}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta7'>
+                                                            <option value="{{info.respuesta7}}">
+                                                                {{newRegistro.respuesta7}}</option>
+                                                            <option value="A">Línea de Mano.</option>
+                                                            <option value="B">Vara o caña de pescar</option>
+                                                            <option value="C">Flecha</option>
+                                                            <option value="D">Nasa</option>
+                                                            <option value="E">Cóngolo</option>
+                                                            <option value="F">Atarraya</option>
+                                                            <option value="G">Redes de tiro</option>
+                                                            <option value="H">Redes de arrastre</option>
+                                                            <option value="I">Redes agalleras o de enmalle</option>
+                                                            <option value="J">Palangre y línea de mano considerando sus denominaciones respectivamente</option>
+                                                            <option value="K">Polivalentes</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.1.4.2</small></label>
+                                                    <label for="" class="col-md-11"><small>Cuantos pescadores faenan en su unidad económica de pesca
+                                                        </small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta8}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment8" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment8}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta8'>
+                                                            <option value="{{info.respuesta8}}">
+                                                                {{newRegistro.respuesta8}}</option>
+                                                            <option value="A">Dos</option>
+                                                            <option value="B">Entre 3 Y 5.</option>
+                                                            <option value="C">Más De 5.</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.1.4.3</small></label>
+                                                    <label for="" class="col-md-11"><small>Cuál es el estado de su unidad económica de pesca
+                                                        </small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta9}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment9" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment9}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta9'>
+                                                            <option value="{{info.respuesta9}}">
+                                                                {{newRegistro.respuesta9}}</option>
+                                                            <option value="A">MAL ESTADO
+                                                            </option>
+                                                            <option value="B">REGULAR ESTADO</option>
+                                                            <option value="C">OPTIMO ESTADO</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.1.4.4</small></label>
+                                                    <label for="" class="col-md-11"><small>Volumen de captura en kilos diarios.
+                                                        </small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta10}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment10" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment10}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta10'>
+                                                            <option value="{{info.respuesta10}}">
+                                                                {{newRegistro.respuesta10}}</option>
+                                                            <option value="A">De 0 a 4,9 kilos
+                                                            </option>
+                                                            <option value="B">De 5 a 9,9 kilos</option>
+                                                            <option value="C">De 10 a 40 kilos</option>
+                                                            <option value="D">Mas de 40 kilos
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.1.5</small></label>
+                                                    <label for="" class="col-md-11"><small>Ingresos per cápita por pescador o activos totales. (Pequeño activos totales no superiores a 145 salarios mínimos mensuales legales vigentes (SMMLV, es decir $93.430.750)
+                                                        </small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta11}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment11" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment11}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta11'>
+                                                            <option value="{{info.respuesta11}}">
+                                                                {{newRegistro.respuesta11}}</option>
+                                                            <option value="A">De 0 a 145 SMMLV.</option>
+                                                            <option value="B">146 a 5.000 SMMLV. Mediano Productor.</option>
+                                                            <option value="C">Superior a 5.000 SMMLV. Gran Productor</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.1.5.2</small></label>
+                                                    <label for="" class="col-md-11"><small>Uso de buenas prácticas pesqueras BPP.
+                                                        </small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta12}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment12" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment12}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta12'>
+                                                            <option value="{{info.respuesta12}}">
+                                                                {{newRegistro.respuesta12}}</option>
+                                                            <option value="A">No posee BPP ni le interesa</option>
+                                                            <option value="B">Conoce las BPP, pero no las implementa</option>
+                                                            <option value="C">En trámite proceso de BPP</option>
+                                                            <option value="D">Cuenta con certificación de BPP
+                                                            </option>
+                                                            <option value="E">Realiza y/o implementa buenas prácticas pesqueras
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.1.6</small></label>
+                                                    <label for="" class="col-md-11"><small>Con relación al manejo sanitario como conserva su captura
+                                                        </small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta13}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment13" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment13}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta13'>
+                                                            <option value="{{info.respuesta13}}">
+                                                                {{newRegistro.respuesta13}}</option>
+                                                            <option value="A">Salado</option>
+                                                            <option value="B">Hielo</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.1.7</small></label>
+                                                    <label for="" class="col-md-11"><small>La muerte después de la captura, lo hace
+                                                        </small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta14}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment14" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment14}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta14'>
+                                                            <option value="{{info.respuesta14}}">
+                                                                {{newRegistro.respuesta14}}</option>
+                                                            <option value="A">Asfixia</option>
+                                                            <option value="B">Golpe
+                                                            </option>
+                                                            <option value="C">Shock Térmico</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.1.8</small></label>
+                                                    <label for="" class="col-md-11"><small>La unidad económica de pesca tiene espacio adecuado para cumplir con las normas básicas de higiene y sanidad
+                                                        </small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta15}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment15" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment15}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta15'>
+                                                            <option value="{{info.respuesta15}}">
+                                                                {{newRegistro.respuesta15}}</option>
+                                                            <option value="A">NO CUMPLE 0%</option>
+                                                            <option value="B">CUMPLE 50%</option>
+                                                            <option value="C">CUMPLE 75%</option>
+                                                            <option value="D">CUMPLE 100%</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.1.8.2</small></label>
+                                                    <label for="" class="col-md-11"><small>En su unidad económica de pesca realiza actividades de eviscerados, escamados, descabezado
+                                                        </small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta16}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment16" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment16}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta16'>
+                                                            <option value="{{info.respuesta16}}">
+                                                                {{newRegistro.respuesta16}}</option>
+                                                            <option value="A">NUNCA</option>
+                                                            <option value="B">ALGUNAS VECES</option>
+                                                            <option value="C">SIEMPRE</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.1.9</small></label>
+                                                    <label for="" class="col-md-11"><small>Que hace con los desechos
+                                                        </small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta17}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment17" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment17}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta17'>
+                                                            <option value="{{info.respuesta17}}">
+                                                                {{newRegistro.respuesta17}}</option>
+                                                            <option value="A">LOS ECHA AL MAR
+                                                            </option>
+                                                            <option value="B">LOS LLEVA A TIERRA PARA USARLO EN OTRAS ACTIVIDADES
+                                                            </option>
+                                                            <option value="C">OTRAS</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.1.9.2</small></label>
+                                                    <label for="" class="col-md-11"><small>Esquemas de comercialización
+                                                        </small></label>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.1.9.2</small></label>
+                                                    <label for="" class="col-md-11"><small>¿LA UNIDAD ECONÓMICA DE PESCA TIENE VÍNCULOS FORMALES PARA COMERCIALIZACIÓN DE LOS RECURSOS PESQUEROS?
+                                                        </small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta18}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment18" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment18}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta18'>
+                                                            <option value="{{info.respuesta18}}">
+                                                                {{newRegistro.respuesta18}}</option>
+                                                            <option value="A">Nunca</option>
+                                                            <option value="B">Algunas veces</option>
+                                                            <option value="C">Siempre</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.1.10</small></label>
+                                                    <label for="" class="col-md-11"><small>Comercializa sus capturas con
+                                                        </small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta19}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment19" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment19}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta19'>
+                                                            <option value="{{info.respuesta19}}">
+                                                                {{newRegistro.respuesta19}}</option>
+                                                            <option value="A">MUJERES DE LA COMUNIDAD</option>
+                                                            <option value="B">FAMILIARES</option>
+                                                            <option value="C">INTERMEDIARIOS</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.1.10.2</small></label>
+                                                    <label for="" class="col-md-11"><small>Deja de la pesca para autoconsumo
+                                                        </small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta20}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment20" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment20}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta20'>
+                                                            <option value="{{info.respuesta20}}">
+                                                                {{newRegistro.respuesta20}}</option>
+                                                            <option value="A">SI
+                                                            </option>
+                                                            <option value="B">NO
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.2</small></label>
+                                                    <label for="" class="col-md-11"><small>A qué tipo de mercado lleva sus capturas
+                                                        </small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta21}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment21" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment21}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta21'>
+                                                            <option value="{{info.respuesta21}}">
+                                                                {{newRegistro.respuesta21}}</option>
+                                                            <option value="A">Sitio de desembarco o playa
+                                                            </option>
+                                                            <option value="B">Mercado local
+                                                            </option>
+                                                            <option value="C">Mercado regional
+                                                            </option>
+                                                            <option value="D">Mercado nacional
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.2.1.2</small></label>
+                                                    <label for="" class="col-md-11"><small>VALOR AGREGADO EN LOS RECURSOS PESQUEROS EXTRAIDOS
+                                                        </small></label>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.2.1.2</small></label>
+                                                    <label for="" class="col-md-11"><small>A qué nivel de valor agregado lleva sus capturas
+                                                        </small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta22}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment22" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment22}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta22'>
+                                                            <option value="{{info.respuesta22}}">
+                                                                {{newRegistro.respuesta22}}</option>
+                                                            <option value="A">Transformación de los recursos pesqueros con marca propia, empaque y permisos de entidades.</option>
+                                                            <option value="B">Proceso de transformación de los recursos pesqueros, con marca y empaque propio, pero no tienen permiso o están en trámites.</option>
+                                                            <option value="C">Transformación de los recursos pesqueros, pero no cuentan con marca, ni empaque ni permiso</option>
+                                                            <option value="D">No realiza transformación de los recursos pesqueros</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.2.2</small></label>
+                                                    <label for="" class="col-md-11"><small>LLEVA REGISTRO DE DONDE DE PESCA
+                                                        </small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta23}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment23" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment23}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta23'>
+                                                            <option value="{{info.respuesta23}}">
+                                                                {{newRegistro.respuesta23}}</option>
+                                                            <option value="A">No lleva ningún tipo de registro</option>
+                                                            <option value="B">Manejo de registros manuales</option>
+                                                            <option value="C">Usa software para el manejo de los registros</option>
+                                                            <option value="D">Utiliza software para el manejo técnico y productivo</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.2.3</small></label>
+                                                    <label for="" class="col-md-11"><small>REGISTRO DE SUS CAPTURAS
+                                                        </small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta24}}</strong></small>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment24" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment24}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta24'>
+                                                            <option value="{{info.respuesta24}}">
+                                                                {{newRegistro.respuesta24}}</option>
+                                                            <option value="A">no lleva ningún tipo de registro</option>
+                                                            <option value="B">manejo de registros manuales</option>
+                                                            <option value="C">usa software para el manejo de los registros</option>
+                                                            <option value="D">utiliza software para el manejo técnico y productivo</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.2.4</small></label>
+                                                    <label for="" class="col-md-11"><small>TIPO DE MANO DE OBRA EMPLEADA
+                                                        </small></label>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.2.4.1</small></label>
+                                                    <label for="" class="col-md-11"><small>Como es la vinculación de la mano de obra
+                                                        </small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta25}}</strong></small>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment25" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment25}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta25'>
+                                                            <option value="{{info.respuesta25}}">
+                                                                {{newRegistro.respuesta25}}</option>
+                                                            <option value="A">No tiene ninguna</option>
+                                                            <option value="B">Personal no cuenta con capacitación ni certificación para realizar actividades de faenas de pesca, pero tiene experiencia</option>
+                                                            <option value="C">Personal calificado, certificado y con experticia en las faenas de pesca</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.2.5</small></label>
+                                                    <label for="" class="col-md-11"><small>ACESO A CREDITO Y BANCARIZACION
+                                                        </small></label>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.2.5.1</small></label>
+                                                    <label for="" class="col-md-11"><small>EL PESCADOR ARTESANAL SE ENCUENTRA BANCARIZADO
+                                                        </small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta26}}</strong></small>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment26" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment26}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta26'>
+                                                            <option value="{{info.respuesta26}}">
+                                                                {{newRegistro.respuesta26}}</option>
+                                                            <option value="A">Desconoce el portafolio de los servicios bancarios para los créditos del sector</option>
+                                                            <option value="B">Conoce la oferta bancaria pero no ha solicitado el crédito.
+                                                            </option>
+                                                            <option value="C">Ha tramitado, pero no ha sido aprobado el crédito</option>
+                                                            <option value="D">Tramitado y ha sido probado crédito bancario</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.2.6</small></label>
+                                                    <label for="" class="col-md-11"><small>EL VALOR DE SU UNIDAD ECONÓMICA DE PESCA EXPRESADO EN SLMV AL AÑO</small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta27}}</strong></small>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment27" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment27}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta27'>
+                                                            <option value="{{info.respuesta27}}">
+                                                                {{newRegistro.respuesta27}}</option>
+                                                            <option value="A">Menos de 284slmv</option>
+                                                            <option value="B">Entre 284 a 5000 slmv</option>
+                                                            <option value="C">Superior a 5000 slmv</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.2.7</small></label>
+                                                    <label for="" class="col-md-11"><small>¿CUANTO FUE SU CAPTURA EXPRESADO EN TONELADAS / AÑO?
+                                                        </small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta28}}</strong></small>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment28" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment28}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta28'>
+                                                            <option value="{{info.respuesta28}}">
+                                                                {{newRegistro.respuesta28}}</option>
+                                                            <option value="A">Hasta 22 toneladas/ año</option>
+                                                            <option value="B">Entre 22.1 a 240 toneladas/año</option>
+                                                            <option value="C">más de 240 toneladas/año</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.3</small></label>
+                                                    <label for="" class="col-md-11"><small>DESARROLLO PARA LAS CAPACIDADES SOCIALES INTEGRALES Y EL FORTALECIMIENTO DE LA ASOCIATIVIDAD</small></label>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.3.1</small></label>
+                                                    <label for="" class="col-md-11"><small>VINCULACION A ALGUN TIPO DE ORGANIZACIÓN</small></label>
+                                                </div>
+                                                
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta29}}</strong></small>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment29" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment29}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta29'>
+                                                            <option value="{{info.respuesta29}}">
+                                                                {{newRegistro.respuesta29}}</option>
+                                                            <option value="A">No se encuentra vinculado a ninguna figura asociativa</option>
+                                                            <option value="B">Junta de acción comunal</option>
+                                                            <option value="C">Alguna figura asociativa nivel veredal, municipal o departamental</option>
+                                                            <option value="D">Gremio nivel regional o nacional</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.3.2</small></label>
+                                                    <label for="" class="col-md-11"><small>REALIZACION DE ACTIVIDADES PRODUCTIVAS DE MANERA COLECTIVA</small></label>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.3.2.1</small></label>
+                                                    <label for="" class="col-md-11"><small>PARTICIPA EN ACTIVIDADES PRODUCTIVAS DE MANERA COLECTIVA</small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta30}}</strong></small>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment30" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment30}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta30'>
+                                                            <option value="{{info.respuesta30}}">
+                                                                {{newRegistro.respuesta30}}</option>
+                                                            <option value="A">Sin participación</option>
+                                                            <option value="B">Eventual</option>
+                                                            <option value="C">Frecuente</option>
+                                                            <option value="D">Activo</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.3.3</small></label>
+                                                    <label for="" class="col-md-11"><small>PROCESOS DE EMPRENDIMIENTO Y ASOCIATIVIDAD</small></label>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.3.3.1</small></label>
+                                                    <label for="" class="col-md-11"><small>A PARTIR DE LOS PROCESOS ASOCIATIVOS O INDIVIDUALES EN LO QUE ESTA INMERSO EL PESCADOR ARTESANAL</small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta31}}</strong></small>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment31" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment31}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta31'>
+                                                            <option value="{{info.respuesta31}}">
+                                                                {{newRegistro.respuesta31}}</option>
+                                                            <option value="A">No hace parte de ninguna apuesta de carácter asociativo y no genera procesos de emprendimiento</option>
+                                                            <option value="B">Han generados nuevas apuestas asociativas que conllevaron a proyectos de emprendimiento </option>
+                                                            <option value="C">Dentro de las figuras de carácter asociativo existentes y de las cuales es miembro se han consolidados proyectos de emprendimientos</option>
+                                                            <option value="D">Como pescador artesanal individual ha generado proyectos de emprendimiento</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.3.4</small></label>
+                                                    <label for="" class="col-md-11"><small>PARTICIPACION EN ALIANZAS COMERCIALES</small></label>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.3.4.1</small></label>
+                                                    <label for="" class="col-md-11"><small>A PARTIR DE PROCESOS ASOCIATIVOS, COMUNITARIOS O INDIVIDUALES Y CON EL PROPÓSITO DE GARANTIZAR ACCESO A NUEVOS MERCADOS Y PRECIOS COMPETITIVOS SE GENERAN</small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta32}}</strong></small>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment32" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment32}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta32'>
+                                                            <option value="{{info.respuesta32}}">
+                                                                {{newRegistro.respuesta32}}</option>
+                                                            <option value="A">No se cuenta con aliados estratégicos para la comercialización</option>
+                                                            <option value="B">o acuerdos de compra, que generan la posibilidad de comercialización de los recursos pesqueros, pero que se definen en cuanto a volumen y precios en el momento de desembarco en el sitio de pesca</option>
+                                                            <option value="C">Alianza de carácter comercial que garantizan comprador y precios, con actores del nivel local</option>
+                                                            <option value="D">Alianza de carácter comercial que garantizan comprador, distribución y precios, con actores del nivel regional y nacional</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.3.5</small></label>
+                                                    <label for="" class="col-md-11"><small>ACCESO A APOYO TÉCNICO PARA EL MANEJO DE SU UNIDAD ECONÓMICA DE PESCA</small></label>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.3.5.1</small></label>
+                                                    <label for="" class="col-md-11"><small>LA ASISTENCIA TÉCNICA A SU UNIDAD ECONÓMICA DE PESCA LA REALIZA POR INTERMEDIO DE</small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label
+                                                        for=""><small><strong>Respuesta:{{newRegistro.respuesta33}}</strong></small>
+                                                        </strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment33" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment33}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta33'>
+                                                            <option value="{{info.respuesta33}}">
+                                                                {{newRegistro.respuesta33}}</option>
+                                                            <option value="A">No cuenta con el servicio de asistencia técnica </option>
+                                                            <option value="B">UMATA y/o EPSEAS, empresas descentralizadas del gobierno</option>
+                                                            <option value="C">Profesional particular y/o profesional del área comercial</option>
+                                                            <option value="D">Gremio y/o profesional particular</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.4</small></label>
+                                                    <label for="" class="col-md-11"><small>COMO PESCADOR ARTESANAL Y EN ARAS DE GENERAR MAYOR COMPETIVIDAD A LOS RECURSOS PESQUEROS QUE GENERA EL SECTOR, CUENTA CON ALGUNA CERTIFICACION GLOBAL</small></label>
+                                                </div>
+                                    
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta34}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment34" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment34}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta34'>
+                                                            <option value="{{info.respuesta34}}">
+                                                                {{newRegistro.respuesta34}}</option>
+                                                            <option value="A">No tiene conocimiento de la importancia de acceder y de certificarse</option>
+                                                            <option value="B">Tiene conocimiento de importancia de estar certificado y ha iniciado el proceso para acceder a estos</option>
+                                                            <option value="C">Tiene conocimiento de la importancia del certificado de calidad
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.4.2</small></label>
+                                                    <label for="" class="col-md-11"><small>USO DE SELLOS DE CALIDAD Y CERTIFICACIONES</small></label>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.4.2.1</small></label>
+                                                    <label for="" class="col-md-11"><small>CUENTA CON SELLOS DE CALIDAD Y CERTIFICACIONES</small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta35}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment35" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment35}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta35'>
+                                                            <option value="{{info.respuesta35}}">
+                                                                {{newRegistro.respuesta35}}</option>
+                                                            <option value="A">No conoce</option>
+                                                            <option value="B">No le interesa</option>
+                                                            <option value="C">Está en proceso
+                                                            </option>
+                                                            <option value="D">Cuenta con certificación</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.4.2.2</small></label>
+                                                    <label for="" class="col-md-11"><small>ACCESO A LA INFORMACIÓN Y USO DE LAS TIC</small></label>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.4.2.2</small></label>
+                                                    <label for="" class="col-md-11"><small>ACCESO FUENTES DE INFORMACION</small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta36}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment36" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment36}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta36'>
+                                                            <option value="{{info.respuesta36}}">
+                                                                {{newRegistro.respuesta36}}</option>
+                                                            <option value="A">no tiene acceso la información</option>
+                                                            <option value="B">tiene acceso parcial a la información</option>
+                                                            <option value="C">tiene acceso total a esta información</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.4.3</small></label>
+                                                    <label for="" class="col-md-11"><small>ACCESO A LAS TIC</small></label>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.4.3.1</small></label>
+                                                    <label for="" class="col-md-11"><small>TENIENDO EN CUENTA EL ACCESO A LA INFORMACION A PARTIR DE LAS HERRAMIENTAS EXISTENTES PUEDE ACCEDER A</small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta37}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment37" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment37}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta37'>
+                                                            <option value="{{info.respuesta37}}">
+                                                                {{newRegistro.respuesta37}}</option>
+                                                            <option value="A">No tiene acceso a herramientas de información y comunicación</option>
+                                                            <option value="B">Tiene acceso a mínimo a una (1) herramienta de información y comunicación</option>
+                                                            <option value="C">Tiene acceso a mínimo tres (3) herramientas de información y comunicación
+                                                            </option>
+                                                            <option value="D">Tiene acceso a mínimo cinco (5) herramientas de información y comunicación</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.4.3.2</small></label>
+                                                    <label for="" class="col-md-11"><small>USO DE LAS TIC COMO HERRAMIENTAS DE TOMA DE DECISIONES</small></label>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.4.3.2</small></label>
+                                                    <label for="" class="col-md-11"><small>PARA LAS TOMA DE DECISIONES EN EL MANEJO, APROVECHAMIENTO, COMERCIALIZACION DE SU ACTIVIDAD PRODUCTIVA UTILIZA COMO INSTRUMENTOS DE PLANEACION LAS TIC</small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta38}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment38" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment38}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta38'>
+                                                            <option value="{{info.respuesta38}}">
+                                                                {{newRegistro.respuesta38}}</option>
+                                                            <option value="A">Nunca</option>
+                                                            <option value="B">Muy poco</option>
+                                                            <option value="C">casi siempre</option>
+                                                            <option value="D">Siempre</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.4.3.3</small></label>
+                                                    <label for="" class="col-md-11"><small>HABILIDADES Y COMPETENCIAS EN EL USO DE LAS TIC </small></label>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.4.3.3</small></label>
+                                                    <label for="" class="col-md-11"><small>AL EXISTIR LAS HERRAMIENTAS QUE PERMITAN LA TRANSFERENCIA DE CONOCIMIENTO DEL SECTOR, EL LIMITANTE QUE SE PRESENTA COMO PRODUCTOR ES LA HABILIDAD PARA EL MANEJO DE ESTAS EN TAL SENTIDO USTED:</small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta39}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment39" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment39}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta39'>
+                                                            <option value="{{info.respuesta39}}">
+                                                                {{newRegistro.respuesta39}}</option>
+                                                            <option value="A">no maneja las herramientas existentes</option>
+                                                            <option value="B">maneja parcialmente las herramientas existentes y desconoce las fuentes de información
+                                                            </option>
+                                                            <option value="C">maneja parcialmente las herramientas existentes, pero conoce las fuentes de información
+                                                            </option>
+                                                            <option value="D">maneja plenamente las herramientas existentes y conoce las fuentes de información
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.4.4</small></label>
+                                                    <label for="" class="col-md-11"><small>APROPIACION SOCIAL DEL CONOCIMIENTO TRADICIONAL Y CIENTIFICO</small></label>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.4.4.1</small></label>
+                                                    <label for="" class="col-md-11"><small>TENIENDO EN CUENTA LOS PROCESOS DE TRANSFERENCIA DEL CONOCIMIENTO TRADICIONAL, TECNOLOGICO Y CIENTIFICO QUE CONLLEVE A MEJORAR LOS PROCESOS PRODUCTIVOS COMO PESCADOR COMO LO ASUME</small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta40}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment40" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment40}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta40'>
+                                                            <option value="{{info.respuesta40}}">
+                                                                {{newRegistro.respuesta40}}</option>
+                                                            <option value="A">no le interesa</option>
+                                                            <option value="B">comparte conocimiento</option>
+                                                            <option value="C">participa en nuevas apuestas</option>
+                                                            <option value="D">innova con los conocimientos adquiridos</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.4.4.2</small></label>
+                                                    <label for="" class="col-md-11"><small>GESTION SOSTENIBLE DE LOS RECURSOS NATURALES</small></label>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.4.4.2</small></label>
+                                                    <label for="" class="col-md-11"><small>CONOCE Y PLANIFICA EN SUS ACTIVDADS PESQUERAS ACCIONES DE CONSERVACION DE LA BIODIVERSIDAD Y EL MEDIO AMBIENTE EN LAS FAENAS DE PESCA</small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta41}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment41" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment41}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta41'>
+                                                            <option value="{{info.respuesta41}}">
+                                                                {{newRegistro.respuesta41}}</option>
+                                                            <option value="A">NO CONOCE NI IMPLEMENTA</option>
+                                                            <option value="B">CONOCE, PERO NO IMPLEMENTA</option>
+                                                            <option value="C">CUENTA E IMPLEMENTA PLAN DE CONSERVACION
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.5</small></label>
+                                                    <label for="" class="col-md-11"><small>AREAS DE PESCA</small></label>
+                                                </div>
+
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta42}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment42" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment42}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta42'>
+                                                            <option value="{{info.respuesta42}}">
+                                                                {{newRegistro.respuesta42}}</option>
+                                                            <option value="A">No cuenta con permiso para realizar faenas de pesca</option>
+                                                            <option value="B">Está tramitando permiso para realizar faenas de pesca</option>
+                                                            <option value="C">Cuenta con permiso para realizar faenas de pesca en áreas permitidas</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.5.2</small></label>
+                                                    <label for="" class="col-md-11"><small>PRÁCTICAS AMBIENTALES SOSTENIBLES Y/O SUSTENTABLES</small></label>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.5.2.1</small></label>
+                                                    <label for="" class="col-md-11"><small>CONOCE Y CAPTURA RECURSOS PESQUEROS CON LAS TALLAS PERMITIDAS</small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta43}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment43" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment43}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta43'>
+                                                            <option value="{{info.respuesta43}}">
+                                                                {{newRegistro.respuesta43}}</option>
+                                                            <option value="A">NUNCA</option>
+                                                            <option value="B">ALGUNAS VECES</option>
+                                                            <option value="C">CASI SIEMPRE</option>
+                                                            <option value="D">SIEMPRE</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.5.3</small></label>
+                                                    <label for="" class="col-md-11"><small>CONOCE SOBRE CUOTAS DE PESCA</small></label>
+                                                </div>
+                                                
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta44}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment44" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment44}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta44'>
+                                                            <option value="{{info.respuesta44}}">
+                                                                {{newRegistro.respuesta44}}</option>
+                                                            <option value="A">Si</option>
+                                                            <option value="B">No</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.5.4</small></label>
+                                                    <label for="" class="col-md-11"><small>ACTIVIDADES DE MITIGACION Y ADAPTACION AL CAMBIO CLIMATICO</small></label>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.5.4.1</small></label>
+                                                    <label for="" class="col-md-11"><small>USTED CONOCE ALGUNA ACCIÓN PARA PROTEGER SUS CUERPOS DE AGUA CUENTA E IMPLEMENTA PLAN DE CONSERVACION</small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta45}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment45" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment45}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta45'>
+                                                            <option value="{{info.respuesta45}}">
+                                                                {{newRegistro.respuesta45}}</option>
+                                                            <option value="A">NO CONOCE NI IMPLEMENTA</option>
+                                                            <option value="B">CONOCE, PERO NO IMPLEMENTA</option>
+                                                            <option value="C">IMPLEMENTA SIN PLANIFCACION</option>
+                                                            <option value="D">CUENTA E IMPLEMENTA PLAN DE CONSERVACION</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.5.4</small></label>
+                                                    <label for="" class="col-md-11"><small>ACTIVIDADES DE MITIGACION Y ADAPTACION AL CAMBIO CLIMATICO</small></label>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.5.4.1</small></label>
+                                                    <label for="" class="col-md-11"><small>Dentro de los métodos de adaptación al cambio climático se encuentra la utilización de energías renovables entre otra energía eólica, solar, en su actividad de pesca</small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta46}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment46" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment46}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta46'>
+                                                            <option value="{{info.respuesta46}}">
+                                                                {{newRegistro.respuesta46}}</option>
+                                                            <option value="A">No utiliza estrategias de adaptación al cambio y variedad climática</option>
+                                                            <option value="B">Utiliza estrategias de adaptación al cambio y variedad climática</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.5.4</small></label>
+                                                    <label for="" class="col-md-11"><small>CUMPLIMIENTO DE LA NORMATIVIDAD AMBIENTAL</small></label>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.5.4.1</small></label>
+                                                    <label for="" class="col-md-11"><small>LA UNIDAD ECONOMICA DE PESCA (UEP) CUENTA CON LOS PERMISOS PARA RELIZAR FAENAS DE PESCA</small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta47}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment47" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment47}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta47'>
+                                                            <option value="{{info.respuesta47}}">
+                                                                {{newRegistro.respuesta47}}</option>
+                                                            <option value="A">LA UEP no cuenta con los permisos de las entidades</option>
+                                                            <option value="B">LA UEP está tramitando permisos ante las entidades</option>
+                                                            <option value="C">La UEP cuenta con los permisos de las entidades</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.5.4</small></label>
+                                                    <label for="" class="col-md-11"><small>DESARROLLO DE HABILIDADES PARA LA PARTICIPACION</small></label>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.5.4.1</small></label>
+                                                    <label for="" class="col-md-11"><small>CONOCIMIENTO SOBRE INSTANCIAS Y MECANISMOS DE PARTICIPACION</small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta48}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment48" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment48}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta48'>
+                                                            <option value="{{info.respuesta48}}">
+                                                                {{newRegistro.respuesta48}}</option>
+                                                            <option value="A">apatía para ejercer liderazgos ante la comunidad y las entidades</option>
+                                                            <option value="B">participación en espacios institucionales, sociales y políticos no son su prioridad</option>
+                                                            <option value="C">Participación en congresos, asambleas giras, reuniones en negocios nacionales e internacionales</option>
+                                                            <option value="D">Participa en giras, congresos internacionales del gremio pesquero artesanal</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.5.4</small></label>
+                                                    <label for="" class="col-md-11"><small>CONOCIMIENTO SOBRE HERRAMIENTAS PARA LA PARTICIPACION</small></label>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.5.4.1</small></label>
+                                                    <label for="" class="col-md-11"><small>TENIENDO EN CUENTA LAS HERRAMIENTAS DE PARTICIPACION ESTABLECIDAS, (PETICION, QUEJAS, DENUNCIAS ACCION DE GRUPO, TUTEL ACCION POPULAR Y DE CUMPLIMIENTO) LAS CUALES ESTAN DISEÑADAS CON EL PROPOSITO QUE EL CIUDADANO REALICE CONTROL Y SE LE RECONOZCAN SUS DERECHOS TANTO ENTIDADES PÚBLICAS COMO PRIVADAS USTED COMO PESCADOR ARTESANAL:</small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta49}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment49" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment49}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta49'>
+                                                            <option value="{{info.respuesta49}}">
+                                                                {{newRegistro.respuesta49}}</option>
+                                                            <option value="A">desconoce las herramientas de participación</option>
+                                                            <option value="B">reconoce las herramientas de participación, pero desconoce su alcance y aplicabilidad</option>
+                                                            <option value="C">reconoce las herramientas de participación y sus alcances, pero no su aplicabilidad</option>
+                                                            <option value="D">reconoce las herramientas de participación su alcance y aplicabilidad</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.5.4</small></label>
+                                                    <label for="" class="col-md-11"><small>EJERCICIO DEL CONTROL POLITICO Y SOCIAL</small></label>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.5.4.1</small></label>
+                                                    <label for="" class="col-md-11"><small>EL CONTROL SOCIAL ES UN DERECHO Y UN DEBER QUE TIENEN TODAS LOS CIUDADANOS A VIGILAR Y FISCALIZAR LA GESTION PUBLICA CON EL FIN DE ACOMPAÑAR EL CUMPLIMIENTO DE LOS FINES DEL ESTADO PARA LO CUAL SE ESTABLECEN DIFERENTES MODALIDADES PARA REALIZAR ESTE CONTROL VEEDURIAS CIUDADANAS, JUNTAS DE VIGILANCIAS, COMITES DE DESARROLLO Y CONTROL SOCIAL DE LOS SERVICIOS PUBLICOS DOMICILIARIOS, AUDITORIAS CIUDADANAS Y OTRAS INSTANCIAS DE PARTICIPACION TENIENDO EN CUENTA LO ANTERIOR</small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta50}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment50" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment50}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta50'>
+                                                            <option value="{{info.respuesta50}}">
+                                                                {{newRegistro.respuesta50}}</option>
+                                                            <option value="A">desconoce el control social y las herramientas con que se cuenta para realizarlo</option>
+                                                            <option value="B">conoce que es el control social, pero desconoce las herramientas con que se cuenta para realizarlo</option>
+                                                            <option value="C">entiende en que consiste el control social y conoce las herramientas con que se cuenta para realizarlo, pero desconoce su alcance y aplicabilidad</option>
+                                                            <option value="D">entiende el control social, así como las herramientas que lo permiten, su alcance y su aplicabilidad</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.5.4</small></label>
+                                                    <label for="" class="col-md-11"><small>FOMENTO DE LA AUTOGESTION DE LAS COMUNIDADES</small></label>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-1"><small>1.5.4.1</small></label>
+                                                    <label for="" class="col-md-11"><small>TENIENDO EN CUENTA QUE LA AUTOGESTION COMUNITARIA ESTA DADA POR LA ACCION PARTICIPATIVA DE LA SOCIEDAD EN LOS AMBITOS PERSONALES FAMILIARES Y COMUNITARIOS PARA LA TOMA DE DECISIONES EN EL PROCESO DE DESARROLLO, LA CUAL CONLLEVA A LA AUTORESPONSABILIDAD, COLABORACION, CONTRIBUCION Y TRABAJO VOLUNTARIO PARA LA BUSQUEDA DE SOLUCIONES, DENTRO DE SUS ACTIVIDADES PRODUCTIVAS LA COMUNIDAD A LA QUE PERTENECE</small></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for=""><small><strong>Respuesta:
+                                                                {{newRegistro.respuesta51}}</strong></small></strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="">Comentario</strong></label>
+                                                </div>
+                                            </div>
+                                            <textarea type="text" class="form-control" name="comment51" maxlength="225"
+                                                placeholder="Ingrese el titulo de su pregunta"
+                                                required>{{newRegistro.comment51}}</textarea>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleFormControlSelect1">Cambiar la
+                                                            respuesta</label>
+                                                        <select class="form-control" name='respuesta51'>
+                                                            <option value="{{info.respuesta51}}">
+                                                                {{newRegistro.respuesta51}}</option>
+                                                            <option value="A">Se encuentran vinculados por la acción comunal pero no presentan acciones de gestión</option>
+                                                            <option value="B">Solo cuenta con la vinculación a las juntas de acción comunal su junta directiva es la encargada de gestionar los recursos y liderar procesos</option>
+                                                            <option value="C">No se encuentran conformados legalmente bajo una figura asociativa, pero se encuentran agrupados en la junta de acción comunal, sin embargo, dentro de la comunidad existen actividades de trabajo social y recolección de recursos para intereses colectivos</option>
+                                                            <option value="D">Están conformado como cooperativas u otra figura asociativa formal o empresa privada</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                    </div>
+                                    <div class="form-group text-center">
+                                        <button class="btn btn-success">Modificar encuesta</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

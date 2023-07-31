@@ -1,0 +1,161 @@
+<div class="bg-prueba pt-3 mb-4">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="div card">
+                <div class="card-header bg-success">
+                    <div class="row mx-auto align-items-center">
+                        <div class="col-md-12 text-center">
+                            <p class="text-white">Formato de acompañamiento técnico</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="text-center">
+                                <hr>
+                                <div class="text-center">
+                                    <label>convenio nº 0000000</label>
+                                    <hr>
+                                </div>
+                            </div>
+                        </div>   
+                    </div>
+                    {{#each dataSurvey}}
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form action=" " method="POST">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label for="staticEmail" class="col-sm-3 col-form-label"><strong>Identificador único:</strong></label>
+                                            <div class="col-sm-9">
+                                            <input type="text" readonly class="form-control-plaintext" name="id_project_has_farm" value="{{id_survey}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                    {{/each}}
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label for="staticEmail" class="col-sm-3 col-form-label"><strong>Proyecto:</strong></label>
+                                            <div class="col-sm-9">
+                                            <input type="text" readonly class="form-control-plaintext" name="proyecto_nom" value="{{nProyect.nom_proyecto}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                    {{#each dataSurvey}}
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label for="staticEmail" class="col-sm-3 col-form-label"><strong>Formato:</strong></label>
+                                            <div class="col-sm-9">
+                                            <input type="text" readonly class="form-control-plaintext" name="nom_format" value="{{nom_format}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label for="staticEmail" class="col-sm-3 col-form-label"><strong>Fecha:</strong></label>
+                                            <div class="col-sm-9">
+                                            <input type="text" readonly class="form-control-plaintext" name="nom_format" value="{{formatDate fecha_creacion 'lll'}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label for="staticEmail" class="col-sm-3 col-form-label"><strong>Beneficiario:</strong></label>
+                                            <div class="col-sm-9">
+                                            <input type="text" readonly class="form-control-plaintext" name="nom_beneficiario" value="{{nom_beneficiario}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label for="staticEmail" class="col-sm-3 col-form-label"><strong>Cedula:</strong></label>
+                                            <div class="col-sm-9">
+                                            <input type="text" readonly class="form-control-plaintext" name="cedula" value="{{cedula_beneficiario}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label for="staticEmail" class="col-sm-3 col-form-label"><strong>Municipio:</strong></label>
+                                            <div class="col-sm-9">
+                                            <input type="text" readonly class="form-control-plaintext" name="municipio" value="{{municipio}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label for="staticEmail" class="col-sm-3 col-form-label"><strong>Vereda:</strong></label>
+                                            <div class="col-sm-9">
+                                            <input type="text" readonly class="form-control-plaintext" name="vereda" value="{{vereda}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label for="staticEmail" class="col-sm-3 col-form-label"><strong>Nombre Finca:</strong></label>
+                                            <div class="col-sm-9">
+                                            <input type="text" readonly class="form-control-plaintext" name="nom_finca" value="{{nom_finca}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                {{/each}}
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label for="staticEmail" class="col-sm-3 col-form-label"><strong>Encuestador</strong></label>
+                                            <div class="col-sm-9">
+                                            <input type="text" readonly class="form-control-plaintext" name="nom_finca" value="{{dataName.nom_user}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                           
+                        </div>
+                    </div>
+                    {{#each dataSurvey}}
+                    <div class="row">
+                        <div class="col-md-12 text-center bg-success text-white">
+                            <label for="">Situacion encontrada</label>
+                        </div>
+                        <div class="col-md-12">
+                            <p>{{situacion_encontrada}}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 text-center bg-success text-white">
+                            <label for="">Conclusiones</label>
+                        </div>
+                        <div class="col-md-12">
+                            <p>{{conclusiones}}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 text-center bg-success text-white">
+                            <label for="">Recomendaciones</label>
+                        </div>
+                        <div class="col-md-12">
+                            <p>{{recomendaciones}}</p>
+                        </div>
+                        <div class="col-md-12 text-center mt-3">
+                            <a href="/projectTracking/{{project_has_farm_id}}" class="btn btn-info">Cerrar</a>
+                            {{!-- <button class="btn btn-warning">Modificar</button> --}}
+                            <a href="/download/{{id_survey}}" class="btn btn-success">
+                            <i class="fas fa-print"></i>
+                            PDF</a>
+                        </div>
+                    {{/each}}
+                    </div>
+                </div>
+            </div>
+        </div>         
+    </div>
+</div>
