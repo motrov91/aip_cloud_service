@@ -31,7 +31,7 @@ router.post('/questionsProducerPiscicola/:id', async (req, res) => {
     if(queryId.length > 0){
         res.json({message: 'La finca ya tiene formato de registro'})
     }else{
-        await pool.query('INSERT INTO answerProducerPiscicola set ?', [dataAnswer])
+        await pool.query('INSERT INTO answerproducerpiscicola set ?', [dataAnswer])
         res.json({message: 'Datos almacenados con exito'})
     } 
 })
