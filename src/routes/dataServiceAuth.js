@@ -44,6 +44,8 @@ router.post('/signin', async(req, res, next) => {
 
             const projByUser = await pool.query('SELECT * from project_has_user WHERE user_id = ?', [user[0].id]);
             
+            console.log('#####', projByUser)
+            console.log('@@@@@@@@', user[0].id)
 
             const dataSignin = {
                 token : token,
