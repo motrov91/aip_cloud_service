@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../database');
 
+const fn = require("../controllers/functions");
+
 
 //Create a producer register attached to with a farm
 router.post('/questionsProducer/:id', async (req, res) => {
@@ -51,6 +53,19 @@ router.get('/isRegisteredProducer/:id', async(req, res) =>{
         res.json({"isRegistered": false})
     }
 })
+
+router.post("/agriculturalRegistryByFarm/:id", async (req, res) => {
+  
+    console.log('body', req.body);
+  
+    const { id } = req.params;
+
+    console.log(id)
+  
+    let resultado = await pool.query("SELECT * FROM answerFormatProducer WHERE farm_id = ?", [id] );
+    
+    res.json({resultado});
+  });
 
 
 //detail of producer register by ID

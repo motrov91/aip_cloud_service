@@ -10,6 +10,7 @@ router.get('/signin', isNotLoggedIn, (req, res) => {
 });
 
 router.post('/signin', (req, res) => {
+    console.log('ALCANZA A INGRESAR A ESTA VISTA')
     passport.authenticate('local.signin', {
         successRedirect: '/selectProject',
         failureRedirect: '/signin',
@@ -21,6 +22,7 @@ router.get('/profile', isLoggedIn, (req, res) => {
 });
 
 router.get('/selectProject', isLoggedIn, async (req, res) => {
+    console.log('INGRESA AL SELECTED PROJECT')
     if(req.user.id === 10){
         const projAdmin = await pool.query('SELECT * FROM projects');
         res.render('auth/selectProject', {projAdmin});
@@ -31,6 +33,7 @@ router.get('/selectProject', isLoggedIn, async (req, res) => {
 });
 
 router.post('/selectProject', (req, res) => {
+    console.log('INSESA AL SELECTEDPROJECT POST')
     const { project } = req.body;
     const newData = {
         project

@@ -10,7 +10,7 @@ const fn= require('../controllers/functions')
 const pool = require('../database');
 
 
-router.post('/signin', async(req, res, next) => {
+router.post('/signin', async (req, res, next) => {
     const {username, password} = req.body
     console.log(username, password);
     const user = await pool.query('SELECT * FROM users WHERE username = ?', [username])
@@ -27,8 +27,12 @@ router.post('/signin', async(req, res, next) => {
         if (!bcrypt.compareSync(password, user[0].password)){
             
             //Si el password es incorrecto
-            await res.status(401).json({mensaje: 'password incorrecto'})
-            next()
+            res.status(401).json({
+                mensaje: 'password incorrecto',
+                statusCode: 401,
+                error: 'Unauthorized'
+            })
+            return;
         }else{
             //Si el password es correcto, firmar el token
             const token = jwt.sign({

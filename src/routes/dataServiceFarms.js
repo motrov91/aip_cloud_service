@@ -16,6 +16,7 @@ cloudinary.config({
 //Creando una finca
 
 router.post("/newFarm", async (req, res, next) => {
+  console.log('REQ.BODY', req.body);
   let result = {};
   let imgSignat = {};
   const imgBeneficiario = req.body.img_beneficiario;
@@ -28,7 +29,7 @@ router.post("/newFarm", async (req, res, next) => {
     let uploadStr = imagen;
 
     result = await cloudinary.v2.uploader.upload(
-      uploadStr,
+      'data:image/jpeg;base64,' + uploadStr,
       {
         overwrite: true,
         invalidate: true,
@@ -49,7 +50,10 @@ router.post("/newFarm", async (req, res, next) => {
     const imgSignature = req.body.imgSignature;
     let uploadStr = imgSignature;
     imgSignat = await cloudinary.v2.uploader.upload(
-      uploadStr,
+      /*
+        Se concatena 'data_image/jpeg;base64' para tratar la imagen que llega en formato base64
+      */
+      'data:image/jpeg;base64,' + uploadStr,
       {
         overwrite: true,
         invalidate: true,
@@ -172,7 +176,7 @@ router.post("/newFarm", async (req, res, next) => {
     cantAnimals,
     numberPlaces,
     ageAverageAnimals,
-    ageCrop4,
+    ageCrop4, 
     cantKgProducedByYear4,
     cropStatus4,
     aproxArea4,
@@ -184,7 +188,7 @@ router.post("/newFarm", async (req, res, next) => {
     cantAnimals5,
     numberPlaces5,
     ageAverageAnimals5,
-    ageCrop5,
+    ageCrop5, 
     cantKgProducedByYear5,
     cropStatus5,
     aproxArea5,
@@ -369,7 +373,8 @@ router.post("/newFarm", async (req, res, next) => {
   res.json({
     mensaje: "Los datos se han almacenado con exito",
     id_farm: dataSaved[0].id_farm,
-    img_beneficiario: dataSaved[0].img_beneficiario,
+    /* Retornamos la misma imagen en base64 */
+    img_beneficiario: imgBeneficiario,
     firstName: dataSaved[0].firstName,
     secondName: dataSaved[0].secondName,
     firstSurname: dataSaved[0].firstSurname,
@@ -500,7 +505,7 @@ router.post("/newFarm", async (req, res, next) => {
     coordenates5: dataSaved[0].coordenates5,
     nutritionType5: nutritionType5,
     promKgComercializateValu5: dataSaved[0].promKgComercializateValu5,
-    imgSignature: dataSaved[0].imgSignature,
+    imgSignature: imgSig,
     creationDate: dataSaved[0].creationDate,
     userId: dataSaved[0].userId,
     comments: dataSaved[0].comments,
@@ -531,15 +536,14 @@ router.post("/characterizationListByUser", async (req, res) => {
 
   const { userId, projectId } = req.body;
 
-  console.log(userId, '-' , projectId )
-
   let resultado = await pool.query("SELECT * FROM farm WHERE projectId = ? AND userId = ?", [projectId, userId] );
-
-  console.log('resultado',resultado)
   
   fn.asyncForEach(resultado, async (result, idx) => {
     resultado[idx].img_beneficiario = result.img_beneficiario.toString().trim();
   });
+
+
+  console.log(`Resultado ${resultado}`)
   res.json({resultado});
 });
 

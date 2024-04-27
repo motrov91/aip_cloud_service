@@ -6491,3 +6491,4 @@ router.get('/mapBoyaca', async(req, res) =>{
 
 
 module.exports = router;
+

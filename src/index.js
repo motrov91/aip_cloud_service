@@ -28,15 +28,6 @@ const { Server } = require('http');
     }
 }) 
 
-// let storage = multer.diskStorage({
-//     destination:(req, file, cb) =>{
-//         cb(null, './public/uploads' )
-//     },
-//     filename:(req, file, cb) =>{
-//         cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
-//     }
-// }) 
-
 
 //initializations
 const app = express();
@@ -80,7 +71,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-
 app.use(multer({
     storage,
     dest: path.join(__dirname + '/public/uploads/')
@@ -95,6 +85,8 @@ app.use((req, res, next) => {
     next();
 })
 
+
+
 //Routes
 app.use(require('./routes/index'));
 app.use(require('./routes/authentication'));
@@ -108,10 +100,10 @@ app.use('/api',require('./routes/dataServiceProductorRegisterPiscicola'));
 app.use('/api',require('./routes/dataServiceAuth'));
 
 
+
 app.use ((err, req, res, next) => { 
     res.send ('timed out'); 
-  })
-
+})
 
 //Public
 //Este es el que funciona con las otras imagenes 
@@ -122,6 +114,7 @@ app.use(express.static(path.join(__dirname + '/public/')));
 app.set('views', path.join(__dirname, 'views'));
 dataa = path.join(__dirname + '/public/');
 
+console.log('********SE EJECUTA *******')
 
 app.listen(app.get('port'), ()=>{
     console.log('SERVER ON PORT', app.get('port'));

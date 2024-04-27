@@ -9,15 +9,16 @@ passport.use('local.signin', new localStrategy({
     passwordField: 'password',
     passReqToCallback: true
 }, async (req, username, password, done) => {
-    //console.log(req.body)
+    console.log(`BODY ${username} ${password}`)
 
     const rows = await pool.query('SELECT * FROM users WHERE username = ?', [username]);
 
     if (rows.length > 0){
         const user = rows[0];
         const validPassword = await helpers.matchPassword(password, user.password);
+
         if(validPassword){
-            console.log('retorna el user')
+            console.log('retorna el user', user)
             return done(null, user);
         }else{
             console.log('retorna el mensaje de error')
@@ -57,7 +58,7 @@ passport.use('local.signup', new localStrategy({
     } else{  
         console.log('El usuario ya existe en la base de datos');
         req.flash('message', 'El usuario ya existe en la base de datos');
-        return done(null);
+        return done(null, false, req.flash('message', 'El usuario ya existe en la base de datos'));
     }  
 }));
 
