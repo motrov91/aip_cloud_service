@@ -16,7 +16,6 @@ cloudinary.config({
 //Creando una finca
 
 router.post("/newFarm", async (req, res, next) => {
-  console.log('REQ.BODY', req.body);
   let result = {};
   let imgSignat = {};
   const imgBeneficiario = req.body.img_beneficiario;

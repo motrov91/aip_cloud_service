@@ -114,8 +114,6 @@ app.use(express.static(path.join(__dirname + '/public/')));
 app.set('views', path.join(__dirname, 'views'));
 dataa = path.join(__dirname + '/public/');
 
-console.log('********SE EJECUTA *******')
-
 app.listen(app.get('port'), ()=>{
     console.log('SERVER ON PORT', app.get('port'));
 });
