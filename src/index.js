@@ -56,7 +56,7 @@ app.use(session({
     secret:'fundsession',
     resave: false,
     saveUninitialized: false,
-    cookie: {secure: true},
+    cookie: {secure: false},
     store: sessionStore
 }))
 
