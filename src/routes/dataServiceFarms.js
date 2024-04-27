@@ -61,8 +61,7 @@ router.post("/newFarm", async (req, res, next) => {
         //crop: "fill",
       },
       function (error, result) {
-        console.log("error", error);
-        console.log("result", result);
+        
       }
     );
   }
