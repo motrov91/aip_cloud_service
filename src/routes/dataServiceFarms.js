@@ -16,6 +16,7 @@ cloudinary.config({
 //Creando una finca
 
 router.post("/newFarm", async (req, res, next) => {
+  console.log('******REQ.BODY******', req.body);
   let result = {};
   let imgSignat = {};
   const imgBeneficiario = req.body.img_beneficiario;
@@ -25,14 +26,14 @@ router.post("/newFarm", async (req, res, next) => {
 
   if (req.body.img_beneficiario != "") {
     const imagen = req.body.img_beneficiario;
-    let uploadStr = imagen;
+    let uploadStr = 'data:image/jpeg;base64,' + imagen;
 
     result = await cloudinary.v2.uploader.upload(
-      'data:image/jpeg;base64,' + uploadStr,
+      uploadStr,
       {
         overwrite: true,
         invalidate: true,
-        width: 810,
+        width: 810, 
         height: 656,
         //crop: "crop",
       },
@@ -47,12 +48,9 @@ router.post("/newFarm", async (req, res, next) => {
 
   if (req.body.imgSignature != "") {
     const imgSignature = req.body.imgSignature;
-    let uploadStr = imgSignature;
+    let uploadStr = 'data:image/jpeg;base64,' + imgSignature;
     imgSignat = await cloudinary.v2.uploader.upload(
-      /*
-        Se concatena 'data_image/jpeg;base64' para tratar la imagen que llega en formato base64
-      */
-      'data:image/jpeg;base64,' + uploadStr,
+      uploadStr,
       {
         overwrite: true,
         invalidate: true,
@@ -61,7 +59,8 @@ router.post("/newFarm", async (req, res, next) => {
         //crop: "fill",
       },
       function (error, result) {
-        
+        console.log("error", error);
+        console.log("result", result);
       }
     );
   }
