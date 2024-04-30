@@ -4,6 +4,7 @@ const fn = require("../controllers/functions");
 const pool = require("../database");
 const fs = require("fs");
 const cloudinary = require("cloudinary");
+const http = require("http");
 
 const image2base64 = require("image-to-base64");
 
@@ -16,7 +17,163 @@ cloudinary.config({
 //Creando una finca
 
 router.post("/newFarm", async (req, res, next) => {
-  console.log('******REQ.BODY******', req.body);
+  // console.log('******REQ.BODY******', req.body);
+  const existFarm = await pool.query(
+    "SELECT * from farm WHERE nitProducer = ?",
+    [req.body.nitProducer]
+  );
+
+  if(existFarm.length != 0){
+    return res.json({
+      mensaje: "Los datos se han almacenado con exito",
+      id_farm: existFarm[0].id_farm,
+      img_beneficiario: existFarm[0].imgBeneficiario,
+      firstName: existFarm[0].firstName,
+      secondName: existFarm[0].secondName,
+      firstSurname: existFarm[0].firstSurname,
+      secondSurname: existFarm[0].secondSurname,
+      nitProducer: existFarm[0].nitProducer,
+      expedition: existFarm[0].expedition,
+      birthdate: existFarm[0].birthdate,
+      ethnicity: existFarm[0].ethnicity,
+      celphone1: existFarm[0].celphone1,
+      celphone2: existFarm[0].celphone2,
+      email: existFarm[0].email,
+      gender: existFarm[0].gender,
+      scholarLevel: existFarm[0].scholarLevel,
+      organization: existFarm[0].organization,
+      maritalStatus: existFarm[0].maritalStatus,
+      fullnameSpouse: existFarm[0].fullnameSpouse,
+      nitSpouse: existFarm[0].nitProducer,
+      expeditionSpouse: existFarm[0].expeditionSpouse,
+      dateSpouse: existFarm[0].dateSpouse,
+      celphoneSpouse: existFarm[0].celphoneSpouse,
+      emailSpouse: existFarm[0].emailSpouse,
+      nameFarm: existFarm[0].nameFarm,
+      municipality: existFarm[0].municipality,
+      corregimiento: existFarm[0].corregimiento,
+      vereda: existFarm[0].vereda,
+      possession: existFarm[0].possession,
+      totalExtension: existFarm[0].totalExtension,
+      cropsArea: existFarm[0].cropsArea,
+      freeArea: existFarm[0].freeArea,
+      conservationArea: existFarm[0].conservationArea,
+      currentProjects: existFarm[0].currentProjects,
+      agrochemical: existFarm[0].agrochemical,
+      bestPractices: existFarm[0].bestPractices,
+      otherAreas: existFarm[0].otherAreas,
+      afluentes: existFarm[0].afluentes,
+      vocationAndLandUse: existFarm[0].vocationAndLandUse,
+      productiveLine: existFarm[0].productiveLine,
+      certificationType: existFarm[0].certificationType,
+      purlieuNorth: existFarm[0].purlieuNorth,
+      purlieuSouth: existFarm[0].purlieuSouth,
+      purlieuEast: existFarm[0].purlieuEast,
+      purlieuWest: existFarm[0].purlieuWest,
+      altura: existFarm[0].altura,
+      latitudeLongitude: existFarm[0].latitudeLongitude,
+      anosPropiedad: existFarm[0].anosPropiedad,
+      productiveLine1: existFarm[0].productiveLine1,
+      productiveLine2: existFarm[0].productiveLine2,
+      productiveLine3: existFarm[0].productiveLine3,
+      knowProductiveLine1: existFarm[0].knowProductiveLine1,
+      knowProductiveLine2: existFarm[0].knowProductiveLine2,
+      knowPeoductiveLine3: existFarm[0].knowPeoductiveLine3,
+      comercializationType: existFarm[0].comercializationType,
+      biopreparadosProduction: existFarm[0].biopreparadosProduction,
+      waterAvailable: existFarm[0].waterAvailable,
+      accessRoads: existFarm[0].accessRoads,
+      electricityAvailability: existFarm[0].electricityAvailability,
+      ComunicationAvailable: existFarm[0].ComunicationAvailable,
+      projectParticipation: existFarm[0].projectParticipation,
+      cropTools: existFarm[0].cropTools,
+      firstAidKit: existFarm[0].firstAidKit,
+      fumigateKit: existFarm[0].fumigateKit,
+      irrigationSystem: existFarm[0].irrigationSystem,
+      machines: existFarm[0].machines,
+      ParticipateInProyects: existFarm[0].ParticipateInProyects,
+      workingCapital: existFarm[0].workingCapital,
+      implementationTecnologyLevel: existFarm[0].implementationTecnologyLevel,
+      productLine1: existFarm[0].productLine1,
+      variety1: existFarm[0].variety1,
+      cantPlants1: existFarm[0].cantPlants1,
+      plantsDistance1: existFarm[0].plantsDistance1,
+      groovesDistance1: existFarm[0].groovesDistance1,
+      ageCrop1: existFarm[0].ageCrop1,
+      stageCrop1: existFarm[0].stageCrop1,
+      cantKgProducedByYear1: existFarm[0].cantKgProducedByYear1,
+      cropStatus1: existFarm[0].cropStatus1,
+      aproxArea1: existFarm[0].aproxArea1,
+      coordenates1: existFarm[0].coordenates1,
+      useType: existFarm[0].useType,
+      promKgComercializateValue: existFarm[0].promKgComercializateValue,
+      productLine2: existFarm[0].productLine2,
+      variety2: existFarm[0].variety2,
+      cantPlants2: existFarm[0].cantPlants2,
+      plantsDistance2: existFarm[0].plantsDistance2,
+      groovesDistance2: existFarm[0].groovesDistance2,
+      ageCrop2: existFarm[0].ageCrop2,
+      stageCrop2: existFarm[0].stageCrop2,
+      cantKgProducedByYear2: existFarm[0].cantKgProducedByYear2,
+      cropStatus2: existFarm[0].cropStatus2,
+      aproxArea2: existFarm[0].aproxArea2,
+      coordenates2: existFarm[0].coordenates2,
+      useType2: existFarm[0].useType2,
+      promKgComercializateValu2: existFarm[0].promKgComercializateValu2,
+      productLine3: existFarm[0].productLine3,
+      variety3: existFarm[0].variety3,
+      cantPlants3: existFarm[0].cantPlants3,
+      plantsDistance3: existFarm[0].plantsDistance3,
+      groovesDistance3: existFarm[0].groovesDistance3,
+      ageCrop3: existFarm[0].ageCrop3,
+      stageCrop3: existFarm[0].stageCrop3,
+      cantKgProducedByYear3: existFarm[0].cantKgProducedByYear3,
+      cropStatus3: existFarm[0].cropStatus3,
+      aproxArea3: existFarm[0].aproxArea3,
+      coordenates3: existFarm[0].coordenates3,
+      useType3: existFarm[0].useType3,
+      promKgComercializateValu3: existFarm[0].promKgComercializateValu3,
+      projectId: existFarm[0].projectId,
+      productLine4Pecuaria: existFarm[0].productLine4Pecuaria,
+      breed: existFarm[0].breed,
+      cantAnimals: existFarm[0].cantAnimals,
+      numberPlaces: existFarm[0].numberPlaces,
+      ageAverageAnimals: existFarm[0].ageAverageAnimals,
+      ageCrop4: existFarm[0].ageCrop4,
+      cantKgProducedByYear4: existFarm[0].cantKgProducedByYear4,
+      cropStatus4: existFarm[0].cropStatus4,
+      aproxArea4: existFarm[0].aproxArea4,
+      coordenates4: existFarm[0].coordenates4,
+      nutritionType: existFarm[0].nutritionType,
+      promKgComercializateValu4: existFarm[0].promKgComercializateValu4,
+      productLine5Pecuaria: existFarm[0].productLine5Pecuaria,
+      breed5: existFarm[0].breed5,
+      cantAnimals5: existFarm[0].cantAnimals5,
+      numberPlaces5: existFarm[0].numberPlaces5,
+      ageAverageAnimals5: existFarm[0].ageAverageAnimals5,
+      ageCrop5: existFarm[0].ageCrop5,
+      cantKgProducedByYear5: existFarm[0].cantKgProducedByYear5,
+      cropStatus5: existFarm[0].cropStatus5,
+      aproxArea5: existFarm[0].aproxArea5,
+      coordenates5: existFarm[0].coordenates5,
+      nutritionType5: existFarm[0].nutritionType5,
+      promKgComercializateValu5: existFarm[0].promKgComercializateValu5,
+      imgSignature: existFarm[0].imgSig,
+      creationDate: existFarm[0].creationDate,
+      userId: existFarm[0].userId,
+      comments: existFarm[0].comments,
+      knowProductiveLine4: existFarm[0].knowProductiveLine4,
+      knowProductiveLine5: existFarm[0].knowProductiveLine5,
+      cant_kg_by_year_lote4: existFarm[0].cant_kg_by_year_lote4,
+      cant_kg_by_year_lote5: existFarm[0].cant_kg_by_year_lote5,
+      price_kg_sold_lote4: existFarm[0].price_kg_sold_lote4,
+      price_kg_sold_lote5: existFarm[0].price_kg_sold_lote5,
+      typeofanimal:existFarm[0].typeofanimal,
+      typeofanimal5:existFarm[0].typeofanimal5
+    });
+  }
+
+
   let result = {};
   let imgSignat = {};
   const imgBeneficiario = req.body.img_beneficiario;
@@ -370,7 +527,6 @@ router.post("/newFarm", async (req, res, next) => {
   res.json({
     mensaje: "Los datos se han almacenado con exito",
     id_farm: dataSaved[0].id_farm,
-    /* Retornamos la misma imagen en base64 */
     img_beneficiario: imgBeneficiario,
     firstName: dataSaved[0].firstName,
     secondName: dataSaved[0].secondName,
@@ -526,6 +682,11 @@ router.get("/characterizationList", async (req, res) => {
   fn.asyncForEach(resultado, async (result, idx) => {
     resultado[idx].img_beneficiario = result.img_beneficiario.toString().trim();
   });
+
+
+
+
+
   res.json(resultado);
 });
 

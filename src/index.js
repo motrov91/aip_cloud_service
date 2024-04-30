@@ -52,13 +52,13 @@ app.set('view engine', '.hbs');
 //Middleware
 const sessionStore = new MySQLStore(database);
 app.set('trust proxy', 1)
-app.use(session({
-    secret:'fundsession',
-    resave: false,
-    saveUninitialized: false,
-    cookie: {secure: false},
-    store: sessionStore
-}))
+// app.use(session({
+//     secret:'fundsession',
+//     resave: false,
+//     saveUninitialized: false,
+//     cookie: {secure: false},
+//     store: sessionStore
+// }))
 
 
 app.use(flash()); 
@@ -68,7 +68,7 @@ app.use(express.json({limit: '50mb'}));
 app.use(express.urlencoded({limit: '50mb', extended: true}));
 app.use(haltOnTimedout)
 app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.session());
 
 
 app.use(multer({
@@ -79,8 +79,8 @@ app.use(multer({
 
 //global variables
 app.use((req, res, next) => {
-    app.locals.success = req.flash('success');
-    app.locals.message = req.flash('message');
+    // app.locals.success = req.flash('success');
+    // app.locals.message = req.flash('message');
     app.locals.user = req.user;
     next();
 })
