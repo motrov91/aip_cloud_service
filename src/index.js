@@ -4,9 +4,27 @@ const expresshbs = require('express-handlebars').engine;
 const path = require('path');
 const passport = require('passport'); 
 const flash = require('connect-flash');
+// const session = require('express-session');
+// const MySQLStore = require('express-mysql-session')(session);
+const multer = require('multer');
+// const mysql = require('mysql');
+const cors = require('cors');
+
+const mysql = require('mysql2/promise');
 const session = require('express-session');
 const MySQLStore = require('express-mysql-session')(session);
-const multer = require('multer');
+
+const options = {
+    host: 'roundhouse.proxy.rlwy.net',
+    port: 55714,
+    user: 'root',
+    password: 'IqpROYyryIhMjBZkWgiZOqvcqjTmmmNm',
+    database: 'railway'
+};
+
+const connection = mysql.createConnection(options); // or mysql.createPool(options);
+const sessionStore = new MySQLStore({}/* session store options */, connection);
+
 
 const timeout = require('connect-timeout')
 
@@ -15,6 +33,8 @@ const haltOnTimedout = (req, res, next) => {
       next();
     }
   }
+
+  
 
 
 const { database } = require('./keys');
@@ -26,7 +46,8 @@ const { Server } = require('http');
     filename: (req, file, cb) => {
         cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
     }
-}) 
+    }) 
+    
 
 
 //initializations
@@ -36,6 +57,9 @@ require('./lib/passport');
 //Settings
 app.set('port', process.env.PORT || 4000);
 app.set('json spaces', 2)
+
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: true }));
 
 
 app.set('views', path.join(__dirname, 'views'));
@@ -50,16 +74,17 @@ app.set('view engine', '.hbs');
 
 
 //Middleware
-const sessionStore = new MySQLStore(database);
-app.set('trust proxy', 1)
-// app.use(session({
-//     secret:'fundsession',
-//     resave: false,
-//     saveUninitialized: false,
-//     cookie: {secure: false},
-//     store: sessionStore
-// }))
+// const sessionStore = new MySQLStore(database);
+// app.set('trust proxy', 1)
+app.use(session({
+    secret:'fundsession',
+    resave: false,
+    saveUninitialized: false,
+    cookie: {secure: false},
+    store: sessionStore
+}))
 
+app.use(cors());
 
 app.use(flash()); 
 app.use(morgan('dev'));
@@ -68,7 +93,7 @@ app.use(express.json({limit: '50mb'}));
 app.use(express.urlencoded({limit: '50mb', extended: true}));
 app.use(haltOnTimedout)
 app.use(passport.initialize());
-// app.use(passport.session());
+app.use(passport.session());
 
 
 app.use(multer({

@@ -5,6 +5,10 @@ const pool = require("../database");
 const fs = require("fs");
 const cloudinary = require("cloudinary");
 const http = require("http");
+const path = require('path');
+const xl = require('excel4node');
+let PDFDocument = require('pdfkit');
+const imageToBase64 = require('image-to-base64');
 
 const image2base64 = require("image-to-base64");
 
@@ -14,8 +18,34 @@ cloudinary.config({
   api_secret: "8iQ0ASIr6lRkyYstUjd2mnrlYL4",
 });
 
-//Creando una finca
+/* ----------------- Configuración para descargar archivos en excel registor de productores------------------ */
+const wb = new xl.Workbook({
+  dateFormat: 'm/d/yy hh:mm:ss'
+});
 
+const ws = wb.addWorksheet('Sheet 1');
+let style = wb.createStyle({
+    font: {
+      size: 12,
+      bold: true,
+      color: '000000'
+    }
+  })
+
+/* ----------------- Configuración para descargar archivos en excel caracterizacion de predios------------------ */
+const wf = new xl.Workbook({
+  dateFormat: 'm/d/yy hh:mm:ss'
+});
+const cp = wf.addWorksheet('Sheet 2');
+let styles = wf.createStyle({
+  font: {
+    size: 12,
+    bold: true,
+    color: '000000'
+  }
+})
+
+//Creando una finca
 router.post("/newFarm", async (req, res, next) => {
   // console.log('******REQ.BODY******', req.body);
   const existFarm = await pool.query(
@@ -674,20 +704,15 @@ router.post("/newFarm", async (req, res, next) => {
 });
 
 //Listar todas las fincas
-router.get("/characterizationList", async (req, res) => {
-  let resultado = await pool.query("SELECT * FROM farm");
-
-  console.log('resultado',resultado)
+router.get("/characterizationListByProject/:id", async (req, res) => {
+  let resultado = await pool.query("SELECT * FROM farm WHERE projectId = ?", [req.params.id] );
   
   fn.asyncForEach(resultado, async (result, idx) => {
     resultado[idx].img_beneficiario = result.img_beneficiario.toString().trim();
   });
 
 
-
-
-
-  res.json(resultado);
+  res.json({resultado});
 });
 
 router.post("/characterizationListByUser", async (req, res) => {
@@ -952,5 +977,3091 @@ router.put("/updateFarm/:id", async (req, res, next) => {
     next();
   }
 });
+
+//Descarga de PDF
+router.get('/downloadExcelByCharacterization/:id', async (req, res, next) => {
+  try {
+    console.log('ingresa a la edicion', req.params.id);
+
+    setTimeout (async() => { 
+      if (req.timedout) { 
+        next (); 
+      } 
+      else { 
+        
+          
+          const charaterizationFarmList = await pool.query('select * from farm WHERE projectId = ?', req.params.id) 
+          
+          //console.log('CARACTERIZATION', charaterizationFarmList )
+          cp.cell(1,1)
+          .string('Proyecto')
+          .style(styles)
+          cp.cell(1,2)
+          .string('Cedula')
+          .style(styles)
+          cp.cell(1,3)
+          .string('Primer Nombre')
+          .style(styles)
+          cp.cell(1,4)
+          .string('Segundo Nombre')
+          .style(styles)
+          cp.cell(1,5)
+          .string('Primer Apellido')
+          .style(styles)
+          cp.cell(1,6)
+          .string('Segundo Apellido')
+          .style(styles)
+          cp.cell(1,7)
+          .string('Fecha de nacimiento')
+          .style(styles)
+          cp.cell(1,8)
+          .string('Etnia')
+          .style(styles)
+          cp.cell(1,9)
+          .string('Celular1')
+          .style(styles)
+          cp.cell(1,10)
+          .string('Celular2')
+          .style(styles)
+          cp.cell(1,11)
+          .string('Email')
+          .style(styles)
+          cp.cell(1,12)
+          .string('Género')
+          .style(styles)
+          cp.cell(1,13)
+          .string('Nivel Escolar')
+          .style(styles)
+          cp.cell(1,14)
+          .string('Organizaciones')
+          .style(styles)
+          cp.cell(1,15)
+          .string('Estado Civil')
+          .style(styles)
+          cp.cell(1,16)
+          .string('Nombre completo conyuge')
+          .style(styles)
+          cp.cell(1,17)
+          .string('Cedula Conyuge')
+          .style(styles)
+          cp.cell(1,18)
+          .string('Lugar de expedición cedula conyuge')
+          .style(styles)
+          cp.cell(1,19)
+          .string('Fecha de nacimiento conyuge')
+          .style(styles)
+          cp.cell(1,20)
+          .string('Celular conyuge')
+          .style(styles)
+          cp.cell(1,21)
+          .string('Email conyuge')
+          .style(styles)
+          cp.cell(1,22)
+          .string('Nombre de la finca')
+          .style(styles)
+          cp.cell(1,23)
+          .string('Municipio')
+          .style(styles)
+          cp.cell(1,24)
+          .string('Corregimiento')
+          .style(styles)
+          cp.cell(1,25)
+          .string('Vereda')
+          .style(styles)
+          cp.cell(1,26)
+          .string('Titulo de posesión')
+          .style(styles)
+          cp.cell(1,27)
+          .string('Extensión total del terreno')
+          .style(styles)
+          cp.cell(1,28)
+          .string('Area Cultivada')
+          .style(styles)
+          cp.cell(1,29)
+          .string('Area de Libre Destinación')
+          .style(styles)
+          cp.cell(1,30)
+          .string('Area de conservación')
+          .style(styles)
+          cp.cell(1,31)
+          .string('Presencia de proyectos actuales')
+          .style(styles)
+          cp.cell(1,32)
+          .string('Manejo de agroquimicos')
+          .style(styles)
+          cp.cell(1,33)
+          .string('Implementación de buenas prácticas')
+          .style(styles)
+          cp.cell(1,34)
+          .string('Area de otros usos')
+          .style(styles)
+          cp.cell(1,35)
+          .string('Metros Líneales de Afluentes')
+          .style(styles)
+          ws.cell(1,36)
+          .string('Uso de Suelo y su Vocación')
+          .style(styles)
+          cp.cell(1,37)
+          .string('Linea Productiva mas Implementada')
+          .style(styles)
+          cp.cell(1,38)
+          .string('Tipo de certificación')
+          .style(styles)
+          cp.cell(1,39)
+          .string('Lindero al Norte')
+          .style(styles)
+          cp.cell(1,40)
+          .string('Lindero al Sur')
+          .style(styles)
+          cp.cell(1,41)
+          .string('Lindero al Oriente')
+          .style(styles)
+          cp.cell(1,42)
+          .string('Lindero al Occidente')
+          .style(styles)
+          cp.cell(1,43)
+          .string('Altura')
+          .style(styles)
+          cp.cell(1,44)
+          .string('Latitud')
+          .style(styles)
+          cp.cell(1,45)
+          .string('Longitud')
+          .style(styles)
+          cp.cell(1,46)
+          .string('Años en la propiedad')
+          .style(styles)
+          cp.cell(1,47)
+          .string('Linea Productiva 1')
+          .style(styles)
+          cp.cell(1,48)
+          .string('Linea Productiva 2')
+          .style(styles)
+          cp.cell(1,49)
+          .string('Linea Productiva 3')
+          .style(styles)
+          cp.cell(1,50)
+          .string('Linea Productiva 4')
+          .style(styles)
+          cp.cell(1,51)
+          .string('Linea Productiva 5')
+          .style(styles)
+          cp.cell(1,52)
+          .string('Conocimiento de la linea productiva 1')
+          .style(styles)
+          cp.cell(1,53)
+          .string('Conocimiento de la linea productiva 2')
+          .style(styles)
+          cp.cell(1,54)
+          .string('Conocimiento de la linea productiva 3')
+          .style(styles)
+          cp.cell(1,55)
+          .string('Conocimiento de la linea productiva 4')
+          .style(styles)
+          cp.cell(1,56)
+          .string('Conocimiento de la linea productiva 5')
+          .style(styles)
+          cp.cell(1,57)
+          .string('Tipo de comercialización')
+          .style(styles)
+          cp.cell(1,58)
+          .string('Productos de biopreparados')
+          .style(styles)
+          cp.cell(1,59)
+          .string('Disponibilidad de agua')
+          .style(styles)
+          cp.cell(1,60)
+          .string('Disponibilidad de vías de acceso')
+          .style(styles)
+          cp.cell(1,61)
+          .string('Disponibilidad de electricidad')
+          .style(styles)
+          ws.cell(1,62)
+          .string('Disponibilidad de redes de comunicación')
+          .style(styles)
+          cp.cell(1,63)
+          .string('Disponibilidad para participar en proyectos de asistencia técnica')
+          .style(styles)
+          cp.cell(1,64)
+          .string('Variedad de herramientas básicas de uso en el cultivo')
+          .style(styles)
+          cp.cell(1,65)
+          .string('Tenencia de botiquin de primeros auxilios')
+          .style(styles)
+          cp.cell(1,66)
+          .string('Tenencia de equipos de fumigación')
+          .style(styles)
+          cp.cell(1,67)
+          .string('Tenencia de sistemas de riego')
+          .style(styles)
+          cp.cell(1,68)
+          .string('Tenencia de maquinaria libiana ')
+          .style(styles)
+          cp.cell(1,69)
+          .string('Interes en participar en proyectos de asistencia técnica')
+          .style(styles)
+          cp.cell(1,70)
+          .string('Origen del capital de trabajo')
+          .style(styles)
+          cp.cell(1,71)
+          .string('Grado de implementación de tecnologías de producción')
+          .style(styles)
+          cp.cell(1,72)
+          .string('Linea Productiva 1')
+          .style(styles)
+          cp.cell(1,73)
+          .string('Variedad')
+          .style(styles)
+          cp.cell(1,74)
+          .string('Cantidad de plantulas')
+          .style(styles)
+          cp.cell(1,75)
+          .string('Distancia entre surcos')
+          .style(styles)
+          cp.cell(1,76)
+          .string('Distancia entre plantas')
+          .style(styles)
+          cp.cell(1,77)
+          .string('Edad de cultivo (Años)')
+          .style(styles)
+          cp.cell(1,78)
+          .string('Etapa del cultivo')
+          .style(styles)
+          cp.cell(1,79)
+          .string('Cantidad de Kilogramos Producidos por Año')
+          .style(styles)
+          cp.cell(1,80)
+          .string('Estado General del cultivo')
+          .style(styles)
+          cp.cell(1,81)
+          .string('Area Aproximada (m2)')
+          .style(styles)
+          cp.cell(1,82)
+          .string('Latitud Lote1')
+          .style(styles)
+          cp.cell(1,83)
+          .string('Longitud Lote1')
+          .style(styles)
+          cp.cell(1,84)
+          .string('Tipo de manejo')
+          .style(styles)
+          cp.cell(1,85)
+          .string('Valor promedo de KG comercializado en pesos en el año')
+          .style(styles)
+          cp.cell(1,86)
+          .string('Linea Productiva 2')
+          .style(styles)
+          cp.cell(1,87)
+          .string('Variedad')
+          .style(styles)
+          cp.cell(1,88)
+          .string('Cantidad de plantulas')
+          .style(styles)
+          cp.cell(1,89)
+          .string('Distancia entre surcos')
+          .style(styles)
+          cp.cell(1,90)
+          .string('Distancia entre plantas')
+          .style(styles)
+          cp.cell(1,91)
+          .string('Edad de cultivo (Años)')
+          .style(styles)
+          cp.cell(1,92)
+          .string('Etapa del cultivo')
+          .style(styles)
+          cp.cell(1,93)
+          .string('Cantidad de Kilogramos Producidos por Año')
+          .style(styles)
+          cp.cell(1,94)
+          .string('Estado General del cultivo')
+          .style(styles)
+          cp.cell(1,95)
+          .string('Area Aproximada (m2)')
+          .style(styles)
+          cp.cell(1,96)
+          .string('Latitud Lote2')
+          .style(styles)
+          cp.cell(1,97)
+          .string('Longitud Lote2')
+          .style(styles)
+          cp.cell(1,98)
+          .string('Tipo de manejo')
+          .style(styles)
+          cp.cell(1,99)
+          .string('Valor promedo de KG comercializado en pesos en el año')
+          .style(styles)
+          cp.cell(1,100)
+          .string('Linea Productiva 3')
+          .style(styles)
+          cp.cell(1,101)
+          .string('Variedad')
+          .style(styles)
+          cp.cell(1,102)
+          .string('Cantidad de plantulas')
+          .style(styles)
+          cp.cell(1,103)
+          .string('Distancia entre surcos')
+          .style(styles)
+          cp.cell(1,104)
+          .string('Distancia entre plantas')
+          .style(styles)
+          cp.cell(1,105)
+          .string('Edad de cultivo (Años)')
+          .style(styles)
+          cp.cell(1,106)
+          .string('Etapa del cultivo')
+          .style(styles)
+          cp.cell(1,107)
+          .string('Cantidad de Kilogramos Producidos por Año')
+          .style(styles)
+          cp.cell(1,108)
+          .string('Estado General del cultivo')
+          .style(styles)
+          cp.cell(1,109)
+          .string('Area Aproximada (m2)')
+          .style(styles)
+          cp.cell(1,110)
+          .string('Latitud Lote3')
+          .style(styles)
+          cp.cell(1,111)
+          .string('Longitud Lote3')
+          .style(styles)
+          cp.cell(1,112)
+          .string('Tipo de manejo')
+          .style(styles)
+          cp.cell(1,113)
+          .string('Valor promedo de KG comercializado en pesos en el año')
+          .style(styles)
+          cp.cell(1,114)
+          .string('Linea Productiva 4 (Pecuario)')
+          .style(styles)
+          cp.cell(1,115)
+          .string('Raza')
+          .style(styles)
+          cp.cell(1,116)
+          .string('Cantidad de animales')
+          .style(styles)
+          cp.cell(1,117)
+          .string('numero de corrales')
+          .style(styles)
+          cp.cell(1,118)
+          .string('Edad promedio de los animales')
+          .style(styles)
+          cp.cell(1,119)
+          .string('Etapa productiva')
+          .style(styles)
+          cp.cell(1,120)
+          .string('Cantidad de Kilogramos Producidos por Año')
+          .style(styles)
+          cp.cell(1,121)
+          .string('Estado General del cultivo')
+          .style(styles)
+          cp.cell(1,122)
+          .string('Area Aproximada (m2)')
+          .style(styles)
+          cp.cell(1,123)
+          .string('Latitud Lote4')
+          .style(styles)
+          cp.cell(1,124)
+          .string('Longitud Lote4')
+          .style(styles)
+          cp.cell(1,125)
+          .string('Tipo de nutrición')
+          .style(styles)
+          cp.cell(1,126)
+          .string('Valor promedo de KG comercializado en pesos en el año')
+          .style(styles)
+          cp.cell(1,127)
+          .string('Linea Productiva 5 (Pecuario)')
+          .style(styles)
+          cp.cell(1,128)
+          .string('Raza')
+          .style(styles)
+          cp.cell(1,129)
+          .string('Cantidad de animales')
+          .style(styles)
+          cp.cell(1,130)
+          .string('numero de corrales')
+          .style(styles)
+          cp.cell(1,131)
+          .string('Edad promedio de los animales')
+          .style(styles)
+          cp.cell(1,132)
+          .string('Etapa productiva')
+          .style(styles)
+          cp.cell(1,133)
+          .string('Cantidad de Kilogramos Producidos por Año')
+          .style(styles)
+          cp.cell(1,134)
+          .string('Estado General del cultivo')
+          .style(styles)
+          cp.cell(1,135)
+          .string('Area Aproximada (m2)')
+          .style(styles)
+          cp.cell(1,136)
+          .string('Latitud Lote5')
+          .style(styles)
+          cp.cell(1,137)
+          .string('Longitud Lote5')
+          .style(styles)
+          cp.cell(1,138)
+          .string('Tipo de nutrición')
+          .style(styles)
+          cp.cell(1,139)
+          .string('Valor promedo de KG comercializado en pesos en el año')
+          .style(styles)
+          cp.cell(1,140)
+          .string('Fecha de caracterización de predio')
+          .style(styles)
+          cp.cell(1,141)
+          .string('Encuestador')
+          .style(styles)
+          cp.cell(1,142)
+          .string('Comentarios')
+          .style(styles)
+          
+
+          for(let i=0; i<charaterizationFarmList.length; i++){
+              //console.log('aaa', charaterizationFarmList[i].latitudeLongitude);
+              let arrayCoordenates = charaterizationFarmList[i].latitudeLongitude.split(',');
+              let arrayCoordenates1 = charaterizationFarmList[i].coordenates1.split(',');
+              let arrayCoordenates2 = charaterizationFarmList[i].coordenates2.split(',');
+              let arrayCoordenates3 = charaterizationFarmList[i].coordenates3.split(',');
+              let arrayCoordenates4 = charaterizationFarmList[i].coordenates4.split(',');
+              let arrayCoordenates5 = charaterizationFarmList[i].coordenates5.split(',');
+              const userPollster = await pool.query('select * from users WHERE id = ?', [charaterizationFarmList[i].userId])
+              const project = await pool.query('select * from projects WHERE id_project = ?', [req.params.id])
+              //console.log('project', project)
+              
+              cp.cell(2+i, 1)
+              .string(project[0].nom_proyecto)
+              cp.cell(2+i, 2)
+              .string(charaterizationFarmList[i].nitProducer)
+              cp.cell(2+i, 3)
+              .string(charaterizationFarmList[i].firstName)
+              cp.cell(2+i, 4)
+              .string(charaterizationFarmList[i].secondName)
+              cp.cell(2+i, 5)
+              .string(charaterizationFarmList[i].firstSurname)
+              cp.cell(2+i, 6)
+              .string(charaterizationFarmList[i].secondSurname)
+              cp.cell(2+i, 7)
+              .string(charaterizationFarmList[i].birthdate)
+              cp.cell(2+i, 8)
+              .string(charaterizationFarmList[i].ethnicity)
+              cp.cell(2+i, 9)
+              .string(charaterizationFarmList[i].celphone1)
+              cp.cell(2+i, 10)
+              .string(charaterizationFarmList[i].celphone2)
+              cp.cell(2+i, 11)
+              .string(charaterizationFarmList[i].email)
+              cp.cell(2+i, 12)
+              .string(charaterizationFarmList[i].gender)
+              cp.cell(2+i, 13)
+              .string(charaterizationFarmList[i].scholarLevel)
+              cp.cell(2+i, 14)
+              .string(charaterizationFarmList[i].organization)
+              cp.cell(2+i, 15)
+              .string(charaterizationFarmList[i].maritalStatus)
+              cp.cell(2+i, 16)
+              .string(charaterizationFarmList[i].fullnameSpouse)
+              cp.cell(2+i, 17)
+              .string(charaterizationFarmList[i].nitSpouse)
+              cp.cell(2+i, 18)
+              .string(charaterizationFarmList[i].expeditionSpouse)
+              cp.cell(2+i, 19)
+              .string(charaterizationFarmList[i].dateSpouse)
+              cp.cell(2+i, 20)
+              .string(charaterizationFarmList[i].celphoneSpouse)
+              cp.cell(2+i, 21)
+              .string(charaterizationFarmList[i].emailSpouse)
+              cp.cell(2+i, 22)
+              .string(charaterizationFarmList[i].nameFarm)
+              cp.cell(2+i, 23)
+              .string(charaterizationFarmList[i].municipality)
+              cp.cell(2+i, 24)
+              .string(charaterizationFarmList[i].corregimiento)
+              cp.cell(2+i, 25)
+              .string(charaterizationFarmList[i].vereda)
+              cp.cell(2+i, 26)
+              .string(charaterizationFarmList[i].possession)
+              cp.cell(2+i, 27)
+              .string(charaterizationFarmList[i].totalExtension)
+              cp.cell(2+i, 28)
+              .string(charaterizationFarmList[i].cropsArea)
+              cp.cell(2+i, 29)
+              .string(charaterizationFarmList[i].freeArea)
+              cp.cell(2+i, 30)
+              .string(charaterizationFarmList[i].conservationArea)
+              cp.cell(2+i, 31)
+              .string(charaterizationFarmList[i].currentProjects)
+              cp.cell(2+i, 32)
+              .string(charaterizationFarmList[i].agrochemical)
+              cp.cell(2+i, 33)
+              .string(charaterizationFarmList[i].bestPractices)
+              cp.cell(2+i, 34)
+              .string(charaterizationFarmList[i].otherAreas)
+              cp.cell(2+i, 35)
+              .string(charaterizationFarmList[i].afluentes)
+              cp.cell(2+i, 36)
+              .string(charaterizationFarmList[i].vocationAndLandUse)
+              cp.cell(2+i, 37)
+              .string(charaterizationFarmList[i].productiveLine)
+              cp.cell(2+i, 38)
+              .string(charaterizationFarmList[i].certificationType)
+              cp.cell(2+i, 39)
+              .string(charaterizationFarmList[i].purlieuNorth)
+              cp.cell(2+i, 40)
+              .string(charaterizationFarmList[i].purlieuSouth)
+              cp.cell(2+i, 41)
+              .string(charaterizationFarmList[i].purlieuEast)
+              cp.cell(2+i, 42)
+              .string(charaterizationFarmList[i].purlieuWest)
+              cp.cell(2+i, 43)
+              .string(charaterizationFarmList[i].altura)
+              cp.cell(2+i, 44)
+              .string(arrayCoordenates[0])
+              cp.cell(2+i, 45)
+              .string(arrayCoordenates[1])
+              cp.cell(2+i, 46)
+              .string(charaterizationFarmList[i].anosPropiedad)
+              cp.cell(2+i, 47)
+              .string(charaterizationFarmList[i].productiveLine1)
+              cp.cell(2+i, 48)
+              .string(charaterizationFarmList[i].productiveLine2)
+              cp.cell(2+i, 49)
+              .string(charaterizationFarmList[i].productiveLine3)
+              cp.cell(2+i, 50)
+              .string(charaterizationFarmList[i].productiveLine4)
+              cp.cell(2+i, 51)
+              .string(charaterizationFarmList[i].productiveLine5)
+              cp.cell(2+i, 52)
+              .string(charaterizationFarmList[i].knowProductiveLine1)
+              cp.cell(2+i, 53)
+              .string(charaterizationFarmList[i].knowProductiveLine2)
+              cp.cell(2+i, 54)
+              .string(charaterizationFarmList[i].knowPeoductiveLine3)
+              cp.cell(2+i, 55)
+              .string(charaterizationFarmList[i].knowProductiveLine4)
+              cp.cell(2+i, 56)
+              .string(charaterizationFarmList[i].knowProductiveLine5)
+              cp.cell(2+i, 57)
+              .string(charaterizationFarmList[i].comercializationType)
+              cp.cell(2+i, 58)
+              .string(charaterizationFarmList[i].biopreparadosProduction)
+              cp.cell(2+i, 59)
+              .string(charaterizationFarmList[i].waterAvailable)
+              cp.cell(2+i, 60)
+              .string(charaterizationFarmList[i].accessRoads)
+              cp.cell(2+i, 61)
+              .string(charaterizationFarmList[i].electricityAvailability)
+              cp.cell(2+i, 62)
+              .string(charaterizationFarmList[i].ComunicationAvailable)
+              cp.cell(2+i, 63)
+              .string(charaterizationFarmList[i].projectParticipation)
+              cp.cell(2+i, 64)
+              .string(charaterizationFarmList[i].cropTools)
+              cp.cell(2+i, 65)
+              .string(charaterizationFarmList[i].firstAidKit)
+              cp.cell(2+i, 66)
+              .string(charaterizationFarmList[i].fumigateKit)
+              cp.cell(2+i, 67)
+              .string(charaterizationFarmList[i].irrigationSystem)
+              cp.cell(2+i, 68)
+              .string(charaterizationFarmList[i].machines)
+              cp.cell(2+i, 69)
+              .string(charaterizationFarmList[i].ParticipateInProyects)
+              cp.cell(2+i, 70)
+              .string(charaterizationFarmList[i].workingCapital)
+              cp.cell(2+i, 71)
+              .string(charaterizationFarmList[i].implementationTecnologyLevel)
+              cp.cell(2+i, 72)
+              .string(charaterizationFarmList[i].productLine1)
+              cp.cell(2+i, 73)
+              .string(charaterizationFarmList[i].variety1)
+              cp.cell(2+i, 74)
+              .string(charaterizationFarmList[i].cantPlants1)
+              cp.cell(2+i, 75)
+              .string(charaterizationFarmList[i].groovesDistance1)
+              cp.cell(2+i, 76)
+              .string(charaterizationFarmList[i].plantsDistance1)
+              cp.cell(2+i, 77)
+              .string(charaterizationFarmList[i].ageCrop1)
+              cp.cell(2+i, 78)
+              .string(charaterizationFarmList[i].stageCrop1)
+              cp.cell(2+i, 79)
+              .string(charaterizationFarmList[i].cantKgProducedByYear1)
+              cp.cell(2+i, 80)
+              .string(charaterizationFarmList[i].cropStatus1)
+              cp.cell(2+i, 81)
+              .string(charaterizationFarmList[i].aproxArea1)
+              cp.cell(2+i, 82)
+              .string(arrayCoordenates1[0])
+              cp.cell(2+i, 83)
+              .string(arrayCoordenates1[1])
+              cp.cell(2+i, 84)
+              .string(charaterizationFarmList[i].useType)
+              cp.cell(2+i, 85)
+              .string(charaterizationFarmList[i].promKgComercializateValue)
+              cp.cell(2+i, 86)
+              .string(charaterizationFarmList[i].productLine2)
+              cp.cell(2+i, 87)
+              .string(charaterizationFarmList[i].variety2)
+              cp.cell(2+i, 88)
+              .string(charaterizationFarmList[i].cantPlants2)
+              cp.cell(2+i, 89)
+              .string(charaterizationFarmList[i].groovesDistance2)
+              cp.cell(2+i, 90)
+              .string(charaterizationFarmList[i].plantsDistance2)
+              cp.cell(2+i, 91)
+              .string(charaterizationFarmList[i].ageCrop2)
+              cp.cell(2+i, 92)
+              .string(charaterizationFarmList[i].stageCrop2)
+              cp.cell(2+i, 93)
+              .string(charaterizationFarmList[i].cantKgProducedByYear2)
+              cp.cell(2+i, 94)
+              .string(charaterizationFarmList[i].cropStatus2)
+              cp.cell(2+i, 95)
+              .string(charaterizationFarmList[i].aproxArea2)
+              cp.cell(2+i, 96)
+              .string(arrayCoordenates2[0])
+              cp.cell(2+i, 97)
+              .string(arrayCoordenates2[1])
+              cp.cell(2+i, 98)
+              .string(charaterizationFarmList[i].useType2)
+              cp.cell(2+i, 99)
+              .string(charaterizationFarmList[i].promKgComercializateValu2)
+              cp.cell(2+i, 100)
+              .string(charaterizationFarmList[i].productLine3)
+              cp.cell(2+i, 101)
+              .string(charaterizationFarmList[i].variety3)
+              cp.cell(2+i, 102)
+              .string(charaterizationFarmList[i].cantPlants3)
+              cp.cell(2+i, 103)
+              .string(charaterizationFarmList[i].groovesDistance3)
+              cp.cell(2+i, 104)
+              .string(charaterizationFarmList[i].plantsDistance3)
+              cp.cell(2+i, 105)
+              .string(charaterizationFarmList[i].ageCrop3)
+              cp.cell(2+i, 106)
+              .string(charaterizationFarmList[i].stageCrop3)
+              cp.cell(2+i, 107)
+              .string(charaterizationFarmList[i].cantKgProducedByYear3)
+              cp.cell(2+i, 108)
+              .string(charaterizationFarmList[i].cropStatus3)
+              cp.cell(2+i, 109)
+              .string(charaterizationFarmList[i].aproxArea3)
+              cp.cell(2+i, 110)
+              .string(arrayCoordenates3[0])
+              cp.cell(2+i, 111)
+              .string(arrayCoordenates3[1])
+              cp.cell(2+i, 112)
+              .string(charaterizationFarmList[i].useType3)
+              cp.cell(2+i, 113)
+              .string(charaterizationFarmList[i].promKgComercializateValu3)
+              cp.cell(2+i, 114)
+              .string(charaterizationFarmList[i].productLine4Pecuaria)
+              cp.cell(2+i, 115)
+              .string(charaterizationFarmList[i].breed)
+              cp.cell(2+i, 116)
+              .string(charaterizationFarmList[i].cantAnimals)
+              cp.cell(2+i, 117)
+              .string(charaterizationFarmList[i].numberPlaces)
+              cp.cell(2+i, 118)
+              .string(charaterizationFarmList[i].ageAverageAnimals)
+              cp.cell(2+i, 119)
+              .string(charaterizationFarmList[i].ageCrop4)
+              cp.cell(2+i, 120)
+              .string(charaterizationFarmList[i].cantKgProducedByYear4)
+              cp.cell(2+i, 121)
+              .string(charaterizationFarmList[i].cropStatus4)
+              cp.cell(2+i, 122)
+              .string(charaterizationFarmList[i].aproxArea4)
+              ws.cell(2+i, 123)
+              .string(arrayCoordenates4[0])
+              cp.cell(2+i, 124)
+              .string(arrayCoordenates4[1])
+              cp.cell(2+i, 125)
+              .string(charaterizationFarmList[i].nutritionType)
+              cp.cell(2+i, 126)
+              .string(charaterizationFarmList[i].promKgComercializateValu4)
+              cp.cell(2+i, 127)
+              .string(charaterizationFarmList[i].productLine5Pecuaria)
+              cp.cell(2+i, 128)
+              .string(charaterizationFarmList[i].breed5)
+              cp.cell(2+i, 129)
+              .string(charaterizationFarmList[i].cantAnimals5)
+              cp.cell(2+i, 130)
+              .string(charaterizationFarmList[i].numberPlaces5)
+              cp.cell(2+i, 131)
+              .string(charaterizationFarmList[i].ageAverageAnimals5)
+              cp.cell(2+i, 132)
+              .string(charaterizationFarmList[i].ageCrop5)
+              cp.cell(2+i, 133)
+              .string(charaterizationFarmList[i].cantKgProducedByYear5)
+              cp.cell(2+i, 134)
+              .string(charaterizationFarmList[i].cropStatus5)
+              cp.cell(2+i, 135)
+              .string(charaterizationFarmList[i].aproxArea5)
+              cp.cell(2+i, 136)
+              .string(arrayCoordenates5[0])
+              cp.cell(2+i, 137)
+              .string(arrayCoordenates5[1])
+              cp.cell(2+i, 138)
+              .string(charaterizationFarmList[i].nutritionType5)
+              cp.cell(2+i, 139)
+              .string(charaterizationFarmList[i].promKgComercializateValu5)
+              cp.cell(2+i, 140)
+              .string(charaterizationFarmList[i].time_creation.toString())
+              cp.cell(2+i, 141)
+              .string(userPollster[0].nom_user)
+              cp.cell(2+i, 142)
+              .string(charaterizationFarmList[i].comments)
+
+          }
+
+          wf.write('Malla predios caracterizados.xlsx', res)
+
+      } 
+    } , Math.random () * 7000); 
+
+  } catch (err) {
+      console.error(err);
+      res.status(500).send('Server Error');
+  }
+})
+
+router.get('/downloadPdfCharacterizationFarm/:id', async(req, res) =>{
+
+
+  let logoUnoTrans = null;
+  let logoDosTrans = null;
+  let logoTresTrans = null;
+  let logoCuatroTrans = null;
+  let logoCincoTrans = null;
+  let logoSeisTrans = null;
+  let logoSieteTrans = null;
+  let logoOchoTrans = null;
+
+  const queryCharacterizationFarm = await pool.query('SELECT * FROM farm WHERE id_farm = ?', [req.params.id])
+  console.log(queryCharacterizationFarm)
+  const queryImageProject = await pool.query('SELECT * FROM projects WHERE id_project = 81')
+
+  let newName = queryCharacterizationFarm[0].firstName + " " + queryCharacterizationFarm[0].secondName+ " " + queryCharacterizationFarm[0].firstSurname + " " + queryCharacterizationFarm[0].secondSurname + "   " + queryCharacterizationFarm[0].nitProducer;
+
+
+  if(queryCharacterizationFarm[0].secondName === null){
+      queryCharacterizationFarm[0].secondName = ""
+  }
+
+  if(queryCharacterizationFarm[0].celphone2 === null){
+      queryCharacterizationFarm[0].celphone2 = ""
+  }
+
+  if(queryCharacterizationFarm[0].email === null){
+      queryCharacterizationFarm[0].email = ""
+  }
+
+  if(queryCharacterizationFarm[0].fullnameSpouse === null){
+      queryCharacterizationFarm[0].fullnameSpouse = ""
+  }
+
+  if(queryCharacterizationFarm[0].nitSpouse === null){
+      queryCharacterizationFarm[0].nitSpouse = ""
+  }
+
+  if(queryCharacterizationFarm[0].expeditionSpouse === null){
+      queryCharacterizationFarm[0].expeditionSpouse = ""
+  }
+
+  if(queryCharacterizationFarm[0].dateSpouse === null){
+      queryCharacterizationFarm[0].dateSpouse = ""
+  }
+
+  if(queryCharacterizationFarm[0].celphoneSpouse === null){
+      queryCharacterizationFarm[0].celphoneSpouse = ""
+  }
+
+  if(queryCharacterizationFarm[0].corregimiento === null){
+      queryCharacterizationFarm[0].corregimiento = ""
+  }
+
+  if(queryCharacterizationFarm[0].afluentes === null){
+      queryCharacterizationFarm[0].afluentes = ""
+  }
+
+
+
+  
+  // let imgFarmer = await new Promise(function(resolve,reject){
+  //     imageToBase64(queryCharacterizationFarm[0].img_beneficiario) // you can also to use url
+  //     .then(
+  //         (response) => {resolve(response);}
+  //     )
+  //     .catch(
+  //         (error) => {
+  //             resolve(false);
+  //             console.log(error); 
+  //         }
+  //     ) 
+  // });
+
+
+  // let imgFarmerSignature = await new Promise(function(resolve,reject){
+  //     imageToBase64(queryCharacterizationFarm[0].imgSignature) // you can also to use url
+  //     .then(
+  //         (response) => {resolve(response);}
+  //     )
+  //     .catch(
+  //         (error) => {
+  //             resolve(false);
+  //             console.log(error); 
+  //         }
+  //     ) 
+  // });
+
+
+  // //Logos transformacion
+  // if(queryImageProject[0].logoUno){
+  //     logoUnoTrans = await new Promise(function(resolve,reject){
+  //         imageToBase64(queryImageProject[0].logoUno) // you can also to use url
+  //         .then(
+  //             (response) => {resolve(response);}
+  //         )
+  //         .catch(
+  //             (error) => {
+  //                 resolve(false);
+  //                 console.log(error); 
+  //             }
+  //         ) 
+  //     });
+  // }
+
+  // if(queryImageProject[0].logoDos){
+  //     logoDosTrans = await new Promise(function(resolve,reject){
+  //         imageToBase64(queryImageProject[0].logoUno) // you can also to use url
+  //         .then(
+  //             (response) => {resolve(response);}
+  //         )
+  //         .catch(
+  //             (error) => {
+  //                 resolve(false);
+  //                 console.log(error); 
+  //             }
+  //         ) 
+  //     });
+  // }
+
+  // if(queryImageProject[0].logoTres){
+  //     logoTresTrans = await new Promise(function(resolve,reject){
+  //         imageToBase64(queryImageProject[0].logoTres) // you can also to use url
+  //         .then(
+  //             (response) => {resolve(response);}
+  //         )
+  //         .catch(
+  //             (error) => {
+  //                 resolve(false);
+  //                 console.log(error); 
+  //             }
+  //         ) 
+  //     });
+  // }
+
+  // if(queryImageProject[0].logoCuatro){
+  //     logoCuatroTrans = await new Promise(function(resolve,reject){
+  //         imageToBase64(queryImageProject[0].logoCuatro) // you can also to use url
+  //         .then(
+  //             (response) => {resolve(response);}
+  //         )
+  //         .catch(
+  //             (error) => {
+  //                 resolve(false);
+  //                 console.log(error); 
+  //             }
+  //         ) 
+  //     });
+  // }
+
+  // if(queryImageProject[0].logoCinco){
+  //     logoCincoTrans = await new Promise(function(resolve,reject){
+  //         imageToBase64(queryImageProject[0].logoCinco) // you can also to use url
+  //         .then(
+  //             (response) => {resolve(response);}
+  //         )
+  //         .catch(
+  //             (error) => {
+  //                 resolve(false);
+  //                 console.log(error); 
+  //             }
+  //         ) 
+  //     });
+  // }
+  
+  let pdf = new PDFDocument({
+      layout: 'landscape',
+      size: [510, 410],
+      margin: 5,
+      info:{
+          title:'Formato de caracterización de predios',
+          Author: 'Fundación AIP cloud'
+      }
+  })
+
+  pdf.info['Title'] = newName;
+
+  let col1LeftPos = 20;
+  let colWidth = 100;
+  let col2LeftPos = colWidth + col1LeftPos + 30;
+  let col3LeftPos = colWidth + col1LeftPos + 160;
+
+//  if(queryImageProject[0].logoUno && queryImageProject[0].logoDos && queryImageProject[0].logoTres && queryImageProject[0].logoCuatro && queryImageProject[0].logoCinco && queryImageProject[0].logoSeis && queryImageProject[0].logoSiete && queryImageProject[0].logoOcho){
+//       pdf.moveDown()
+//       .image('data:image/jpeg;base64,'+logoUnoTrans , 10, 10, {width: 40})
+//       .image('data:image/jpeg;base64,'+logoDosTrans , 10, 10, {width: 40})
+//   }else{ 
+//       if(queryImageProject[0].logoUno && queryImageProject[0].logoDos && queryImageProject[0].logoTres && queryImageProject[0].logoCuatro && queryImageProject[0].logoCinco && queryImageProject[0].logoSeis && queryImageProject[0].logoSiete ){
+//           pdf.moveDown()
+//           .image('data:image/jpeg;base64,'+logoUnoTrans , 10, 10, {width: 40})
+//           .image('data:image/jpeg;base64,'+logoDosTrans , 10, 10, {width: 40})
+//       }else{
+//           if(queryImageProject[0].logoUno && queryImageProject[0].logoDos && queryImageProject[0].logoTres && queryImageProject[0].logoCuatro && queryImageProject[0].logoCinco && queryImageProject[0].logoSeis ){
+//               pdf.moveDown()
+//               .image('data:image/jpeg;base64,'+logoUnoTrans , 10, 10, {width: 40})
+//               .image('data:image/jpeg;base64,'+logoDosTrans , 10, 10, {width: 40})
+//           }else{
+//               if(queryImageProject[0].logoUno && queryImageProject[0].logoDos && queryImageProject[0].logoTres && queryImageProject[0].logoCuatro && queryImageProject[0].logoCinco ){
+//                   pdf.moveDown()
+//                   .image('data:image/jpeg;base64,'+logoUnoTrans , 30, 10, {width: 40})
+//                   .image('data:image/jpeg;base64,'+logoDosTrans , 130, 10, {width: 40})
+//                   .image('data:image/jpeg;base64,'+logoTresTrans , 230, 10, {width: 40})
+//                   .image('data:image/jpeg;base64,'+logoTresTrans , 340, 10, {width: 40})
+//                   .image('data:image/jpeg;base64,'+logoCincoTrans , 185, 466, {width: 40})
+//               }else{
+//                   if(queryImageProject[0].logoUno && queryImageProject[0].logoDos && queryImageProject[0].logoTres && queryImageProject[0].logoCuatro ){
+//                       pdf.moveDown()
+//                       .image('data:image/jpeg;base64,'+logoUnoTrans , 30, 10, {width: 40})
+//                       .image('data:image/jpeg;base64,'+logoDosTrans , 130, 10, {width: 40})
+//                       .image('data:image/jpeg;base64,'+logoTresTrans , 230, 10, {width: 40})
+//                       .image('data:image/jpeg;base64,'+logoTresTrans , 340, 10, {width: 40})
+//                   }else{
+//                       if(queryImageProject[0].logoUno && queryImageProject[0].logoDos && queryImageProject[0].logoTres ){
+//                           pdf.moveDown()
+//                           .image('data:image/jpeg;base64,'+logoUnoTrans , 50, 10, {width: 40})
+//                           .image('data:image/jpeg;base64,'+logoDosTrans , 180, 10, {width: 40})
+//                           .image('data:image/jpeg;base64,'+logoTresTrans , 320, 10, {width: 40})
+//                       }else{
+//                           if(queryImageProject[0].logoUno && queryImageProject[0].logoDos){
+//                               pdf.moveDown()
+//                               .image('data:image/jpeg;base64,'+logoUnoTrans , 50, 10, {width: 40})
+//                               .image('data:image/jpeg;base64,'+logoDosTrans , 320, 10, {width: 40})
+//                           }else{
+//                               if(queryImageProject[0].logoUno){
+//                                   pdf.moveDown()
+//                                   .image('data:image/jpeg;base64,'+logoUnoTrans , 15, 15, {width: 380})
+//                               }
+//                           }
+//                       }
+//                   }
+//               }
+//           }
+//       } 
+//   } 
+
+  pdf.moveDown()
+  .fontSize(9)
+  // .image('data:image/jpeg;base64,'+imgFarmer , col1LeftPos, 90, {width: 120})
+  .text(`Id de la finca: ${queryCharacterizationFarm[0].id_farm}`, col2LeftPos, 90)
+  .text(`Nombre: ${queryCharacterizationFarm[0].firstName}  ${queryCharacterizationFarm[0].secondName}  ${queryCharacterizationFarm[0].firstSurname}`, col2LeftPos, 105)
+  .text(`Cedula: ${queryCharacterizationFarm[0].nitProducer} de ${queryCharacterizationFarm[0].expedition}`, col2LeftPos, 120)
+  .text(`Fecha nac: ${queryCharacterizationFarm[0].birthdate}`, col2LeftPos, 135)
+  .text(`Telefono1: ${queryCharacterizationFarm[0].celphone1}`, col2LeftPos, 150)
+  .text(`Telefono2: ${queryCharacterizationFarm[0].celphone2}`, col2LeftPos, 165)
+  .text(`Email: ${queryCharacterizationFarm[0].email}`, col2LeftPos, 180)
+  .text(`Organización báse: ${queryCharacterizationFarm[0].organization}`, col2LeftPos, 195)
+  .text(`Genero: ${queryCharacterizationFarm[0].gender}`, col1LeftPos, 210)
+  .text(`Etnia: ${queryCharacterizationFarm[0].ethnicity}`, col2LeftPos, 210)
+  .text(`Estudios: ${queryCharacterizationFarm[0].scholarLevel}`, col3LeftPos, 210)
+  .text(`Estado civil: ${queryCharacterizationFarm[0].maritalStatus}`, col3LeftPos, 230, {width: colWidth})
+  .text(`Nombre Conyuge: ${queryCharacterizationFarm[0].fullnameSpouse}`, col1LeftPos, 230)
+  .text(`Cedula: ${queryCharacterizationFarm[0].nitSpouse} de ${queryCharacterizationFarm[0].expeditionSpouse}`, col1LeftPos, 250, {width: colWidth})
+  .text(`Fecha nac: ${queryCharacterizationFarm[0].dateSpouse}`, col2LeftPos, 250)
+  .text(`Contacto conyuge: ${queryCharacterizationFarm[0].celphoneSpouse}`, col3LeftPos, 250)
+  .text(`Email: ${queryCharacterizationFarm[0].emailSpouse}`, col1LeftPos, 275, {width: colWidth})
+  .text(`Nombre finca: ${queryCharacterizationFarm[0].nameFarm}`, col2LeftPos, 275)
+  .text(`Municipio: ${queryCharacterizationFarm[0].municipality}`, col3LeftPos, 275)
+  .text(`Corregimiento: ${queryCharacterizationFarm[0].corregimiento}`, col1LeftPos, 300, {width: colWidth})
+  .text(`Vereda: ${queryCharacterizationFarm[0].vereda}`, col2LeftPos, 300)
+  .text(`Posesión: ${queryCharacterizationFarm[0].possession}`, col3LeftPos, 300)
+  .text(`Ext total (m2): ${queryCharacterizationFarm[0].totalExtension}`, col1LeftPos, 330, {width: colWidth})
+  .text(`Área cosechada (m2): ${queryCharacterizationFarm[0].cropsArea}`, col2LeftPos, 330)
+  .text(`Área Libre dest: ${queryCharacterizationFarm[0].freeArea}`, col3LeftPos, 330)
+  .text(`Área consevación: ${queryCharacterizationFarm[0].conservationArea}`, col1LeftPos, 350, {width: colWidth})
+  .text(`Participación en proyectos: ${queryCharacterizationFarm[0].currentProjects}`, col2LeftPos, 350, {width: colWidth})
+  .text(`Agroquimicos: ${queryCharacterizationFarm[0].agrochemical}`, col3LeftPos, 350)
+  .text(`Buenas prácticas: ${queryCharacterizationFarm[0].bestPractices}`, col1LeftPos, 380, {width: colWidth})
+  .text(`Otras areas (m2): ${queryCharacterizationFarm[0].otherAreas}`, col2LeftPos, 380)
+  .text(`Afluentes: ${queryCharacterizationFarm[0].afluentes}`, col3LeftPos, 380)
+  .text(`Vocacion y uso de la tierra: ${queryCharacterizationFarm[0].vocationAndLandUse}`, col1LeftPos, 400, {width: colWidth})
+  .text(`Linea prod principal: ${queryCharacterizationFarm[0].productiveLine}`, col2LeftPos, 400)
+  .text(`Tipo de certificación: ${queryCharacterizationFarm[0].certificationType}`, col3LeftPos, 400, {width: colWidth})
+  .text(`Lindero norte: ${queryCharacterizationFarm[0].purlieuNorth}`, col1LeftPos, 435, {width: colWidth})
+  .text(`Lindero sur: ${queryCharacterizationFarm[0].purlieuSouth}`, col2LeftPos, 435)
+  .text(`Lindero oriente: ${queryCharacterizationFarm[0].purlieuEast}`, col3LeftPos, 435)
+
+  pdf.moveDown()
+          .fillColor('black')
+          .fontSize(11)
+          .text('',0,60, {
+          align: 'center',
+          indent: 2,
+          height: 2,
+          ellipsis: true
+          });
+
+      
+  pdf.addPage()
+      .fontSize(9)
+      .text(`Lindero Occidente ${queryCharacterizationFarm[0].purlieuWest}`, col1LeftPos, 30, {width: colWidth})
+      .text(`Altura (m): ${queryCharacterizationFarm[0].altura}`, col2LeftPos, 30)
+      .text(`Coordenadas: ${queryCharacterizationFarm[0].latitudeLongitude}`, col3LeftPos, 30)
+      .text(`Años en la propiedad: ${queryCharacterizationFarm[0].anosPropiedad}`, col1LeftPos, 60)
+      .text(`Linea prod 1: ${queryCharacterizationFarm[0].productiveLine1}`, col2LeftPos, 60)
+      .text(`Linea prod 2: ${queryCharacterizationFarm[0].productiveLine2}`, col3LeftPos, 60)
+      .text(`Linea prod 3: ${queryCharacterizationFarm[0].productiveLine3}`, col1LeftPos, 80, {width: colWidth})
+      .text(`Conocimiento linea 1: ${queryCharacterizationFarm[0].knowProductiveLine1}`, col2LeftPos, 80)
+      .text(`Conocimiento linea 2: ${queryCharacterizationFarm[0].knowProductiveLine2}`, col3LeftPos, 80)
+      .text(`Linea prod 3: ${queryCharacterizationFarm[0].productiveLine3}`, col1LeftPos, 100, {width: colWidth})
+      .text(`Conocimiento linea 1: ${queryCharacterizationFarm[0].knowProductiveLine1}`, col2LeftPos, 100)
+      .text(`Conocimiento linea 2: ${queryCharacterizationFarm[0].knowProductiveLine2}`, col3LeftPos, 100)
+      .text(`Conocimiento linea 3: ${queryCharacterizationFarm[0].knowPeoductiveLine3}`, col1LeftPos, 120, {width: colWidth})
+      .text(`Produccion Biopreparados: ${queryCharacterizationFarm[0].biopreparadosProduction}`, col2LeftPos, 120, {width: colWidth})
+      .text(`Tipo comercialización: ${queryCharacterizationFarm[0].comercializationType}`, col3LeftPos, 120)
+      .text(`Vía de acceso: ${queryCharacterizationFarm[0].accessRoads}`, col1LeftPos, 150, {width: colWidth})
+      .text(`Disp de agua: ${queryCharacterizationFarm[0].waterAvailable}`, col2LeftPos, 150)
+      .text(`Disp de electricidad: ${queryCharacterizationFarm[0].electricityAvailability}`, col3LeftPos, 150)
+      .text(`Medios comunicación: ${queryCharacterizationFarm[0].ComunicationAvailable}`, col1LeftPos, 180, {width: colWidth})
+      .text(`Participación en proy: ${queryCharacterizationFarm[0].projectParticipation}`, col2LeftPos, 180)
+      .text(`Herramientas de cosecha: ${queryCharacterizationFarm[0].cropTools}`, col3LeftPos, 180 , {width: colWidth})
+      .text(`Botiquín: ${queryCharacterizationFarm[0].firstAidKit}`, col1LeftPos, 210, {width: colWidth})
+      .text(`kit fumigación: ${queryCharacterizationFarm[0].fumigateKit}`, col2LeftPos, 210)
+      .text(`sistema de riego: ${queryCharacterizationFarm[0].irrigationSystem}`, col3LeftPos, 210)
+      .text(`Maquinaria: ${queryCharacterizationFarm[0].machines}`, col1LeftPos, 230, {width: colWidth})
+      .text(`Participacion en proy: ${queryCharacterizationFarm[0].ParticipateInProyects}`, col2LeftPos, 230)
+      .text(`Capital de trabajo: ${queryCharacterizationFarm[0].workingCapital}`, col3LeftPos, 230, {width: colWidth})
+      .text(`Implementación Tecnológica: ${queryCharacterizationFarm[0].implementationTecnologyLevel}`, col1LeftPos, 260, {width: colWidth})
+
+  pdf.moveDown()
+      .fillColor('black')
+      .fontSize(11)
+      .text('Datos de la linea productiva 1', 0, 310, {
+          align: 'center',
+          indent: 2,
+          height: 2,
+          ellipsis: true
+      });
+
+  pdf.moveDown()
+      .fontSize(9)
+      .text(`Linea productiva: ${queryCharacterizationFarm[0].productLine1}`, col1LeftPos, 350, {width: colWidth})
+      .text(`Cant plantulas: ${queryCharacterizationFarm[0].cantPlants1}`, col2LeftPos, 350)
+      .text(`Variedad: ${queryCharacterizationFarm[0].variety1}`, col3LeftPos, 350)
+      .text(`Distancia de siembra: ${queryCharacterizationFarm[0].sowingDistance1}`, col1LeftPos, 380, {width: colWidth})
+      .text(`Etapa del cultivo: ${queryCharacterizationFarm[0].ageCrop1}`, col2LeftPos, 380)
+      .text(`Estado del cultivo: ${queryCharacterizationFarm[0].stageCrop1}`, col3LeftPos, 380)
+      .text(`cant producida X año ${queryCharacterizationFarm[0].cantKgProducedByYear1}`, col1LeftPos, 410, {width: colWidth})
+      .text(`Estado del cultivo: ${queryCharacterizationFarm[0].cropStatus1}`, col2LeftPos, 410)
+      .text(`Area aproximada: ${queryCharacterizationFarm[0].aproxArea1}`, col3LeftPos, 410)
+      .text(`Coordenadas: ${queryCharacterizationFarm[0].coordenates1}`, col1LeftPos, 440, {width: colWidth})
+      .text(`Tipo de uso: ${queryCharacterizationFarm[0].useType}`, col2LeftPos, 440, {width: colWidth})
+      .text(`Kilogramos prom comercializado al año: ${queryCharacterizationFarm[0].promKgComercializateValue}`, col3LeftPos, 440)
+
+
+  pdf.addPage()
+      .fontSize(9)
+      .text(`Linea productiva: ${queryCharacterizationFarm[0].productLine2}`, col1LeftPos, 90, {width: colWidth})
+      .text(`Cant plantulas: ${queryCharacterizationFarm[0].cantPlants2}`, col2LeftPos, 90)
+      .text(`Variedad: ${queryCharacterizationFarm[0].variety2}`, col3LeftPos, 90)
+      .text(`Distancia de siembra: ${queryCharacterizationFarm[0].sowingDistance2}`, col1LeftPos, 110, {width: colWidth})
+      .text(`Etapa del cultivo: ${queryCharacterizationFarm[0].ageCrop2}`, col2LeftPos, 110)
+      .text(`Estado del cultivo: ${queryCharacterizationFarm[0].stageCrop2}`, col3LeftPos, 110, {width: 110} )
+      .text(`cant producida X año: ${queryCharacterizationFarm[0].cantKgProducedByYear2}`, col1LeftPos, 140, {width: colWidth})
+      .text(`Estado del cultivo: ${queryCharacterizationFarm[0].cropStatus2}`, col2LeftPos, 140, {width: colWidth})
+      .text(`Area aproximada: ${queryCharacterizationFarm[0].aproxArea2}`, col3LeftPos, 140)
+      .text(`Coordenadas: ${queryCharacterizationFarm[0].coordenates2}`, col3LeftPos, 170)
+      .text(`Kilogramos prom comercializado al año: ${queryCharacterizationFarm[0].promKgComercializateValu2}`, col1LeftPos, 170, {width: colWidth})
+      .text(`Tipo de uso: ${queryCharacterizationFarm[0].useType2}`, col2LeftPos, 170)
+
+  pdf.moveDown()
+      .fillColor('black')
+      .fontSize(11)
+      .text('Datos de la linea productiva 2', 0, 60, {
+      align: 'center',
+      indent: 2,
+      height: 2,
+      ellipsis: true
+      });
+  
+  pdf.moveDown()
+      .fillColor('black')
+      .fontSize(11)
+      .text('Datos de la linea productiva 3', 0, 220, {
+      align: 'center',
+      indent: 2,
+      height: 2,
+      ellipsis: true
+      });
+
+  pdf.moveDown()
+          .fontSize(9)
+          .text(`Linea productiva: ${queryCharacterizationFarm[0].productLine2}`, col1LeftPos, 250, {width: colWidth})
+          .text(`Cant plantulas: ${queryCharacterizationFarm[0].cantPlants2}`, col2LeftPos, 250)
+          .text(`Variedad: ${queryCharacterizationFarm[0].variety2}`, col3LeftPos, 250)
+          .text(`Distancia de siembra: ${queryCharacterizationFarm[0].sowingDistance2}`, col1LeftPos, 280, {width: colWidth})
+          .text(`Etapa del cultivo: ${queryCharacterizationFarm[0].ageCrop2}`, col2LeftPos, 280)
+          .text(`Estado del cultivo: ${queryCharacterizationFarm[0].stageCrop2}`, col3LeftPos, 280)
+          .text(`cant producida X año: ${queryCharacterizationFarm[0].cantKgProducedByYear2}`, col1LeftPos, 310, {width: colWidth})
+          .text(`Estado del cultivo: ${queryCharacterizationFarm[0].cropStatus2}`, col2LeftPos, 310, {width: colWidth})
+          .text(`Area aproximada: ${queryCharacterizationFarm[0].aproxArea2}`, col3LeftPos, 310)
+          .text(`Coordenadas: ${queryCharacterizationFarm[0].coordenates2}`, col3LeftPos, 340)
+          .text(`Kilogramos prom comercializado al año: ${queryCharacterizationFarm[0].promKgComercializateValu2}`, col1LeftPos, 340, {width: colWidth})
+          .text(`Tipo de uso: ${queryCharacterizationFarm[0].useType2}`, col2LeftPos, 340)
+              
+  pdf.moveDown()
+      .fillColor('black')
+      .fontSize(11)
+      .text('Datos de la linea productiva 4 producción pecuaria', 0, 390, {
+      align: 'center',
+      indent: 2,
+      height: 2,
+      ellipsis: true
+      });
+
+  pdf.moveDown()
+          .fontSize(9)
+          .text(`Linea productiva pecuaria 4: ${queryCharacterizationFarm[0].productLine4Pecuaria}`, col1LeftPos, 420, {width: colWidth})
+          .text(`Raza o tipo: ${queryCharacterizationFarm[0].breed}`, col2LeftPos, 420)
+          .text(`Cantidad de animales: ${queryCharacterizationFarm[0].cantAnimals}`, col3LeftPos, 420, {width: colWidth})
+          
+  pdf.addPage()
+      .text(`Num lotes usados para la actividad: ${queryCharacterizationFarm[0].numberPlaces}`, col1LeftPos, 70, {width: colWidth})
+      .text(`Edad prom de los animales: ${queryCharacterizationFarm[0].ageAverageAnimals}`, col2LeftPos, 70, {width: colWidth})
+      .text(`Etapa productiva: ${queryCharacterizationFarm[0].ageCrop4}`, col3LeftPos, 70, {width: colWidth})
+      .text(`Cant de litros producidos por año: ${queryCharacterizationFarm[0].cantKgProducedByYear4}`, col1LeftPos, 100, {width: colWidth})
+      .text(`Área aproximada usada por los animales (m2): ${queryCharacterizationFarm[0].aproxArea4}`, col2LeftPos, 100, {width: 150})
+      .text(`Est general de los animales: ${queryCharacterizationFarm[0].cropStatus4}`, col2LeftPos, 130)
+      .text(`Tipo de alimentación: ${queryCharacterizationFarm[0].nutritionType}`, col1LeftPos, 130, {width: colWidth})
+      .text(`Coordenadas: ${queryCharacterizationFarm[0].coordenates4}`, col1LeftPos, 160, {width: colWidth})
+      .text(`Valor prom de KG comercializado en pesos en el año: ${queryCharacterizationFarm[0].promKgComercializateValu4}`, col2LeftPos, 160, {width: 150})
+      .text(`Linea productiva pecuaria 5: ${queryCharacterizationFarm[0].productLine5Pecuaria}`, col1LeftPos, 240, {width: colWidth})
+      .text(`Raza o tipo: ${queryCharacterizationFarm[0].breed5}`, col2LeftPos, 240)
+      .text(`Cantidad de animales: ${queryCharacterizationFarm[0].cantAnimals5}`, col3LeftPos, 240, {width: colWidth})
+      .text(`Num lotes usados para la actividad: ${queryCharacterizationFarm[0].numberPlaces}`, col1LeftPos, 270, {width: colWidth})
+      .text(`Edad prom de los animales en años: ${queryCharacterizationFarm[0].ageAverageAnimals5}`, col2LeftPos, 270, {width:colWidth})
+      .text(`Etapa productiva: ${queryCharacterizationFarm[0].ageCrop5}`, col3LeftPos, 270, {width:colWidth})
+      .text(`Cant de litros producidos por año: ${queryCharacterizationFarm[0].cantKgProducedByYear5}`, col1LeftPos, 300, {width: colWidth})
+      .text(`Área aproximada usada por los animales (m2): ${queryCharacterizationFarm[0].aproxArea5}`, col2LeftPos, 300, {width:colWidth})
+      .text(`Est general de los animales: ${queryCharacterizationFarm[0].cropStatus5}`, col2LeftPos, 340)
+      .text(`Tipo de alimentación: ${queryCharacterizationFarm[0].nutritionType5}`, col1LeftPos, 340, {width: colWidth})
+      .text(`Coordenadas: ${queryCharacterizationFarm[0].coordenates5}`, col1LeftPos, 380, {width: colWidth})
+      .text(`Valor prom de KG comercializado en pesos en el año: ${queryCharacterizationFarm[0].promKgComercializateValu5}`, col2LeftPos, 380, {width:150})
+      // .image('data:image/jpeg;base64,'+imgFarmerSignature, 160, 410, {width: 90})
+      .text('Firma del titular del predio', 153, 460)
+
+  pdf.moveDown()
+      .fillColor('black')
+      .fontSize(11)
+      .text('Datos de la linea productiva 5 producción pecuaria', 0, 210, {
+      align: 'center',
+      indent: 2,
+      height: 2,
+      ellipsis: true
+      });
+          
+  pdf.pipe(res)
+  pdf.end()     
+
+})
+
+//Registro agricola todas las encuestas del proyecto
+router.get('/producerSurveyList/:id', async (req, res) => {
+  
+  const resultado = await pool.query('SELECT farm.id_farm, farm.nitProducer, farm.firstName, farm.firstSurname, farm.nameFarm, farm.municipality, farm.vereda FROM farm INNER JOIN answerformatproducer ON farm.id_farm = answerformatproducer.farm_id AND answerformatproducer.projectId =?', [req.params.id]);
+  //const producerSurveyCharacterization = await pool.query('SELECT id_farm, nitProducer, firstName, firstsurname, secondSurname, nameFarm, municipality, vereda from farm WHERE projectId = ?', [req.session.project.project])
+  return res.status(200).json({resultado});
+  
+})
+
+router.get('/downloadPdfProducerRegister/:id', async(req, res) =>{
+
+  let logoUnoTrans = null;
+  let logoDosTrans = null;
+  let logoTresTrans = null;
+  let logoCuatroTrans = null;
+  let logoCincoTrans = null;
+  let logoSeisTrans = null;
+  let logoSieteTrans = null;
+  let logoOchoTrans = null;
+
+  const questionsProducer = await pool.query('SELECT * FROM questions_producer')
+  const answersFormatProducer = await pool.query('SELECT * FROM answerformatproducer WHERE farm_id = ?', [req.params.id])
+  const answersProducer = await pool.query('SELECT * FROM answersproducer');
+  const dataFarm = await pool.query('SELECT img_beneficiario, firstName, secondName, firstSurname, secondSurname, nitProducer, celphone1, municipality, corregimiento, birthdate, vereda, time_creation, nameFarm, imgSignature FROM farm WHERE id_farm = ?', [req.params.id])
+  const queryImageProject = await pool.query('SELECT * FROM projects WHERE id_project = 81')
+
+
+  let imgFarmerSignature = await new Promise(function(resolve,reject){
+      imageToBase64(dataFarm[0].imgSignature) // you can also to use url
+      .then(
+          (response) => {resolve(response);}
+      )
+      .catch(
+          (error) => {
+              resolve(false);
+              console.log(error); 
+          }
+      ) 
+  });
+
+
+  //Logos transformacion
+  if(queryImageProject[0].logoUno){
+      logoUnoTrans = await new Promise(function(resolve,reject){
+          imageToBase64(queryImageProject[0].logoUno) // you can also to use url
+          .then(
+              (response) => {resolve(response);}
+          )
+          .catch(
+              (error) => {
+                  resolve(false);
+                  console.log(error); 
+              }
+          ) 
+      });
+  }
+
+  if(queryImageProject[0].logoDos){
+      logoDosTrans = await new Promise(function(resolve,reject){
+          imageToBase64(queryImageProject[0].logoDos) // you can also to use url
+          .then(
+              (response) => {resolve(response);}
+          )
+          .catch(
+              (error) => {
+                  resolve(false);
+                  console.log(error); 
+              }
+          ) 
+      });
+  }
+
+  if(queryImageProject[0].logoTres){
+      logoTresTrans = await new Promise(function(resolve,reject){
+          imageToBase64(queryImageProject[0].logoTres) // you can also to use url
+          .then(
+              (response) => {resolve(response);}
+          )
+          .catch(
+              (error) => {
+                  resolve(false);
+                  console.log(error); 
+              }
+          ) 
+      });
+  }
+
+  if(queryImageProject[0].logoCuatro){
+      logoCuatroTrans = await new Promise(function(resolve,reject){
+          imageToBase64(queryImageProject[0].logoCuatro) // you can also to use url
+          .then(
+              (response) => {resolve(response);}
+          )
+          .catch(
+              (error) => {
+                  resolve(false);
+                  console.log(error); 
+              }
+          ) 
+      });
+  }
+
+  if(queryImageProject[0].logoCinco){
+      logoCincoTrans = await new Promise(function(resolve,reject){
+          imageToBase64(queryImageProject[0].logoCinco) // you can also to use url
+          .then(
+              (response) => {resolve(response);}
+          )
+          .catch(
+              (error) => {
+                  resolve(false);
+                  console.log(error); 
+              }
+          ) 
+      });
+  }
+
+
+  let answers ={};
+
+  for(let i=0; i<answersFormatProducer.length; i++){
+      let cont = 0;
+
+      if(answersFormatProducer[i].respuesta1 === 'A'){
+          answers.respuesta1 = 'Agronegocio'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta1 === 'B'){
+          answers.respuesta1 = 'Predio productivo no tradicional especializado'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta1 === 'C'){
+          answers.respuesta1 = 'Productor tradicional'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta1 === 'D'){
+          answers.respuesta1 = 'Productor de subsistencia'
+          cont = cont+1
+      }
+      
+      if(answersFormatProducer[i].respuesta2 === 'A'){
+          answers.respuesta2 = 'Con enfoque de agronegocio.'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta2 === 'B'){
+          answers.respuesta2 = 'Como complemento a la actividad productiva principal.'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta2 === 'C'){
+          answers.respuesta2 = 'De forma temporal o no especializada.'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta2 === 'D'){
+          answers.respuesta2 = 'No tiene identificada una línea productiva secundaria.'
+          cont = cont+1
+      }
+
+      if(answersFormatProducer[i].respuesta3 === 'A'){
+          answers.respuesta3 = 'Acceso ilimitado- especializado, según la actividad productiva y con componente tecnológico.'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta3 === 'B'){
+          answers.respuesta3 = 'Acceso ilimitado a elementos comunes del mercado'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta3 === 'C'){
+          answers.respuesta3 = 'Acceso limitado'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta3 === 'D'){
+          answers.respuesta3 = 'Acceso restringido'
+          cont = cont+1
+      }
+      
+      if(answersFormatProducer[i].respuesta4 === 'A'){
+          answers.respuesta4 = 'Acceso ilimitado a fuentes propias, tradicionales y alternativas.'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta4 === 'B'){
+          answers.respuesta4 = 'Acceso ilimitado a fuentes tradicionales.'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta4 === 'C'){
+          answers.respuesta4 = 'Acceso limitado'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta4 === 'D'){
+          answers.respuesta4 = 'Acceso restringido'
+          cont = cont+1
+      }
+
+      if(answersFormatProducer[i].respuesta5 === 'A'){
+          answers.respuesta5 = 'Está certificado en BPA con el ICA y/o con otras certificaciones de inocuidad'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta5 === 'B'){
+          answers.respuesta5 = 'Conoce y aplica las BPA, y está en proceso de certificación con el ICA'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta5 === 'C'){
+          answers.respuesta5 = 'Conoce parcialmente las BPA, pero no las aplica.'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta5 === 'D'){
+          answers.respuesta5 = 'No conoce las BPA'
+          cont = cont+1
+      }
+      
+      if(answersFormatProducer[i].respuesta6 === 'A'){
+          answers.respuesta6 = 'Planificado'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta6 === 'B'){
+          answers.respuesta6 = 'No planificado'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta6 === 'C'){
+          answers.respuesta6 = 'Conoce, pero no implementa.'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta6 === 'D'){
+          answers.respuesta6 = 'No conoce ni implementa'
+          cont = cont+1
+      }
+      
+      if(answersFormatProducer[i].respuesta7 === 'A'){
+          answers.respuesta7 = 'No conoce las BPG.'
+      }if(answersFormatProducer[i].respuesta7 === 'B'){
+          answers.respuesta7 = 'Conoce parcialmente las BPG, pero no las aplica.'
+      }if(answersFormatProducer[i].respuesta7 === 'C'){
+          answers.respuesta7 = 'Conoce y aplica las BPG, y está en proceso de certificación con el ICA.'
+      }if(answersFormatProducer[i].respuesta7 === 'D'){
+          answers.respuesta7 = 'Está certificado en BPG con el ICA y/o con otras certificaciones de inocuidad.'
+      }
+      
+      if(answersFormatProducer[i].respuesta8 === 'A'){
+          answers.respuesta8 = 'No conoce ni implementa.'
+      }if(answersFormatProducer[i].respuesta8 === 'B'){
+          answers.respuesta8 = 'Conoce, pero no implementa.'
+      }if(answersFormatProducer[i].respuesta8 === 'C'){
+          answers.respuesta8 = 'No planificado.'
+      }if(answersFormatProducer[i].respuesta8 === 'D'){
+          answers.respuesta8 = 'Planificado.'
+      }
+
+      if(answersFormatProducer[i].respuesta9 === 'A'){
+          answers.respuesta9 = 'No conoce ningún plan nutricional animal.'
+      }if(answersFormatProducer[i].respuesta9 === 'B'){
+          answers.respuesta9 = 'Conoce el plan nutricional animal pero no aplica.'
+      }if(answersFormatProducer[i].respuesta9 === 'C'){
+          answers.respuesta9 = 'Conoce el plan nutricional animal pero no siempre las aplica.'
+      }if(answersFormatProducer[i].respuesta9 === 'D'){
+          answers.respuesta9 = 'Implementa el plan en nutrición animal.'
+      }
+      
+      if(answersFormatProducer[i].respuesta10 === 'A'){
+          answers.respuesta10 = 'No conoce la selección y clasificación genética ni los métodos de biotecnología reproductiva.'
+      }if(answersFormatProducer[i].respuesta10 === 'B'){
+          answers.respuesta10 = 'Conoce pero no selecciona ni clasifica el material genético, ni implementa métodos de biotecnología.'
+      }if(answersFormatProducer[i].respuesta10 === 'C'){
+          answers.respuesta10 = 'Conoce pero no siempre aplica la selección y clasificación del material genético, para la implementación de biotecnologías reproductivas.'
+      }if(answersFormatProducer[i].respuesta10 === 'D'){
+          answers.respuesta10 = 'Selecciona y clasifica el material genético a utilizar en biotecnologías reproductivas.'
+      }
+
+      if(answersFormatProducer[i].respuesta11 === 'A'){
+          answers.respuesta11 = 'Planificada especializada y/o bidireccional.'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta11 === 'B'){
+          answers.respuesta11 = 'Planificado tradicional.'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta11 === 'C'){
+          answers.respuesta11 = 'Tradicional'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta11 === 'D'){
+          answers.respuesta11 = 'Autoconsumo'
+          cont = cont+1
+      }
+      
+      if(answersFormatProducer[i].respuesta12 === 'A'){
+          answers.respuesta12 = 'Especializado'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta12 === 'B'){
+          answers.respuesta12 = 'Tradicional'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta12 === 'C'){
+          answers.respuesta12 = 'Básico.'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta12 === 'D'){
+          answers.respuesta12 = 'No cuenta con esquema de comercialización'
+          cont = cont+1
+      }
+
+      if(answersFormatProducer[i].respuesta13 === 'A'){
+          answers.respuesta13 = 'Especializado.'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta13 === 'B'){
+          answers.respuesta13 = 'Tradicional.'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta13 === 'C'){
+          answers.respuesta13 = 'Básico.'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta13 === 'D'){
+          answers.respuesta13 = 'Local.'
+          cont = cont+1
+      }
+      
+      if(answersFormatProducer[i].respuesta14 === 'A'){
+          answers.respuesta14 = 'Especializado, hasta producto transformado.'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta14 === 'B'){
+          answers.respuesta14 = 'Especializado, sin producto transformado.'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta14 === 'C'){
+          answers.respuesta14 = 'Básico por demanda'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta14 === 'D'){
+          answers.respuesta14 = 'Ninguno'
+          cont = cont+1
+      }
+      
+      if(answersFormatProducer[i].respuesta15 === 'A'){
+          answers.respuesta15 = 'Sistematizado'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta15 === 'B'){
+          answers.respuesta15 = 'Manual.'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta15 === 'C'){
+          answers.respuesta15 = 'Básico.'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta15 === 'D'){
+          answers.respuesta15 = 'No lleva registros.'
+          cont = cont+1
+      }
+      
+      if(answersFormatProducer[i].respuesta16 === 'A'){
+          answers.respuesta16 = 'Alto'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta16 === 'B'){
+          answers.respuesta16 = 'Intermedio'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta16 === 'C'){
+          answers.respuesta16 = 'Básico'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta16 === 'D'){
+          answers.respuesta16 = 'Ninguno'
+          cont = cont+1
+      }
+
+      if(answersFormatProducer[i].respuesta17 === 'A'){
+          answers.respuesta17 = 'Formal, con estructura administrativa'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta17 === 'B'){
+          answers.respuesta17 = 'Formal, sin estructura administrativa'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta17 === 'C'){
+          answers.respuesta17 = 'Informal'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta17 === 'D'){
+          answers.respuesta17 = 'Informal sin contrato'
+          cont = cont+1
+      }
+      
+      if(answersFormatProducer[i].respuesta18 === 'A'){
+          answers.respuesta18 = 'Permanentemente'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta18 === 'B'){
+          answers.respuesta18 = 'Ocasionalmente'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta18 === 'C'){
+          answers.respuesta18 = 'Según oferta - necesidades'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta18 === 'D'){
+          answers.respuesta18 = 'No capacita'
+          cont = cont+1
+      }
+      if(answersFormatProducer[i].respuesta19 === 'A'){
+          answers.respuesta19 = 'Formal, enfocado al crecimiento del negocio'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta19 === 'B'){
+          answers.respuesta19 = 'Formal bancarizado'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta19 === 'C'){
+          answers.respuesta19 = 'Formal, no bancarizado'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta19 === 'D'){
+          answers.respuesta19 = 'Informal'
+          cont = cont+1
+      }
+      
+      if(answersFormatProducer[i].respuesta20 === 'A'){
+          answers.respuesta20 = 'Con Acceso vinculado al agronegocio'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta20 === 'B'){
+          answers.respuesta20 = 'Con acceso no vinculado al agronegocio'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta20 === 'C'){
+          answers.respuesta20 = 'Con acceso, pero no muestra interés'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta20 === 'D'){
+          answers.respuesta20 = 'Sin acceso'
+          cont = cont+1
+      }
+
+      if(answersFormatProducer[i].respuesta21 === 'A'){
+          answers.respuesta21 = 'Si'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta21 === 'B'){
+          answers.respuesta21 = 'No'
+          cont = cont+1
+      }
+      
+      if(answersFormatProducer[i].respuesta22 === 'A'){
+          answers.respuesta22 = 'Activo'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta22 === 'B'){
+          answers.respuesta22 = 'Sin participación'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta22 === 'C'){
+          answers.respuesta22 = 'No formalizado'
+          cont = cont+1
+      }
+
+      if(answersFormatProducer[i].respuesta23 === 'A'){
+          answers.respuesta23 = 'Activo'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta23 === 'B'){
+          answers.respuesta23 = 'Frecuente'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta23 === 'C'){
+          answers.respuesta23 = 'Eventual'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta23 === 'D'){
+          answers.respuesta23 = 'Sin participación'
+          cont = cont+1
+      }
+      
+      if(answersFormatProducer[i].respuesta24 === 'A'){
+          answers.respuesta24 = 'Asociativa / organizado'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta24 === 'B'){
+          answers.respuesta24 = 'Asociativa sin organización'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta24 === 'C'){
+          answers.respuesta24 = 'Individual'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta24 === 'D'){
+          answers.respuesta24 = 'Sin participación'
+          cont = cont+1
+      }
+
+      if(answersFormatProducer[i].respuesta25 === 'A'){
+          answers.respuesta25 = 'Formal y continua'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta25 === 'B'){
+          answers.respuesta25 = 'Parcialmente'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta25 === 'C'){
+          answers.respuesta25 = 'No participa'
+          cont = cont+1
+      }
+      
+      if(answersFormatProducer[i].respuesta26 === 'A'){
+          answers.respuesta26 = 'Permanente y especializada'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta26 === 'B'){
+          answers.respuesta26 = 'Colectiva según necesidades comunes'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta26 === 'C'){
+          answers.respuesta26 = 'Acceso sin cobertura adecuada a la necesidad'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta26 === 'D'){
+          answers.respuesta26 = 'Sin acceso'
+          cont = cont+1
+      }
+
+      if(answersFormatProducer[i].respuesta27 === 'A'){
+          answers.respuesta27 = 'Cuenta con certificación'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta27 === 'B'){
+          answers.respuesta27 = 'Está en proceso'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta27 === 'C'){
+          answers.respuesta27 = 'No le interesa'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta27 === 'D'){
+          answers.respuesta27 = 'No conoce'
+          cont = cont+1
+}
+      
+      if(answersFormatProducer[i].respuesta28 === 'A'){
+          answers.respuesta28 = 'Los tiene en cuenta'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta28 === 'B'){
+          answers.respuesta28 = 'Los conoce'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta28 === 'C'){
+          answers.respuesta28 = 'Conocimiento básico'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta28 === 'D'){
+          answers.respuesta28 = 'Ningún conocimiento'
+          cont = cont+1
+      }
+
+      if(answersFormatProducer[i].respuesta29 === 'A'){
+          answers.respuesta29 = 'Todas las fuentes'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta29 === 'B'){
+          answers.respuesta29 = 'Mayoría de fuentes'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta29 === 'C'){
+          answers.respuesta29 = 'Algunas'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta29 === 'D'){
+          answers.respuesta29 = 'Pocas'
+          cont = cont+1
+      }
+      
+      if(answersFormatProducer[i].respuesta30 === 'A'){
+          answers.respuesta30 = 'Permanente'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta30 === 'B'){
+          answers.respuesta30 = 'Frecuente'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta30 === 'C'){
+          answers.respuesta30 = 'Regular'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta30 === 'D'){
+          answers.respuesta30 = 'Ninguno'
+          cont = cont+1
+      }
+      
+      if(answersFormatProducer[i].respuesta31 === 'A'){
+          answers.respuesta31 = 'Todas'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta31 === 'B'){
+          answers.respuesta31 = 'Algunas'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta31 === 'C'){
+          answers.respuesta31 = 'Ninguna'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta31 === 'D'){
+          answers.respuesta31 = 'Sin acceso'
+          cont = cont+1
+      }
+      
+      if(answersFormatProducer[i].respuesta32 === 'A'){
+          answers.respuesta32 = 'Alta'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta32 === 'B'){
+          answers.respuesta32 = 'Media'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta32 === 'C'){
+          answers.respuesta32 = 'Básica'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta32 === 'D'){
+          answers.respuesta32 = 'Ninguna'
+          cont = cont+1
+      }
+
+      if(answersFormatProducer[i].respuesta33 === 'A'){
+          answers.respuesta33 = 'Superior'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta33 === 'B'){
+          answers.respuesta33 = 'Alto'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta33 === 'C'){
+          answers.respuesta33 = 'Intermedio'
+          cont = cont+1
+      }
+      
+      if(answersFormatProducer[i].respuesta34 === 'A'){
+          answers.respuesta34 = 'Cuenta e implementa un plan de conservación'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta34 === 'B'){
+          answers.respuesta34 = 'Implementa sin planificación'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta34 === 'C'){
+          answers.respuesta34 = 'Conoce, pero no implementa prácticas'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta34 === 'D'){
+          answers.respuesta34 = 'No conoce ni implementa'
+          cont = cont+1
+      }
+      
+      if(answersFormatProducer[i].respuesta35 === 'A'){
+          answers.respuesta35 = 'Dispone de un plan de conservación y lo implementa'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta35 === 'B'){
+          answers.respuesta35 = 'Implementa sin planificación'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta35 === 'C'){
+          answers.respuesta35 = 'Conoce, pero no implementa prácticas'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta35 === 'D'){
+          answers.respuesta35 = 'No conoce ni implementa'
+          cont = cont+1
+      }
+      
+      if(answersFormatProducer[i].respuesta36 === 'A'){
+          answers.respuesta36 = 'Manejo planificado del suelo'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta36 === 'B'){
+          answers.respuesta36 = 'Manejo intermedio no planificado'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta36 === 'C'){
+          answers.respuesta36 = 'Manejo básico no planificado'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta36 === 'D'){
+          answers.respuesta36 = 'Sin Manejo'
+          cont = cont+1
+      }
+
+      if(answersFormatProducer[i].respuesta37 === 'A'){
+          answers.respuesta37 = 'Conoce y cuenta con un plan de mitigación y adaptación'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta37 === 'B'){
+          answers.respuesta37 = 'Conoce e implementa'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta37 === 'C'){
+          answers.respuesta37 = 'Conoce medidas, pero no las implementa'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta37 === 'D'){
+          answers.respuesta37 = 'No conoce'
+          cont = cont+1
+      }
+      
+      if(answersFormatProducer[i].respuesta38 === 'A'){
+          answers.respuesta38 = 'Planificación avanzada'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta38 === 'B'){
+          answers.respuesta38 = 'Conoce y planifica'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta38 === 'C'){
+          answers.respuesta38 = 'Conoce, pero no planifica'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta38 === 'D'){
+          answers.respuesta38 = 'No conoce'
+          cont = cont+1
+      }
+
+      if(answersFormatProducer[i].respuesta39 === 'A'){
+          answers.respuesta39 = 'Conoce e implementa acciones'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta39 === 'B'){
+          answers.respuesta39 = 'Conoce, pero no implementa acciones'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta39 === 'C'){
+          answers.respuesta39 = 'No conoce, pero sus acciones no afectan'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta39 === 'D'){
+          answers.respuesta39 = 'No conoce, pero sus acciones si afectan'
+          cont = cont + 1
+}
+      
+      if(answersFormatProducer[i].respuesta40 === 'A'){
+          answers.respuesta40 = 'Si'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta40=== 'B'){
+          answers.respuesta40 = 'No'
+          cont = cont+1
+      }
+
+      if(answersFormatProducer[i].respuesta41 === 'A'){
+          answers.respuesta41 = 'Certificado'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta41 === 'B'){
+          answers.respuesta41 = 'En proceso de certificación'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta41 === 'C'){
+          answers.respuesta41 = 'Conoce y aplica normatividad nacional.'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta41 === 'D'){
+          answers.respuesta41 = 'No cumple'
+          cont = cont+1
+      }
+
+      if(answersFormatProducer[i].respuesta42 === 'A'){
+          answers.respuesta42 = 'Conoce y participa activamente'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta42 === 'B'){
+          answers.respuesta42 = 'Conoce al menos cinco (5) mecanismos de participación'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta42 === 'C'){
+          answers.respuesta42 = 'Conoce al menos tres (3) mecanismos de participación'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta42 === 'D'){
+          answers.respuesta42 = 'No tiene conocimientos'
+          cont = cont+1
+      }
+
+      if(answersFormatProducer[i].respuesta43 === 'A'){
+          answers.respuesta43 = 'Conoce todas las herramientas'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta43 === 'B'){
+          answers.respuesta43 = 'Al menos tres (3) herramientas'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta43 === 'C'){
+          answers.respuesta43 = 'Al menos una (1) herramienta'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta43 === 'D'){
+          answers.respuesta43 = 'No tiene conocimientos'
+          cont = cont+1
+      }
+
+      if(answersFormatProducer[i].respuesta44 === 'A'){
+          answers.respuesta44 = 'Todos los mecanismos'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta44 === 'B'){
+          answers.respuesta44 = 'Al menos un (1) mecanismo y sí ha participado'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta44 === 'C'){
+          answers.respuesta44 = 'Al menos un (1) mecanismo y no ha participado'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta44 === 'D'){
+          answers.respuesta44 = 'No tiene conocimientos'
+          cont = cont+1
+      }
+
+      if(answersFormatProducer[i].respuesta45 === 'A'){
+          answers.respuesta45 = 'Líder comunitario'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta45 === 'B'){
+          answers.respuesta45 = 'Gestión Colectiva'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta45 === 'C'){
+          answers.respuesta45 = 'Gestión Individual'
+          cont = cont+1
+      }if(answersFormatProducer[i].respuesta45 === 'D'){
+          answers.respuesta45 = 'No ha gestionado'
+          cont = cont+1
+      }
+            
+   }
+
+
+  let doc = new PDFDocument({
+      layout: 'landscape',
+      size: [510, 410],
+      margin: 5,
+      info:{
+          title:'Formato de Registro de Productor',
+          Author: 'Fundación AIP cloud'
+      }
+  })  
+
+  if (dataFarm[0].secondName === null){
+      dataFarm[0].secondName = ' '
+  }
+
+  if (dataFarm[0].secondSurname === null){
+      dataFarm[0].secondSurname = ' '
+  }
+
+  if (dataFarm[0].vereda === null){
+      dataFarm[0].vereda = ' '
+  }
+
+  if (dataFarm[0].corregimiento === null){
+      dataFarm[0].corregimiento = ' '
+  }
+
+  let newName = dataFarm[0].firstName + " " + dataFarm[0].secondName+ " " + dataFarm[0].firstSurname + " " + dataFarm[0].secondSurname + "   " + dataFarm[0].nitProducer;
+
+  doc.info['Title'] = newName;
+  
+
+  let col1LeftPos = 20;
+  let col2LeftPos = col1LeftPos+40;
+
+  if(queryImageProject[0].logoUno && queryImageProject[0].logoDos && queryImageProject[0].logoTres && queryImageProject[0].logoCuatro && queryImageProject[0].logoCinco && queryImageProject[0].logoSeis && queryImageProject[0].logoSiete && queryImageProject[0].logoOcho){
+      doc.moveDown()
+      .image('data:image/jpeg;base64,'+logoUnoTrans , 10, 10, {width: 40})
+      .image('data:image/jpeg;base64,'+logoDosTrans , 10, 10, {width: 40})
+  }else{ 
+      if(queryImageProject[0].logoUno && queryImageProject[0].logoDos && queryImageProject[0].logoTres && queryImageProject[0].logoCuatro && queryImageProject[0].logoCinco && queryImageProject[0].logoSeis && queryImageProject[0].logoSiete ){
+          doc.moveDown()
+          .image('data:image/jpeg;base64,'+logoUnoTrans , 10, 10, {width: 40})
+          .image('data:image/jpeg;base64,'+logoDosTrans , 10, 10, {width: 40})
+      }else{
+          if(queryImageProject[0].logoUno && queryImageProject[0].logoDos && queryImageProject[0].logoTres && queryImageProject[0].logoCuatro && queryImageProject[0].logoCinco && queryImageProject[0].logoSeis ){
+              doc.moveDown()
+              .image('data:image/jpeg;base64,'+logoUnoTrans , 10, 10, {width: 40})
+              .image('data:image/jpeg;base64,'+logoDosTrans , 10, 10, {width: 40})
+          }else{
+              if(queryImageProject[0].logoUno && queryImageProject[0].logoDos && queryImageProject[0].logoTres && queryImageProject[0].logoCuatro && queryImageProject[0].logoCinco ){
+                  doc.moveDown()
+                  .image('data:image/jpeg;base64,'+logoUnoTrans , 30, 10, {width: 40})
+                  .image('data:image/jpeg;base64,'+logoDosTrans , 130, 10, {width: 40})
+                  .image('data:image/jpeg;base64,'+logoTresTrans , 230, 10, {width: 40})
+                  .image('data:image/jpeg;base64,'+logoTresTrans , 340, 10, {width: 40})
+                  .image('data:image/jpeg;base64,'+logoCincoTrans , 185, 466, {width: 40})
+              }else{
+                  if(queryImageProject[0].logoUno && queryImageProject[0].logoDos && queryImageProject[0].logoTres && queryImageProject[0].logoCuatro ){
+                      doc.moveDown()
+                      .image('data:image/jpeg;base64,'+logoUnoTrans , 30, 10, {width: 40})
+                      .image('data:image/jpeg;base64,'+logoDosTrans , 130, 10, {width: 40})
+                      .image('data:image/jpeg;base64,'+logoTresTrans , 230, 10, {width: 40})
+                      .image('data:image/jpeg;base64,'+logoTresTrans , 340, 10, {width: 40})
+                  }else{
+                      if(queryImageProject[0].logoUno && queryImageProject[0].logoDos && queryImageProject[0].logoTres ){
+                          doc.moveDown()
+                          .image('data:image/jpeg;base64,'+logoUnoTrans , 50, 10, {width: 40})
+                          .image('data:image/jpeg;base64,'+logoDosTrans , 170, 20, {width: 70, height:20})
+                          .image('data:image/jpeg;base64,'+logoTresTrans , 320, 15, {width: 40, height:30})
+                      }else{
+                          if(queryImageProject[0].logoUno && queryImageProject[0].logoDos){
+                              doc.moveDown()
+                              .image('data:image/jpeg;base64,'+logoUnoTrans , 50, 10, {width: 40})
+                              .image('data:image/jpeg;base64,'+logoDosTrans , 320, 10, {width: 40})
+                          }else{
+                              if(queryImageProject[0].logoUno){
+                                  doc.moveDown()
+                                  .image('data:image/jpeg;base64,'+logoUnoTrans , 15, 15, {width: 380})
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+      } 
+  } 
+
+
+  doc.moveDown()
+      .fontSize(12)
+      .font('Helvetica-Bold')
+      .text('Formato de Registro de Productor', 100, 90)
+
+  doc.moveDown()
+      .fontSize(9)
+      .font('Helvetica')
+      .text(questionsProducer[0].num_item1, col1LeftPos, 120)
+      .text(questionsProducer[0].title1, col2LeftPos, 120)
+      .text(questionsProducer[0].num_item2, col1LeftPos, 135)
+      .text(questionsProducer[0].title2, col2LeftPos, 135)
+      .text(questionsProducer[0].num_item3, col1LeftPos, 150)
+      .text(questionsProducer[0].title3, col2LeftPos, 150)
+      .fontSize(7)
+      .text(questionsProducer[0].description2, col1LeftPos, 160)
+      .font('Helvetica-Bold')
+      .fontSize(9)
+      .text(`Respuesta: ${answers.respuesta1}` , col1LeftPos, 175)
+
+  
+      .fontSize(9)
+      .font('Helvetica')
+      .text(questionsProducer[1].num_item1, col1LeftPos, 195)
+      .text(questionsProducer[1].title1, col2LeftPos, 195)
+      .text(questionsProducer[1].num_item2, col1LeftPos, 210)
+      .text(questionsProducer[1].title2, col2LeftPos, 210)
+      .text(questionsProducer[1].num_item3, col1LeftPos, 225)
+      .text(questionsProducer[1].title3, col2LeftPos, 225)
+      .fontSize(7)
+      .text(questionsProducer[1].description2, col1LeftPos, 235)
+      .font('Helvetica-Bold')
+      .fontSize(9)
+      .text(`Respuesta: ${answers.respuesta2}`, col1LeftPos, 255)
+
+      .fontSize(9)
+      .font('Helvetica')
+      .text(questionsProducer[2].num_item1, col1LeftPos, 275)
+      .text(questionsProducer[2].title1, col2LeftPos, 275)
+      .text(questionsProducer[2].num_item2, col1LeftPos, 290)
+      .text(questionsProducer[2].title2, col2LeftPos, 290)
+      .text(questionsProducer[2].num_item3, col1LeftPos, 305)
+      .text(questionsProducer[2].title3, col2LeftPos, 305)
+      .fontSize(7)
+      .text(questionsProducer[2].description2, col1LeftPos, 315)
+      .font('Helvetica-Bold')
+      .fontSize(9)
+      .text(`Respuesta: ${answers.respuesta3}`, col1LeftPos, 335)
+
+      
+      .fontSize(9)
+      .font('Helvetica')
+      .text(questionsProducer[3].num_item1, col1LeftPos, 355)
+      .text(questionsProducer[3].title1, col2LeftPos, 355)
+      .fontSize(7)
+      .text(questionsProducer[3].description2, col1LeftPos, 370)
+      .font('Helvetica-Bold')
+      .fontSize(9)
+      .text(`Respuesta: ${answers.respuesta4}`, col1LeftPos, 390)
+      .text(`____________________________________`, col1LeftPos,395)
+
+      .fontSize(9)
+      .font('Helvetica')
+      .text(questionsProducer[4].num_item1, col1LeftPos, 415)
+      .text(questionsProducer[4].title1, col2LeftPos, 415)
+      .text(questionsProducer[4].num_item2, col1LeftPos, 430)
+      .text(questionsProducer[4].title2, col2LeftPos, 430)
+      .fontSize(7)
+      .text(questionsProducer[4].description2, col1LeftPos, 440)
+      .font('Helvetica-Bold')
+      .fontSize(9)
+      .text(`Respuesta: ${answers.respuesta5}`, col1LeftPos, 470)
+
+  //---------------------------------------------------- New PAGE --------------------------------------------------
+
+  doc.addPage()
+      .fontSize(9)
+      .font('Helvetica')
+      .text(questionsProducer[5].num_item1, col1LeftPos, 30)
+      .text(questionsProducer[5].title1, col2LeftPos, 30)
+      .fontSize(7)
+      .text(questionsProducer[5].description1, col1LeftPos, 45)
+      .font('Helvetica-Bold')
+      .fontSize(9)
+      .text(`Respuesta: ${answers.respuesta6}`, col1LeftPos, 70)
+
+      .text(`____________________________________`, col1LeftPos, 80)
+
+      .fontSize(9)
+      .font('Helvetica')
+      .text("1.1.4", col1LeftPos, 100)
+      .text("Uso de Buenas Prácticas Ganaderas", col2LeftPos, 100)
+      .fontSize(9)
+      .text("1.1.4.1", col1LeftPos, 115)
+      .text("¿Cuál es su estado actual con respecto a las BPG?", col2LeftPos, 115)
+      .font('Helvetica-Bold')
+      .fontSize(9)
+      .text(`Respuesta: ${answers.respuesta7}`, col1LeftPos, 130)
+
+      .fontSize(9)
+      .font('Helvetica')
+      .text("1.1.4.2", col1LeftPos, 150)
+      .text("¿Con relación al manejo sanitario?:", col2LeftPos, 150)
+      .font('Helvetica-Bold')
+      .fontSize(9)
+      .text(`Respuesta: ${answers.respuesta8}`, col1LeftPos, 165)
+
+      .fontSize(9)
+      .font('Helvetica')
+      .text("1.1.4.3", col1LeftPos, 185)
+      .text("¿Cómo maneja el sistema de nutrición de su producción?", col2LeftPos, 185)
+      .font('Helvetica-Bold')
+      .fontSize(9)
+      .text(`Respuesta: ${answers.respuesta9}`, col1LeftPos, 200)
+
+      .fontSize(9)
+      .font('Helvetica')
+      .text("1.1.4.4", col1LeftPos, 220)
+      .text("¿Implementa manejo genético y reproductivo en su predio?", col2LeftPos, 220)
+      .font('Helvetica-Bold')
+      .fontSize(9)
+      .text(`Respuesta: ${answers.respuesta10}`, col1LeftPos, 235)
+
+      .fontSize(9)
+      .font('Helvetica')
+      .text(questionsProducer[6].num_item1, col1LeftPos, 265)
+      .text(questionsProducer[6].title1, col2LeftPos, 265)
+      .fontSize(7)
+      .text(questionsProducer[6].description2, col1LeftPos, 280)
+      .font('Helvetica-Bold')
+      .fontSize(9)
+      .text(`Respuesta: ${answers.respuesta11}`, col1LeftPos, 295)
+
+      .fontSize(9)
+      .font('Helvetica')
+      .text(questionsProducer[7].num_item1, col1LeftPos, 315)
+      .text(questionsProducer[7].title1, col2LeftPos, 315)
+      .fontSize(7)
+      .text(questionsProducer[7].description2, col1LeftPos, 330)
+      .font('Helvetica-Bold')
+      .fontSize(9)
+      .text(`Respuesta: ${answers.respuesta12}`, col1LeftPos, 350)
+
+      .fontSize(9)
+      .font('Helvetica')
+      .text(questionsProducer[8].num_item1, col1LeftPos, 365)
+      .text(questionsProducer[8].title1, col2LeftPos, 365)
+      .text(questionsProducer[8].num_item2, col1LeftPos, 380)
+      .text(questionsProducer[8].title2, col2LeftPos, 380)
+      .fontSize(7)
+      .text(questionsProducer[8].description2, col1LeftPos, 395)
+      .font('Helvetica-Bold')
+      .fontSize(9)
+      .text(`Respuesta: ${answers.respuesta13}`, col1LeftPos, 415)
+
+  /* -------------------------------------------------NEW PAGE------------------------------------------------------- */
+  doc.addPage()
+      .fontSize(9)
+      .font('Helvetica')
+      .text(questionsProducer[9].num_item1, col1LeftPos, 30)
+      .text(questionsProducer[9].title1, col2LeftPos, 30)
+      .text(questionsProducer[9].num_item2, col1LeftPos, 45)
+      .text(questionsProducer[9].title2, col2LeftPos, 45)
+      .fontSize(7)
+      .text(questionsProducer[9].description2, col1LeftPos, 60)
+      .font('Helvetica-Bold')
+      .fontSize(9)
+      .text(`Respuesta: ${answers.respuesta14}`, col1LeftPos, 80) 
+      
+      .fontSize(9)
+      .font('Helvetica')
+      .text(questionsProducer[10].num_item1, col1LeftPos, 95)
+      .text(questionsProducer[10].title1, col2LeftPos, 95)
+      .text(questionsProducer[10].num_item2, col1LeftPos, 110)
+      .text(questionsProducer[10].title2, col2LeftPos, 110)
+      .fontSize(7)
+      .text(questionsProducer[10].description2, col1LeftPos, 125)
+      .font('Helvetica-Bold')
+      .fontSize(9)
+      .text(`Respuesta: ${answers.respuesta15}`, col1LeftPos, 140)
+
+      .fontSize(9)
+      .font('Helvetica')
+      .text(questionsProducer[11].num_item1, col1LeftPos, 160)
+      .text(questionsProducer[11].title1, col2LeftPos, 160)
+      .fontSize(7)
+      .text(questionsProducer[11].description2, col1LeftPos, 175)
+      .font('Helvetica-Bold')
+      .fontSize(9)
+      .text(`Respuesta: ${answers.respuesta16}`, col1LeftPos, 195)
+
+      .fontSize(9)
+      .font('Helvetica')
+      .text(questionsProducer[12].num_item1, col1LeftPos, 215)
+      .text(questionsProducer[12].title1, col2LeftPos, 215)
+      .text(questionsProducer[12].num_item2, col1LeftPos, 230)
+      .text(questionsProducer[12].title2, col2LeftPos, 230)
+      .fontSize(7)
+      .text(questionsProducer[12].description2, col1LeftPos, 245)
+      .font('Helvetica-Bold')
+      .fontSize(9)
+      .text(`Respuesta: ${answers.respuesta17}`, col1LeftPos, 265)
+
+      .fontSize(9)
+      .font('Helvetica')
+      .text(questionsProducer[13].num_item1, col1LeftPos, 285)
+      .text(questionsProducer[13].title1, col2LeftPos, 285)
+      .fontSize(7)
+      .text(questionsProducer[13].description2, col1LeftPos, 300)
+      .font('Helvetica-Bold')
+      .fontSize(9)
+      .text(`Respuesta: ${answers.respuesta18}`, col1LeftPos, 320)
+
+      .fontSize(9)
+      .font('Helvetica')
+      .text(questionsProducer[14].num_item1, col1LeftPos, 335)
+      .text(questionsProducer[14].title1, col2LeftPos, 335)
+      .text(questionsProducer[14].num_item2, col1LeftPos, 350)
+      .text(questionsProducer[14].title2, col2LeftPos, 350)
+      .fontSize(7)
+      .text(questionsProducer[14].description2, col1LeftPos, 365)
+      .font('Helvetica-Bold')
+      .fontSize(9)
+      .text(`Respuesta: ${answers.respuesta19}`, col1LeftPos, 380)
+
+      .fontSize(9)
+      .font('Helvetica')
+      .text(questionsProducer[15].num_item1, col1LeftPos, 400)
+      .text(questionsProducer[15].title1, col2LeftPos, 400)
+      .fontSize(7)
+      .text(questionsProducer[15].description1, col1LeftPos, 415)
+      .font('Helvetica-Bold')
+      .fontSize(9)
+      .text(`Respuesta: ${answers.respuesta20}`, col1LeftPos, 435)
+
+
+  /* -------------------------------------------------NEW PAGE------------------------------------------------------- */
+  doc.addPage()
+      .fontSize(9)
+      .font('Helvetica')
+      .text(questionsProducer[16].num_item1, col1LeftPos, 30)
+      .text(questionsProducer[16].title1, col2LeftPos, 30)
+      .text(questionsProducer[16].num_item2, col1LeftPos, 50)
+      .text(questionsProducer[16].title2, col2LeftPos, 50)
+      .fontSize(7)
+      .text(questionsProducer[16].description2, col1LeftPos, 60)
+      .font('Helvetica-Bold')
+      .fontSize(9)
+      .text(`Respuesta: ${answers.respuesta21}`, col1LeftPos, 75)
+
+      .fontSize(9)
+      .font('Helvetica')
+      .text(questionsProducer[17].num_item1, col1LeftPos, 95)
+      .text(questionsProducer[17].title1, col2LeftPos, 95)
+      .fontSize(7)
+      .text(questionsProducer[17].description2, col1LeftPos, 110)
+      .font('Helvetica-Bold')
+      .fontSize(9)
+      .text(`Respuesta: ${answers.respuesta22}`, col1LeftPos, 125)
+
+      .fontSize(9)
+      .font('Helvetica')
+      .text(questionsProducer[18].num_item1, col1LeftPos, 145)
+      .text(questionsProducer[18].title1, col2LeftPos, 145)
+      .text(questionsProducer[18].num_item2, col1LeftPos, 160)
+      .text(questionsProducer[18].title2, col2LeftPos, 160)
+      .fontSize(7)
+      .text(questionsProducer[18].description2, col1LeftPos, 175)
+      .font('Helvetica-Bold')
+      .fontSize(9)
+      .text(`Respuesta: ${answers.respuesta23}`, col1LeftPos, 195)
+
+      .fontSize(9)
+      .font('Helvetica')
+      .text(questionsProducer[19].num_item1, col1LeftPos, 210)
+      .text(questionsProducer[19].title1, col2LeftPos, 210)
+      .text(questionsProducer[19].num_item2, col1LeftPos, 225)
+      .text(questionsProducer[19].title2, col2LeftPos, 225)
+      .fontSize(7)
+      .text(questionsProducer[19].description2, col1LeftPos, 240)
+      .font('Helvetica-Bold')
+      .fontSize(9)
+      .text(`Respuesta: ${answers.respuesta24}`, col1LeftPos, 270)
+
+      .fontSize(9)
+      .font('Helvetica')
+      .text(questionsProducer[20].num_item1, col1LeftPos, 285)
+      .text(questionsProducer[20].title1, col2LeftPos, 285)
+      .text(questionsProducer[20].num_item2, col1LeftPos, 300)
+      .text(questionsProducer[20].title2, col2LeftPos, 300)
+      .fontSize(7)
+      .text(questionsProducer[20].description2, col1LeftPos, 315)
+      .font('Helvetica-Bold')
+      .fontSize(9)
+      .text(`Respuesta: ${answers.respuesta25}`, col1LeftPos, 335)
+
+      .fontSize(9)
+      .font('Helvetica')
+      .text(questionsProducer[21].num_item1, col1LeftPos, 350)
+      .text(questionsProducer[21].title1, col2LeftPos, 350)
+      .text(questionsProducer[21].num_item2, col1LeftPos, 365)
+      .text(questionsProducer[21].title2, col2LeftPos, 365)
+      .fontSize(7)
+      .text(questionsProducer[21].description2, col1LeftPos, 380)
+      .font('Helvetica-Bold')
+      .fontSize(9)
+      .text(`Respuesta: ${answers.respuesta26}`, col1LeftPos, 400)
+
+  /* -------------------------------------------------NEW PAGE------------------------------------------------------- */
+  doc.addPage()
+      .fontSize(9)
+      .font('Helvetica')
+      .text(questionsProducer[22].num_item1, col1LeftPos, 30)
+      .text(questionsProducer[22].title1, col2LeftPos, 30)
+      .text(questionsProducer[22].num_item2, col1LeftPos, 45)
+      .text(questionsProducer[22].title2, col2LeftPos, 45)
+      .fontSize(7)
+      .text(questionsProducer[22].description2, col1LeftPos, 60)
+      .font('Helvetica-Bold')
+      .fontSize(9)
+      .text(`Respuesta: ${answers.respuesta27}`, col1LeftPos, 80)
+
+      .fontSize(9)
+      .font('Helvetica')
+      .text(questionsProducer[23].num_item1, col1LeftPos, 100)
+      .text(questionsProducer[23].title1, col2LeftPos, 100)
+      .text(questionsProducer[23].num_item2, col1LeftPos, 115)
+      .text(questionsProducer[23].title2, col2LeftPos, 115)
+      .fontSize(7)
+      .text(questionsProducer[23].description2, col1LeftPos, 130)
+      .font('Helvetica-Bold')
+      .fontSize(9)
+      .text(`Respuesta: ${answers.respuesta28}`, col1LeftPos, 145)
+
+      .fontSize(9)
+      .font('Helvetica')
+      .text(questionsProducer[24].num_item1, col1LeftPos, 165)
+      .text(questionsProducer[24].title1, col2LeftPos, 165)
+      .text(questionsProducer[24].num_item2, col1LeftPos, 180)
+      .text(questionsProducer[24].title2, col2LeftPos, 180)
+      .text(questionsProducer[24].num_item3, col1LeftPos, 195)
+      .text(questionsProducer[24].title3, col2LeftPos, 195)
+      .fontSize(7)
+      .text(questionsProducer[12].description2, col1LeftPos, 210)
+      .font('Helvetica-Bold')
+      .fontSize(9)
+      .text(`Respuesta: ${answers.respuesta29}`, col1LeftPos, 230)
+
+      .fontSize(9)
+      .font('Helvetica')
+      .text(questionsProducer[25].num_item1, col1LeftPos, 250)
+      .text(questionsProducer[25].title1, col2LeftPos, 250)
+      .text(questionsProducer[25].num_item2, col1LeftPos, 265)
+      .text(questionsProducer[25].title2, col2LeftPos, 265)
+      .fontSize(7)
+      .text(questionsProducer[25].description2, col1LeftPos, 280)
+      .font('Helvetica-Bold')
+      .fontSize(9)
+      .text(`Respuesta: ${answers.respuesta30}`, col1LeftPos, 300)
+
+      .fontSize(9)
+      .font('Helvetica')
+      .text(questionsProducer[26].num_item1, col1LeftPos, 320)
+      .text(questionsProducer[26].title1, col2LeftPos, 320)
+      .text(questionsProducer[26].num_item2, col1LeftPos, 335)
+      .text(questionsProducer[26].title2, col2LeftPos, 335)
+      .fontSize(7)
+      .text(questionsProducer[26].description2, col1LeftPos, 350)
+      .font('Helvetica-Bold')
+      .fontSize(9)
+      .text(`Respuesta: ${answers.respuesta31}`, col1LeftPos, 370)
+
+      .fontSize(9)
+      .font('Helvetica')
+      .text(questionsProducer[27].num_item1, col1LeftPos, 390)
+      .text(questionsProducer[27].title1, col2LeftPos, 390)
+      .text(questionsProducer[27].num_item2, col1LeftPos, 405)
+      .text(questionsProducer[27].title2, col2LeftPos, 405)
+      .fontSize(7)
+      .text(questionsProducer[27].description2, col1LeftPos, 425)
+      .font('Helvetica-Bold')
+      .fontSize(9)
+      .text(`Respuesta: ${answers.respuesta32}`, col1LeftPos, 445)
+      .fontSize(9)
+
+  /* -------------------------------------------------NEW PAGE------------------------------------------------------- */
+  doc.addPage()
+      .font('Helvetica')
+      .text(questionsProducer[28].num_item1, col1LeftPos, 30)
+      .text(questionsProducer[28].title1, col2LeftPos, 30)
+      .text(questionsProducer[28].num_item2, col1LeftPos, 45)
+      .text(questionsProducer[28].title2, col2LeftPos, 45)
+      .fontSize(7)
+      .text(questionsProducer[28].description2, col1LeftPos, 60)
+      .font('Helvetica-Bold')
+      .fontSize(9)
+      .text(`Respuesta: ${answers.respuesta33}`, col1LeftPos, 80)
+
+      .fontSize(9)
+      .font('Helvetica')
+      .text(questionsProducer[29].num_item1, col1LeftPos, 100)
+      .text(questionsProducer[29].title1, col2LeftPos, 100)
+      .text(questionsProducer[29].num_item2, col1LeftPos, 115)
+      .text(questionsProducer[29].title2, col2LeftPos, 115)
+      .text(questionsProducer[29].num_item3, col1LeftPos, 130)
+      .text(questionsProducer[29].title3, col2LeftPos, 130)
+      .fontSize(7)
+      .text(questionsProducer[29].description2, col1LeftPos, 155)
+      .font('Helvetica-Bold')
+      .fontSize(9)
+      .text(`Respuesta: ${answers.respuesta34}`, col1LeftPos, 175)
+
+      .fontSize(9)
+      .font('Helvetica')
+      .text(questionsProducer[30].num_item1, col1LeftPos, 195)
+      .text(questionsProducer[30].title1, col2LeftPos, 195)
+      .text(questionsProducer[30].num_item2, col1LeftPos, 210)
+      .text(questionsProducer[30].title2, col2LeftPos, 210)
+      .fontSize(7)
+      .text(questionsProducer[30].description2, col1LeftPos, 235)
+      .font('Helvetica-Bold')
+      .fontSize(9)
+      .text(`Respuesta: ${answers.respuesta35}`, col1LeftPos, 255)
+
+      .fontSize(9)
+      .font('Helvetica')
+      .text(questionsProducer[31].num_item1, col1LeftPos, 275)
+      .text(questionsProducer[31].title1, col2LeftPos, 275)
+      .fontSize(7)
+      .text(questionsProducer[31].description2, col1LeftPos, 290)
+      .font('Helvetica-Bold')
+      .fontSize(9)
+      .text(`Respuesta: ${answers.respuesta36}`, col1LeftPos, 310)
+
+      .fontSize(9)
+      .font('Helvetica')
+      .text(questionsProducer[32].num_item1, col1LeftPos, 330)
+      .text(questionsProducer[32].title1, col2LeftPos, 330)
+      .text(questionsProducer[32].num_item2, col1LeftPos, 345)
+      .text(questionsProducer[32].title2, col2LeftPos, 345)
+      .fontSize(7)
+      .text(questionsProducer[32].description2, col1LeftPos, 370)
+      .font('Helvetica-Bold')
+      .fontSize(9)
+      .text(`Respuesta: ${answers.respuesta37}`, col1LeftPos, 390)
+
+      .fontSize(9)
+      .font('Helvetica')
+      .text(questionsProducer[33].num_item1, col1LeftPos, 410)
+      .text(questionsProducer[33].title1, col2LeftPos, 410)
+      .fontSize(7)
+      .text(questionsProducer[33].description2, col1LeftPos, 430)
+      .font('Helvetica-Bold')
+      .fontSize(9)
+      .text(`Respuesta: ${answers.respuesta38}`, col1LeftPos, 450)
+
+  /* -------------------------------------------------NEW PAGE------------------------------------------------------- */
+  doc.addPage()
+      .fontSize(9)
+      .font('Helvetica')
+      .text(questionsProducer[34].num_item1, col1LeftPos, 30)
+      .text(questionsProducer[34].title1, col2LeftPos, 30)
+      .fontSize(7)
+      .text(questionsProducer[34].description2, col1LeftPos, 55)
+      .font('Helvetica-Bold')
+      .fontSize(9)
+      .text(`Respuesta: ${answers.respuesta39}`, col1LeftPos, 75)
+
+      .fontSize(9)
+      .font('Helvetica')
+      .text(questionsProducer[35].num_item1, col1LeftPos, 95)
+      .text(questionsProducer[35].title1, col2LeftPos, 95)
+      .text(questionsProducer[35].num_item2, col1LeftPos, 110)
+      .text(questionsProducer[35].title2, col2LeftPos, 110)
+      .font('Helvetica-Bold')
+      .fontSize(9)
+      .text(`Respuesta: ${answers.respuesta40}`, col1LeftPos, 125)
+
+      .fontSize(9)
+      .font('Helvetica')
+      .text(questionsProducer[36].num_item1, col1LeftPos, 140)
+      .text(questionsProducer[36].title1, col2LeftPos, 140)
+      .font('Helvetica-Bold')
+      .fontSize(9)
+      .text(`Respuesta: ${answers.respuesta41}`, col1LeftPos, 155)
+
+      .fontSize(9)
+      .font('Helvetica')
+      .text(questionsProducer[37].num_item1, col1LeftPos, 175)
+      .text(questionsProducer[37].title1, col2LeftPos, 175)
+      .fontSize(7)
+      .text(questionsProducer[37].description1, col1LeftPos, 190)
+      .fontSize(9)
+      .text(questionsProducer[37].num_item2, col1LeftPos, 210)
+      .text(questionsProducer[37].title2, col2LeftPos, 210)
+      .text(questionsProducer[37].num_item3, col1LeftPos, 225)
+      .text(questionsProducer[37].title3, col2LeftPos, 225)
+      .fontSize(7)
+      .text(questionsProducer[37].description2, col1LeftPos, 240)
+      .font('Helvetica-Bold')
+      .fontSize(9)
+      .text(`Respuesta: ${answers.respuesta42}`, col1LeftPos, 260)
+
+      .fontSize(9)
+      .font('Helvetica')
+      .text(questionsProducer[38].num_item1, col1LeftPos, 280)
+      .text(questionsProducer[38].title1, col2LeftPos, 280)
+      .text(questionsProducer[38].num_item2, col1LeftPos, 295)
+      .text(questionsProducer[38].title2, col2LeftPos, 295)
+      .fontSize(7)
+      .text(questionsProducer[38].description2, col1LeftPos, 310)
+      .font('Helvetica-Bold')
+      .fontSize(9)
+      .text(`Respuesta: ${answers.respuesta43}`, col1LeftPos, 330)
+
+      .fontSize(9)
+      .font('Helvetica')
+      .text(questionsProducer[39].num_item1, col1LeftPos, 350)
+      .text(questionsProducer[39].title1, col2LeftPos, 350)
+      .text(questionsProducer[39].num_item2, col1LeftPos, 365)
+      .text(questionsProducer[39].title2, col2LeftPos, 365)
+      .fontSize(7)
+      .text(questionsProducer[39].description2, col1LeftPos, 385)
+      .font('Helvetica-Bold')
+      .fontSize(9)
+      .text(`Respuesta: ${answers.respuesta44}`, col1LeftPos, 405)
+
+  /* -------------------------------------------------NEW PAGE------------------------------------------------------- */
+  doc.addPage()
+      .fontSize(9)
+      .font('Helvetica')
+      .text(questionsProducer[40].num_item1, col1LeftPos, 60)
+      .text(questionsProducer[40].title1, col2LeftPos, 60)
+      .text(questionsProducer[40].num_item2, col1LeftPos, 75)
+      .text(questionsProducer[40].title2, col2LeftPos, 75)
+      .fontSize(7)
+      .text(questionsProducer[40].description2, col1LeftPos, 90)
+      .font('Helvetica-Bold')
+      .fontSize(9)
+      .text(`Respuesta: ${answers.respuesta45}`, col1LeftPos, 110)
+
+      doc.moveDown()
+      .fontSize(9)
+      .font('Helvetica')
+      .text(`Fecha de Apliaccion: ${dataFarm[0].time_creation}`, col1LeftPos, 150)
+      .text(`Nombre: ${dataFarm[0].firstName} ${dataFarm[0].secondName} ${dataFarm[0].firstSurname} ${dataFarm[0].secondSurname}`, col1LeftPos, 175)
+      .text(`Fecha Nacimiento: ${dataFarm[0].birthdate}`, col1LeftPos, 190)
+      .text(`Teléfono: ${dataFarm[0].celphone1}`, col1LeftPos, 205)
+      .text(`Identificacion Usuario: ${dataFarm[0].nitProducer}`, col1LeftPos, 220)
+      .text(`Municipio: ${dataFarm[0].municipality}`, col1LeftPos, 235)
+      .text(`Corregimiento: ${dataFarm[0].corregimiento}`, col1LeftPos, 250)
+      .text(`Vereda: ${dataFarm[0].vereda}`, col1LeftPos, 265)
+      .text(`Nombre: ${dataFarm[0].nameFarm}`, col1LeftPos, 280)
+
+
+      //.image('data:image/jpeg;base64,'+imgFarmerSignature, 130, 315, {width: 160})
+      //.text('Firma del titular del predio', 153, 400)
+
+  doc.pipe(res)
+  doc.end() 
+
+
+})
+
+router.get('/downloadExcel', async (req, res) => {          
+  const producerSurvey = await pool.query('SELECT farm.nitProducer, farm.firstName, farm.secondName, firstsurname, secondSurname, farm.nameFarm, farm.municipality,  farm.vereda, farm.time_creation, farm.userId, answerformatproducer.respuesta1, answerformatproducer.respuesta2, answerformatproducer.respuesta3, answerformatproducer.respuesta4, answerformatproducer.respuesta5, answerformatproducer.respuesta6, answerformatproducer.respuesta7, answerformatproducer.respuesta8, answerformatproducer.respuesta9, answerformatproducer.respuesta10, answerformatproducer.respuesta11, answerformatproducer.respuesta12, answerformatproducer.respuesta13, answerformatproducer.respuesta14, answerformatproducer.respuesta15, answerformatproducer.respuesta16, answerformatproducer.respuesta17, answerformatproducer.respuesta18, answerformatproducer.respuesta19, answerformatproducer.respuesta20, answerformatproducer.respuesta21, answerformatproducer.respuesta22, answerformatproducer.respuesta23, answerformatproducer.respuesta24, answerformatproducer.respuesta25, answerformatproducer.respuesta26, answerformatproducer.respuesta27, answerformatproducer.respuesta28, answerformatproducer.respuesta29, answerformatproducer.respuesta30, answerformatproducer.respuesta31, answerformatproducer.respuesta32, answerformatproducer.respuesta33, answerformatproducer.respuesta34, answerformatproducer.respuesta35, answerformatproducer.respuesta36, answerformatproducer.respuesta37, answerformatproducer.respuesta38, answerformatproducer.respuesta39, answerformatproducer.respuesta40, answerformatproducer.respuesta41, answerformatproducer.respuesta42, answerformatproducer.respuesta43, answerformatproducer.respuesta44, answerformatproducer.respuesta45, answerformatproducer.comment1, answerformatproducer.comment2, answerformatproducer.comment3, answerformatproducer.comment4, answerformatproducer.comment5, answerformatproducer.comment6, answerformatproducer.comment7, answerformatproducer.comment8, answerformatproducer.comment9, answerformatproducer.comment10, answerformatproducer.comment11, answerformatproducer.comment12, answerformatproducer.comment13, answerformatproducer.comment14, answerformatproducer.comment15, answerformatproducer.comment16, answerformatproducer.comment17, answerformatproducer.comment18, answerformatproducer.comment19, answerformatproducer.comment20, answerformatproducer.comment21, answerformatproducer.comment22, answerformatproducer.comment23, answerformatproducer.comment24, answerformatproducer.comment25, answerformatproducer.comment26, answerformatproducer.comment27, answerformatproducer.comment28, answerformatproducer.comment29, answerformatproducer.comment30, answerformatproducer.comment31, answerformatproducer.comment32, answerformatproducer.comment33, answerformatproducer.comment34, answerformatproducer.comment35, answerformatproducer.comment36, answerformatproducer.comment37, answerformatproducer.comment38, answerformatproducer.comment39, answerformatproducer.comment40, answerformatproducer.comment41, answerformatproducer.comment42, answerformatproducer.comment43, answerformatproducer.comment44, answerformatproducer.comment45 FROM farm INNER JOIN answerformatproducer ON farm.id_farm = answerformatproducer.farm_id AND answerformatproducer.projectId = 81') 
+  //const producerSurvey = await pool.query('SELECT farm.vereda, answerproducerpiscicola.respuesta1, answerproducerpiscicola.respuesta2, answerproducerpiscicola.respuesta3, answerproducerpiscicola.respuesta4, answerproducerpiscicola.respuesta5, answerproducerpiscicola.respuesta6, answerproducerpiscicola.respuesta7, answerproducerpiscicola.respuesta8, answerproducerpiscicola.respuesta9, answerproducerpiscicola.respuesta10, answerproducerpiscicola.respuesta11, answerproducerpiscicola.respuesta12, answerproducerpiscicola.respuesta13, answerproducerpiscicola.respuesta14, answerproducerpiscicola.respuesta15, answerproducerpiscicola.respuesta16, answerproducerpiscicola.respuesta17, answerproducerpiscicola.respuesta18, answerproducerpiscicola.respuesta19, answerproducerpiscicola.respuesta20, answerproducerpiscicola.respuesta21, answerproducerpiscicola.respuesta22, answerproducerpiscicola.respuesta23, answerproducerpiscicola.respuesta24, answerproducerpiscicola.respuesta25, answerproducerpiscicola.respuesta26, answerproducerpiscicola.respuesta27, answerproducerpiscicola.respuesta28, answerproducerpiscicola.respuesta29, answerproducerpiscicola.respuesta30, answerproducerpiscicola.respuesta31, answerproducerpiscicola.respuesta32, answerproducerpiscicola.respuesta33, answerproducerpiscicola.respuesta34, answerproducerpiscicola.respuesta35, answerproducerpiscicola.respuesta36, answerproducerpiscicola.respuesta37, answerproducerpiscicola.respuesta38, answerproducerpiscicola.respuesta39, answerproducerpiscicola.respuesta40, answerproducerpiscicola.respuesta41, answerproducerpiscicola.respuesta42, answerproducerpiscicola.respuesta43, answerproducerpiscicola.respuesta44, answerproducerpiscicola.respuesta45, answerproducerpiscicola.respuesta46, answerproducerpiscicola.respuesta47, answerproducerpiscicola.respuesta48, answerproducerpiscicola.respuesta49, answerproducerpiscicola.respuesta50, answerproducerpiscicola.respuesta51, answerproducerpiscicola.respuesta52, answerproducerpiscicola.comment1, answerproducerpiscicola.comment2, answerproducerpiscicola.comment3, answerproducerpiscicola.comment4, answerproducerpiscicola.comment5, answerproducerpiscicola.comment6, answerproducerpiscicola.comment7, answerproducerpiscicola.comment8, answerproducerpiscicola.comment9, answerproducerpiscicola.comment10, answerproducerpiscicola.comment11, answerproducerpiscicola.comment12, answerproducerpiscicola.comment13, answerproducerpiscicola.comment14, answerproducerpiscicola.comment15, answerproducerpiscicola.comment16, answerproducerpiscicola.comment17, answerproducerpiscicola.comment18, answerproducerpiscicola.comment19, answerproducerpiscicola.comment20, answerproducerpiscicola.comment21, answerproducerpiscicola.comment22, answerproducerpiscicola.comment23, answerproducerpiscicola.comment24, answerproducerpiscicola.comment25, answerproducerpiscicola.comment26, answerproducerpiscicola.comment27, answerproducerpiscicola.comment28, answerproducerpiscicola.comment29, answerproducerpiscicola.comment30, answerproducerpiscicola.comment31, answerproducerpiscicola.comment32, answerproducerpiscicola.comment33, answerproducerpiscicola.comment34, answerproducerpiscicola.comment35, answerproducerpiscicola.comment36, answerproducerpiscicola.comment37, answerproducerpiscicola.comment38, answerproducerpiscicola.comment39, answerproducerpiscicola.comment40, answerproducerpiscicola.comment41, answerproducerpiscicola.comment42, answerproducerpiscicola.comment43, answerproducerpiscicola.comment44, answerproducerpiscicola.comment45, answerproducerpiscicola.comment46, answerproducerpiscicola.comment47, answerproducerpiscicola.comment48, answerproducerpiscicola.comment49, answerproducerpiscicola.comment50, answerproducerpiscicola.comment51, answerproducerpiscicola.comment52 FROM farm INNER JOIN answerproducerpiscicola ON farm.id_farm = answerproducerpiscicola.farm_id_pis AND answerproducerpiscicola.project_id_pis =81'/*, [req.session.project.project]*/) 
+  //console.log('*****>', producerSurvey);
+  ws.cell(1,1)
+  .string('Cedula')
+  .style(style)
+  ws.cell(1,2)
+  .string('Primer Nombre')
+  .style(style)
+  ws.cell(1,3)
+  .string('Seg Nombre')
+  .style(style)
+  ws.cell(1,4)
+  .string('Primer Apellido')
+  .style(style)
+  ws.cell(1,5)
+  .string('Seg Apellido')
+  .style(style)
+  ws.cell(1,6)
+  .string('Nom_finca')
+  .style(style)
+  ws.cell(1,7)
+  .string('Municipio')
+  .style(style)
+  ws.cell(1,8)
+  .string('Vereda')
+  .style(style)
+  ws.cell(1,9)
+  .string('¿Según su sistema productivo, con cuál de las siguientes opciones se identifica?')
+  .style(style)
+  ws.cell(1,10)
+  .string('Observacion')
+  .style(style)
+  ws.cell(1,11)
+  .string('¿El productor presenta actividades productivas secundarias con qué enfoque o proyección?')
+  .style(style)
+  ws.cell(1,12)
+  .string('Observacion')
+  .style(style)
+  ws.cell(1,13)
+  .string('¿Cómo es su acceso a tipo de herramientas y equipos para ser empleados en su proceso productivo?')
+  .style(style)
+  ws.cell(1,14)
+  .string('Observacion')
+  .style(style)
+  ws.cell(1,15)
+  .string('¿Cómo es su acceso a fuentes de energía?')
+  .style(style)
+  ws.cell(1,16)
+  .string('Observacion')
+  .style(style)
+  ws.cell(1,17)
+  .string('¿Cuál es su estado actual con respecto a las BPA?')
+  .style(style)
+  ws.cell(1,18)
+  .string('Observacion')
+  .style(style)
+  ws.cell(1,19)
+  .string('¿Cómo realiza el manejo de plagas y enfermedades (MIPE)?')
+  .style(style)
+  ws.cell(1,20)
+  .string('Observacion')
+  .style(style)
+  ws.cell(1,21)
+  .string('¿Cuál es su estado actual con respecto a las BPG?')
+  .style(style)
+  ws.cell(1,22)
+  .string('Observacion')
+  .style(style)
+  ws.cell(1,23)
+  .string('¿Con relación al manejo sanitario?')
+  .style(style)
+  ws.cell(1,24)
+  .string('Observacion')
+  .style(style)
+  ws.cell(1,25)
+  .string('¿Cómo maneja el sistema de nutrición de su producción?')
+  .style(style)
+  ws.cell(1,26)
+  .string('Observacion')
+  .style(style)
+  ws.cell(1,27)
+  .string('¿Implementa manejo genético y reproductivo en su predio?')
+  .style(style)
+  ws.cell(1,28)
+  .string('Observacion')
+  .style(style)
+  ws.cell(1,29)
+  .string('¿Cómo es la forma de comercialización del productor?')
+  .style(style)
+  ws.cell(1,30)
+  .string('Observacion')
+  .style(style)
+  ws.cell(1,31)
+  .string('¿Cómo es su esquema de comercialización?')
+  .style(style)
+  ws.cell(1,32)
+  .string('Observacion')
+  .style(style)
+  ws.cell(1,33)
+  .string('¿A qué tipo de mercado lleva su producto?')
+  .style(style)
+  ws.cell(1,34)
+  .string('Observacion')
+  .style(style)
+  ws.cell(1,35)
+  .string('¿A qué nivel de valor agregado lleva su producto?')
+  .style(style)
+  ws.cell(1,36)
+  .string('Observacion')
+  .style(style)
+  ws.cell(1,37)
+  .string('¿Gestiona registros de su sistema productivo?')
+  .style(style)
+  ws.cell(1,38)
+  .string('Observacion')
+  .style(style)
+  ws.cell(1,39)
+  .string('¿Qué nivel de conocimientos administrativos posee sobre su sistema de producción?')
+  .style(style)
+  ws.cell(1,40)
+  .string('Observacion')
+  .style(style)
+  ws.cell(1,41)
+  .string('¿Cómo es la vinculación de mano de obra?')
+  .style(style)
+  ws.cell(1,42)
+  .string('Observacion')
+  .style(style)
+  ws.cell(1,43)
+  .string('¿Hace capacitación, formación a la mano de obra?')
+  .style(style)
+  ws.cell(1,44)
+  .string('Observacion')
+  .style(style)
+  ws.cell(1,45)
+  .string('¿Tiene acceso a créditos?')
+  .style(style)
+  ws.cell(1,46)
+  .string('Observacion')
+  .style(style)
+  ws.cell(1,47)
+  .string('¿Tiene acceso al sistema financiero formal, está bancarizado?')
+  .style(style)
+  ws.cell(1,48)
+  .string('Observacion')
+  .style(style)
+  ws.cell(1,49)
+  .string('¿Está vinculado a algún tipo de organización?')
+  .style(style)
+  ws.cell(1,50)
+  .string('Observacion')
+  .style(style)
+  ws.cell(1,51)
+  .string('En caso de estar vinculado, ¿Cómo es la participación en la organización?')
+  .style(style)
+  ws.cell(1,52)
+  .string('Observacion')
+  .style(style)
+  ws.cell(1,53)
+  .string('¿Participa en actividades productivas de manera colectiva?')
+  .style(style)
+  ws.cell(1,54)
+  .string('Observacion')
+  .style(style)
+  ws.cell(1,55)
+  .string('¿Participa el productor en procesos de emprendimiento y asociatividad?')
+  .style(style)
+  ws.cell(1,56)
+  .string('Observacion')
+  .style(style)
+  ws.cell(1,57)
+  .string('¿Participa en alianzas comerciales?')
+  .style(style)
+  ws.cell(1,58)
+  .string('Observacion')
+  .style(style)
+  ws.cell(1,59)
+  .string('¿Accede a apoyo técnico para el manejo de su sistema productivo?')
+  .style(style)
+  ws.cell(1,60)
+  .string('Observacion')
+  .style(style)
+  ws.cell(1,61)
+  .string('¿Cuenta con sellos de calidad y certificaciones?')
+  .style(style)
+  ws.cell(1,62)
+  .string('Observacion')
+  .style(style)
+  ws.cell(1,63)
+  .string('¿Qué conocimientos sobre propiedad intelectual posee?')
+  .style(style)
+  ws.cell(1,64)
+  .string('Observacion')
+  .style(style)
+  ws.cell(1,65)
+  .string('¿Qué acceso tiene a fuentes de información relacionadas con su sistema productivo?')
+  .style(style)
+  ws.cell(1,66)
+  .string('Observacion')
+  .style(style)
+  ws.cell(1,67)
+  .string('¿Qué acceso tiene a las TIC?')
+  .style(style)
+  ws.cell(1,68)
+  .string('Observacion')
+  .style(style)
+  ws.cell(1,69)
+  .string('¿Qué tanto utiliza las TIC para toma de decisiones?')
+  .style(style)
+  ws.cell(1,70)
+  .string('Observacion')
+  .style(style)
+  ws.cell(1,71)
+  .string('Para el manejo del agronegocio, ¿qué habilidades y competencias tiene en el uso de las TIC?')
+  .style(style)
+  ws.cell(1,72)
+  .string('Observacion')
+  .style(style)
+  ws.cell(1,73)
+  .string('¿Cómo es el nivel de apropiación social del conocimiento tradicional y científico?')
+  .style(style)
+  ws.cell(1,74)
+  .string('Observacion')
+  .style(style)
+  ws.cell(1,75)
+  .string('¿Conoce y planifica en su sistema productivo, actividades de conservación de la biodiversidad y el medio ambiente?')
+  .style(style)
+  ws.cell(1,76)
+  .string('Observacion')
+  .style(style)
+  ws.cell(1,77)
+  .string('¿Conoce y planifica actividades de conservación del recurso hídrico en su sistema productivo?')
+  .style(style)
+  ws.cell(1,78)
+  .string('Observacion')
+  .style(style)
+  ws.cell(1,79)
+  .string('¿Cómo realiza el manejo de suelos y nutrición para fines productivos?')
+  .style(style)
+  ws.cell(1,80)
+  .string('Observacion')
+  .style(style)
+  ws.cell(1,81)
+  .string('¿Tiene conocimiento e implementa acciones de prevención y/o recuperación del medio ambiente enfocado en la mitigación y adaptación al cambio climático?')
+  .style(style)
+  ws.cell(1,82)
+  .string('Observacion')
+  .style(style)
+  ws.cell(1,83)
+  .string('¿Conoce y planifica la producción agropecuaria en su predio teniendo en cuenta la información climática histórica y de pronósticos climáticos?')
+  .style(style)
+  ws.cell(1,84)
+  .string('Observacion')
+  .style(style)
+  ws.cell(1,85)
+  .string('¿El productor conoce e implementa acciones que contribuyan a disminuir el calentamiento global?')
+  .style(style)
+  ws.cell(1,86)
+  .string('Observacion')
+  .style(style)
+  ws.cell(1,87)
+  .string('¿Conoce la normatividad ambiental?')
+  .style(style)
+  ws.cell(1,88)
+  .string('Observacion')
+  .style(style)
+  ws.cell(1,89)
+  .string('¿Cumple la normatividad ambiental?')
+  .style(style)
+  ws.cell(1,90)
+  .string('Observacion')
+  .style(style)
+  ws.cell(1,91)
+  .string('¿Tiene Conocimiento sobre instancias y mecanismos de participación?')
+  .style(style)
+  ws.cell(1,92)
+  .string('Observacion')
+  .style(style)
+  ws.cell(1,93)
+  .string('¿Tiene Conocimiento sobre herramientas para la participación?')
+  .style(style)
+  ws.cell(1,94)
+  .string('Observacion')
+  .style(style)
+  ws.cell(1,95)
+  .string('¿Conoce los mecanismos de control político y social? Y ¿ha participado en los mismos?')
+  .style(style)
+  ws.cell(1,96)
+  .string('Observacion')
+  .style(style)
+  ws.cell(1,97)
+  .string('¿Cuál ha sido el rol del productor en la autogestión de las comunidades?')
+  .style(style)
+  ws.cell(1,98)
+  .string('Observacion')
+  .style(style)
+  ws.cell(1,99)
+  .string('Fecha')
+  .style(style)
+
+  for(let i=0; i<producerSurvey.length; i++){
+      //console.log('**>>', producerSurvey)
+      //console.log('**>>', producerSurvey.length)
+      const userName = await pool.query('select * from users WHERE id = ?', [producerSurvey[i].userId])
+      ws.cell(2+i, 1)
+      .string(producerSurvey[i].nitProducer)
+      ws.cell(2+i, 2)
+      .string(producerSurvey[i].firstName)
+      ws.cell(2+i, 3)
+      .string(producerSurvey[i].secondName)
+      ws.cell(2+i, 4)
+      .string(producerSurvey[i].firstsurname)
+      ws.cell(2+i, 5)
+      .string(producerSurvey[i].secondSurname)
+      ws.cell(2+i, 6)
+      .string(producerSurvey[i].nameFarm)
+      ws.cell(2+i, 7)
+      .string(producerSurvey[i].municipality)
+      ws.cell(2+i, 8)
+      .string(producerSurvey[i].vereda)
+      ws.cell(2+i, 9)
+      .string(producerSurvey[i].respuesta1)
+      ws.cell(2+i, 10)
+      .string(producerSurvey[i].comment1)
+      ws.cell(2+i, 11)
+      .string(producerSurvey[i].respuesta2)
+      ws.cell(2+i, 12)
+      .string(producerSurvey[i].comment2)
+      ws.cell(2+i, 13)
+      .string(producerSurvey[i].respuesta3)
+      ws.cell(2+i, 14)
+      .string(producerSurvey[i].comment3)
+      ws.cell(2+i, 15)
+      .string(producerSurvey[i].respuesta4)
+      ws.cell(2+i, 16)
+      .string(producerSurvey[i].comment4)
+      ws.cell(2+i, 17)
+      .string(producerSurvey[i].respuesta5)
+      ws.cell(2+i, 18)
+      .string(producerSurvey[i].comment5)
+      ws.cell(2+i, 19)
+      .string(producerSurvey[i].respuesta6)
+      ws.cell(2+i, 20)
+      .string(producerSurvey[i].comment6)
+      ws.cell(2+i, 21)
+      .string(producerSurvey[i].respuesta7)
+      ws.cell(2+i, 22)
+      .string(producerSurvey[i].comment7)
+      ws.cell(2+i, 23)
+      .string(producerSurvey[i].respuesta8)
+      ws.cell(2+i, 24)
+      .string(producerSurvey[i].comment8)
+      ws.cell(2+i, 25)
+      .string(producerSurvey[i].respuesta9)
+      ws.cell(2+i, 26)
+      .string(producerSurvey[i].comment9)
+      ws.cell(2+i, 27)
+      .string(producerSurvey[i].respuesta10)
+      ws.cell(2+i, 28)
+      .string(producerSurvey[i].comment10)
+      ws.cell(2+i, 29)
+      .string(producerSurvey[i].respuesta11)
+      ws.cell(2+i, 30)
+      .string(producerSurvey[i].comment11)
+      ws.cell(2+i, 31)
+      .string(producerSurvey[i].respuesta12)
+      ws.cell(2+i, 32)
+      .string(producerSurvey[i].comment12)
+      ws.cell(2+i, 33)
+      .string(producerSurvey[i].respuesta13)
+      ws.cell(2+i, 34)
+      .string(producerSurvey[i].comment13)
+      ws.cell(2+i, 35)
+      .string(producerSurvey[i].respuesta14)
+      ws.cell(2+i, 36)
+      .string(producerSurvey[i].comment14)
+      ws.cell(2+i, 37)
+      .string(producerSurvey[i].respuesta15)
+      ws.cell(2+i, 38)
+      .string(producerSurvey[i].comment15)
+      ws.cell(2+i, 39)
+      .string(producerSurvey[i].respuesta16)
+      ws.cell(2+i, 40)
+      .string(producerSurvey[i].comment16)
+      ws.cell(2+i, 41)
+      .string(producerSurvey[i].respuesta17)
+      ws.cell(2+i, 42)
+      .string(producerSurvey[i].comment17)
+      ws.cell(2+i, 43)
+      .string(producerSurvey[i].respuesta18)
+      ws.cell(2+i, 44)
+      .string(producerSurvey[i].comment18)
+      ws.cell(2+i, 45)
+      .string(producerSurvey[i].respuesta19)
+      ws.cell(2+i, 46)
+      .string(producerSurvey[i].comment19)
+      ws.cell(2+i, 47)
+      .string(producerSurvey[i].respuesta20)
+      ws.cell(2+i, 48)
+      .string(producerSurvey[i].comment20)
+      ws.cell(2+i, 49)
+      .string(producerSurvey[i].respuesta21)
+      ws.cell(2+i, 50)
+      .string(producerSurvey[i].comment21)
+      ws.cell(2+i, 51)
+      .string(producerSurvey[i].respuesta22)
+      ws.cell(2+i, 52)
+      .string(producerSurvey[i].comment22)
+      ws.cell(2+i, 53)
+      .string(producerSurvey[i].respuesta23)
+      ws.cell(2+i, 54)
+      .string(producerSurvey[i].comment23)
+      ws.cell(2+i, 55)
+      .string(producerSurvey[i].respuesta24)
+      ws.cell(2+i, 56)
+      .string(producerSurvey[i].comment24)
+      ws.cell(2+i, 57)
+      .string(producerSurvey[i].respuesta25)
+      ws.cell(2+i, 58)
+      .string(producerSurvey[i].comment25)
+      ws.cell(2+i, 59)
+      .string(producerSurvey[i].respuesta26)
+      ws.cell(2+i, 60)
+      .string(producerSurvey[i].comment26)
+      ws.cell(2+i, 61)
+      .string(producerSurvey[i].respuesta27)
+      ws.cell(2+i, 62)
+      .string(producerSurvey[i].comment27)
+      ws.cell(2+i, 63)
+      .string(producerSurvey[i].respuesta28)
+      ws.cell(2+i, 64)
+      .string(producerSurvey[i].comment28)
+      ws.cell(2+i, 65)
+      .string(producerSurvey[i].respuesta29)
+      ws.cell(2+i, 66)
+      .string(producerSurvey[i].comment29)
+      ws.cell(2+i, 67)
+      .string(producerSurvey[i].respuesta30)
+      ws.cell(2+i, 68)
+      .string(producerSurvey[i].comment30)
+      ws.cell(2+i, 69)
+      .string(producerSurvey[i].respuesta31)
+      ws.cell(2+i, 70)
+      .string(producerSurvey[i].comment31)
+      ws.cell(2+i, 71)
+      .string(producerSurvey[i].respuesta32)
+      ws.cell(2+i, 72)
+      .string(producerSurvey[i].comment32)
+      ws.cell(2+i, 73)
+      .string(producerSurvey[i].respuesta33)
+      ws.cell(2+i, 74)
+      .string(producerSurvey[i].comment33)
+      ws.cell(2+i, 75)
+      .string(producerSurvey[i].respuesta34)
+      ws.cell(2+i, 76)
+      .string(producerSurvey[i].comment34)
+      ws.cell(2+i, 77)
+      .string(producerSurvey[i].respuesta35)
+      ws.cell(2+i, 78)
+      .string(producerSurvey[i].comment35)
+      ws.cell(2+i, 79)
+      .string(producerSurvey[i].respuesta36)
+      ws.cell(2+i, 80)
+      .string(producerSurvey[i].comment36)
+      ws.cell(2+i, 81)
+      .string(producerSurvey[i].respuesta37)
+      ws.cell(2+i, 82)
+      .string(producerSurvey[i].comment37)
+      ws.cell(2+i, 83)
+      .string(producerSurvey[i].respuesta38)
+      ws.cell(2+i, 84)
+      .string(producerSurvey[i].comment38)
+      ws.cell(2+i, 85)
+      .string(producerSurvey[i].respuesta39)
+      ws.cell(2+i, 86)
+      .string(producerSurvey[i].comment39)
+      ws.cell(2+i, 87)
+      .string(producerSurvey[i].respuesta40)
+      ws.cell(2+i, 88)
+      .string(producerSurvey[i].comment40)
+      ws.cell(2+i, 89)
+      .string(producerSurvey[i].respuesta41)
+      ws.cell(2+i, 90)
+      .string(producerSurvey[i].comment41)
+      ws.cell(2+i, 91)
+      .string(producerSurvey[i].respuesta42)
+      ws.cell(2+i, 92)
+      .string(producerSurvey[i].comment42)
+      ws.cell(2+i, 93)
+      .string(producerSurvey[i].respuesta43)
+      ws.cell(2+i, 94)
+      .string(producerSurvey[i].comment43)
+      ws.cell(2+i, 95)
+      .string(producerSurvey[i].respuesta44)
+      ws.cell(2+i, 96)
+      .string(producerSurvey[i].comment44)
+      ws.cell(2+i, 97)
+      .string(producerSurvey[i].respuesta45)
+      ws.cell(2+i, 98)
+      .string(producerSurvey[i].comment45)
+      ws.cell(2+i, 99)
+      .string(producerSurvey[i].time_creation.toString())
+      ws.cell(2+i, 100)
+      .string(userName[0].nom_user)
+      ws.cell(2+i, 101)
+  }
+
+  wb.write('Malla encuesta Productores Agricola.xlsx', res)
+})
 
 module.exports = router;

@@ -9,7 +9,7 @@ const pool = require('../database');
 const {isLoggedIn} = require('../lib/auth');
 
 
-router.get('/survey', isLoggedIn, async (req, res) => {
+router.get('/survey', /*isLoggedIn,*/ async (req, res) => {
     console.log('session',req.session)
     console.log(req.user)
     const userType = await pool.query('SELECT * FROM users WHERE id = ?', [req.session.passport.user]);
@@ -23,16 +23,16 @@ router.get('/survey', isLoggedIn, async (req, res) => {
     
 })
 
-router.get('/listProductiveSectors', isLoggedIn, async (req, res) => {
+router.get('/listProductiveSectors', /*isLoggedIn,*/ async (req, res) => {
     const listSectors = await pool.query('SELECT * FROM sectors');
     res.render('survey/listProductiveSectors', {listSectors});
 });
 
-router.get('/productiveSectors', isLoggedIn, (req, res) =>{
+router.get('/productiveSectors', /*isLoggedIn,*/ (req, res) =>{
     res.render('survey/productiveSectors'); 
 });
 
-router.post('/addProductiveSector', isLoggedIn, async (req, res) =>{
+router.post('/addProductiveSector', /*isLoggedIn,*/ async (req, res) =>{
     const {nom_sector, description} = req.body;
     const newSector = {
         nom_sector,
@@ -44,11 +44,11 @@ router.post('/addProductiveSector', isLoggedIn, async (req, res) =>{
 
 });
 
-router.get('/addQuestion', isLoggedIn, (req, res) =>{
+router.get('/addQuestion', /*isLoggedIn,*/ (req, res) =>{
     res.render('survey/addQuestion'); 
 });
 
-router.post('/addQuestion', isLoggedIn, async (req, res) =>{
+router.post('/addQuestion', /*isLoggedIn,*/ async (req, res) =>{
     const { title, answerOne, answerTwo, answerThree, answerFour, recomendationOne, recomendationTwo, recomendationThree, recomendationFour } = req.body;
     const newQuestion = {
         title,
@@ -65,7 +65,7 @@ router.post('/addQuestion', isLoggedIn, async (req, res) =>{
     res.redirect('/questionList')
 });
 
-router.get('/formatTypeList/:id', isLoggedIn, async (req, res) => {
+router.get('/formatTypeList/:id', /*isLoggedIn,*/ async (req, res) => {
 
     const prueba = {
         id: req.params.id
@@ -80,11 +80,11 @@ router.get('/formatTypeList/:id', isLoggedIn, async (req, res) => {
     res.render('survey/formatType', {format , prueba , sector});   
 });
 
-router.get('/addFormatType/:id', isLoggedIn, (req, res) => {
+router.get('/addFormatType/:id', /*isLoggedIn,*/ (req, res) => {
     res.render('survey/addFormatType');
 });
 
-router.post('/addFormatType/:id', isLoggedIn, async (req, res)=>{
+router.post('/addFormatType/:id', /*isLoggedIn,*/ async (req, res)=>{
     const { nom_formatType, description } = req.body;
     const newFormatType = {
         nom_formatType,
@@ -96,7 +96,7 @@ router.post('/addFormatType/:id', isLoggedIn, async (req, res)=>{
     res.redirect('/formatTypeList/' + newFormatType.sector_id);
 });
 
-router.get('/addFormat/:id', isLoggedIn, async (req, res) => {
+router.get('/addFormat/:id', /*isLoggedIn,*/ async (req, res) => {
     const category = await pool.query('SELECT * FROM formatType WHERE id_formatType = ?', [req.params.id]);
     const {sector_id} = category[0];
     const sec = {
@@ -106,7 +106,7 @@ router.get('/addFormat/:id', isLoggedIn, async (req, res) => {
     res.render('survey/addFormat', {category, sector});
 });
 
-router.post('/addFormat/:id', isLoggedIn, async (req, res) => {
+router.post('/addFormat/:id', /*isLoggedIn,*/ async (req, res) => {
     const {nom_format, nom_formatType} = req.body;
     const category = await pool.query('SELECT * FROM formatType WHERE id_formatType = ?', [req.params.id]);
     const {id_formatType} = category[0];
@@ -119,7 +119,7 @@ router.post('/addFormat/:id', isLoggedIn, async (req, res) => {
     res.redirect('/formatListByCategory/'+ newFormat.formatType_id);
 })
 
-router.get('/formatListByCategory/:id', isLoggedIn, async (req, res) => {
+router.get('/formatListByCategory/:id', /*isLoggedIn,*/ async (req, res) => {
     const category = await pool.query('SELECT * FROM formatType WHERE id_formatType = ?', [req.params.id]);
     const formatByCategory = await pool.query('SELECT * FROM formats WHERE formatType_id = ?', [req.params.id]);
     const newData = formatByCategory[0];
@@ -127,7 +127,7 @@ router.get('/formatListByCategory/:id', isLoggedIn, async (req, res) => {
     
 });
 
-router.get('/addQuestionsToFormat/:id', isLoggedIn, async (req, res) => {
+router.get('/addQuestionsToFormat/:id', /*isLoggedIn,*/ async (req, res) => {
     const format = await pool.query('SELECT * FROM formats WHERE id_format = ?', [req.params.id]);
     const prueba = format[0];
     const cat = await pool.query('SELECT * FROM formatType WHERE id_formatType = ?', [prueba.formatType_id]);
@@ -138,7 +138,7 @@ router.get('/addQuestionsToFormat/:id', isLoggedIn, async (req, res) => {
     res.render('survey/agreeQuestionToFormat', {format, cat, sector, questionList});
 });
 
-router.post('/addQuestionsToFormat/:id', isLoggedIn, async(req, res) => {
+router.post('/addQuestionsToFormat/:id',/*isLoggedIn,*/ async(req, res) => {
     const { title, format, nom_formatType, nom_sector } = req.body;
     const newQuestion = {
         title,
@@ -168,7 +168,7 @@ router.post('/addQuestionsToFormat/:id', isLoggedIn, async(req, res) => {
     res.redirect('/formatListByCategory/'+ formType[0].id_formatType);
 });
 
-router.post('/addAnswer', isLoggedIn, async (req, res) =>{
+router.post('/addAnswer', /*isLoggedIn,*/ async (req, res) =>{
     const {nom_formatType} = req.body;
     const newDat = {
         nom_formatType
@@ -197,7 +197,7 @@ router.post('/addAnswer', isLoggedIn, async (req, res) =>{
     y dentro se empieza a llenar con objetos llamados pregunta que almacena la pregunta y las respuestas esto se hace a 
     traves de ciclos anidados*/ 
 
-router.get('/previewFormat/:id', isLoggedIn, async (req, res) => {
+router.get('/previewFormat/:id', /*isLoggedIn,*/ async (req, res) => {
     const nameFormat = await pool.query('SELECT * FROM formats WHERE id_format = ?', [req.params.id]);
     const questions = await pool.query('SELECT * FROM questions WHERE format_id = ?', [req.params.id]);
     const questionsById = await pool.query('SELECT * FROM questions WHERE format_id = ?', [req.params.id]);
@@ -222,7 +222,7 @@ router.get('/previewFormat/:id', isLoggedIn, async (req, res) => {
     res.render('survey/previewFormat', {nameFormat, questionsById, questions, answers, result });
 });
 
-router.post('/selectSector', isLoggedIn, async (req, res) => {
+router.post('/selectSector', /*isLoggedIn,*/ async (req, res) => {
     //console.log('SELECT SELECTOR',req.body);
     const { id_project_has_farm, proyecto_nom, nom_beneficiario, cedula, nom_finca, municipio, vereda, telefono } = req.body;
     const sector = await pool.query('SELECT * FROM sectors');
@@ -239,7 +239,7 @@ router.post('/selectSector', isLoggedIn, async (req, res) => {
     res.render('survey/selectSector', {newSurv, sector});
 }); 
 
-router.post('/selectTopic', isLoggedIn, async (req, res) => {
+router.post('/selectTopic', /*isLoggedIn,*/ async (req, res) => {
     const { id_project_has_farm, proyecto_nom, nom_beneficiario, cedula, nom_finca, municipio, vereda, telefono, sector } = req.body;
     const newSurv = {
         id_project_has_farm, 
@@ -264,7 +264,7 @@ router.post('/selectTopic', isLoggedIn, async (req, res) => {
     res.render('survey/selectTopic', {newSurv, newNom, dataTopic});
 }); 
 
-router.post('/selectFormat', isLoggedIn, async (req, res) => {
+router.post('/selectFormat', /*isLoggedIn,*/ async (req, res) => {
     const { id_project_has_farm, proyecto_nom, linea_productiva, nom_beneficiario, cedula, nom_finca, municipio, vereda, telefono, topic } = req.body
     newData = {
         id_project_has_farm, 
@@ -286,7 +286,7 @@ router.post('/selectFormat', isLoggedIn, async (req, res) => {
     res.render('survey/selectFormat', {newData, formatos, newPru});
 }); 
 
-router.post('/structuredFormat', isLoggedIn, async (req, res) => {
+router.post('/structuredFormat', /*isLoggedIn,*/ async (req, res) => {
 
     const { id_project_has_farm, proyecto_nom, linea_productiva, tematica, nom_beneficiario, cedula, nom_finca, municipio, vereda, telefono, format } = req.body
     newData = {
@@ -333,7 +333,7 @@ router.post('/structuredFormat', isLoggedIn, async (req, res) => {
     res.render('survey/Survey', {newData, nomFormat, questByFormat, result})
 });
 
-router.post('/formatConclusion', isLoggedIn, async (req, res) => {    
+router.post('/formatConclusion', /*isLoggedIn,*/ async (req, res) => {    
     const dataSurvey = req.body;
     
     const {id_project_has_farm, proyecto_nom, linea_productiva, nom_format, nom_beneficiario, cedula, municipio, vereda, nom_finca } = req.body;
@@ -442,7 +442,7 @@ router.post('/formatConclusion', isLoggedIn, async (req, res) => {
     res.render('survey/conclusions', {surveyData, dUser})
 });
 
-router.get('/fullDetailSurvey/:id', isLoggedIn, async (req, res) =>{
+router.get('/fullDetailSurvey/:id', /*isLoggedIn,*/ async (req, res) =>{
 
     const dataSurvey = await pool.query('SELECT * FROM survey WHERE id_survey = ?', [req.params.id]);
     const { encuestador } = dataSurvey[0];
@@ -465,7 +465,7 @@ router.get('/fullDetailSurvey/:id', isLoggedIn, async (req, res) =>{
     res.render('survey/fullDetailSurvey', {dataSurvey, dataName, nProyect});
 });
 
-router.get('/download/:id', isLoggedIn, async (req, res)=>{
+router.get('/download/:id', /*isLoggedIn,*/ async (req, res)=>{
 
     const dataSurvey = await pool.query('SELECT * FROM survey WHERE id_survey = ?', [req.params.id]);
     const dataUser = await pool.query('SELECT nom_user FROM users WHERE id = ?', [dataSurvey[0].encuestador])
