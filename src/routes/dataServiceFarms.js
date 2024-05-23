@@ -1793,109 +1793,109 @@ router.get('/downloadPdfCharacterizationFarm/:id', async(req, res) =>{
 
 
   
-  // let imgFarmer = await new Promise(function(resolve,reject){
-  //     imageToBase64(queryCharacterizationFarm[0].img_beneficiario) // you can also to use url
-  //     .then(
-  //         (response) => {resolve(response);}
-  //     )
-  //     .catch(
-  //         (error) => {
-  //             resolve(false);
-  //             console.log(error); 
-  //         }
-  //     ) 
-  // });
+  let imgFarmer = await new Promise(function(resolve,reject){
+      imageToBase64(queryCharacterizationFarm[0].img_beneficiario) // you can also to use url
+      .then(
+          (response) => {resolve(response);}
+      )
+      .catch(
+          (error) => {
+              resolve(false);
+              console.log(error); 
+          }
+      ) 
+  });
 
 
-  // let imgFarmerSignature = await new Promise(function(resolve,reject){
-  //     imageToBase64(queryCharacterizationFarm[0].imgSignature) // you can also to use url
-  //     .then(
-  //         (response) => {resolve(response);}
-  //     )
-  //     .catch(
-  //         (error) => {
-  //             resolve(false);
-  //             console.log(error); 
-  //         }
-  //     ) 
-  // });
+  let imgFarmerSignature = await new Promise(function(resolve,reject){
+      imageToBase64(queryCharacterizationFarm[0].imgSignature) // you can also to use url
+      .then(
+          (response) => {resolve(response);}
+      )
+      .catch(
+          (error) => {
+              resolve(false);
+              console.log(error); 
+          }
+      ) 
+  });
 
 
-  // //Logos transformacion
-  // if(queryImageProject[0].logoUno){
-  //     logoUnoTrans = await new Promise(function(resolve,reject){
-  //         imageToBase64(queryImageProject[0].logoUno) // you can also to use url
-  //         .then(
-  //             (response) => {resolve(response);}
-  //         )
-  //         .catch(
-  //             (error) => {
-  //                 resolve(false);
-  //                 console.log(error); 
-  //             }
-  //         ) 
-  //     });
-  // }
+  //Logos transformacion
+  if(queryImageProject[0].logoUno){
+      logoUnoTrans = await new Promise(function(resolve,reject){
+          imageToBase64(queryImageProject[0].logoUno) // you can also to use url
+          .then(
+              (response) => {resolve(response);}
+          )
+          .catch(
+              (error) => {
+                  resolve(false);
+                  console.log(error); 
+              }
+          ) 
+      });
+  }
 
-  // if(queryImageProject[0].logoDos){
-  //     logoDosTrans = await new Promise(function(resolve,reject){
-  //         imageToBase64(queryImageProject[0].logoUno) // you can also to use url
-  //         .then(
-  //             (response) => {resolve(response);}
-  //         )
-  //         .catch(
-  //             (error) => {
-  //                 resolve(false);
-  //                 console.log(error); 
-  //             }
-  //         ) 
-  //     });
-  // }
+  if(queryImageProject[0].logoDos){
+      logoDosTrans = await new Promise(function(resolve,reject){
+          imageToBase64(queryImageProject[0].logoUno) // you can also to use url
+          .then(
+              (response) => {resolve(response);}
+          )
+          .catch(
+              (error) => {
+                  resolve(false);
+                  console.log(error); 
+              }
+          ) 
+      });
+  }
 
-  // if(queryImageProject[0].logoTres){
-  //     logoTresTrans = await new Promise(function(resolve,reject){
-  //         imageToBase64(queryImageProject[0].logoTres) // you can also to use url
-  //         .then(
-  //             (response) => {resolve(response);}
-  //         )
-  //         .catch(
-  //             (error) => {
-  //                 resolve(false);
-  //                 console.log(error); 
-  //             }
-  //         ) 
-  //     });
-  // }
+  if(queryImageProject[0].logoTres){
+      logoTresTrans = await new Promise(function(resolve,reject){
+          imageToBase64(queryImageProject[0].logoTres) // you can also to use url
+          .then(
+              (response) => {resolve(response);}
+          )
+          .catch(
+              (error) => {
+                  resolve(false);
+                  console.log(error); 
+              }
+          ) 
+      });
+  }
 
-  // if(queryImageProject[0].logoCuatro){
-  //     logoCuatroTrans = await new Promise(function(resolve,reject){
-  //         imageToBase64(queryImageProject[0].logoCuatro) // you can also to use url
-  //         .then(
-  //             (response) => {resolve(response);}
-  //         )
-  //         .catch(
-  //             (error) => {
-  //                 resolve(false);
-  //                 console.log(error); 
-  //             }
-  //         ) 
-  //     });
-  // }
+  if(queryImageProject[0].logoCuatro){
+      logoCuatroTrans = await new Promise(function(resolve,reject){
+          imageToBase64(queryImageProject[0].logoCuatro) // you can also to use url
+          .then(
+              (response) => {resolve(response);}
+          )
+          .catch(
+              (error) => {
+                  resolve(false);
+                  console.log(error); 
+              }
+          ) 
+      });
+  }
 
-  // if(queryImageProject[0].logoCinco){
-  //     logoCincoTrans = await new Promise(function(resolve,reject){
-  //         imageToBase64(queryImageProject[0].logoCinco) // you can also to use url
-  //         .then(
-  //             (response) => {resolve(response);}
-  //         )
-  //         .catch(
-  //             (error) => {
-  //                 resolve(false);
-  //                 console.log(error); 
-  //             }
-  //         ) 
-  //     });
-  // }
+  if(queryImageProject[0].logoCinco){
+      logoCincoTrans = await new Promise(function(resolve,reject){
+          imageToBase64(queryImageProject[0].logoCinco) // you can also to use url
+          .then(
+              (response) => {resolve(response);}
+          )
+          .catch(
+              (error) => {
+                  resolve(false);
+                  console.log(error); 
+              }
+          ) 
+      });
+  }
   
   let pdf = new PDFDocument({
       layout: 'landscape',
@@ -1914,58 +1914,58 @@ router.get('/downloadPdfCharacterizationFarm/:id', async(req, res) =>{
   let col2LeftPos = colWidth + col1LeftPos + 30;
   let col3LeftPos = colWidth + col1LeftPos + 160;
 
-//  if(queryImageProject[0].logoUno && queryImageProject[0].logoDos && queryImageProject[0].logoTres && queryImageProject[0].logoCuatro && queryImageProject[0].logoCinco && queryImageProject[0].logoSeis && queryImageProject[0].logoSiete && queryImageProject[0].logoOcho){
-//       pdf.moveDown()
-//       .image('data:image/jpeg;base64,'+logoUnoTrans , 10, 10, {width: 40})
-//       .image('data:image/jpeg;base64,'+logoDosTrans , 10, 10, {width: 40})
-//   }else{ 
-//       if(queryImageProject[0].logoUno && queryImageProject[0].logoDos && queryImageProject[0].logoTres && queryImageProject[0].logoCuatro && queryImageProject[0].logoCinco && queryImageProject[0].logoSeis && queryImageProject[0].logoSiete ){
-//           pdf.moveDown()
-//           .image('data:image/jpeg;base64,'+logoUnoTrans , 10, 10, {width: 40})
-//           .image('data:image/jpeg;base64,'+logoDosTrans , 10, 10, {width: 40})
-//       }else{
-//           if(queryImageProject[0].logoUno && queryImageProject[0].logoDos && queryImageProject[0].logoTres && queryImageProject[0].logoCuatro && queryImageProject[0].logoCinco && queryImageProject[0].logoSeis ){
-//               pdf.moveDown()
-//               .image('data:image/jpeg;base64,'+logoUnoTrans , 10, 10, {width: 40})
-//               .image('data:image/jpeg;base64,'+logoDosTrans , 10, 10, {width: 40})
-//           }else{
-//               if(queryImageProject[0].logoUno && queryImageProject[0].logoDos && queryImageProject[0].logoTres && queryImageProject[0].logoCuatro && queryImageProject[0].logoCinco ){
-//                   pdf.moveDown()
-//                   .image('data:image/jpeg;base64,'+logoUnoTrans , 30, 10, {width: 40})
-//                   .image('data:image/jpeg;base64,'+logoDosTrans , 130, 10, {width: 40})
-//                   .image('data:image/jpeg;base64,'+logoTresTrans , 230, 10, {width: 40})
-//                   .image('data:image/jpeg;base64,'+logoTresTrans , 340, 10, {width: 40})
-//                   .image('data:image/jpeg;base64,'+logoCincoTrans , 185, 466, {width: 40})
-//               }else{
-//                   if(queryImageProject[0].logoUno && queryImageProject[0].logoDos && queryImageProject[0].logoTres && queryImageProject[0].logoCuatro ){
-//                       pdf.moveDown()
-//                       .image('data:image/jpeg;base64,'+logoUnoTrans , 30, 10, {width: 40})
-//                       .image('data:image/jpeg;base64,'+logoDosTrans , 130, 10, {width: 40})
-//                       .image('data:image/jpeg;base64,'+logoTresTrans , 230, 10, {width: 40})
-//                       .image('data:image/jpeg;base64,'+logoTresTrans , 340, 10, {width: 40})
-//                   }else{
-//                       if(queryImageProject[0].logoUno && queryImageProject[0].logoDos && queryImageProject[0].logoTres ){
-//                           pdf.moveDown()
-//                           .image('data:image/jpeg;base64,'+logoUnoTrans , 50, 10, {width: 40})
-//                           .image('data:image/jpeg;base64,'+logoDosTrans , 180, 10, {width: 40})
-//                           .image('data:image/jpeg;base64,'+logoTresTrans , 320, 10, {width: 40})
-//                       }else{
-//                           if(queryImageProject[0].logoUno && queryImageProject[0].logoDos){
-//                               pdf.moveDown()
-//                               .image('data:image/jpeg;base64,'+logoUnoTrans , 50, 10, {width: 40})
-//                               .image('data:image/jpeg;base64,'+logoDosTrans , 320, 10, {width: 40})
-//                           }else{
-//                               if(queryImageProject[0].logoUno){
-//                                   pdf.moveDown()
-//                                   .image('data:image/jpeg;base64,'+logoUnoTrans , 15, 15, {width: 380})
-//                               }
-//                           }
-//                       }
-//                   }
-//               }
-//           }
-//       } 
-//   } 
+ if(queryImageProject[0].logoUno && queryImageProject[0].logoDos && queryImageProject[0].logoTres && queryImageProject[0].logoCuatro && queryImageProject[0].logoCinco && queryImageProject[0].logoSeis && queryImageProject[0].logoSiete && queryImageProject[0].logoOcho){
+      pdf.moveDown()
+      .image('data:image/jpeg;base64,'+logoUnoTrans , 10, 10, {width: 40})
+      .image('data:image/jpeg;base64,'+logoDosTrans , 10, 10, {width: 40})
+  }else{ 
+      if(queryImageProject[0].logoUno && queryImageProject[0].logoDos && queryImageProject[0].logoTres && queryImageProject[0].logoCuatro && queryImageProject[0].logoCinco && queryImageProject[0].logoSeis && queryImageProject[0].logoSiete ){
+          pdf.moveDown()
+          .image('data:image/jpeg;base64,'+logoUnoTrans , 10, 10, {width: 40})
+          .image('data:image/jpeg;base64,'+logoDosTrans , 10, 10, {width: 40})
+      }else{
+          if(queryImageProject[0].logoUno && queryImageProject[0].logoDos && queryImageProject[0].logoTres && queryImageProject[0].logoCuatro && queryImageProject[0].logoCinco && queryImageProject[0].logoSeis ){
+              pdf.moveDown()
+              .image('data:image/jpeg;base64,'+logoUnoTrans , 10, 10, {width: 40})
+              .image('data:image/jpeg;base64,'+logoDosTrans , 10, 10, {width: 40})
+          }else{
+              if(queryImageProject[0].logoUno && queryImageProject[0].logoDos && queryImageProject[0].logoTres && queryImageProject[0].logoCuatro && queryImageProject[0].logoCinco ){
+                  pdf.moveDown()
+                  .image('data:image/jpeg;base64,'+logoUnoTrans , 30, 10, {width: 40})
+                  .image('data:image/jpeg;base64,'+logoDosTrans , 130, 10, {width: 40})
+                  .image('data:image/jpeg;base64,'+logoTresTrans , 230, 10, {width: 40})
+                  .image('data:image/jpeg;base64,'+logoTresTrans , 340, 10, {width: 40})
+                  .image('data:image/jpeg;base64,'+logoCincoTrans , 185, 466, {width: 40})
+              }else{
+                  if(queryImageProject[0].logoUno && queryImageProject[0].logoDos && queryImageProject[0].logoTres && queryImageProject[0].logoCuatro ){
+                      pdf.moveDown()
+                      .image('data:image/jpeg;base64,'+logoUnoTrans , 30, 10, {width: 40})
+                      .image('data:image/jpeg;base64,'+logoDosTrans , 130, 10, {width: 40})
+                      .image('data:image/jpeg;base64,'+logoTresTrans , 230, 10, {width: 40})
+                      .image('data:image/jpeg;base64,'+logoTresTrans , 340, 10, {width: 40})
+                  }else{
+                      if(queryImageProject[0].logoUno && queryImageProject[0].logoDos && queryImageProject[0].logoTres ){
+                          pdf.moveDown()
+                          .image('data:image/jpeg;base64,'+logoUnoTrans , 50, 10, {width: 40})
+                          .image('data:image/jpeg;base64,'+logoDosTrans , 180, 10, {width: 40})
+                          .image('data:image/jpeg;base64,'+logoTresTrans , 320, 10, {width: 40})
+                      }else{
+                          if(queryImageProject[0].logoUno && queryImageProject[0].logoDos){
+                              pdf.moveDown()
+                              .image('data:image/jpeg;base64,'+logoUnoTrans , 50, 10, {width: 40})
+                              .image('data:image/jpeg;base64,'+logoDosTrans , 320, 10, {width: 40})
+                          }else{
+                              if(queryImageProject[0].logoUno){
+                                  pdf.moveDown()
+                                  .image('data:image/jpeg;base64,'+logoUnoTrans , 15, 15, {width: 380})
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+      } 
+  } 
 
   pdf.moveDown()
   .fontSize(9)
@@ -2164,7 +2164,7 @@ router.get('/downloadPdfCharacterizationFarm/:id', async(req, res) =>{
       .text(`Tipo de alimentación: ${queryCharacterizationFarm[0].nutritionType5}`, col1LeftPos, 340, {width: colWidth})
       .text(`Coordenadas: ${queryCharacterizationFarm[0].coordenates5}`, col1LeftPos, 380, {width: colWidth})
       .text(`Valor prom de KG comercializado en pesos en el año: ${queryCharacterizationFarm[0].promKgComercializateValu5}`, col2LeftPos, 380, {width:150})
-      // .image('data:image/jpeg;base64,'+imgFarmerSignature, 160, 410, {width: 90})
+      .image('data:image/jpeg;base64,'+imgFarmerSignature, 160, 410, {width: 90})
       .text('Firma del titular del predio', 153, 460)
 
   pdf.moveDown()

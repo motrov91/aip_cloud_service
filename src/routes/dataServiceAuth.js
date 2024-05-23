@@ -12,7 +12,6 @@ const pool = require('../database');
 
 router.post('/signin', async (req, res, next) => {
 
-    console.log('INGRESA AL signin')
     const {username, password} = req.body
     console.log(username, password);
 
