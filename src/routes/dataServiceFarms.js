@@ -1969,7 +1969,7 @@ router.get('/downloadPdfCharacterizationFarm/:id', async(req, res) =>{
 
   pdf.moveDown()
   .fontSize(9)
-  // .image('data:image/jpeg;base64,'+imgFarmer , col1LeftPos, 90, {width: 120})
+  .image('data:image/jpeg;base64,'+imgFarmer , col1LeftPos, 90, {width: 120})
   .text(`Id de la finca: ${queryCharacterizationFarm[0].id_farm}`, col2LeftPos, 90)
   .text(`Nombre: ${queryCharacterizationFarm[0].firstName}  ${queryCharacterizationFarm[0].secondName}  ${queryCharacterizationFarm[0].firstSurname}`, col2LeftPos, 105)
   .text(`Cedula: ${queryCharacterizationFarm[0].nitProducer} de ${queryCharacterizationFarm[0].expedition}`, col2LeftPos, 120)
