@@ -2164,7 +2164,7 @@ router.get('/downloadPdfCharacterizationFarm/:id', async(req, res) =>{
       .text(`Tipo de alimentación: ${queryCharacterizationFarm[0].nutritionType5}`, col1LeftPos, 340, {width: colWidth})
       .text(`Coordenadas: ${queryCharacterizationFarm[0].coordenates5}`, col1LeftPos, 380, {width: colWidth})
       .text(`Valor prom de KG comercializado en pesos en el año: ${queryCharacterizationFarm[0].promKgComercializateValu5}`, col2LeftPos, 380, { width: 150 })
-      .rotate(45)
+      .rotate(90)
       .image('data:image/jpeg;base64,'+imgFarmerSignature, 160, 410, {width: 90})
       .text('Firma del titular del predio', 153, 460)
 
