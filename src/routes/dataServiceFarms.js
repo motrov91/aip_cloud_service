@@ -47,9 +47,9 @@ let styles = wf.createStyle({
 
 //Creando una finca
 router.post("/newFarm", async (req, res, next) => {
-  console.log('******REQ.BODY******', req.body.nombreLineaProductiva8);
-  console.log('******REQ.BODY******', req.body.tipoAlimentacion8);
-  console.log('******REQ.BODY******', req.body.totalPecesCosechadosCiclo8);
+  console.log('******REQ.BODY******', req.body.nombreLineaProductiva9);
+  console.log('******REQ.BODY******', req.body.tipoAlimentacion9);
+  console.log('******REQ.BODY******', req.body.totalPecesCosechadosCiclo9);
 
   const existFarm = await pool.query(
     "SELECT * from farm WHERE nitProducer = ?",
@@ -939,13 +939,19 @@ router.post("/newFarm", async (req, res, next) => {
     ventaAnimales10,
     frecuenciaEntrega10,
   };
+    
+    console.log("ingresa antes de agregar el nuevo predio")
 
-  await pool.query("INSERT INTO farm set ?", [newFarm]);
+    await pool.query("INSERT INTO farm set ?", [newFarm]);
+    
+    console.log("ingresa despues de crear el nuevo predio")
 
   const dataSaved = await pool.query(
     "SELECT * from farm WHERE nitProducer = ? AND nameFarm = ?",
     [newFarm.nitProducer, newFarm.nameFarm]
   );
+    
+  console.log(dataSaved[0].numeroColemnas9)
 
   res.json({
     mensaje: "Los datos se han almacenado con exito",
