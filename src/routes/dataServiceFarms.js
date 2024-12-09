@@ -47,7 +47,10 @@ let styles = wf.createStyle({
 
 //Creando una finca
 router.post("/newFarm", async (req, res, next) => {
-  // console.log('******REQ.BODY******', req.body);
+  console.log('******REQ.BODY******', req.body);
+  console.log('******REQ.BODY******', req.body.tipoAlimentacion5);
+  console.log('******REQ.BODY******', req.body.frecuenciaEntrega5);
+  console.log('******REQ.BODY******', req.body.tipoExplotacion5);
   const existFarm = await pool.query(
     "SELECT * from farm WHERE nitProducer = ?",
     [req.body.nitProducer]
@@ -621,6 +624,10 @@ router.post("/newFarm", async (req, res, next) => {
     formaComercializacionProducto5,
     frecuenciaEntrega5,
   };
+
+  console.log(newFarm.nombreLineaProductiva5)
+  console.log(newFarm.frecuenciaEntrega5)
+  console.log(newFarm.tipoAlimentacion5)
 
   await pool.query("INSERT INTO farm set ?", [newFarm]);
 
