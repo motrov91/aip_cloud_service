@@ -47,6 +47,7 @@ let styles = wf.createStyle({
 
 //Creando una finca
 router.post("/newFarm", async (req, res, next) => {
+  console.log('******REQ.BODY******', req.body.nitProducer);
   console.log('******REQ.BODY******', req.body.nombreLineaProductiva9);
   console.log('******REQ.BODY******', req.body.tipoAlimentacion9);
   console.log('******REQ.BODY******', req.body.totalPecesCosechadosCiclo9);
