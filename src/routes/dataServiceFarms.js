@@ -47,10 +47,6 @@ let styles = wf.createStyle({
 
 //Creando una finca
 router.post("/newFarm", async (req, res, next) => {
-  console.log('******REQ.BODY******', req.body.nitProducer);
-  console.log('******REQ.BODY******', req.body.nombreLineaProductiva9);
-  console.log('******REQ.BODY******', req.body.tipoAlimentacion9);
-  console.log('******REQ.BODY******', req.body.totalPecesCosechadosCiclo9);
 
   const existFarm = await pool.query(
     "SELECT * from farm WHERE nitProducer = ?",
@@ -940,19 +936,14 @@ router.post("/newFarm", async (req, res, next) => {
     ventaAnimales10,
     frecuenciaEntrega10,
   };
-    
-    console.log("ingresa antes de agregar el nuevo predio")
 
     await pool.query("INSERT INTO farm set ?", [newFarm]);
-    
-    console.log("ingresa despues de crear el nuevo predio")
 
   const dataSaved = await pool.query(
     "SELECT * from farm WHERE nitProducer = ? AND nameFarm = ?",
     [newFarm.nitProducer, newFarm.nameFarm]
   );
-    
-  console.log(dataSaved[0].numeroColemnas9)
+
 
   res.json({
     mensaje: "Los datos se han almacenado con exito",
@@ -1255,8 +1246,6 @@ router.post("/characterizationListByUser", async (req, res) => {
     resultado[idx].img_beneficiario = result.img_beneficiario.toString().trim();
   });
 
-
-  console.log(`Resultado ${resultado}`)
   res.json({resultado});
 });
 
@@ -1269,8 +1258,6 @@ router.get("/farmDetails/:id", async (req, res) => {
   ]);
 
   imgData = await image2base64(dataFarm[0].img_beneficiario);
-
-  console.log("datafarm", dataFarm[0]);
 
   dataFarm[0].img_beneficiario = imgData;
 
@@ -1511,7 +1498,6 @@ router.put("/updateFarm/:id", async (req, res, next) => {
 //Descarga de PDF
 router.get('/downloadExcelByCharacterization/:id', async (req, res, next) => {
   try {
-    console.log('ingresa a la edicion', req.params.id);
 
     setTimeout (async() => { 
       if (req.timedout) { 
@@ -2274,7 +2260,6 @@ router.get('/downloadPdfCharacterizationFarm/:id', async(req, res) =>{
   let logoOchoTrans = null;
 
   const queryCharacterizationFarm = await pool.query('SELECT * FROM farm WHERE id_farm = ?', [req.params.id])
-  console.log(queryCharacterizationFarm)
   const queryImageProject = await pool.query('SELECT * FROM projects WHERE id_project = 81')
 
   let newName = queryCharacterizationFarm[0].firstName + " " + queryCharacterizationFarm[0].secondName+ " " + queryCharacterizationFarm[0].firstSurname + " " + queryCharacterizationFarm[0].secondSurname + "   " + queryCharacterizationFarm[0].nitProducer;
