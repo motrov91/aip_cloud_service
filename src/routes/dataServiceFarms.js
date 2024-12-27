@@ -2037,7 +2037,7 @@ router.get('/downloadExcelByCharacterization/:id', async (req, res, next) => {
               const project = await pool.query('select * from projects WHERE id_project = ?', [req.params.id])
               //console.log('project', project)
               
-              cp.cell(2+i, 1)
+              cp.cell(2+i, 1) 
               .string(project[0].nom_proyecto)
               cp.cell(2+i, 2)
               .string(charaterizationFarmList[i].nitProducer)
