@@ -1910,7 +1910,7 @@ router.get('/downloadExcelByCharacterization/:id', async (req, res, next) => {
               //console.log('project', project)
               
               cp.cell(2+i, 1) .string(project[0].nom_proyecto)
-              cp.cell(2+i, 1) .string(project[0].tipoDocumento)
+              cp.cell(2+i, 1) .string(charaterizationFarmList[i].tipoDocumento)
               cp.cell(2+i, 2).string(charaterizationFarmList[i].nitProducer)
               cp.cell(2+i, 3).string(charaterizationFarmList[i].firstName)
               cp.cell(2+i, 4).string(charaterizationFarmList[i].secondName)
