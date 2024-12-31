@@ -1608,124 +1608,125 @@ router.get('/downloadExcelByCharacterization/:id', async (req, res, next) => {
           cp.cell(1,10).string('Identidad de genero').style(styles)
           cp.cell(1,11).string('Orientacion sexual afectiva').style(styles)
           cp.cell(1,12).string('Etnia').style(styles)
-          cp.cell(1,13).string('Celular1').style(styles)
-          cp.cell(1,14).string('Celular2').style(styles)
-          cp.cell(1,15).string('Email').style(styles)
-          cp.cell(1,16).string('Género').style(styles)
-          cp.cell(1,17).string('Nivel Escolar').style(styles)
-          cp.cell(1,18).string('Organizaciones').style(styles)
-          cp.cell(1,19).string('Estado Civil').style(styles)
-          cp.cell(1,20).string('Nombre completo conyuge').style(styles)
-          cp.cell(1,21).string('Cedula Conyuge').style(styles)
-          cp.cell(1,22).string('Lugar de expedición cedula conyuge').style(styles)
-          cp.cell(1,23).string('Fecha de nacimiento conyuge').style(styles)
-          cp.cell(1,24).string('Celular conyuge').style(styles)
-          cp.cell(1,25).string('Email conyuge').style(styles)
-          cp.cell(1,26).string('¿Sufre de algún tipo de violencia basado en género?').style(styles)
-          cp.cell(1,27).string('¿Denuncias este tipo de violencia?').style(styles)
-          cp.cell(1,28).string('Régimen').style(styles)
-          cp.cell(1,29).string('EPS').style(styles)
-          cp.cell(1,30).string('¿SISBEN?').style(styles)
-          cp.cell(1,31).string('Categoría del Sisbén').style(styles)
-          cp.cell(1,32).string('¿Víctima del conflicto armado?').style(styles)
-          cp.cell(1,33).string('¿Desplazamiento forzado?').style(styles)
-          cp.cell(1,34).string('Número de personas del grupo familiar que viven con usted').style(styles)
-          cp.cell(1,35).string('Número de hijos menores a 18 años que viven con usted').style(styles)
-          cp.cell(1,36).string('Número de hijos entre 18-28 años que viven con usted').style(styles)
-          cp.cell(1,37).string('Número de Adultos mayores que viven con usted').style(styles)
-          cp.cell(1,38).string('Condición de vulnerabilidad').style(styles)
-          cp.cell(1,39).string('¿En el núcleo familiar presenta alguna de las condiciones anteriores?').style(styles)
-          cp.cell(1,40).string('Otra condición').style(styles)
-          cp.cell(1,41).string('Nombre de la finca').style(styles)
-          cp.cell(1,42).string('¿Predio registrado ante el ICA?').style(styles)
-          cp.cell(1,43).string('Municipio').style(styles)
-          cp.cell(1,44).string('Corregimiento').style(styles)
-          cp.cell(1,45).string('Vereda').style(styles)
-          cp.cell(1,46).string('Titulo de posesión').style(styles)
-          cp.cell(1,47).string('Extensión total del terreno').style(styles)
-          cp.cell(1,48).string('Area Cultivada').style(styles)
-          cp.cell(1,49).string('Area de Libre Destinación').style(styles)
-          cp.cell(1,50).string('Area de conservación').style(styles)
-          cp.cell(1,51).string('Presencia de proyectos actuales').style(styles)
-          cp.cell(1,52).string('Manejo de agroquimicos').style(styles)
-          cp.cell(1,53).string('Implementación de buenas prácticas').style(styles)
-          cp.cell(1,54).string('Area de otros usos').style(styles)
-          cp.cell(1,55).string('Metros Líneales de Afluentes').style(styles)
-          ws.cell(1,56).string('Uso de Suelo y su Vocación').style(styles)
-          cp.cell(1,57).string('Linea Productiva mas Implementada').style(styles)
-          cp.cell(1,58).string('Tipo de certificación').style(styles)
-          cp.cell(1,59).string('Lindero al Norte').style(styles)
-          cp.cell(1,60).string('Lindero al Sur').style(styles)
-          cp.cell(1,61).string('Lindero al Oriente').style(styles)
-          cp.cell(1,62).string('Lindero al Occidente').style(styles)
-          cp.cell(1,63).string('Altura').style(styles)
-          cp.cell(1,64).string('Latitud').style(styles)
-          cp.cell(1,65).string('Longitud').style(styles)
-          cp.cell(1,66).string('Años en la propiedad').style(styles)
-          cp.cell(1,67).string('Principales limitantes para el desarrollo del sistema productivo').style(styles)
-          cp.cell(1,68).string('Linea Productiva 1').style(styles)
-          cp.cell(1,69).string('Linea Productiva 2').style(styles)
-          cp.cell(1,70).string('Linea Productiva 3').style(styles)
-          cp.cell(1,71).string('Linea Productiva 4').style(styles)
-          cp.cell(1,72).string('Linea Productiva 5').style(styles)
-          cp.cell(1,73).string('Conocimiento de la linea productiva 1').style(styles)
-          cp.cell(1,74).string('Conocimiento de la linea productiva 2').style(styles)
-          cp.cell(1,75).string('Conocimiento de la linea productiva 3').style(styles)
-          cp.cell(1,76).string('Conocimiento de la linea productiva 4').style(styles)
-          cp.cell(1,77).string('Conocimiento de la linea productiva 5').style(styles)
-          cp.cell(1,78).string('Tipo de comercialización').style(styles)
-          cp.cell(1,79).string('Productos de biopreparados').style(styles)
-          cp.cell(1,80).string('Disponibilidad de agua').style(styles)
-          cp.cell(1,81).string('Disponibilidad de vías de acceso').style(styles)
-          cp.cell(1,82).string('Disponibilidad de electricidad').style(styles)
-          ws.cell(1,83).string('Disponibilidad de redes de comunicación').style(styles)
-          cp.cell(1,84).string('Disponibilidad para participar en proyectos de asistencia técnica').style(styles)
-          cp.cell(1,85).string('Variedad de herramientas básicas de uso en el cultivo').style(styles)
-          cp.cell(1,86).string('Tenencia de botiquin de primeros auxilios').style(styles)
-          cp.cell(1,87).string('Tenencia de equipos de fumigación').style(styles)
-          cp.cell(1,88).string('Tenencia de sistemas de riego').style(styles)
-          cp.cell(1,89).string('Tenencia de maquinaria libiana ').style(styles)
-          cp.cell(1,90).string('Interes en participar en proyectos de asistencia técnica').style(styles)
-          cp.cell(1,91).string('Origen del capital de trabajo').style(styles)
-          cp.cell(1,92).string('Grado de implementación de tecnologías de producción').style(styles)
-          cp.cell(1,93).string('Linea Productiva 1').style(styles)
-          cp.cell(1,94).string('Variedad').style(styles)
-          cp.cell(1,95).string('Cantidad de plantulas').style(styles)
-          cp.cell(1,96).string('Distancia entre surcos').style(styles)
-          cp.cell(1,97).string('Distancia entre plantas').style(styles)
-          cp.cell(1,98).string('Edad de cultivo (Años)').style(styles)
-          cp.cell(1,99).string('Etapa del cultivo').style(styles)
-          cp.cell(1,100).string('Cantidad de Kilogramos Producidos por Año').style(styles)
-          cp.cell(1,101).string('Estado General del cultivo').style(styles)
-          cp.cell(1,102).string('Area Aproximada (m2)').style(styles)
-          cp.cell(1,103).string('Latitud Lote1').style(styles)
-          cp.cell(1,104).string('Longitud Lote1').style(styles)
-          cp.cell(1,105).string('Tipo de manejo').style(styles)
-          cp.cell(1,106).string('Valor promedo de KG comercializado en pesos en el año').style(styles)
-          cp.cell(1,107).string('Linea Productiva 2').style(styles)
-          cp.cell(1,108).string('Variedad').style(styles)
-          cp.cell(1,109).string('Cantidad de plantulas').style(styles)
-          cp.cell(1,110).string('Distancia entre surcos').style(styles)
-          cp.cell(1,111).string('Distancia entre plantas').style(styles)
-          cp.cell(1,112).string('Edad de cultivo (Años)').style(styles)
-          cp.cell(1,113).string('Etapa del cultivo').style(styles)
-          cp.cell(1,114).string('Cantidad de Kilogramos Producidos por Año').style(styles)
-          cp.cell(1,115).string('Estado General del cultivo').style(styles)
-          cp.cell(1,116).string('Area Aproximada (m2)').style(styles)
-          cp.cell(1,117).string('Latitud Lote2').style(styles)
-          cp.cell(1,118).string('Longitud Lote2').style(styles)
-          cp.cell(1,119).string('Tipo de manejo').style(styles)
-          cp.cell(1,120).string('Valor promedo de KG comercializado en pesos en el año').style(styles)
-          cp.cell(1,121).string('Linea Productiva 3').style(styles)
-          cp.cell(1,122).string('Variedad').style(styles)
-          cp.cell(1,123).string('Cantidad de plantulas').style(styles)
-          cp.cell(1,124).string('Distancia entre surcos').style(styles)
-          cp.cell(1,125).string('Distancia entre plantas').style(styles)
-          cp.cell(1,126).string('Edad de cultivo (Años)').style(styles)
-          cp.cell(1,127).string('Etapa del cultivo').style(styles)
-          cp.cell(1,128).string('Cantidad de Kilogramos Producidos por Año').style(styles)
-          cp.cell(1,129).string('Estado General del cultivo').style(styles)
-          cp.cell(1,130).string('Area Aproximada (m2)').style(styles)
+          cp.cell(1,13).string('Tipo etnia').style(styles)
+          cp.cell(1,14).string('Celular1').style(styles)
+          cp.cell(1,15).string('Celular2').style(styles)
+          cp.cell(1,16).string('Email').style(styles)
+          cp.cell(1,17).string('Género').style(styles)
+          cp.cell(1,18).string('Nivel Escolar').style(styles)
+          cp.cell(1,19).string('Organizaciones').style(styles)
+          cp.cell(1,20).string('Estado Civil').style(styles)
+          cp.cell(1,21).string('Nombre completo conyuge').style(styles)
+          cp.cell(1,22).string('Cedula Conyuge').style(styles)
+          cp.cell(1,23).string('Lugar de expedición cedula conyuge').style(styles)
+          cp.cell(1,24).string('Fecha de nacimiento conyuge').style(styles)
+          cp.cell(1,25).string('Celular conyuge').style(styles)
+          cp.cell(1,26).string('Email conyuge').style(styles)
+          cp.cell(1,27).string('¿Sufre de algún tipo de violencia basado en género?').style(styles)
+          cp.cell(1,28).string('¿Denuncias este tipo de violencia?').style(styles)
+          cp.cell(1,29).string('Régimen').style(styles)
+          cp.cell(1,30).string('EPS').style(styles)
+          cp.cell(1,31).string('¿SISBEN?').style(styles)
+          cp.cell(1,32).string('Categoría del Sisbén').style(styles)
+          cp.cell(1,33).string('¿Víctima del conflicto armado?').style(styles)
+          cp.cell(1,34).string('¿Desplazamiento forzado?').style(styles)
+          cp.cell(1,35).string('Número de personas del grupo familiar que viven con usted').style(styles)
+          cp.cell(1,36).string('Número de hijos menores a 18 años que viven con usted').style(styles)
+          cp.cell(1,37).string('Número de hijos entre 18-28 años que viven con usted').style(styles)
+          cp.cell(1,38).string('Número de Adultos mayores que viven con usted').style(styles)
+          cp.cell(1,39).string('Condición de vulnerabilidad').style(styles)
+          cp.cell(1,40).string('¿En el núcleo familiar presenta alguna de las condiciones anteriores?').style(styles)
+          cp.cell(1,41).string('Otra condición').style(styles)
+          cp.cell(1,42).string('Nombre de la finca').style(styles)
+          cp.cell(1,43).string('¿Predio registrado ante el ICA?').style(styles)
+          cp.cell(1,44).string('Municipio').style(styles)
+          cp.cell(1,45).string('Corregimiento').style(styles)
+          cp.cell(1,46).string('Vereda').style(styles)
+          cp.cell(1,47).string('Titulo de posesión').style(styles)
+          cp.cell(1,48).string('Extensión total del terreno').style(styles)
+          cp.cell(1,49).string('Area Cultivada').style(styles)
+          cp.cell(1,50).string('Area de Libre Destinación').style(styles)
+          cp.cell(1,51).string('Area de conservación').style(styles)
+          cp.cell(1,52).string('Presencia de proyectos actuales').style(styles)
+          cp.cell(1,53).string('Manejo de agroquimicos').style(styles)
+          cp.cell(1,54).string('Implementación de buenas prácticas').style(styles)
+          cp.cell(1,55).string('Area de otros usos').style(styles)
+          cp.cell(1,56).string('Metros Líneales de Afluentes').style(styles)
+          ws.cell(1,57).string('Uso de Suelo y su Vocación').style(styles)
+          cp.cell(1,58).string('Linea Productiva mas Implementada').style(styles)
+          cp.cell(1,59).string('Tipo de certificación').style(styles)
+          cp.cell(1,60).string('Lindero al Norte').style(styles)
+          cp.cell(1,61).string('Lindero al Sur').style(styles)
+          cp.cell(1,62).string('Lindero al Oriente').style(styles)
+          cp.cell(1,63).string('Lindero al Occidente').style(styles)
+          cp.cell(1,64).string('Altura').style(styles)
+          cp.cell(1,65).string('Latitud').style(styles)
+          cp.cell(1,66).string('Longitud').style(styles)
+          cp.cell(1,67).string('Años en la propiedad').style(styles)
+          cp.cell(1,68).string('Principales limitantes para el desarrollo del sistema productivo').style(styles)
+          cp.cell(1,69).string('Linea Productiva 1').style(styles)
+          cp.cell(1,70).string('Linea Productiva 2').style(styles)
+          cp.cell(1,71).string('Linea Productiva 3').style(styles)
+          cp.cell(1,72).string('Linea Productiva 4').style(styles)
+          cp.cell(1,73).string('Linea Productiva 5').style(styles)
+          cp.cell(1,74).string('Conocimiento de la linea productiva 1').style(styles)
+          cp.cell(1,75).string('Conocimiento de la linea productiva 2').style(styles)
+          cp.cell(1,76).string('Conocimiento de la linea productiva 3').style(styles)
+          cp.cell(1,77).string('Conocimiento de la linea productiva 4').style(styles)
+          cp.cell(1,78).string('Conocimiento de la linea productiva 5').style(styles)
+          cp.cell(1,79).string('Tipo de comercialización').style(styles)
+          cp.cell(1,80).string('Productos de biopreparados').style(styles)
+          cp.cell(1,81).string('Disponibilidad de agua').style(styles)
+          cp.cell(1,82).string('Disponibilidad de vías de acceso').style(styles)
+          cp.cell(1,83).string('Disponibilidad de electricidad').style(styles)
+          ws.cell(1,84).string('Disponibilidad de redes de comunicación').style(styles)
+          cp.cell(1,85).string('Disponibilidad para participar en proyectos de asistencia técnica').style(styles)
+          cp.cell(1,86).string('Variedad de herramientas básicas de uso en el cultivo').style(styles)
+          cp.cell(1,87).string('Tenencia de botiquin de primeros auxilios').style(styles)
+          cp.cell(1,88).string('Tenencia de equipos de fumigación').style(styles)
+          cp.cell(1,89).string('Tenencia de sistemas de riego').style(styles)
+          cp.cell(1,90).string('Tenencia de maquinaria libiana ').style(styles)
+          cp.cell(1,91).string('Interes en participar en proyectos de asistencia técnica').style(styles)
+          cp.cell(1,92).string('Origen del capital de trabajo').style(styles)
+          cp.cell(1,93).string('Grado de implementación de tecnologías de producción').style(styles)
+          cp.cell(1,94).string('Linea Productiva 1').style(styles)
+          cp.cell(1,95).string('Variedad').style(styles)
+          cp.cell(1,96).string('Cantidad de plantulas').style(styles)
+          cp.cell(1,97).string('Distancia entre surcos').style(styles)
+          cp.cell(1,98).string('Distancia entre plantas').style(styles)
+          cp.cell(1,99).string('Edad de cultivo (Años)').style(styles)
+          cp.cell(1,100).string('Etapa del cultivo').style(styles)
+          cp.cell(1,101).string('Cantidad de Kilogramos Producidos por Año').style(styles)
+          cp.cell(1,102).string('Estado General del cultivo').style(styles)
+          cp.cell(1,103).string('Area Aproximada (m2)').style(styles)
+          cp.cell(1,104).string('Latitud Lote1').style(styles)
+          cp.cell(1,105).string('Longitud Lote1').style(styles)
+          cp.cell(1,106).string('Tipo de manejo').style(styles)
+          cp.cell(1,107).string('Valor promedo de KG comercializado en pesos en el año').style(styles)
+          cp.cell(1,108).string('Linea Productiva 2').style(styles)
+          cp.cell(1,109).string('Variedad').style(styles)
+          cp.cell(1,110).string('Cantidad de plantulas').style(styles)
+          cp.cell(1,111).string('Distancia entre surcos').style(styles)
+          cp.cell(1,112).string('Distancia entre plantas').style(styles)
+          cp.cell(1,113).string('Edad de cultivo (Años)').style(styles)
+          cp.cell(1,114).string('Etapa del cultivo').style(styles)
+          cp.cell(1,115).string('Cantidad de Kilogramos Producidos por Año').style(styles)
+          cp.cell(1,116).string('Estado General del cultivo').style(styles)
+          cp.cell(1,117).string('Area Aproximada (m2)').style(styles)
+          cp.cell(1,118).string('Latitud Lote2').style(styles)
+          cp.cell(1,119).string('Longitud Lote2').style(styles)
+          cp.cell(1,120).string('Tipo de manejo').style(styles)
+          cp.cell(1,121).string('Valor promedo de KG comercializado en pesos en el año').style(styles)
+          cp.cell(1,122).string('Linea Productiva 3').style(styles)
+          cp.cell(1,123).string('Variedad').style(styles)
+          cp.cell(1,124).string('Cantidad de plantulas').style(styles)
+          cp.cell(1,125).string('Distancia entre surcos').style(styles)
+          cp.cell(1,126).string('Distancia entre plantas').style(styles)
+          cp.cell(1,127).string('Edad de cultivo (Años)').style(styles)
+          cp.cell(1,128).string('Etapa del cultivo').style(styles)
+          cp.cell(1,129).string('Cantidad de Kilogramos Producidos por Año').style(styles)
+          cp.cell(1,130).string('Estado General del cultivo').style(styles)
+          cp.cell(1,131).string('Area Aproximada (m2)').style(styles)
           cp.cell(1,132).string('Latitud Lote3').style(styles)
           cp.cell(1,133).string('Longitud Lote3').style(styles)
           cp.cell(1,134).string('Tipo de manejo').style(styles)
@@ -1733,7 +1734,7 @@ router.get('/downloadExcelByCharacterization/:id', async (req, res, next) => {
           cp.cell(1,136).string('Linea Productiva 4 (Pecuario)').style(styles)
           cp.cell(1,137).string('Raza').style(styles)
           cp.cell(1,138).string('Cantidad de animales').style(styles)
-          cp.cell(1,138).string('numero de corrales').style(styles)
+          cp.cell(1,139).string('numero de corrales').style(styles)
           cp.cell(1,140).string('Edad promedio de los animales').style(styles)
           cp.cell(1,141).string('Etapa productiva').style(styles)
           cp.cell(1,142).string('Cantidad de Kilogramos Producidos por Año').style(styles)
@@ -1909,18 +1910,116 @@ router.get('/downloadExcelByCharacterization/:id', async (req, res, next) => {
               const project = await pool.query('select * from projects WHERE id_project = ?', [req.params.id])
               //console.log('project', project)
               
-              cp.cell(2+i, 1).string(project[0].nom_proyecto)
-              cp.cell(2+i, 2).string(charaterizationFarmList[i].tipoDocumento)
+              cp.cell(2 + i, 1).string(project[0].nom_proyecto)
+              switch (charaterizationFarmList[i].tipoDocumento) {
+                case "1":
+                    cp.cell(2+i, 2).string("Cedula ciudadania")
+                  break;
+                case "2":
+                    cp.cell(2+i, 2).string("Cedula extranjeria")
+                  break;
+                case "3":
+                    cp.cell(2+i, 2).string("Tarjeta de identidad")
+                  break;
+                case "4":
+                    cp.cell(2+i, 2).string("Pasaporte")
+                  break;
+                case "5":
+                    cp.cell(2+i, 2).string("Permiso especial de permanencia")
+                  break;
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
               cp.cell(2+i, 3).string(charaterizationFarmList[i].nitProducer)
               cp.cell(2+i, 4).string(charaterizationFarmList[i].firstName)
               cp.cell(2+i, 5).string(charaterizationFarmList[i].secondName)
               cp.cell(2+i, 6).string(charaterizationFarmList[i].firstSurname)
               cp.cell(2+i, 7).string(charaterizationFarmList[i].secondSurname)
               cp.cell(2+i, 8).string(charaterizationFarmList[i].birthdate)
-              cp.cell(2+i, 9).string(charaterizationFarmList[i].edad)
-              cp.cell(2+i, 10).string(charaterizationFarmList[i].identidadGenero)
-              cp.cell(2+i, 11).string(charaterizationFarmList[i].orientacionSexualAfectiva)
-              cp.cell(2+i, 12).string(charaterizationFarmList[i].ethnicity)
+              cp.cell(2 + i, 9).string(charaterizationFarmList[i].edad)
+              switch (charaterizationFarmList[i].identidadGenero) {
+                case "1":
+                    cp.cell(2+i, 10).string("Masculino")
+                  break;
+                case "2":
+                    cp.cell(2+i, 10).string("Femenino")
+                  break;
+                case "3":
+                    cp.cell(2+i, 10).string("Intersexual")
+                  break;
+                case "4":
+                    cp.cell(2+i, 10).string("TransMasculino")
+                  break;
+                case "5":
+                    cp.cell(2+i, 10).string("TransFemenino")
+                  break;
+                case "6":
+                    cp.cell(2+i, 10).string("No binario")
+                  break;
+                case "7":
+                    cp.cell(2+i, 10).string("Genero fluido")
+                  break;
+                case "8":
+                    cp.cell(2+i, 10).string("NA")
+                  break;
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              switch (charaterizationFarmList[i].orientacionSexualAfectiva) {
+                case "1":
+                    cp.cell(2+i, 11).string("Lesbiana")
+                  break;
+                case "2":
+                    cp.cell(2+i, 11).string("Gay")
+                  break;
+                case "3":
+                    cp.cell(2+i, 11).string("Transexual")
+                  break;
+                case "4":
+                    cp.cell(2+i, 11).string("Bisexual")
+                  break;
+                case "5":
+                    cp.cell(2+i, 11).string("Intersexual")
+                  break;
+                case "6":
+                    cp.cell(2+i, 11).string("Heterosexual")
+                  break;
+                case "7":
+                    cp.cell(2+i, 11).string("Homosexual")
+                  break;
+                case "8":
+                    cp.cell(2+i, 11).string("Pansexual")
+                  break;
+                case "9":
+                    cp.cell(2+i, 11).string("Asexual")
+                  break;
+                case "10":
+                    cp.cell(2+i, 11).string("NA")
+                  break;
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              switch (charaterizationFarmList[i].ethnicity) {
+                case "1":
+                    cp.cell(2+i, 12).string("Indigena")
+                  break;
+                case "2":
+                    cp.cell(2+i, 12).string("Afrocolombiano")
+                  break;
+                case "3":
+                    cp.cell(2+i, 12).string("Campesino")
+                  break;
+                case "4":
+                    cp.cell(2+i, 12).string("Raizal")
+                  break;
+                case "5":
+                    cp.cell(2+i, 12).string("Gitano")
+                case "6":
+                    cp.cell(2+i, 12).string("Otro cual")
+                  break;
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
               cp.cell(2+i, 13).string(charaterizationFarmList[i].tipoEtnia)
               cp.cell(2+i, 14).string(charaterizationFarmList[i].celphone1)
               cp.cell(2+i, 15).string(charaterizationFarmList[i].celphone2)
