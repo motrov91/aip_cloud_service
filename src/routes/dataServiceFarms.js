@@ -2063,16 +2063,16 @@ router.get('/downloadExcelByCharacterization/:id', async (req, res, next) => {
               cp.cell(2+i, 152).string(charaterizationFarmList[i].numeroMachos5)
               cp.cell(2 + i, 153).string(charaterizationFarmList[i].numeroVacasOrdeno5)
               switch (charaterizationFarmList[i].tipoProduccion5) {
-                case 1:
+                case "1":
                     cp.cell(2+i, 154).string("Cria")
                   break;
-                case 2:
+                case "2":
                     cp.cell(2+i, 154).string("Levante")
                   break;
-                case 3:
+                case "3":
                     cp.cell(2+i, 154).string("Ceba")
                   break;
-                case 4:
+                case "4":
                     cp.cell(2+i, 154).string("Ciclo completo")
                   break;
                 default:
