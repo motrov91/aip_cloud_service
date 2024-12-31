@@ -1823,46 +1823,44 @@ router.get('/downloadExcelByCharacterization/:id', async (req, res, next) => {
               
           //Lote 8    
           cp.cell(1,221).string('nombre de la linea productiva').style(styles)
-          cp.cell(1,222).string('Número de animales total').style(styles)
-          cp.cell(1,223).string('Qué especies cultiva').style(styles)
-          cp.cell(1,224).string('Número de estanques').style(styles)
-          cp.cell(1,225).string('Área Total de estanques utilizados').style(styles)
-          cp.cell(1,226).string('Densidad de siembra por estanque').style(styles)
-          cp.cell(1,227).string('Orientación de la granja').style(styles)
-          cp.cell(1,228).string('Sistema de producción').style(styles)
-          cp.cell(1,229).string('Infraestructura').style(styles)
-          cp.cell(1,230).string('Implementa BPP').style(styles)
-          cp.cell(1,231).string('Estado general de los animales').style(styles)
-          cp.cell(1,232).string('Realiza tratamiento de aguas residuales de la producción').style(styles)
-          cp.cell(1,233).string('Porcentaje de mortalidad anual(%)').style(styles)
-          cp.cell(1,234).string('como es el tratamiento de aguas').style(styles)
-          cp.cell(1,235).string('Tipo de alimentación').style(styles)
-          cp.cell(1,236).string('Promedio alevinos sembrados por año (kg)').style(styles)
-          cp.cell(1,237).string('Forma de comercialización de su producto').style(styles)
-          cp.cell(1,238).string('Total peces cosechados por ciclo (kg)').style(styles)
-          cp.cell(1,239).string('Precio de venta carne ($/Kg)').style(styles)
-          cp.cell(1,240).string('Presentación de venta').style(styles)
-          cp.cell(1,241).string('Frecuencia de entrega o venta del producto').style(styles)  
+          cp.cell(1,222).string('Número de estanques').style(styles)
+          cp.cell(1,223).string('Área Total de estanques utilizados').style(styles)
+          cp.cell(1,224).string('Densidad de siembra por estanque').style(styles)
+          cp.cell(1,225).string('Orientación de la granja').style(styles)
+          cp.cell(1,226).string('Sistema de producción').style(styles)
+          cp.cell(1,227).string('Infraestructura').style(styles)
+          cp.cell(1,228).string('Implementa BPP').style(styles)
+          cp.cell(1,229).string('Estado general de los animales').style(styles)
+          cp.cell(1,230).string('Realiza tratamiento de aguas residuales de la producción').style(styles)
+          cp.cell(1,231).string('Porcentaje de mortalidad anual(%)').style(styles)
+          cp.cell(1,232).string('como es el tratamiento de aguas').style(styles)
+          cp.cell(1,233).string('Tipo de alimentación').style(styles)
+          cp.cell(1,234).string('Promedio alevinos sembrados por año (kg)').style(styles)
+          cp.cell(1,235).string('Forma de comercialización de su producto').style(styles)
+          cp.cell(1,236).string('Total peces cosechados por ciclo (kg)').style(styles)
+          cp.cell(1,237).string('Precio de venta carne ($/Kg)').style(styles)
+          cp.cell(1,238).string('Presentación de venta').style(styles)
+          cp.cell(1,239).string('Frecuencia de entrega o venta del producto').style(styles)  
           
           //Lote 9
-          cp.cell(1,242).string('Número de colmenas').style(styles) 
-          cp.cell(1,243).string('Especie').style(styles) 
-          cp.cell(1,244).string('Área de apiario (m2)').style(styles) 
-          cp.cell(1,245).string('Tipo de apicultura que desarrolla').style(styles) 
-          cp.cell(1,246).string('Número promedio de abejas por colmena').style(styles) 
-          cp.cell(1,247).string('Implementa BPP').style(styles) 
-          cp.cell(1,248).string('Estado general de los animales').style(styles) 
-          cp.cell(1,249).string('Maneja calendarios de floración').style(styles) 
-          cp.cell(1,250).string('Qué variedad de floración se encuentra en la zona').style(styles) 
-          cp.cell(1,251).string('Maneja algún tipo de suplementación').style(styles) 
-          cp.cell(1,252).string('Formación técnica relacionada a la actividad apícola').style(styles) 
-          cp.cell(1,253).string('Su colmena ha presentado alguna de estas enfermedades').style(styles) 
-          cp.cell(1,254).string('Especificar tipo de producto').style(styles) 
-          cp.cell(1,255).string('Tipo de empaque para comercializar').style(styles) 
-          cp.cell(1,256).string('Cantidad de litros/por cosecha (semestral)').style(styles) 
-          cp.cell(1,257).string('Precio de venta miel ($/L)').style(styles) 
-          cp.cell(1,258).string('Forma de comercialización de su producto').style(styles) 
-          cp.cell(1,259).string('Frecuencia de entrega o venta del producto').style(styles)
+          cp.cell(1,240).string('Número de colmenas').style(styles) 
+          cp.cell(1,241).string('Especie').style(styles) 
+          cp.cell(1,242).string('Área de apiario (m2)').style(styles) 
+          cp.cell(1,243).string('Tipo de apicultura que desarrolla').style(styles) 
+          cp.cell(1,244).string('Número promedio de abejas por colmena').style(styles) 
+          cp.cell(1,245).string('Implementa BPP').style(styles) 
+          cp.cell(1,246).string('Estado general de los animales').style(styles) 
+          cp.cell(1,247).string('Maneja calendarios de floración').style(styles) 
+          cp.cell(1,248).string('Qué variedad de floración se encuentra en la zona').style(styles) 
+          cp.cell(1,249).string('Maneja algún tipo de suplementación').style(styles) 
+          cp.cell(1,250).string('Formación técnica relacionada a la actividad apícola').style(styles) 
+          cp.cell(1,251).string('Su colmena ha presentado alguna de estas enfermedades').style(styles) 
+          cp.cell(1,252).string('Especificar tipo de producto').style(styles) 
+          cp.cell(1,253).string('Tipo de empaque para comercializar').style(styles) 
+          cp.cell(1,254).string('Cantidad de litros/por cosecha (semestral)').style(styles) 
+          cp.cell(1,255).string('Precio de venta miel ($/L)').style(styles) 
+          cp.cell(1,256).string('Forma de comercialización de su producto').style(styles) 
+          cp.cell(1,257).string('Frecuencia de entrega o venta del producto').style(styles)
               
           //LOTE 10    
           cp.cell(1,260).string('nombre de la linea productiva').style(styles)
@@ -2024,47 +2022,296 @@ router.get('/downloadExcelByCharacterization/:id', async (req, res, next) => {
               cp.cell(2+i, 14).string(charaterizationFarmList[i].celphone1)
               cp.cell(2+i, 15).string(charaterizationFarmList[i].celphone2)
               cp.cell(2+i, 16).string(charaterizationFarmList[i].email)
-              cp.cell(2+i, 17).string(charaterizationFarmList[i].gender)
-              cp.cell(2+i, 18).string(charaterizationFarmList[i].scholarLevel)
-              cp.cell(2+i, 19).string(charaterizationFarmList[i].organization)
-              cp.cell(2+i, 20).string(charaterizationFarmList[i].maritalStatus)
+              cp.cell(2 + i, 17).string(charaterizationFarmList[i].gender)
+              switch (charaterizationFarmList[i].scholarLevel) {
+                case "1":
+                    cp.cell(2+i, 18).string("Ninguno")
+                  break;
+                case "2":
+                    cp.cell(2+i, 18).string("Primaria")
+                  break;
+                case "3":
+                    cp.cell(2+i, 18).string("Secundaria")
+                  break;
+                case "4":
+                    cp.cell(2+i, 18).string("Técnico")
+                  break;
+                case "5":
+                    cp.cell(2+i, 18).string("Tecnólogo")
+                case "6":
+                    cp.cell(2+i, 18).string("Univesitario")
+                  break;
+                case "7":
+                    cp.cell(2+i, 18).string("Posgrado")
+                  break;
+                case "8":
+                    cp.cell(2+i, 18).string("No tiene")
+                  break;
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              cp.cell(2 + i, 19).string(charaterizationFarmList[i].organization)
+              switch (charaterizationFarmList[i].maritalStatus) {
+                case "1":
+                    cp.cell(2+i, 20).string("Soltero")
+                  break;
+                case "2":
+                    cp.cell(2+i, 20).string("Casado")
+                  break;
+                case "3":
+                    cp.cell(2+i, 20).string("Union Libre")
+                  break;
+                case "4":
+                    cp.cell(2+i, 20).string("Divorsiado")
+                  break;
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
               cp.cell(2+i, 21).string(charaterizationFarmList[i].fullnameSpouse)
               cp.cell(2+i, 22).string(charaterizationFarmList[i].nitSpouse)
               cp.cell(2+i, 23).string(charaterizationFarmList[i].expeditionSpouse)
               cp.cell(2+i, 24).string(charaterizationFarmList[i].dateSpouse)
               cp.cell(2+i, 25).string(charaterizationFarmList[i].celphoneSpouse)
-              cp.cell(2+i, 26).string(charaterizationFarmList[i].emailSpouse)
-              cp.cell(2+i, 27).string(charaterizationFarmList[i].tipoViolenciaGenero)
-              cp.cell(2+i, 28).string(charaterizationFarmList[i].denunciasTipodeViolencia)
-              cp.cell(2+i, 29).string(charaterizationFarmList[i].regimen)
-              cp.cell(2+i, 30).string(charaterizationFarmList[i].eps)
-              cp.cell(2+i, 31).string(charaterizationFarmList[i].tieneSISBEN)
-              cp.cell(2+i, 32).string(charaterizationFarmList[i].categoriaSISBEN)
-              cp.cell(2+i, 33).string(charaterizationFarmList[i].victimaConflicto)
-              cp.cell(2+i, 34).string(charaterizationFarmList[i].desplazamientoForzado)
+              cp.cell(2 + i, 26).string(charaterizationFarmList[i].emailSpouse)
+              switch (charaterizationFarmList[i].tipoViolenciaGenero) {
+                case "1":
+                    cp.cell(2+i, 27).string("Física")
+                  break;
+                case "2":
+                    cp.cell(2+i, 27).string("Psicológica")
+                  break;
+                case "3":
+                    cp.cell(2+i, 27).string("Sexual")
+                  break;
+                case "4":
+                    cp.cell(2+i, 27).string("Emocional")
+                  break;
+                case "5":
+                    cp.cell(2+i, 27).string("Patrimonial")
+                  break;
+                case "6":
+                    cp.cell(2+i, 27).string("Económica")
+                  break;
+                case "7":
+                    cp.cell(2+i, 27).string("Simbólica")
+                  break;
+                case "8":
+                    cp.cell(2+i, 27).string("Obstétrica")
+                  break;
+                case "9":
+                    cp.cell(2+i, 27).string("NA")
+                  break;
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              switch (charaterizationFarmList[i].denunciasTipodeViolencia) {
+                case "0":
+                    cp.cell(2+i, 28).string("Si")
+                  break;
+                case "1":
+                    cp.cell(2+i, 28).string("No")
+                  break;
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              switch (charaterizationFarmList[i].regimen) {
+                case "1":
+                    cp.cell(2+i, 29).string("Contributivo")
+                  break;
+                case "2":
+                    cp.cell(2+i, 29).string("Subsidiado")
+                  break;
+                case "3":
+                    cp.cell(2+i, 29).string("No sabe")
+                  break;
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+
+              cp.cell(2 + i, 30).string(charaterizationFarmList[i].eps)
+              switch (charaterizationFarmList[i].tieneSISBEN) {
+                case "0":
+                    cp.cell(2+i, 31).string("Si")
+                  break;
+                case "1":
+                    cp.cell(2+i, 31).string("No")
+                  break;
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              switch (charaterizationFarmList[i].categoriaSISBEN) {
+                case "1":
+                    cp.cell(2+i, 32).string("Grupo A")
+                  break;
+                case "2":
+                    cp.cell(2+i, 32).string("Grupo B")
+                  break;
+                case "3":
+                    cp.cell(2+i, 32).string("Grupo C")
+                  break;
+                case "4":
+                    cp.cell(2+i, 32).string("Grupo D")
+                  break;
+                case "5":
+                    cp.cell(2+i, 32).string("No sabe")
+                  break;
+                case "6":
+                    cp.cell(2+i, 32).string("NA")
+                  break;
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              switch (charaterizationFarmList[i].victimaConflicto) {
+                case "0":
+                    cp.cell(2+i, 33).string("Si")
+                  break;
+                case "1":
+                    cp.cell(2+i, 33).string("No")
+                  break;
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              switch (charaterizationFarmList[i].desplazamientoForzado) {
+                case "0":
+                    cp.cell(2+i, 34).string("Si")
+                  break;
+                case "1":
+                    cp.cell(2+i, 34).string("No")
+                  break;
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
               cp.cell(2+i, 35).string(charaterizationFarmList[i].num_personas_vive_usted)
               cp.cell(2+i, 36).string(charaterizationFarmList[i].hijos_menores_18_viven_con_usted)
               cp.cell(2+i, 37).string(charaterizationFarmList[i].hijos_entre_18_28_viven_con_usted)
-              cp.cell(2+i, 38).string(charaterizationFarmList[i].num_adultos_mayores_viven_con_usted)
-              cp.cell(2+i, 39).string(charaterizationFarmList[i].condicionVulnerabilidad)
-              cp.cell(2+i, 40).string(charaterizationFarmList[i].tipoCondicionVulnerabilidad)
-              cp.cell(2+i, 41).string(charaterizationFarmList[i].presentaCondicionVulnerabilidadEnNucleo)
-              cp.cell(2+i, 42).string(charaterizationFarmList[i].nameFarm)
-              cp.cell(2+i, 43).string(charaterizationFarmList[i].predioRegistradoICA)
+              cp.cell(2 + i, 38).string(charaterizationFarmList[i].num_adultos_mayores_viven_con_usted)
+              switch (charaterizationFarmList[i].condicionVulnerabilidad) {
+                case "1":
+                    cp.cell(2+i, 39).string("Mujer cabeza de hogar")
+                  break;
+                case "2":
+                    cp.cell(2+i, 39).string("Discapacidad")
+                  break;
+                case "3":
+                    cp.cell(2+i, 39).string("Reinsertado")
+                  break;
+                case "4":
+                    cp.cell(2+i, 39).string("Mujeres cuidadoras")
+                  break;
+                case "5":
+                    cp.cell(2+i, 39).string("Pospenado")
+                  break;
+                case "6":
+                    cp.cell(2+i, 39).string("Mujer gestante")
+                  break;
+                case "7":
+                    cp.cell(2+i, 39).string("Victia de violencia")
+                  break;
+                case "8":
+                    cp.cell(2+i, 39).string("Ninguno")
+                  break;
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              cp.cell(2 + i, 40).string(charaterizationFarmList[i].tipoCondicionVulnerabilidad)
+              switch (charaterizationFarmList[i].presentaCondicionVulnerabilidadEnNucleo) {
+                case "0":
+                    cp.cell(2+i, 41).string("Si")
+                  break;
+                case "1":
+                    cp.cell(2+i, 41).string("No")
+                  break;
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              cp.cell(2 + i, 42).string(charaterizationFarmList[i].nameFarm)
+              switch (charaterizationFarmList[i].predioRegistradoICA) {
+                case "0":
+                    cp.cell(2+i, 43).string("Si")
+                  break;
+                case "1":
+                    cp.cell(2+i, 43).string("No")
+                  break;
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
               cp.cell(2+i, 44).string(charaterizationFarmList[i].municipality)
               cp.cell(2+i, 45).string(charaterizationFarmList[i].corregimiento)
-              cp.cell(2+i, 46).string(charaterizationFarmList[i].vereda)
-              cp.cell(2+i, 47).string(charaterizationFarmList[i].possession)
+              cp.cell(2 + i, 46).string(charaterizationFarmList[i].vereda)
+              switch (charaterizationFarmList[i].possession) {
+                case "1":
+                    cp.cell(2+i, 47).string("Escrituras públicas")
+                  break;
+                case "2":
+                    cp.cell(2+i, 47).string("Sana posesión")
+                  break;
+                case "3":
+                    cp.cell(2+i, 47).string("Arrendamiento")
+                  break;
+                case "4":
+                    cp.cell(2+i, 47).string("Comodato")
+                  break;
+                case "5":
+                    cp.cell(2+i, 47).string("Usufructo")
+                  break;
+                case "6":
+                    cp.cell(2+i, 47).string("Colectiva")
+                  break;
+                case "7":
+                    cp.cell(2+i, 47).string("Otro")
+                  break;
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
               cp.cell(2+i, 48).string(charaterizationFarmList[i].totalExtension)
               cp.cell(2+i, 49).string(charaterizationFarmList[i].cropsArea)
               cp.cell(2+i, 50).string(charaterizationFarmList[i].freeArea)
               cp.cell(2+i, 51).string(charaterizationFarmList[i].conservationArea)
-              cp.cell(2+i, 52).string(charaterizationFarmList[i].currentProjects)
-              cp.cell(2+i, 53).string(charaterizationFarmList[i].agrochemical)
-              cp.cell(2+i, 54).string(charaterizationFarmList[i].bestPractices)
+              cp.cell(2 + i, 52).string(charaterizationFarmList[i].currentProjects)
+              switch (charaterizationFarmList[i].agrochemical) {
+                case "0":
+                    cp.cell(2+i, 53).string("Si")
+                  break;
+                case "1":
+                    cp.cell(2+i, 53).string("No")
+                  break;
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              switch (charaterizationFarmList[i].bestPractices) {
+                case "1":
+                    cp.cell(2+i, 54).string("Alto")
+                  break;
+                case "2":
+                    cp.cell(2+i, 54).string("Medio")
+                  break;
+                case "3":
+                    cp.cell(2+i, 54).string("Bajo")
+                  break;
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
               cp.cell(2+i, 55).string(charaterizationFarmList[i].otherAreas)
-              cp.cell(2+i, 56).string(charaterizationFarmList[i].afluentes)
-              cp.cell(2+i, 57).string(charaterizationFarmList[i].vocationAndLandUse)
+              cp.cell(2 + i, 56).string(charaterizationFarmList[i].afluentes)
+              switch (charaterizationFarmList[i].vocationAndLandUse) {
+                case "1":
+                    cp.cell(2+i, 57).string("Agrícola")
+                  break;
+                case "2":
+                    cp.cell(2+i, 57).string("Pecuario")
+                  break;
+                case "3":
+                    cp.cell(2+i, 57).string("Forestal")
+                  break;
+                case "4":
+                    cp.cell(2+i, 57).string("Agrícola y pecuario")
+                  break;
+                case "5":
+                    cp.cell(2+i, 57).string("Otro")
+                  break;
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
               cp.cell(2+i, 58).string(charaterizationFarmList[i].productiveLine)
               cp.cell(2+i, 59).string(charaterizationFarmList[i].certificationType)
               cp.cell(2+i, 60).string(charaterizationFarmList[i].purlieuNorth)
@@ -2074,46 +2321,361 @@ router.get('/downloadExcelByCharacterization/:id', async (req, res, next) => {
               cp.cell(2+i, 64).string(charaterizationFarmList[i].altura)
               cp.cell(2+i, 65).string(arrayCoordenates[0])
               cp.cell(2+i, 66).string(arrayCoordenates[1])
-              cp.cell(2+i, 67).string(charaterizationFarmList[i].anosPropiedad)
-              cp.cell(2+i, 68).string(charaterizationFarmList[i].limitantesSistemaProductivo)
+              cp.cell(2 + i, 67).string(charaterizationFarmList[i].anosPropiedad)
+              switch (charaterizationFarmList[i].limitantesSistemaProductivo) {
+                case "1":
+                    cp.cell(2+i, 68).string("Manejo de enfermedades")
+                  break;
+                case "2":
+                    cp.cell(2+i, 68).string("Baja demanda del producto en el mercado")
+                  break;
+                case "3":
+                    cp.cell(2+i, 68).string("Falta acompañamiento técnico")
+                  break;
+                case "4":
+                    cp.cell(2+i, 68).string("Competencia de las grandes superficies")
+                  break;
+                case "5":
+                    cp.cell(2+i, 68).string("Vias de acceso")
+                  break;
+                case "6":
+                    cp.cell(2+i, 68).string("Impacto en el medio ambiente")
+                  break;
+                case "7":
+                    cp.cell(2+i, 68).string("Capital de trabajo")
+                  break;
+                case "8":
+                    cp.cell(2+i, 68).string("Costo de insumos")
+                  break;
+                case "9":
+                    cp.cell(2+i, 68).string("Mano de obra calificada")
+                  break;
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
               cp.cell(2+i, 69).string(charaterizationFarmList[i].productiveLine1)
               cp.cell(2+i, 70).string(charaterizationFarmList[i].productiveLine2)
               cp.cell(2+i, 71).string(charaterizationFarmList[i].productiveLine3)
               cp.cell(2+i, 72).string(charaterizationFarmList[i].productiveLine4)
-              cp.cell(2+i, 73).string(charaterizationFarmList[i].productiveLine5)
-              cp.cell(2+i, 74).string(charaterizationFarmList[i].knowProductiveLine1)
-              cp.cell(2+i, 75).string(charaterizationFarmList[i].knowProductiveLine2)
-              cp.cell(2+i, 76).string(charaterizationFarmList[i].knowPeoductiveLine3)
-              cp.cell(2+i, 77).string(charaterizationFarmList[i].knowProductiveLine4)
-              cp.cell(2+i, 78).string(charaterizationFarmList[i].knowProductiveLine5)
-              cp.cell(2+i, 79).string(charaterizationFarmList[i].comercializationType)
-              cp.cell(2+i, 80).string(charaterizationFarmList[i].biopreparadosProduction)
-              cp.cell(2+i, 81).string(charaterizationFarmList[i].waterAvailable)
-              cp.cell(2+i, 82).string(charaterizationFarmList[i].accessRoads)
-              cp.cell(2+i, 83).string(charaterizationFarmList[i].electricityAvailability)
-              cp.cell(2+i, 84).string(charaterizationFarmList[i].ComunicationAvailable)
-              cp.cell(2+i, 85).string(charaterizationFarmList[i].projectParticipation)
-              cp.cell(2+i, 86).string(charaterizationFarmList[i].cropTools)
-              cp.cell(2+i, 87).string(charaterizationFarmList[i].firstAidKit)
-              cp.cell(2+i, 88).string(charaterizationFarmList[i].fumigateKit)
-              cp.cell(2+i, 89).string(charaterizationFarmList[i].irrigationSystem)
-              cp.cell(2+i, 90).string(charaterizationFarmList[i].machines)
-              cp.cell(2+i, 91).string(charaterizationFarmList[i].ParticipateInProyects)
-              cp.cell(2+i, 92).string(charaterizationFarmList[i].workingCapital)
-              cp.cell(2+i, 93).string(charaterizationFarmList[i].implementationTecnologyLevel)
+              cp.cell(2 + i, 73).string(charaterizationFarmList[i].productiveLine5)
+              switch (charaterizationFarmList[i].knowProductiveLine1) {
+                case "1":
+                    cp.cell(2+i, 74).string("Alto")
+                  break;
+                case "2":
+                    cp.cell(2+i, 74).string("Medio")
+                  break;
+                case "3":
+                    cp.cell(2+i, 74).string("Bajo")
+                  break;
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              switch (charaterizationFarmList[i].knowProductiveLine2) {
+                case "1":
+                    cp.cell(2+i, 75).string("Alto")
+                  break;
+                case "2":
+                    cp.cell(2+i, 75).string("Medio")
+                  break;
+                case "3":
+                    cp.cell(2+i, 75).string("Bajo")
+                  break;
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              switch (charaterizationFarmList[i].knowProductiveLine3) {
+                case "1":
+                    cp.cell(2+i, 76).string("Alto")
+                  break;
+                case "2":
+                    cp.cell(2+i, 76).string("Medio")
+                  break;
+                case "3":
+                    cp.cell(2+i, 76).string("Bajo")
+                  break;
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              switch (charaterizationFarmList[i].knowProductiveLine4) {
+                case "1":
+                    cp.cell(2+i, 77).string("Alto")
+                  break;
+                case "2":
+                    cp.cell(2+i, 77).string("Medio")
+                  break;
+                case "3":
+                    cp.cell(2+i,77).string("Bajo")
+                  break;
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              switch (charaterizationFarmList[i].knowProductiveLine5) {
+                case "1":
+                    cp.cell(2+i, 78).string("Alto")
+                  break;
+                case "2":
+                    cp.cell(2+i, 78).string("Medio")
+                  break;
+                case "3":
+                    cp.cell(2+i, 78).string("Bajo")
+                  break;
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              switch (charaterizationFarmList[i].comercializationType) {
+                case "1":
+                    cp.cell(2+i, 79).string("Al consumidor final")
+                  break;
+                case "2":
+                    cp.cell(2+i, 79).string("En la plaza")
+                  break;
+                case "3":
+                    cp.cell(2+i, 79).string("En finca")
+                  break;
+                case "3":
+                    cp.cell(2+i, 79).string("Intermediario")
+                  break;
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              switch (charaterizationFarmList[i].biopreparadosProduction) {
+                case "0":
+                    cp.cell(2+i, 80).string("Si")
+                  break;
+                case "1":
+                    cp.cell(2+i, 80).string("No")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              switch (charaterizationFarmList[i].waterAvailable) {
+                case "0":
+                    cp.cell(2+i, 81).string("Si")
+                  break;
+                case "1":
+                    cp.cell(2+i, 81).string("No")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              switch (charaterizationFarmList[i].accessRoads) {
+                case "1":
+                    cp.cell(2+i, 82).string("Via primaria")
+                  break;
+                case "2":
+                    cp.cell(2+i, 82).string("Via secundaria")
+                  break;
+                case "3":
+                    cp.cell(2+i, 82).string("Via terciaria")
+                  break;
+                case "4":
+                    cp.cell(2+i, 82).string("Camino de herradura")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              switch (charaterizationFarmList[i].electricityAvailability) {
+                case "0":
+                    cp.cell(2+i, 83).string("Si")
+                  break;
+                case "1":
+                    cp.cell(2+i, 83).string("No")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              switch (charaterizationFarmList[i].ComunicationAvailable) {
+                case "0":
+                    cp.cell(2+i, 84).string("Si")
+                  break;
+                case "1":
+                    cp.cell(2+i, 84).string("No")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              switch (charaterizationFarmList[i].projectParticipation) {
+                case "0":
+                    cp.cell(2+i, 85).string("Si")
+                  break;
+                case "1":
+                    cp.cell(2+i, 85).string("No")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              switch (charaterizationFarmList[i].cropTools) {
+                case "1":
+                    cp.cell(2+i, 86).string("Alto")
+                  break;
+                case "2":
+                    cp.cell(2+i, 86).string("Medio")
+                  break;
+                case "3":
+                    cp.cell(2+i, 86).string("Bajo")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              switch (charaterizationFarmList[i].firstAidKit) {
+                case "0":
+                    cp.cell(2+i, 87).string("Si")
+                  break;
+                case "1":
+                    cp.cell(2+i, 87).string("No")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              switch (charaterizationFarmList[i].fumigateKit) {
+                case "0":
+                    cp.cell(2+i, 88).string("Si")
+                  break;
+                case "1":
+                    cp.cell(2+i, 88).string("No")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              switch (charaterizationFarmList[i].irrigationSystem) {
+                case "0":
+                    cp.cell(2+i, 89).string("Si")
+                  break;
+                case "1":
+                    cp.cell(2+i, 89).string("No")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              switch (charaterizationFarmList[i].machines) {
+                case "0":
+                    cp.cell(2+i, 90).string("Si")
+                  break;
+                case "1":
+                    cp.cell(2+i, 90).string("No")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              switch (charaterizationFarmList[i].ParticipateInProyects) {
+                case "0":
+                    cp.cell(2+i, 91).string("Si")
+                  break;
+                case "1":
+                    cp.cell(2+i, 91).string("No")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              switch (charaterizationFarmList[i].biopreparadosProduction) {
+                case "1":
+                    cp.cell(2+i, 92).string("Entidades estatales")
+                  break;
+                case "2":
+                    cp.cell(2+i, 92).string("Bancos")
+                  break;
+                case "3":
+                    cp.cell(2+i, 92).string("Agremiaciones")
+                  break;
+                case "4":
+                    cp.cell(2+i, 92).string("Prestamistas")
+                  break;
+                case "5":
+                    cp.cell(2+i, 92).string("Reinversión en cultivos")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              switch (charaterizationFarmList[i].implementationTecnologyLevel) {
+                case "1":
+                    cp.cell(2+i, 93).string("Alto")
+                  break;
+                case "2":
+                    cp.cell(2+i, 93).string("Medio")
+                  break;
+                case "3":
+                    cp.cell(2+i, 93).string("Bajo")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
               cp.cell(2+i, 94).string(charaterizationFarmList[i].productLine1)
               cp.cell(2+i, 95).string(charaterizationFarmList[i].variety1)
               cp.cell(2+i, 96).string(charaterizationFarmList[i].cantPlants1)
               cp.cell(2+i, 97).string(charaterizationFarmList[i].groovesDistance1)
               cp.cell(2+i, 98).string(charaterizationFarmList[i].plantsDistance1)
-              cp.cell(2+i, 99).string(charaterizationFarmList[i].ageCrop1)
-              cp.cell(2+i, 100).string(charaterizationFarmList[i].stageCrop1)
-              cp.cell(2+i, 101).string(charaterizationFarmList[i].cantKgProducedByYear1)
-              cp.cell(2+i, 102).string(charaterizationFarmList[i].cropStatus1)
+              cp.cell(2 + i, 99).string(charaterizationFarmList[i].ageCrop1)
+              switch (charaterizationFarmList[i].stageCrop1) {
+                case "1":
+                    cp.cell(2+i, 100).string("Siembra")
+                  break;
+                case "2":
+                    cp.cell(2+i, 100).string("Crecimiento")
+                  break;
+                case "3":
+                    cp.cell(2+i, 100).string("Produccion")
+                  break;
+                case "4":
+                    cp.cell(2+i, 100).string("Proximo a renovación")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              cp.cell(2 + i, 101).string(charaterizationFarmList[i].cantKgProducedByYear1)
+              switch (charaterizationFarmList[i].cropStatus1) {
+                case "1":
+                    cp.cell(2+i, 102).string("Excelente")
+                  break;
+                case "2":
+                    cp.cell(2+i, 102).string("Óptimo")
+                  break;
+                case "3":
+                    cp.cell(2+i, 102).string("Regular")
+                  break;
+                case "4":
+                    cp.cell(2+i, 102).string("Malo")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
               cp.cell(2+i, 103).string(charaterizationFarmList[i].aproxArea1)
               cp.cell(2+i, 104).string(arrayCoordenates1[0])
               cp.cell(2+i, 105).string(arrayCoordenates1[1])
-              cp.cell(2+i, 106).string(charaterizationFarmList[i].useType)
+              switch (charaterizationFarmList[i].useType) {
+                case "1":
+                    cp.cell(2+i, 106).string("Químico")
+                  break;
+                case "2":
+                    cp.cell(2+i, 106).string("Orgánico")
+                  break;
+                case "3":
+                    cp.cell(2+i, 106).string("Químico y orgánico")
+                  break;
+                case "4":
+                    cp.cell(2+i, 100).string("Otro")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              
               cp.cell(2+i, 107).string(charaterizationFarmList[i].promKgComercializateValue)
               cp.cell(2+i, 108).string(charaterizationFarmList[i].productLine2)
               cp.cell(2+i, 109).string(charaterizationFarmList[i].variety2)
@@ -2121,13 +2683,61 @@ router.get('/downloadExcelByCharacterization/:id', async (req, res, next) => {
               cp.cell(2+i, 111).string(charaterizationFarmList[i].groovesDistance2)
               cp.cell(2+i, 112).string(charaterizationFarmList[i].plantsDistance2)
               cp.cell(2+i, 113).string(charaterizationFarmList[i].ageCrop2)
-              cp.cell(2+i, 114).string(charaterizationFarmList[i].stageCrop2)
+              switch (charaterizationFarmList[i].stageCrop2) {
+                case "1":
+                    cp.cell(2+i, 114).string("Siembra")
+                  break;
+                case "2":
+                    cp.cell(2+i, 114).string("Crecimiento")
+                  break;
+                case "3":
+                    cp.cell(2+i, 114).string("Produccion")
+                  break;
+                case "4":
+                    cp.cell(2+i, 114).string("Proximo a renovación")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
               cp.cell(2+i, 115).string(charaterizationFarmList[i].cantKgProducedByYear2)
-              cp.cell(2+i, 116).string(charaterizationFarmList[i].cropStatus2)
+              switch (charaterizationFarmList[i].cropStatus2) {
+                case "1":
+                    cp.cell(2+i, 116).string("Excelente")
+                  break;
+                case "2":
+                    cp.cell(2+i, 116).string("Óptimo")
+                  break;
+                case "3":
+                    cp.cell(2+i, 116).string("Regular")
+                  break;
+                case "4":
+                    cp.cell(2+i, 116).string("Malo")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
               cp.cell(2+i, 117).string(charaterizationFarmList[i].aproxArea2)
               cp.cell(2+i, 118).string(arrayCoordenates2[0])
               cp.cell(2+i, 119).string(arrayCoordenates2[1])
-              cp.cell(2+i, 120).string(charaterizationFarmList[i].useType2)
+              switch (charaterizationFarmList[i].useType2) {
+                case "1":
+                    cp.cell(2+i, 120).string("Químico")
+                  break;
+                case "2":
+                    cp.cell(2+i, 120).string("Orgánico")
+                  break;
+                case "3":
+                    cp.cell(2+i, 120).string("Químico y orgánico")
+                  break;
+                case "4":
+                    cp.cell(2+i, 120).string("Otro")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
               cp.cell(2+i, 121).string(charaterizationFarmList[i].promKgComercializateValu2)
               cp.cell(2+i, 122).string(charaterizationFarmList[i].productLine3)
               cp.cell(2+i, 123).string(charaterizationFarmList[i].variety3)
@@ -2135,13 +2745,61 @@ router.get('/downloadExcelByCharacterization/:id', async (req, res, next) => {
               cp.cell(2+i, 125).string(charaterizationFarmList[i].groovesDistance3)
               cp.cell(2+i, 126).string(charaterizationFarmList[i].plantsDistance3)
               cp.cell(2+i, 127).string(charaterizationFarmList[i].ageCrop3)
-              cp.cell(2+i, 128).string(charaterizationFarmList[i].stageCrop3)
+              switch (charaterizationFarmList[i].stageCrop3) {
+                case "1":
+                    cp.cell(2+i, 128).string("Siembra")
+                  break;
+                case "2":
+                    cp.cell(2+i, 128).string("Crecimiento")
+                  break;
+                case "3":
+                    cp.cell(2+i, 128).string("Produccion")
+                  break;
+                case "4":
+                    cp.cell(2+i, 128).string("Proximo a renovación")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
               cp.cell(2+i, 129).string(charaterizationFarmList[i].cantKgProducedByYear3)
-              cp.cell(2+i, 130).string(charaterizationFarmList[i].cropStatus3)
+              switch (charaterizationFarmList[i].cropStatus3) {
+                case "1":
+                    cp.cell(2+i, 130).string("Excelente")
+                  break;
+                case "2":
+                    cp.cell(2+i, 130).string("Óptimo")
+                  break;
+                case "3":
+                    cp.cell(2+i, 130).string("Regular")
+                  break;
+                case "4":
+                    cp.cell(2+i, 130).string("Malo")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
               cp.cell(2+i, 131).string(charaterizationFarmList[i].aproxArea3)
               cp.cell(2+i, 132).string(arrayCoordenates3[0])
               cp.cell(2+i, 133).string(arrayCoordenates3[1])
-              cp.cell(2+i, 134).string(charaterizationFarmList[i].useType3)
+              switch (charaterizationFarmList[i].useType3) {
+                case "1":
+                    cp.cell(2+i, 134).string("Químico")
+                  break;
+                case "2":
+                    cp.cell(2+i, 134).string("Orgánico")
+                  break;
+                case "3":
+                    cp.cell(2+i, 134).string("Químico y orgánico")
+                  break;
+                case "4":
+                    cp.cell(2+i, 134).string("Otro")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
               cp.cell(2+i, 135).string(charaterizationFarmList[i].promKgComercializateValu3)
               cp.cell(2+i, 136).string(charaterizationFarmList[i].productLine4Pecuaria)
               cp.cell(2+i, 137).string(charaterizationFarmList[i].breed)
@@ -2160,7 +2818,7 @@ router.get('/downloadExcelByCharacterization/:id', async (req, res, next) => {
               cp.cell(2+i, 150).string(charaterizationFarmList[i].numeroTotalAnimales5)
               cp.cell(2+i, 151).string(charaterizationFarmList[i].numeroHembras5)
               cp.cell(2+i, 152).string(charaterizationFarmList[i].numeroMachos5)
-              cp.cell(2 + i, 153).string(charaterizationFarmList[i].numeroVacasOrdeno5)
+              cp.cell(2+i, 153).string(charaterizationFarmList[i].numeroVacasOrdeno5)
               switch (charaterizationFarmList[i].tipoProduccion5) {
                 case "1":
                     cp.cell(2+i, 154).string("Cria")
@@ -2177,29 +2835,777 @@ router.get('/downloadExcelByCharacterization/:id', async (req, res, next) => {
                 default:
                   console.log("No coincide con 1, 2, 3 0 4");
               }
-              cp.cell(2+i, 155).string(charaterizationFarmList[i].tipoProduccion5)
-              cp.cell(2+i, 156).string(charaterizationFarmList[i].tipoExplotacion5)
-              cp.cell(2+i, 157).string(charaterizationFarmList[i].raza5)
-              cp.cell(2+i, 158).string(charaterizationFarmList[i].areaAproxAnimales5)
-              cp.cell(2+i, 159).string(charaterizationFarmList[i].tipoManejo5)
-              cp.cell(2+i, 160).string(charaterizationFarmList[i].numeroLotesPastoreo5)
-              cp.cell(2+i, 161).string(charaterizationFarmList[i].tipoFertilizacionPastos5)
-              cp.cell(2+i, 162).string(charaterizationFarmList[i].implementaBPG5)
-              cp.cell(2+i, 163).string(charaterizationFarmList[i].implementaBPO5)
-              cp.cell(2+i, 164).string(charaterizationFarmList[i].tratamientoAguasResiduales5)
-              cp.cell(2+i, 165).string(charaterizationFarmList[i].estadoGeneralAnimales5)
-              cp.cell(2+i, 166).string(charaterizationFarmList[i].manejoProductivo5)
-              cp.cell(2+i, 167).string(charaterizationFarmList[i].tipoAlimentacion5)
-              cp.cell(2+i, 168).string(charaterizationFarmList[i].cantidadLitrosDia5)
-              cp.cell(2+i, 169).string(charaterizationFarmList[i].destinoFinalLeche5)
-              cp.cell(2+i, 170).string(charaterizationFarmList[i].precioVentaLecheLitro5)
-              cp.cell(2+i, 171).string(charaterizationFarmList[i].cantidadKGANO5)
-              cp.cell(2+i, 172).string(charaterizationFarmList[i].precioVentaKGCarne5)
-              cp.cell(2+i, 173).string(charaterizationFarmList[i].formaComercializacionProducto5)
-              cp.cell(2 + i, 174).string(charaterizationFarmList[i].frecuenciaEntrega5)
-              cp.cell(2+i, 175).string(charaterizationFarmList[i].time_creation.toString())
-              cp.cell(2+i, 176).string(userPollster[0].nom_user)
-              cp.cell(2+i, 177).string(charaterizationFarmList[i].comments)
+              
+              switch (charaterizationFarmList[i].tipoExplotacion5) {
+                case "1":
+                    cp.cell(2+i, 155).string("Leche")
+                  break;
+                case "2":
+                    cp.cell(2+i, 155).string("Carne")
+                  break;
+                case "3":
+                    cp.cell(2+i, 155).string("Doble proposito")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              cp.cell(2+i, 156).string(charaterizationFarmList[i].raza5)
+              cp.cell(2+i, 157).string(charaterizationFarmList[i].areaAproxAnimales5)
+              switch (charaterizationFarmList[i].tipoManejo5) {
+                case "1":
+                    cp.cell(2+i, 158).string("Intensivo")
+                  break;
+                case "2":
+                    cp.cell(2+i, 158).string("Extensivo")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              cp.cell(2+i, 159).string(charaterizationFarmList[i].numeroLotesPastoreo5)
+              switch (charaterizationFarmList[i].tipoFertilizacionPastos5) {
+                case "1":
+                    cp.cell(2+i, 160).string("Materia organica")
+                  break;
+                case "2":
+                    cp.cell(2+i, 160).string("Química")
+                  break;
+                case "3":
+                    cp.cell(2+i, 160).string("Biofertilizantes")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              switch (charaterizationFarmList[i].implementaBPG5) {
+                case "0":
+                    cp.cell(2+i, 161).string("Si")
+                  break;
+                case "1":
+                    cp.cell(2+i, 161).string("No")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              switch (charaterizationFarmList[i].implementaBPO5) {
+                case "0":
+                    cp.cell(2+i, 162).string("Si")
+                  break;
+                case "1":
+                    cp.cell(2+i, 162).string("No")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              switch (charaterizationFarmList[i].tratamientoAguasResiduales5) {
+                case "0":
+                    cp.cell(2+i, 163).string("Si")
+                  break;
+                case "1":
+                    cp.cell(2+i, 163).string("No")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              switch (charaterizationFarmList[i].estadoGeneralAnimales5) {
+                case "01":
+                    cp.cell(2+i, 164).string("Bueno")
+                  break;
+                case "2":
+                    cp.cell(2+i, 164).string("Regular")
+                  break;
+                case "3":
+                    cp.cell(2+i, 164).string("Malo")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              switch (charaterizationFarmList[i].manejoProductivo5) {
+                case "1":
+                    cp.cell(2+i, 165).string("Monta natural")
+                  break;
+                case "2":
+                    cp.cell(2+i, 165).string("Monta dirigida y controlada")
+                  break;
+                case "3":
+                    cp.cell(2+i, 165).string("Inseminación artificial mediante celo detectado")
+                  break;
+                case "4":
+                    cp.cell(2+i, 165).string("La transferencia embrionaria (TE)")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              switch (charaterizationFarmList[i].tipoAlimentacion5) {
+                case "1":
+                    cp.cell(2+i, 166).string("Pasto")
+                  break;
+                case "2":
+                    cp.cell(2+i, 166).string("Concentrado")
+                  break;
+                case "3":
+                    cp.cell(2+i, 166).string("Ensillaje")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              cp.cell(2+i, 167).string(charaterizationFarmList[i].cantidadLitrosDia5)
+              switch (charaterizationFarmList[i].destinoFinalLeche5) {
+                case "1":
+                    cp.cell(2+i, 168).string("Comercialización")
+                  break;
+                case "2":
+                    cp.cell(2+i, 168).string("Autoconsumo")
+                  break;
+                case "3":
+                    cp.cell(2+i, 168).string("Transformación")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              cp.cell(2+i, 169).string(charaterizationFarmList[i].precioVentaLecheLitro5)
+              cp.cell(2+i, 170).string(charaterizationFarmList[i].cantidadKGANO5)
+              cp.cell(2+i, 171).string(charaterizationFarmList[i].precioVentaKGCarne5)
+              switch (charaterizationFarmList[i].formaComercializacionProducto5) {
+                case "1":
+                    cp.cell(2+i, 172).string("Planta de sacrificio")
+                  break;
+                case "2":
+                    cp.cell(2+i, 172).string("Remate en ferias")
+                  break;
+                case "3":
+                    cp.cell(2+i, 172).string("Feria en privado")
+                  break;
+                case "4":
+                    cp.cell(2+i, 172).string("Exportación directa")
+                  break;
+                case "5":
+                    cp.cell(2+i, 172).string("Minorista en predio")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              cp.cell(2 + i, 173).string(charaterizationFarmList[i].frecuenciaEntrega5)
+              cp.cell(2 + i, 174).string(charaterizationFarmList[i].nombreLineaProductiva6)
+              cp.cell(2 + i, 175).string(charaterizationFarmList[i].areaGalpon6)
+              cp.cell(2 + i, 176).string(charaterizationFarmList[i].numeroAnimales6)
+              switch (charaterizationFarmList[i].tipoExplotacion6) {
+                case "1":
+                    cp.cell(2+i, 177).string("Huevo")
+                  break;
+                case "2":
+                    cp.cell(2+i, 177).string("Carne")
+                  break;
+                case "3":
+                    cp.cell(2+i, 177).string("Doble proposito")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              switch (charaterizationFarmList[i].tipoAlimentacion6) {
+                case "1":
+                    cp.cell(2+i, 178).string("Pastoreo")
+                  break;
+                case "2":
+                    cp.cell(2+i, 178).string("Concentrado")
+                  break;
+                case "3":
+                    cp.cell(2+i, 178).string("Mixta")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              switch (charaterizationFarmList[i].granjaBiosegura6) {
+                case "0":
+                    cp.cell(2+i, 179).string("Si")
+                  break;
+                case "1":
+                    cp.cell(2+i, 179).string("No")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              switch (charaterizationFarmList[i].planSanitario6) {
+                case "0":
+                    cp.cell(2+i, 180).string("Si")
+                  break;
+                case "1":
+                    cp.cell(2+i, 180).string("No")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              switch (charaterizationFarmList[i].implementaBPA6) {
+                case "0":
+                    cp.cell(2+i, 181).string("Si")
+                  break;
+                case "1":
+                    cp.cell(2+i, 181).string("No")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              switch (charaterizationFarmList[i].estadoGeneralAnimales6) {
+                case "1":
+                    cp.cell(2+i, 182).string("Bueno")
+                  break;
+                case "2":
+                    cp.cell(2+i, 182).string("Regular")
+                  break;
+                case "3":
+                    cp.cell(2+i, 182).string("Malo")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              switch (charaterizationFarmList[i].tratamientoAguasResiduales6) {
+                case "0":
+                    cp.cell(2+i, 183).string("Si")
+                  break;
+                case "1":
+                    cp.cell(2+i, 183).string("No")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              cp.cell(2 + i, 184).string(charaterizationFarmList[i].tipoRazaPostura6)
+              cp.cell(2 + i, 185).string(charaterizationFarmList[i].numeroSemanasAves6)
+              switch (charaterizationFarmList[i].galloEnGalpon6) {
+                case "0":
+                    cp.cell(2+i, 186).string("Si")
+                  break;
+                case "1":
+                    cp.cell(2+i, 186).string("No")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              cp.cell(2 + i, 187).string(charaterizationFarmList[i].cantidadHuevosSemana6)
+              cp.cell(2 + i, 188).string(charaterizationFarmList[i].porcentajePosturaSemanal6)
+              switch (charaterizationFarmList[i].clasificaHuevosPorPeso6) {
+                case "0":
+                    cp.cell(2+i, 189).string("Si")
+                  break;
+                case "1":
+                    cp.cell(2+i, 189).string("No")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              switch (charaterizationFarmList[i].galloEnGalpon6) {
+                case "1":
+                    cp.cell(2+i, 190).string("Comercialización")
+                  break;
+                case "2":
+                    cp.cell(2+i, 190).string("Autoconsumo")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              cp.cell(2 + i, 191).string(charaterizationFarmList[i].precioUnidadHuevo6)
+              switch (charaterizationFarmList[i].presentacion6) {
+                case "1":
+                    cp.cell(2+i, 192).string("Panal")
+                  break;
+                case "2":
+                    cp.cell(2+i, 192).string("Carton")
+                  break;
+                case "2":
+                    cp.cell(2+i, 192).string("Bolsa")
+                  break;
+                case "2":
+                    cp.cell(2+i, 192).string("Malla polipropileno")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              cp.cell(2 + i, 193).string(charaterizationFarmList[i].porcentajeMortalidadPostura6)
+              switch (charaterizationFarmList[i].tipoComercializacion6) {
+                case "1":
+                    cp.cell(2+i, 194).string("Comercialización")
+                  break;
+                case "2":
+                    cp.cell(2+i, 194).string("Autoconsumo")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              cp.cell(2 + i, 195).string(charaterizationFarmList[i].cantidadKgCarnePollosPorCiclo6)
+              cp.cell(2 + i, 196).string(charaterizationFarmList[i].precioVentaCarneKg6)
+              switch (charaterizationFarmList[i].formaComercializacionProducto6) {
+                case "1":
+                    cp.cell(2+i, 197).string("Tienda")
+                  break;
+                case "2":
+                    cp.cell(2+i, 197).string("Plaza")
+                  break;
+                case "3":
+                    cp.cell(2+i, 197).string("Supermercado")
+                  break;
+                case "4":
+                    cp.cell(2+i, 197).string("Acopio")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              cp.cell(2 + i, 198).string(charaterizationFarmList[i].porcentajeMortalidadCicloEngorde6)
+              cp.cell(2 + i, 199).string(charaterizationFarmList[i].frecuenciaEntrega5)
+
+              cp.cell(2 + i, 200).string(charaterizationFarmList[i].nombreLineaProductiva7)
+              cp.cell(2 + i, 201).string(charaterizationFarmList[i].numeroTotalAnimales7)
+              cp.cell(2 + i, 202).string(charaterizationFarmList[i].numeroHembras7)
+              cp.cell(2 + i, 203).string(charaterizationFarmList[i].numeroMachos7)
+              cp.cell(2 + i, 204).string(charaterizationFarmList[i].raza7)
+              cp.cell(2 + i, 205).string(charaterizationFarmList[i].areaUsadaAnimales7)
+              switch (charaterizationFarmList[i].implementaBPP7) {
+                case "0":
+                    cp.cell(2+i, 206).string("Si")
+                  break;
+                case "1":
+                    cp.cell(2+i, 206).string("No")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              switch (charaterizationFarmList[i].estadoGeneralAnimales7) {
+                case "1":
+                    cp.cell(2+i, 207).string("Bueno")
+                  break;
+                case "2":
+                    cp.cell(2+i, 207).string("Regular")
+                  break;
+                case "3":
+                    cp.cell(2+i, 207).string("Malo")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              switch (charaterizationFarmList[i].tratamientoAguasResiduales7) {
+                case "0":
+                    cp.cell(2+i, 208).string("Si")
+                  break;
+                case "1":
+                    cp.cell(2+i, 208).string("No")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              switch (charaterizationFarmList[i].tipoProduccion7) {
+                case "1":
+                    cp.cell(2+i, 209).string("Cria")
+                  break;
+                case "2":
+                    cp.cell(2+i, 209).string("Levante")
+                  break;
+                case "3":
+                    cp.cell(2+i, 209).string("Ceba")
+                  break;
+                case "4":
+                    cp.cell(2+i, 209).string("Ciclo completo")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              switch (charaterizationFarmList[i].tipoAlimentacion7) {
+                case "1":
+                    cp.cell(2+i, 210).string("Concentrado")
+                  break;
+                case "2":
+                    cp.cell(2+i, 210).string("Pastoreo")
+                  break;
+                case "3":
+                    cp.cell(2+i, 210).string("Residuos de la cocina")
+                  break;
+                case "4":
+                    cp.cell(2+i, 210).string("Ciclo mixta")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              cp.cell(2 + i, 211).string(charaterizationFarmList[i].numeroHembrasCria7)
+              cp.cell(2 + i, 212).string(charaterizationFarmList[i].numeroLechonesLactantes7)
+              cp.cell(2 + i, 213).string(charaterizationFarmList[i].numeroAnimalesLevanteCeba7)
+              cp.cell(2 + i, 214).string(charaterizationFarmList[i].numeroMachosReporductores7)
+              cp.cell(2 + i, 215).string(charaterizationFarmList[i].porcentajeMortalidad7)
+              cp.cell(2 + i, 216).string(charaterizationFarmList[i].cantidadKgEtapa7)
+              cp.cell(2 + i, 217).string(charaterizationFarmList[i].precioVentaCarneKg7)
+              switch (charaterizationFarmList[i].formaComercializacionProducto7) {
+                case "1":
+                    cp.cell(2+i, 218).string("Planta de sacrificio")
+                  break;
+                case "2":
+                    cp.cell(2+i, 218).string("Remate en ferias")
+                  break;
+                case "3":
+                    cp.cell(2+i, 218).string("feria en privado")
+                  break;
+                case "4":
+                    cp.cell(2+i, 218).string("Exportación directa")
+                  break;
+                case "5":
+                    cp.cell(2+i, 218).string("Minorista en predio")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              switch (charaterizationFarmList[i].ventaAnimales7) {
+                case "1":
+                    cp.cell(2+i, 218).string("Pie")
+                  break;
+                case "2":
+                    cp.cell(2+i, 218).string("Canal")
+                  break;
+
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              
+              cp.cell(2 + i, 220).string(charaterizationFarmList[i].frecuenciaEntrega7)
+
+              cp.cell(2 + i, 221).string(charaterizationFarmList[i].nombreLineaProductiva8)
+              cp.cell(2 + i, 222).string(charaterizationFarmList[i].numeroEstanques8)
+              cp.cell(2 + i, 223).string(charaterizationFarmList[i].areaUsadaAnimales8)
+              cp.cell(2 + i, 224).string(charaterizationFarmList[i].densidadSiembra8)
+              switch (charaterizationFarmList[i].orientacionGranja8) {
+                case "1":
+                    cp.cell(2+i, 225).string("Producción de alevinos")
+                  break;
+                case "2":
+                    cp.cell(2+i, 225).string("Producción de carne")
+                  break;
+                case "3":
+                    cp.cell(2+i, 225).string("Ciclo completo")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              switch (charaterizationFarmList[i].sistemaProduccion8) {
+                case "1":
+                    cp.cell(2+i, 226).string("Continuo")
+                  break;
+                case "2":
+                    cp.cell(2+i, 226).string("Semestral")
+                  break;
+                case "3":
+                    cp.cell(2+i, 226).string("Anual")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              switch (charaterizationFarmList[i].infraestructura8) {
+                case "1":
+                    cp.cell(2+i, 227).string("Natural")
+                  break;
+                case "2":
+                    cp.cell(2+i, 227).string("Artificial")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              switch (charaterizationFarmList[i].implementaBPP8) {
+                case "0":
+                    cp.cell(2+i, 228).string("Si")
+                  break;
+                case "1":
+                    cp.cell(2+i, 228).string("No")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              switch (charaterizationFarmList[i].estadoGeneralAnimales8) {
+                case "1":
+                    cp.cell(2+i, 229).string("Bueno")
+                  break;
+                case "2":
+                    cp.cell(2+i, 229).string("Regular")
+                  break;
+                case "3":
+                    cp.cell(2+i, 229).string("Malo")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              switch (charaterizationFarmList[i].tratamientoAguasResiduales8) {
+                case "0":
+                    cp.cell(2+i, 230).string("Si")
+                  break;
+                case "1":
+                    cp.cell(2+i, 230).string("No")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              cp.cell(2 + i, 231).string(charaterizationFarmList[i].procentajeMortalidadAnual8)
+              cp.cell(2 + i, 232).string(charaterizationFarmList[i].comoTratanAguas8)
+              cp.cell(2 + i, 233).string(charaterizationFarmList[i].tipoAlimentacion8)
+              cp.cell(2 + i, 234).string(charaterizationFarmList[i].promedioAlevinosSembradosAno8)
+              switch (charaterizationFarmList[i].formaComercializacionProducto8) {
+                case "1":
+                    cp.cell(2+i, 235).string("Autoconsumo")
+                  break;
+                case "2":
+                    cp.cell(2+i, 235).string("Mercado zona")
+                  break;
+                case "3":
+                    cp.cell(2+i, 235).string("Mercado local")
+                  break;
+                case "3":
+                    cp.cell(2+i, 235).string("Mercado nacional")
+                  break;
+                case "3":
+                    cp.cell(2+i, 235).string("Exportacion")
+                  break;
+                case "3":
+                    cp.cell(2+i, 235).string("Pezca deportiva")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              cp.cell(2 + i, 236).string(charaterizationFarmList[i].totalPecesCosechadosCiclo8)
+              cp.cell(2 + i, 237).string(charaterizationFarmList[i].precioVentaCarne8)
+              switch (charaterizationFarmList[i].presentacionVenta8) {
+                case "1":
+                    cp.cell(2+i, 238).string("Fresco")
+                  break;
+                case "2":
+                    cp.cell(2+i, 238).string("Canal")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              cp.cell(2 + i, 239).string(charaterizationFarmList[i].frecuenciaEntrega8)
+
+              cp.cell(2 + i, 240).string(charaterizationFarmList[i].numeroColemnas9)
+              cp.cell(2 + i, 241).string(charaterizationFarmList[i].especie9)
+              cp.cell(2 + i, 242).string(charaterizationFarmList[i].areaApiario9)
+              switch (charaterizationFarmList[i].tipoApicultura9) {
+                case "1":
+                    cp.cell(2+i, 243).string("Tradicional")
+                  break;
+                case "2":
+                    cp.cell(2+i, 243).string("Tecnificado")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              cp.cell(2 + i, 244).string(charaterizationFarmList[i].numeroPromedioAbejasColmena9)
+              switch (charaterizationFarmList[i].implementaBPP9) {
+                case "0":
+                    cp.cell(2+i, 245).string("Si")
+                  break;
+                case "1":
+                    cp.cell(2+i, 245).string("No")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              switch (charaterizationFarmList[i].estadoGeneralAnimales9) {
+                case "1":
+                    cp.cell(2+i, 246).string("Bueno")
+                  break;
+                case "2":
+                    cp.cell(2+i, 246).string("Regular")
+                  break;
+                case "3":
+                    cp.cell(2+i, 246).string("Malo")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              switch (charaterizationFarmList[i].calendariosFloracion9) {
+                case "0":
+                    cp.cell(2+i, 247).string("Si")
+                  break;
+                case "1":
+                    cp.cell(2+i, 247).string("No")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              cp.cell(2 + i, 248).string(charaterizationFarmList[i].variedadFloracionZona9)
+              switch (charaterizationFarmList[i].tipoSuplementacion9) {
+                case "0":
+                    cp.cell(2+i, 249).string("Si")
+                  break;
+                case "1":
+                    cp.cell(2+i, 249).string("No")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              switch (charaterizationFarmList[i].formacionTecnicaActividad9) {
+                case "0":
+                    cp.cell(2+i, 250).string("Si")
+                  break;
+                case "1":
+                    cp.cell(2+i, 250).string("No")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              switch (charaterizationFarmList[i].tratamientoAguasResiduales8) {
+                case "1":
+                    cp.cell(2+i, 251).string("Tropilaelaps spp (ácaro)")
+                  break;
+                case "2":
+                    cp.cell(2+i, 251).string("Aethina tumida (escarabajo predador)")
+                  break;
+                case "3":
+                    cp.cell(2+i, 251).string("Varroa destructor ( ácaro)")
+                  break;
+                case "4":
+                    cp.cell(2+i, 251).string("Nosema apis (hongo)")
+                  break;
+                case "5":
+                    cp.cell(2+i, 251).string("Nosema ceranae (hongo)")
+                  break;
+                case "6":
+                    cp.cell(2+i, 251).string("Paenibacillus larvae (bacteria causante de la Loque americana)")
+                  break;
+                case "7":
+                    cp.cell(2+i, 251).string("Melisscoccus plutonios ( bacteria causante de la Loque europea)")
+                  break;
+                case "8":
+                    cp.cell(2+i, 251).string("Virus de la parálisis crónica")
+                  break;
+                case "9":
+                    cp.cell(2+i, 251).string("Virus de la parálisis aguda")
+                  break;
+                case "10":
+                    cp.cell(2+i, 251).string("Virus de las alas deformadas")
+                  break;
+                case "11":
+                    cp.cell(2+i, 251).string("No ha presentado problemas por enfermedades")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+    
+              switch (charaterizationFarmList[i].tipoProducto9) {
+                case "1":
+                    cp.cell(2+i, 252).string("Polen")
+                  break;
+                case "2":
+                    cp.cell(2+i, 252).string("Miel de abejas")
+                  break;
+                case "3":
+                    cp.cell(2+i, 252).string("Propoleo")
+                  break;
+                case "4":
+                    cp.cell(2+i, 252).string("Jalea real")
+                  break;
+                case "5":
+                    cp.cell(2+i, 252).string("Jalea vitamil")
+                  break;
+                case "6":
+                    cp.cell(2+i, 252).string("Polimiel")
+                  break;
+                case "7":
+                    cp.cell(2+i, 252).string("Tintura de propoleo")
+                  break;
+                case "8":
+                    cp.cell(2+i, 252).string("Hidromiel (vino)")
+                  break;
+                case "9":
+                    cp.cell(2+i, 252).string("En el momento no presenta")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              switch (charaterizationFarmList[i].tipoEmpaque9) {
+                case "1":
+                    cp.cell(2+i, 253).string("Frascos de vidrios")
+                  break;
+                case "2":
+                    cp.cell(2+i, 253).string("Bolsas plásticas")
+                  break;
+                case "3":
+                    cp.cell(2+i, 253).string("Cajas")
+                  break;
+                case "4":
+                    cp.cell(2+i, 253).string("Botellas de plásticos")
+                  break;
+                case "5":
+                    cp.cell(2+i, 253).string("Recipientes en aluminio")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              cp.cell(2 + i, 254).string(charaterizationFarmList[i].cantidadLitrosCosechaSemestre9)
+              cp.cell(2 + i, 255).string(charaterizationFarmList[i].precioVentaLitro9)
+              switch (charaterizationFarmList[i].formaComercializacionProducto9) {
+                case "1":
+                    cp.cell(2+i, 256).string("Autoconsumo")
+                  break;
+                case "2":
+                    cp.cell(2+i, 256).string("Mercado zona")
+                  break;
+                case "3":
+                    cp.cell(2+i, 256).string("Mercado local")
+                  break;
+                case "4":
+                    cp.cell(2+i, 256).string("Mercado nacional")
+                  break;
+                case "5":
+                    cp.cell(2+i, 256).string("Exportación")
+                  break;
+                
+                default:
+                  console.log("No coincide con 1, 2, 3 0 4");
+              }
+              cp.cell(2 + i, 257).string(charaterizationFarmList[i].frecuenciaEntrega9)
+
+
+              
+              cp.cell(2+i, 174).string(charaterizationFarmList[i].time_creation.toString())
+              cp.cell(2+i, 175).string(userPollster[0].nom_user)
+              cp.cell(2+i, 176).string(charaterizationFarmList[i].comments)
 
           }
 
