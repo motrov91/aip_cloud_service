@@ -1863,35 +1863,35 @@ router.get('/downloadExcelByCharacterization/:id', async (req, res, next) => {
           cp.cell(1,257).string('Frecuencia de entrega o venta del producto').style(styles)
               
           //LOTE 10    
-          cp.cell(1,260).string('nombre de la linea productiva').style(styles)
-          cp.cell(1,261).string('Numero total de animales').style(styles) 
-          cp.cell(1,262).string('Numero de hembras').style(styles) 
-          cp.cell(1,263).string('Numero de machos').style(styles) 
-          cp.cell(1,264).string('Raza').style(styles) 
-          cp.cell(1,265).string('Área aproximada usada por los animales m2').style(styles) 
-          cp.cell(1,266).string('Cuenta con instalaciones').style(styles) 
-          cp.cell(1,267).string('Implementa BPP').style(styles) 
-          cp.cell(1,268).string('Estado general de los animales').style(styles) 
-          cp.cell(1,269).string('Realiza tratamiento de aguas residuales de la producción').style(styles) 
-          cp.cell(1,270).string('Tipo de producción').style(styles) 
-          cp.cell(1,271).string('Tipo de alimentación').style(styles) 
-          cp.cell(1,272).string('Número de hembras de cría').style(styles) 
-          cp.cell(1,273).string('Número de gazapos lactantes').style(styles) 
-          cp.cell(1,274).string('Número de animales de levante – ceba').style(styles) 
-          cp.cell(1,275).string('Número de machos reproductores').style(styles) 
-          cp.cell(1,276).string('% de mortalidad').style(styles) 
-          cp.cell(1,277).string('Cantidad Kg/ por etapa').style(styles) 
-          cp.cell(1,278).string('Precio de venta carne ($/Kg)').style(styles) 
-          cp.cell(1,279).string('Forma de comercialización de su producto').style(styles) 
-          cp.cell(1,280).string('Venta de los animales').style(styles) 
-          cp.cell(1,281).string('Frecuencia de entrega o venta del producto').style(styles)
+          cp.cell(1,258).string('nombre de la linea productiva').style(styles)
+          cp.cell(1,259).string('Numero total de animales').style(styles) 
+          cp.cell(1,260).string('Numero de hembras').style(styles) 
+          cp.cell(1,261).string('Numero de machos').style(styles) 
+          cp.cell(1,262).string('Raza').style(styles) 
+          cp.cell(1,263).string('Área aproximada usada por los animales m2').style(styles) 
+          cp.cell(1,264).string('Cuenta con instalaciones').style(styles) 
+          cp.cell(1,265).string('Implementa BPP').style(styles) 
+          cp.cell(1,266).string('Estado general de los animales').style(styles) 
+          cp.cell(1,267).string('Realiza tratamiento de aguas residuales de la producción').style(styles) 
+          cp.cell(1,268).string('Tipo de producción').style(styles) 
+          cp.cell(1,269).string('Tipo de alimentación').style(styles) 
+          cp.cell(1,270).string('Número de hembras de cría').style(styles) 
+          cp.cell(1,271).string('Número de gazapos lactantes').style(styles) 
+          cp.cell(1,272).string('Número de animales de levante – ceba').style(styles) 
+          cp.cell(1,273).string('Número de machos reproductores').style(styles) 
+          cp.cell(1,274).string('% de mortalidad').style(styles) 
+          cp.cell(1,275).string('Cantidad Kg/ por etapa').style(styles) 
+          cp.cell(1,276).string('Precio de venta carne ($/Kg)').style(styles) 
+          cp.cell(1,277).string('Forma de comercialización de su producto').style(styles) 
+          cp.cell(1,278).string('Venta de los animales').style(styles) 
+          cp.cell(1,279).string('Frecuencia de entrega o venta del producto').style(styles)
               
           .string('Fecha de caracterización de predio')
           .style(styles)
-          cp.cell(1,141)
+          cp.cell(1,280)
           .string('Encuestador')
           .style(styles)
-          cp.cell(1,142)
+          cp.cell(1,281)
           .string('Comentarios')
           .style(styles)
           
@@ -3599,13 +3599,141 @@ router.get('/downloadExcelByCharacterization/:id', async (req, res, next) => {
                 default:
                   console.log("No coincide con 1, 2, 3 0 4");
               }
-              cp.cell(2 + i, 257).string(charaterizationFarmList[i].frecuenciaEntrega9)
+            cp.cell(2 + i, 257).string(charaterizationFarmList[i].frecuenciaEntrega9)
+            
+            cp.cell(2 + i, 255).string(charaterizationFarmList[i].nombreLineaProductiva10)
+            cp.cell(2 + i, 256).string(charaterizationFarmList[i].numeroTotalAnimales10)
+            cp.cell(2 + i, 260).string(charaterizationFarmList[i].numeroHembras10)
+            cp.cell(2 + i, 261).string(charaterizationFarmList[i].numeroMachos10)
+            cp.cell(2 + i, 262).string(charaterizationFarmList[i].raza10)
+            cp.cell(2 + i, 263).string(charaterizationFarmList[i].areaUsadaAnimales10)
+            switch (charaterizationFarmList[i].formaComercializacionProducto9) {
+              case "1":
+                  cp.cell(2+i, 264).string("Galpón")
+                break;
+              case "2":
+                  cp.cell(2+i, 264).string("Jaula")
+                break;
+              
+              default:
+                console.log("No coincide con 1, 2, 3 0 4");
+            }
+            switch (charaterizationFarmList[i].implementaBPP10) {
+              case "0":
+                  cp.cell(2+i, 265).string("Si")
+                break;
+              case "1":
+                  cp.cell(2+i, 265).string("No")
+                break;
+              
+              default:
+                console.log("No coincide con 1, 2, 3 0 4");
+            }
+            switch (charaterizationFarmList[i].estadoGeneralAnimales10) {
+              case "1":
+                  cp.cell(2+i, 266).string("Bueno")
+                break;
+              case "2":
+                  cp.cell(2+i, 266).string("Regular")
+                break;
+              case "3":
+                  cp.cell(2+i, 266).string("Malo")
+                break;
+              
+              default:
+                console.log("No coincide con 1, 2, 3 0 4");
+            }
+            switch (charaterizationFarmList[i].tratamientoAguasResiduales10) {
+              case "0":
+                  cp.cell(2+i, 267).string("Si")
+                break;
+              case "1":
+                  cp.cell(2+i, 267).string("No")
+                break;
+              
+              default:
+                console.log("No coincide con 1, 2, 3 0 4");
+            }
+            switch (charaterizationFarmList[i].tipoProduccion10) {
+              case "1":
+                  cp.cell(2+i, 268).string("Cria")
+                break;
+              case "2":
+                  cp.cell(2+i, 268).string("Levante")
+                break;
+              case "3":
+                  cp.cell(2+i, 268).string("Ceba")
+                break;
+              case "4":
+                  cp.cell(2+i, 268).string("Ciclo completo")
+                break;
+              
+              default:
+                console.log("No coincide con 1, 2, 3 0 4");
+            }
+            switch (charaterizationFarmList[i].tipoAlimentacion10) {
+              case "1":
+                  cp.cell(2+i, 269).string("Concentrado")
+                break;
+              case "2":
+                  cp.cell(2+i, 269).string("Pasto")
+                break;
+              case "2":
+                  cp.cell(2+i, 269).string("Residuos de cocina")
+                break;
+              case "2":
+                  cp.cell(2+i, 269).string("Mixta")
+                break;
+              
+              default:
+                console.log("No coincide con 1, 2, 3 0 4");
+            }
+            cp.cell(2 + i, 270).string(charaterizationFarmList[i].numeroHembrasCria10)
+            cp.cell(2 + i, 271).string(charaterizationFarmList[i].numeroGazaposLactantes10)
+            cp.cell(2 + i, 272).string(charaterizationFarmList[i].numeroAnimalesLevanteCeba10)
+            cp.cell(2 + i, 273).string(charaterizationFarmList[i].numeroMachosReproductores10)
+            cp.cell(2 + i, 274).string(charaterizationFarmList[i].porcentajeMortalidad10)
+            cp.cell(2 + i, 275).string(charaterizationFarmList[i].cantidadKgEtapa10)
+            cp.cell(2 + i, 276).string(charaterizationFarmList[i].precioVentaCarneKg10)
+            switch (charaterizationFarmList[i].formaComercializacionProducto10) {
+              case "1":
+                  cp.cell(2+i, 277).string("Planta de sacrificio")
+                break;
+              case "2":
+                  cp.cell(2+i, 277).string("Remate en ferias")
+                break;
+              case "3":
+                  cp.cell(2+i, 277).string("Feria en privado")
+                break;
+              case "4":
+                  cp.cell(2+i, 277).string("Exportación directa")
+                break;
+              case "5":
+                  cp.cell(2+i, 277).string("Minorista en predio")
+                break;
+              
+              default:
+                console.log("No coincide con 1, 2, 3 0 4");
+            }
+            switch (charaterizationFarmList[i].ventaAnimales10) {
+              case "1":
+                  cp.cell(2+i, 278).string("Pie")
+                break;
+              case "2":
+                  cp.cell(2+i, 278).string("Canal")
+                break;
+              
+              default:
+                console.log("No coincide con 1, 2, 3 0 4");
+            }
+            
+            cp.cell(2 + i, 279).string(charaterizationFarmList[i].frecuenciaEntrega10)
 
 
               
-              cp.cell(2+i, 174).string(charaterizationFarmList[i].time_creation.toString())
-              cp.cell(2+i, 175).string(userPollster[0].nom_user)
-              cp.cell(2+i, 176).string(charaterizationFarmList[i].comments)
+            cp.cell(2+i, 280).string(charaterizationFarmList[i].time_creation.toString())
+              cp.cell(2+i, 281).string(userPollster[0].nom_user)
+              cp.cell(2+i, 282).string(charaterizationFarmList[i].comments)
 
           }
 
