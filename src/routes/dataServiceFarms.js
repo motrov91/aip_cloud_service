@@ -2663,7 +2663,7 @@ router.get('/downloadExcelByCharacterization/:id', async (req, res, next) => {
                     cp.cell(2+i, 106).string("Químico y orgánico")
                   break;
                 case "4":
-                    cp.cell(2+i, 100).string("Otro")
+                    cp.cell(2+i, 106).string("Otro")
                   break;
                 
                 default:
@@ -3272,10 +3272,10 @@ router.get('/downloadExcelByCharacterization/:id', async (req, res, next) => {
               }
               switch (charaterizationFarmList[i].ventaAnimales7) {
                 case "1":
-                    cp.cell(2+i, 218).string("Pie")
+                    cp.cell(2+i, 219).string("Pie")
                   break;
                 case "2":
-                    cp.cell(2+i, 218).string("Canal")
+                    cp.cell(2+i, 219).string("Canal")
                   break;
 
                 
@@ -3595,8 +3595,8 @@ router.get('/downloadExcelByCharacterization/:id', async (req, res, next) => {
               }
             cp.cell(2 + i, 257).string(charaterizationFarmList[i].frecuenciaEntrega9)
             
-            cp.cell(2 + i, 255).string(charaterizationFarmList[i].nombreLineaProductiva10)
-            cp.cell(2 + i, 256).string(charaterizationFarmList[i].numeroTotalAnimales10)
+            cp.cell(2 + i, 258).string(charaterizationFarmList[i].nombreLineaProductiva10)
+            cp.cell(2 + i, 259).string(charaterizationFarmList[i].numeroTotalAnimales10)
             cp.cell(2 + i, 260).string(charaterizationFarmList[i].numeroHembras10)
             cp.cell(2 + i, 261).string(charaterizationFarmList[i].numeroMachos10)
             cp.cell(2 + i, 262).string(charaterizationFarmList[i].raza10)
