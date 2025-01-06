@@ -1885,15 +1885,9 @@ router.get('/downloadExcelByCharacterization/:id', async (req, res, next) => {
           cp.cell(1,277).string('Forma de comercialización de su producto').style(styles) 
           cp.cell(1,278).string('Venta de los animales').style(styles) 
           cp.cell(1,279).string('Frecuencia de entrega o venta del producto').style(styles)
-              
-          .string('Fecha de caracterización de predio')
-          .style(styles)
-          cp.cell(1,280)
-          .string('Encuestador')
-          .style(styles)
-          cp.cell(1,281)
-          .string('Comentarios')
-          .style(styles)
+          cp.cell(1,280).string('Fecha de caracterización de predio').style(styles)
+          cp.cell(1,281).string('Encuestador').style(styles)
+          cp.cell(1,282).string('Comentarios').style(styles)
           
 
           for(let i=0; i<charaterizationFarmList.length; i++){
