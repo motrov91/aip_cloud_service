@@ -13,7 +13,7 @@ router.get('/signin', /* isLoggedIn, */ (req, res) => {
 
 router.post('/signin', async (req, res, next) => {
     const {username, password} = req.body
-    console.log(username, password);
+    // console.log(username, password);
     const user = await pool.query('SELECT * FROM users WHERE username = ?', [username])
 
     if(!user){

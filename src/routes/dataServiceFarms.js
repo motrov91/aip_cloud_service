@@ -3727,7 +3727,10 @@ router.get('/downloadExcelByCharacterization/:id', async (req, res, next) => {
               
             cp.cell(2+i, 280).string(charaterizationFarmList[i].time_creation.toString())
               cp.cell(2+i, 281).string(userPollster[0].nom_user)
-              cp.cell(2+i, 282).string(charaterizationFarmList[i].comments)
+            cp.cell(2 + i, 282).string(charaterizationFarmList[i].comments)
+            cp.cell(2 + i, 283).string(charaterizationFarmList[i].img_beneficiario)
+            cp.cell(2 + i, 284).string(charaterizationFarmList[i].imgSignature)
+            
 
           }
 
